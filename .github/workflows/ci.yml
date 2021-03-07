@@ -1,0 +1,18 @@
+# Workflow name
+name: Build
+on:
+  # When it will be triggered
+  # And in which branch
+  pull_request:
+  push:
+    branches:
+      - main
+# Where will they run
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2 # user other action, The uses parameter follow this syntax {owner}/{repo}@{ref}.
+      - name: Build the app
+        run: ./gradlew build
