@@ -18,6 +18,7 @@ open class InstallSpotlessPreCommitHook : DefaultTask() {
                 #!/bin/bash
                 echo "Running spotless check"
                 ./gradlew spotlessApply
+                git add .
                 """.trimIndent())
     Runtime.getRuntime().exec("chmod +x .git/hooks/pre-commit")
   }
