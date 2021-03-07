@@ -4,4 +4,15 @@
 ## Install spotless pre-commit hook
 ./gradlew installSpotlessHook 
 
-# CI/CD with github-action
+# CI/CD Github Actions
+# Unittest
+.github-workflows/ci.yml
+
+# [TODO] InstrumentationTest & Snap-shot test
+
+# [TODO] CD FirebaseDistribution
+
+- TODO references
+    - https://wkrzywiec.medium.com/github-actions-for-android-first-approach-f616c24aa0f9
+    - https://medium.com/google-developer-experts/github-actions-for-android-developers-6b54c8a32f55
+    - https://www.somkiat.cc/github-actions-for-android-app/
