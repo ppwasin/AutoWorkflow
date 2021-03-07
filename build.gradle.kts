@@ -19,7 +19,7 @@ subprojects {
         maven { setUrl("https://plugins.gradle.org/m2/") }
     }
 
-//    apply<plugin.SpotlessPlugin>()
+    apply<plugin.spotless.SpotlessPlugin>()
 }
 
 tasks {
