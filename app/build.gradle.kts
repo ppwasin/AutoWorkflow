@@ -1,4 +1,5 @@
 apply<plugin.Junit5Plugin>()
+apply<plugin.DaggerPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -42,7 +43,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = Deps.Compose.version
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable

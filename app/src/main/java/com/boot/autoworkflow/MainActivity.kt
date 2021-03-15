@@ -15,9 +15,12 @@
  */
 package com.boot.autoworkflow
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -28,38 +31,45 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.boot.autoworkflow.ui.theme.AppTheme
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlin.reflect.KFunction1
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContent {
-      AppTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(color = MaterialTheme.colors.background) {
-          var text by remember { mutableStateOf("Initial") }
-          LaunchedEffect(Unit) { testSubscribe { text += "\n$it" } }
-          Greeting(text)
-        }
-      }
-    }
+    setContent { MyApp() }
   }
 }
 
 @Composable
-fun Greeting(text: String) {
+fun Greeting(textGenerator: KFunction1<(String) -> Unit, Unit>) {
+  var text by remember { mutableStateOf("Initial") }
+  LaunchedEffect(Unit) { textGenerator.invoke { text += "\n$it" } }
   Text(text)
 }
 
 // Start building your app here!
 @Composable
 fun MyApp() {
-  Surface(color = MaterialTheme.colors.background) { Text(text = "Ready... Set... GO!") }
+  Surface(color = MaterialTheme.colors.background) {
+    Column {
+      Greeting(::testSubscribe)
+      Divider(thickness = 2.dp)
+      Greeting(::testSubscribe2)
+      Divider(thickness = 2.dp)
+      Greeting(::testRunBlock)
+    }
+  }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
@@ -74,25 +84,57 @@ fun DarkPreview() {
   AppTheme(darkTheme = true) { MyApp() }
 }
 
-fun testSubscribe(showText: (String) -> Unit) {
-  val getCompletable: () -> Completable = {
-    Completable.fromCallable { Thread.sleep(500) }.subscribeOn(Schedulers.io())
-  }
-  val api =
-      Single.fromCallable {
-        Thread.sleep(500)
-        1
-      }
+val fakeAPICall =
+    Single.fromCallable {
+      Thread.sleep(500)
+      1
+    }
 
-  val dispoable =
-      api
-          .flatMapCompletable {
-            Completable.merge(
-                listOf(getCompletable(), getCompletable(), getCompletable(), getCompletable()))
-          }
-          .observeOn(AndroidSchedulers.mainThread())
-          .subscribeOn(Schedulers.io())
-          .subscribe { showText("On subscribe: this will print later") }
+val getCompletable: () -> Completable = {
+  Completable.fromCallable { Thread.sleep(500) }.subscribeOn(Schedulers.io())
+}
+
+@SuppressLint("CheckResult")
+fun testSubscribe(showText: (String) -> Unit) {
+
+  fakeAPICall
+      .flatMapCompletable {
+        Completable.merge(
+            listOf(getCompletable(), getCompletable(), getCompletable(), getCompletable()))
+      }
+      .observeOn(AndroidSchedulers.mainThread())
+      .subscribeOn(Schedulers.io())
+      .subscribe { showText("[${Thread.currentThread().name}]On subscribe: this will print later") }
 
   showText("Last line of function: this will print first")
+}
+
+@SuppressLint("CheckResult")
+fun testSubscribe2(showText: (String) -> Unit) {
+  fakeAPICall
+      .flatMapCompletable {
+        Completable.merge(
+            listOf(getCompletable(), getCompletable(), getCompletable(), getCompletable()))
+      }
+      .subscribeOn(Schedulers.io())
+      .observeOn(Schedulers.computation())
+      .subscribe { showText("[${Thread.currentThread().name}]On subscribe: this will print later") }
+  showText("Last line of function: this will print first")
+}
+
+fun testRunBlock(showText: (String) -> Unit) {
+  runBlocking {
+    val job1 =
+        launch {
+          delay(1000)
+          showText("Coroutine block#1")
+        }
+    val job2 =
+        launch {
+          delay(500)
+          showText("Coroutine block#2")
+        }
+    joinAll(job1, job2)
+    showText("Coroutine runblocking last line")
+  }
 }
