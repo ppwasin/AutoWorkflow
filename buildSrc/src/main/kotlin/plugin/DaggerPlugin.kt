@@ -13,9 +13,10 @@ private val version = "2.33"
 class DaggerPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     if (project.plugins.findPlugin("kotin-kapt") == null){
-      println("cannot find kapt => apply kotlin-kapt")
+      println("[DaggerPlugin] cannot find kapt => apply kotlin-kapt")
       project.apply(plugin = "kotlin-kapt")
     }
+
 
     project.dependencies.run {
       implementation("com.google.dagger:dagger-android-support:${version}")

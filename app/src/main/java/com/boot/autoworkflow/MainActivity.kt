@@ -58,7 +58,6 @@ fun Greeting(textGenerator: KFunction1<(String) -> Unit, Unit>) {
   Text(text)
 }
 
-// Start building your app here!
 @Composable
 fun MyApp() {
   Surface(color = MaterialTheme.colors.background) {

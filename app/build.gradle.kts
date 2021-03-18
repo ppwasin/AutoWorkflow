@@ -71,7 +71,7 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-    androidTestImplementation(Deps.Compose.uiTesting)
+//    androidTestImplementation(Deps.Compose.uiTesting)
 
     implementation(Deps.Rx.rxJava)
     implementation(Deps.Rx.rxAndroid)
