@@ -1,3 +1,7 @@
+# Clone the Project with auto rename the package and application id
+- run script on the project directory.
+> `AutoWorkflow git:(main) ✗` sh scripts/newProject/main.sh -p com.boot.sample -t Sample
+
 # Code Formatting with Spotless & ktmft
 - ./gradlew spotlessCheck
 - ./gradlew spotlessApply
