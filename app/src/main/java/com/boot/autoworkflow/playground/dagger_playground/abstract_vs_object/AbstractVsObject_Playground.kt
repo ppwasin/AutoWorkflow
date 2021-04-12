@@ -15,7 +15,6 @@
  */
 package com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object
 
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.DaggerAppComponent
 import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.AbstractObjectModel
 import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.DummyCall
 import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.SecondAbstractModel

@@ -15,8 +15,6 @@
  */
 package com.boot.autoworkflow.playground.dagger_playground
 
-import com.boot.autoworkflow.dagger_playground.DaggerChildScopeComponent
-import com.boot.autoworkflow.dagger_playground.DaggerParentSCopeComponent
 import dagger.Component
 import dagger.Module
 import dagger.Provides

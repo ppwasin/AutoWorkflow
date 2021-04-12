@@ -15,7 +15,6 @@
  */
 package com.boot.autoworkflow.playground.dagger_playground.scope_method_vs_module
 
-import com.boot.autoworkflow.dagger_playground.scope_method_vs_module.DaggerScopePlaygroundComponent
 import javax.inject.Inject
 import javax.inject.Scope
 

@@ -31,7 +31,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
-import com.boot.autoworkflow.playground.watcher.startWatchPlayground
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -62,7 +61,6 @@ fun Greeting(textGenerator: KFunction1<(String) -> Unit, Unit>) {
 @ExperimentalTime
 @Composable
 fun MyApp() {
-  LaunchedEffect(Unit) { startWatchPlayground() }
   Surface(color = MaterialTheme.colors.background) {
     Column {
       Greeting(::testSubscribe)
