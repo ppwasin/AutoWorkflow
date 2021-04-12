@@ -43,7 +43,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Deps.Compose.version
+        kotlinCompilerExtensionVersion = Deps.Compose.coreVersion
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
