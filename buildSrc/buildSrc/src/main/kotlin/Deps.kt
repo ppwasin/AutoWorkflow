@@ -28,7 +28,7 @@ object Deps {
   }
 
   object Compose {
-    const val version = "1.0.0-beta01"
+    const val version = "1.0.0-beta03"
     const val activity = "androidx.activity:activity-compose:1.3.0-alpha03"
     const val ui = "androidx.compose.ui:ui:${version}"
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
@@ -52,5 +52,15 @@ object Deps {
     const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${version}"
   }
 
+  object WorkManager {
+    private const val version = "2.5.0"
+    const val kotinCoroutine = "androidx.work:work-runtime-ktx:$version"
+    const val optionalGCMNetwokr = "androidx.work:work-gcm:$version"
+    const val androidTest = "androidx.work:work-testing:$version"
+    const val optionalMultiprocess = "androidx.work:work-multiprocess:$version"
+  }
 
+  object Utils {
+    const val watch = "com.github.eyeem:watch-a-doin:master-SNAPSHOT" // require maven("https://jitpack.io")
+  }
 }

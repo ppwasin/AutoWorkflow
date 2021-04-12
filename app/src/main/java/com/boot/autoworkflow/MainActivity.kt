@@ -30,14 +30,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.boot.autoworkflow.ui.theme.AppTheme
+import com.boot.autoworkflow.playground.watcher.startWatchPlayground
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlin.reflect.KFunction1
+import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -45,6 +45,7 @@ import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
+  @ExperimentalTime
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent { MyApp() }
@@ -58,8 +59,10 @@ fun Greeting(textGenerator: KFunction1<(String) -> Unit, Unit>) {
   Text(text)
 }
 
+@ExperimentalTime
 @Composable
 fun MyApp() {
+  LaunchedEffect(Unit) { startWatchPlayground() }
   Surface(color = MaterialTheme.colors.background) {
     Column {
       Greeting(::testSubscribe)
@@ -69,18 +72,6 @@ fun MyApp() {
       Greeting(::testRunBlock)
     }
   }
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-  AppTheme { MyApp() }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-  AppTheme(darkTheme = true) { MyApp() }
 }
 
 val fakeAPICall =
