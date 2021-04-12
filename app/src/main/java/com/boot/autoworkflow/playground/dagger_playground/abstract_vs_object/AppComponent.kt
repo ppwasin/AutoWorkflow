@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.abstract_vs_object
+package com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object
 
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep.DummyCall
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.module.AbstractModule
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.module.ClassModule
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.module.InterfaceModule
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.module.ObjectModule
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.DummyCall
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.module.AbstractModule
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.module.ClassModule
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.module.InterfaceModule
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.module.ObjectModule
 import dagger.Component
 
 @Component(

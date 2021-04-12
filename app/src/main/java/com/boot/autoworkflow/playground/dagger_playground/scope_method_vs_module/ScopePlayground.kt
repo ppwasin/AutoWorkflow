@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.scope_method_vs_module
+package com.boot.autoworkflow.playground.dagger_playground.scope_method_vs_module
 
+import com.boot.autoworkflow.dagger_playground.scope_method_vs_module.DaggerScopePlaygroundComponent
 import javax.inject.Inject
 import javax.inject.Scope
 

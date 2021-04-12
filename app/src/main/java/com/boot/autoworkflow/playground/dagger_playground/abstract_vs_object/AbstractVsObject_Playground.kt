@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.abstract_vs_object
+package com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object
 
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep.AbstractObjectModel
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep.DummyCall
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep.SecondAbstractModel
-import com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep.SecondObjectModel
+import com.boot.autoworkflow.dagger_playground.abstract_vs_object.DaggerAppComponent
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.AbstractObjectModel
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.DummyCall
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.SecondAbstractModel
+import com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep.SecondObjectModel
 import javax.inject.Inject
 
 class FirstInjectable {

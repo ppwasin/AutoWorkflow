@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.abstract_vs_object.dep
+package com.boot.autoworkflow.playground.dagger_playground.abstract_vs_object.dep
 
 import javax.inject.Inject
 

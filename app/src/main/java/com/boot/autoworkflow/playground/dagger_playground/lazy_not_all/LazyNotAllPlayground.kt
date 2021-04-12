@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.lazy_not_all
+package com.boot.autoworkflow.playground.dagger_playground.lazy_not_all
 
 import dagger.Component
 import dagger.Lazy

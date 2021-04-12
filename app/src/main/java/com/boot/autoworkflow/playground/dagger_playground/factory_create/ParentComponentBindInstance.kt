@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.dagger_playground.factory_create
+package com.boot.autoworkflow.playground.dagger_playground.factory_create
 
 import dagger.Component
 import dagger.Module
