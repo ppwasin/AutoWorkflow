@@ -1,0 +1,33 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.boot.playground.nonui.dagger_playground.abstract_vs_object
+
+import com.boot.playground.nonui.dagger_playground.abstract_vs_object.dep.DummyCall
+import com.boot.playground.nonui.dagger_playground.abstract_vs_object.module.AbstractModule
+import com.boot.playground.nonui.dagger_playground.abstract_vs_object.module.ClassModule
+import com.boot.playground.nonui.dagger_playground.abstract_vs_object.module.InterfaceModule
+import com.boot.playground.nonui.dagger_playground.abstract_vs_object.module.ObjectModule
+import dagger.Component
+
+@Component(
+    modules =
+        [ClassModule::class, ObjectModule::class, AbstractModule::class, InterfaceModule::class])
+interface AppComponent {
+  fun dummy(): DummyCall
+
+  fun inject(injectable: SecondInjectable)
+  fun inject(injectable: FirstInjectable)
+}

@@ -1,4 +1,5 @@
 apply<plugin.Junit5Plugin>()
+apply<plugin.DaggerPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -8,7 +9,7 @@ android {
     compileSdkVersion(30)
 
     defaultConfig {
-        applicationId = "com.boot.autoworkflow"
+        applicationId = "com.boot.playground"
         minSdkVersion(23)
         targetSdkVersion(30)
         versionCode = 1
@@ -70,7 +71,7 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-//    androidTestImplementation(Deps.Compose.uiTesting)
+    //    androidTestImplementation(Deps.Compose.uiTesting)
 
     implementation(Deps.Rx.rxJava)
     implementation(Deps.Rx.rxAndroid)
