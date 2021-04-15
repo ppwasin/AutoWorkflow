@@ -13,18 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.playground
+package com.boot.home.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import kotlin.time.ExperimentalTime
+import androidx.compose.ui.graphics.Color
 
-class PlaygroundActivity : ComponentActivity() {
+val Purple200 = Color(0xFFBB86FC)
 
-  @ExperimentalTime
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContent { Playground() }
-  }
-}
+val Purple500 = Color(0xFF6200EE)
+
+val Purple700 = Color(0xFF3700B3)
+
+val Teal200 = Color(0xFF03DAC5)

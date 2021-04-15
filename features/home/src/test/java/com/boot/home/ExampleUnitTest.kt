@@ -13,18 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.playground
+package com.boot.home
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import kotlin.time.ExperimentalTime
+import org.junit.Assert.*
+import org.junit.Test
 
-class PlaygroundActivity : ComponentActivity() {
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+class ExampleUnitTest {
 
-  @ExperimentalTime
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContent { Playground() }
+  @Test
+  fun addition_isCorrect() {
+    assertEquals(4, 2 + 2)
   }
 }

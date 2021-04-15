@@ -1,26 +1,29 @@
 apply<plugin.Junit5Plugin>()
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
 
     defaultConfig {
-        applicationId = "com.boot.autoworkflow"
-        minSdkVersion(23)
-        targetSdkVersion(30)
+        minSdk = 23
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -55,7 +58,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:home"))
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")
@@ -70,7 +72,7 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-//    androidTestImplementation(Deps.Compose.uiTesting)
+    //    androidTestImplementation(Deps.Compose.uiTesting)
 
     implementation(Deps.Rx.rxJava)
     implementation(Deps.Rx.rxAndroid)

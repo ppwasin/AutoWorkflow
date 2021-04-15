@@ -31,6 +31,8 @@ android {
     kotlinOptions {
         jvmTarget = Deps.Core.java.toString()
         useIR = true
+        languageVersion = "1.5"
+        apiVersion = "1.5"
     }
     buildFeatures {
         compose = true
