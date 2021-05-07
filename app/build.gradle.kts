@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = Deps.Core.compileSdk
 
     defaultConfig {
         applicationId = "com.boot.autoworkflow"
-        minSdkVersion(23)
-        targetSdkVersion(30)
+        minSdk = Deps.Core.minSdk
+        targetSdk = Deps.Core.targetSdk
         versionCode = 1
         versionName = "1.0"
 

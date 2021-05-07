@@ -5,13 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = Deps.Core.compileSdk
 
     defaultConfig {
-        minSdk = 23
-        targetSdk = 30
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Deps.Core.minSdk
+        targetSdk = Deps.Core.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

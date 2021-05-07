@@ -5,6 +5,11 @@ object Deps {
     const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val java = JavaVersion.VERSION_11
+    val compileSdk = 30
+    val minSdk = 23
+    val targetSdk = 30
+    val versionCode = 1
+    val versionName = "1.0"
   }
   object Spotless {
     private const val version = "5.10.2"
@@ -20,11 +25,12 @@ object Deps {
   }
 
   object Coroutine {
-    private const val version = "1.4.3"
-    const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}"
-    const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
-    const val coroutineRx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${version}"
-    const val coroutineReactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${version}"
+    private const val version = "1.5.0"
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}"
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
+    const val rx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${version}"
+    const val reactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${version}"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
   }
 
   object Compose {

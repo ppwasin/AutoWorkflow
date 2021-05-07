@@ -77,4 +77,8 @@ dependencies {
 
     implementation(Deps.Rx.rxJava)
     implementation(Deps.Rx.rxAndroid)
+
+    implementation(Deps.Coroutine.core)
+    implementation(Deps.Coroutine.android)
+    testImplementation(Deps.Coroutine.test)
 }
