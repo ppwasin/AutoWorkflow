@@ -1,10 +1,9 @@
 import com.boot.gradle.DependenciesPlugin
 apply<plugin.Junit5Plugin>()
-apply<DependenciesPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
-//    id("com.boot.gradle.dependencies")
+    id("com.boot.gradle.dependencies")
 }
 
 android {
