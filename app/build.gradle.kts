@@ -1,7 +1,10 @@
+import com.boot.gradle.DependenciesPlugin
 apply<plugin.Junit5Plugin>()
+apply<DependenciesPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
+//    id("com.boot.gradle.dependencies")
 }
 
 android {
@@ -56,6 +59,7 @@ android {
 
 dependencies {
     implementation(project(":features:home"))
+    com.boot.gradle.DepsTest.koinVersion
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")

@@ -8,7 +8,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 
-private val version = "2.33"
+private val version = "2.35.1"
 
 class DaggerPlugin : Plugin<Project> {
   override fun apply(project: Project) {

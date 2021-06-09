@@ -1,4 +1,4 @@
-package com.boot.playground.animation
+package com.boot.playground.animation.base
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

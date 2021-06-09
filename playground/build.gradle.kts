@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
 
     defaultConfig {
         applicationId = "com.boot.playground"
-        minSdkVersion(23)
-        targetSdkVersion(30)
+        minSdk = 23
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
@@ -30,9 +30,8 @@ android {
     }
     kotlinOptions {
         jvmTarget = Deps.Core.java.toString()
-        useIR = true
-        languageVersion = "1.5"
-        apiVersion = "1.5"
+//        languageVersion = "1.5"
+//        apiVersion = "1.5"
     }
     buildFeatures {
         compose = true
@@ -59,8 +58,8 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

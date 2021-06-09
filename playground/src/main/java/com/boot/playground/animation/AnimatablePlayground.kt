@@ -9,8 +9,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.boot.playground.animation.AnimatableType.Boolean.AnimateTo
-import com.boot.playground.animation.AnimatableType.Boolean.SnapTo
 
 @Composable
 fun AnimatablePlayground(ok: Boolean) {
@@ -22,24 +20,24 @@ fun AnimatablePlayground(ok: Boolean) {
     Box(Modifier.fillMaxSize().background(color.value))
 }
 
-sealed interface AnimatableType {
-    sealed interface Boolean: AnimatableType {
-        object AnimateTo: Boolean
-        object SnapTo: Boolean
-    }
-    object animateDecay: AnimatableType
-}
+//sealed interface AnimatableType {
+//    sealed interface Boolean: AnimatableType {
+//        object AnimateTo: Boolean
+//        object SnapTo: Boolean
+//    }
+//    object animateDecay: AnimatableType
+//}
 
-@Composable
-fun AnimatablePlayground(ok: Boolean, type: AnimatableType.Boolean) {
-    // Start out gray and animate to green/red based on `ok`
-    val color = remember { Animatable(Color.Gray) }
-    LaunchedEffect(ok) {
-        val changeToColor = if (ok) Color.Green else Color.Red
-        when(type){
-            AnimateTo -> color.animateTo(changeToColor)
-            SnapTo -> color.snapTo(changeToColor)
-        }
-    }
-    Box(Modifier.fillMaxSize().background(color.value))
-}
+//@Composable
+//fun AnimatablePlayground(ok: Boolean, type: AnimatableType.Boolean) {
+//    // Start out gray and animate to green/red based on `ok`
+//    val color = remember { Animatable(Color.Gray) }
+//    LaunchedEffect(ok) {
+//        val changeToColor = if (ok) Color.Green else Color.Red
+//        when(type){
+//            AnimateTo -> color.animateTo(changeToColor)
+//            SnapTo -> color.snapTo(changeToColor)
+//        }
+//    }
+//    Box(Modifier.fillMaxSize().background(color.value))
+//}

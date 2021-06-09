@@ -25,7 +25,7 @@ object Deps {
   }
 
   object Coroutine {
-    private const val version = "1.5.0"
+    private const val version = "1.5.0-RC"
     const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}"
     const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
     const val rx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${version}"
@@ -34,8 +34,8 @@ object Deps {
   }
 
   object Compose {
-    const val coreVersion = "1.0.0-beta03"
-    private const val activityVersion = "1.3.0-alpha06"
+    const val coreVersion = "1.0.0-beta07"
+    private const val activityVersion = "1.3.0-alpha08"
     const val activity = "androidx.activity:activity-compose:$activityVersion"
     const val ui = "androidx.compose.ui:ui:${coreVersion}"
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
@@ -66,5 +66,4 @@ object Deps {
     const val androidTest = "androidx.work:work-testing:$version"
     const val optionalMultiprocess = "androidx.work:work-multiprocess:$version"
   }
-
 }

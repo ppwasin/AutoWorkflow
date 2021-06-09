@@ -5,7 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.boot.playground.animation.AnimationContainer
+import com.boot.playground.animation.base.AnimationContainer
 import com.boot.playground.animation.base.CanvasWrapper
 
 // updateTransition
