@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.ui.screen
+package com.boot.home.theme
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Shapes
+import androidx.compose.ui.unit.dp
 
-@Composable
-fun MainCompose() {
-  Surface(color = MaterialTheme.colors.background) { Column { Text("Hello") } }
-}
+val Shapes =
+    Shapes(
+        small = RoundedCornerShape(4.dp),
+        medium = RoundedCornerShape(4.dp),
+        large = RoundedCornerShape(0.dp))

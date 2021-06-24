@@ -1,29 +1,28 @@
-import com.boot.gradle.DependenciesPlugin
 apply<plugin.Junit5Plugin>()
 apply<plugin.spotless.SpotlessPlugin>()
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
-    id("com.boot.gradle.dependencies")
 }
 
 android {
     compileSdk = Deps.Core.compileSdk
 
     defaultConfig {
-        applicationId = "com.boot.autoworkflow"
         minSdk = Deps.Core.minSdk
         targetSdk = Deps.Core.targetSdk
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -58,8 +57,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:home"))
-    com.boot.gradle.DepsTest.koinVersion
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")
@@ -74,7 +71,7 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-//    androidTestImplementation(Deps.Compose.uiTesting)
+    //    androidTestImplementation(Deps.Compose.uiTesting)
 
     implementation(Deps.Rx.rxJava)
     implementation(Deps.Rx.rxAndroid)

@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.playground.nonui.thread
+package com.boot.home
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
+import org.junit.Assert.*
+import org.junit.Test
 
-suspend fun massiveRun(action: suspend () -> Unit) {
-  val n = 100 // number of coroutines to launch
-  val k = 1000 // times an action is repeated by each coroutine
-  val time = measureTimeMillis {
-    coroutineScope { // scope for coroutines
-      repeat(n) { launch { repeat(k) { action() } } }
-    }
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+class ExampleUnitTest {
+
+  @Test
+  fun addition_isCorrect() {
+    assertEquals(4, 2 + 2)
   }
-  println("Completed ${n * k} actions in $time ms")
 }

@@ -19,7 +19,7 @@ class SpotlessPlugin : Plugin<Project> {
         kotlin {
           // by default the target is every '.kt' and '.kts` file in the java sourcesets
           ktfmt()
-          licenseHeaderFile(rootProject.file("spotless/copyright.kt")) // or licenseHeaderFile
+//          licenseHeaderFile(rootProject.file("spotless/copyright.kt")) // or licenseHeaderFile
           target("**/*.kt")
           targetExclude("$buildDir/**/*.kt")
           targetExclude("bin/**/*.kt")

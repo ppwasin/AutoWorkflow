@@ -13,19 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.playground.nonui.thread
+package com.boot.home.theme
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
+import androidx.compose.ui.graphics.Color
 
-suspend fun massiveRun(action: suspend () -> Unit) {
-  val n = 100 // number of coroutines to launch
-  val k = 1000 // times an action is repeated by each coroutine
-  val time = measureTimeMillis {
-    coroutineScope { // scope for coroutines
-      repeat(n) { launch { repeat(k) { action() } } }
-    }
-  }
-  println("Completed ${n * k} actions in $time ms")
-}
+val Purple200 = Color(0xFFBB86FC)
+
+val Purple500 = Color(0xFF6200EE)
+
+val Purple700 = Color(0xFF3700B3)
+
+val Teal200 = Color(0xFF03DAC5)

@@ -1,7 +1,7 @@
 object Versions {
 
-	const val kotlin = "1.4.32"
-	const val androidGradle = "7.0.0-alpha14"
+	const val kotlin = "1.5.10"
+	const val androidGradle = "7.0.0-beta04"
 	const val googleService = "4.3.3"
 	const val fabric = "1.31.0"
 
@@ -27,7 +27,6 @@ object Versions {
 	const val rxExt = "0.20.10" //stable as 0.20.7
 //	const val btmNavigator = "1.1"
 
-	const val coroutine = "1.4.1"
 	const val moshi = "1.11.0"
 	const val okHttp = "4.9.0"
 	const val autoService = "1.0-rc7"

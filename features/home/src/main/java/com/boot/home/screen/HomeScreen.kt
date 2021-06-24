@@ -13,19 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.playground.nonui.thread
+package com.boot.home.screen
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 
-suspend fun massiveRun(action: suspend () -> Unit) {
-  val n = 100 // number of coroutines to launch
-  val k = 1000 // times an action is repeated by each coroutine
-  val time = measureTimeMillis {
-    coroutineScope { // scope for coroutines
-      repeat(n) { launch { repeat(k) { action() } } }
-    }
-  }
-  println("Completed ${n * k} actions in $time ms")
+@Composable
+fun HomeScreen() {
+  Surface(color = MaterialTheme.colors.background) { Column { Text("Home") } }
 }
