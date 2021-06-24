@@ -34,7 +34,7 @@ object Deps {
   }
 
   object Compose {
-    const val coreVersion = "1.0.0-beta07"
+    const val coreVersion = "1.0.0-beta09"
     private const val activityVersion = "1.3.0-alpha08"
     const val activity = "androidx.activity:activity-compose:$activityVersion"
     const val ui = "androidx.compose.ui:ui:${coreVersion}"
