@@ -1,10 +1,8 @@
-import com.boot.gradle.DependenciesPlugin
 apply<plugin.Junit5Plugin>()
 apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("com.boot.gradle.dependencies")
 }
 
 android {
@@ -59,9 +57,8 @@ android {
 
 dependencies {
     implementation(project(":features:home"))
-    com.boot.gradle.DepsTest.koinVersion
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

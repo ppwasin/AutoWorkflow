@@ -2,7 +2,6 @@ rootProject.name = "AutoWorkflow"
 include(":app")
 include(":playground")
 include(":features:home")
-includeBuild("gradlePlugins")
 
 //fun shouldInclude(include: String?, moduleName: String): Boolean {
 //    if (include != null) {
