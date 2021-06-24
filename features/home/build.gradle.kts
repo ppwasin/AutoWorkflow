@@ -1,4 +1,5 @@
 apply<plugin.Junit5Plugin>()
+apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.library")
     id("kotlin-android")

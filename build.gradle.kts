@@ -19,8 +19,6 @@ subprojects {
         maven { setUrl("https://plugins.gradle.org/m2/") }
         maven { setUrl("https://jitpack.io") }
     }
-
-    apply<plugin.spotless.SpotlessPlugin>()
 }
 
 tasks {

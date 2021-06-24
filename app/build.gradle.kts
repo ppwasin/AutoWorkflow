@@ -1,5 +1,6 @@
 import com.boot.gradle.DependenciesPlugin
 apply<plugin.Junit5Plugin>()
+apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
