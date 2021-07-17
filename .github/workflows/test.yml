@@ -42,6 +42,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          arch: x86_64
           script: ./gradlew connectedDebugAndroidTest
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
