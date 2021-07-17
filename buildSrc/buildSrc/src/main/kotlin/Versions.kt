@@ -8,7 +8,7 @@ object Versions {
 	const val compose = "1.0.0-rc02"
 	const val composeActivity = "1.3.0-rc02"
 	const val workManager = "2.5.0"
-	const val junit = "5.7.0"
+	
 	const val dagger = "2.35.1"
 	
 	const val appCompat = "1.3.0"
@@ -18,4 +18,11 @@ object Versions {
 	const val activity = "1.2.0-alpha08"
 	const val fragment = "1.3.0-alpha08"
 	 */
+	const val material = "1.4.0"
+	
+	
+	/** Test **/
+	const val junit5 = "5.7.0"
+	const val junitInstrumental = "1.1.3"
+	const val espresso = "3.4.0"
 }

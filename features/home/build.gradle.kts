@@ -57,13 +57,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
@@ -71,8 +64,9 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-    //    androidTestImplementation(Deps.Compose.uiTesting)
-
-    implementation(Deps.Rx.rxJava)
-    implementation(Deps.Rx.rxAndroid)
+    implementation(Deps.Coroutine.core)
+    implementation(Deps.Coroutine.android)
+    
+    androidTestImplementation(Deps.Test.espresso)
+    androidTestImplementation(Deps.Test.junitInstrumental)
 }

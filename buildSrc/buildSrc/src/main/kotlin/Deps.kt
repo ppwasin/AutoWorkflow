@@ -58,6 +58,15 @@ object Deps {
     const val optionalMultiprocess = "androidx.work:work-multiprocess:${Versions.workManager}"
   }
   
-  //UI
+  //Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+  const val material = "com.google.android.material:material:${Versions.material}"
+  
+  //Test
+  object Test {
+    const val junit5platform = "org.junit:junit-bom:${Versions.junit5}"
+    const val junit5Jupiter = "org.junit.jupiter:junit-jupiter"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val junitInstrumental = "androidx.test.ext:junit:${Versions.junitInstrumental}"
+  }
 }

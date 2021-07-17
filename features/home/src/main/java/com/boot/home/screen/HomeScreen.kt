@@ -20,8 +20,23 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomeScreen() {
-  Surface(color = MaterialTheme.colors.background) { Column { Text("Home") } }
+  Surface(color = MaterialTheme.colors.background) {
+    Column {
+      Text("Home")
+      Text("Home")
+      Text("Home")
+      Text("Home")
+      Text("Home")
+    }
+  }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+  HomeScreen()
 }

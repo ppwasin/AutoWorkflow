@@ -58,6 +58,8 @@ dependencies {
     implementation(project(":features:home"))
     
     implementation(Deps.appcompat)
+    implementation(Deps.material)
+    
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
