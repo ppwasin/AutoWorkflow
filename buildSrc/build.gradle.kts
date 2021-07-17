@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-	implementation(Deps.Core.androidGradle)
-	implementation(Deps.Core.kotlinGradlePlugin)
+	implementation(Deps.Build.androidGradle)
+	implementation(Deps.Build.kotlinGradlePlugin)
 	implementation(Deps.Spotless.classPath)
 }
 

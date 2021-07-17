@@ -1,69 +1,63 @@
 import org.gradle.api.JavaVersion
 
 object Deps {
-  object Core {
+  object Build {
     const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     val java = JavaVersion.VERSION_11
-    val compileSdk = 30
-    val minSdk = 23
-    val targetSdk = 30
-    val versionCode = 1
-    val versionName = "1.0"
+    const val compileSdk = 30
+    const val minSdk = 23
+    const val targetSdk = 30
   }
   object Spotless {
-    private const val version = "5.10.2"
-    const val classPath = "com.diffplug.spotless:spotless-plugin-gradle:${version}"
+    const val classPath = "com.diffplug.spotless:spotless-plugin-gradle:${Versions.spotless}"
     const val pluginId = "com.diffplug.spotless"
   }
 
   object Rx {
-    private const val rxJavaVersion = "2.2.21"
-    private const val rxAndroidVersion = "2.1.1"
-    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
-    const val rxJava = "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
+    const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
   }
 
   object Coroutine {
-    private const val version = "1.5.0-RC"
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}"
-    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
-    const val rx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${version}"
-    const val reactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${version}"
-    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+    const val rx = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${Versions.coroutine}"
+    const val reactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${Versions.coroutine}"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine}"
   }
 
   object Compose {
-    const val coreVersion = "1.0.0-beta09"
-    private const val activityVersion = "1.3.0-alpha08"
-    const val activity = "androidx.activity:activity-compose:$activityVersion"
-    const val ui = "androidx.compose.ui:ui:${coreVersion}"
+    const val activity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    const val ui = "androidx.compose.ui:ui:${Versions.compose}"
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    const val foundation = "androidx.compose.foundation:foundation:${coreVersion}"
+    const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
     // Material Design
-    const val material = "androidx.compose.material:material:${coreVersion}"
-    const val materialIcon = "androidx.compose.material:material-icons-core:${coreVersion}"
-    const val materialIconsExt = "androidx.compose.material:material-icons-extended:${coreVersion}"
+    const val material = "androidx.compose.material:material:${Versions.compose}"
+    const val materialIcon = "androidx.compose.material:material-icons-core:${Versions.compose}"
+    const val materialIconsExt = "androidx.compose.material:material-icons-extended:${Versions.compose}"
     // Tooling support (Previews, etc.)
-    const val uiTooling = "androidx.compose.ui:ui-tooling:${coreVersion}"
+    const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
 
-    const val animation = "androidx.compose.animation:animation:${coreVersion}"
-    const val animationCore = "androidx.compose.animation:animation-core:${coreVersion}"
-    const val uiTesting = "androidx.compose.ui:ui-test-junit4::${coreVersion}"
+    const val animation = "androidx.compose.animation:animation:${Versions.compose}"
+    const val animationCore = "androidx.compose.animation:animation-core:${Versions.compose}"
+    const val uiTesting = "androidx.compose.ui:ui-test-junit4::${Versions.compose}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
-    const val uiGeometry = "androidx.compose.ui:ui-geometry:${coreVersion}"
-    const val uiGraphic = "androidx.compose.ui:ui-graphics:${coreVersion}"
-    const val foundationLayout = "androidx.compose.foundation:foundation-layout:${coreVersion}"
-    const val uiText = "androidx.compose.ui:ui-text:${coreVersion}"
-    const val uiUtils = "androidx.compose.ui:ui-util:${coreVersion}"
-    const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${coreVersion}"
+    const val uiGeometry = "androidx.compose.ui:ui-geometry:${Versions.compose}"
+    const val uiGraphic = "androidx.compose.ui:ui-graphics:${Versions.compose}"
+    const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
+    const val uiText = "androidx.compose.ui:ui-text:${Versions.compose}"
+    const val uiUtils = "androidx.compose.ui:ui-util:${Versions.compose}"
+    const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
   }
 
   object WorkManager {
-    private const val version = "2.5.0"
-    const val kotinCoroutine = "androidx.work:work-runtime-ktx:$version"
-    const val optionalGCMNetwokr = "androidx.work:work-gcm:$version"
-    const val androidTest = "androidx.work:work-testing:$version"
-    const val optionalMultiprocess = "androidx.work:work-multiprocess:$version"
+    const val kotinCoroutine = "androidx.work:work-runtime-ktx:${Versions.workManager}"
+    const val optionalGCMNetwokr = "androidx.work:work-gcm:${Versions.workManager}"
+    const val androidTest = "androidx.work:work-testing:${Versions.workManager}"
+    const val optionalMultiprocess = "androidx.work:work-multiprocess:${Versions.workManager}"
   }
+  
+  //UI
+  const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
 }

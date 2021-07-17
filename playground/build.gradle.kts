@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Deps.Core.java
-        targetCompatibility = Deps.Core.java
+        sourceCompatibility = Deps.Build.java
+        targetCompatibility = Deps.Build.java
     }
     kotlinOptions {
-        jvmTarget = Deps.Core.java.toString()
+        jvmTarget = Deps.Build.java.toString()
 //        languageVersion = "1.5"
 //        apiVersion = "1.5"
     }
@@ -44,7 +44,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Deps.Compose.coreVersion
+        kotlinCompilerExtensionVersion = Versions.compose
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable

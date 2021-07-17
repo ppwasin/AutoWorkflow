@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk = Deps.Core.compileSdk
+    compileSdk = Deps.Build.compileSdk
 
     defaultConfig {
         applicationId = "com.boot.autoworkflow"
-        minSdk = Deps.Core.minSdk
-        targetSdk = Deps.Core.targetSdk
+        minSdk = Deps.Build.minSdk
+        targetSdk = Deps.Build.targetSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -25,12 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Deps.Core.java
-        targetCompatibility = Deps.Core.java
+        sourceCompatibility = Deps.Build.java
+        targetCompatibility = Deps.Build.java
     }
     kotlinOptions {
-        jvmTarget = Deps.Core.java.toString()
-        useIR = true
+        jvmTarget = Deps.Build.java.toString()
     }
     buildFeatures {
         compose = true
@@ -43,7 +42,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Deps.Compose.coreVersion
+        kotlinCompilerExtensionVersion = Versions.compose
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -57,13 +56,8 @@ android {
 
 dependencies {
     implementation(project(":features:home"))
-    implementation("androidx.core:core-ktx:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-
+    
+    implementation(Deps.appcompat)
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
@@ -71,8 +65,6 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
-//    androidTestImplementation(Deps.Compose.uiTesting)
-
-    implementation(Deps.Rx.rxJava)
-    implementation(Deps.Rx.rxAndroid)
+    implementation(Deps.Coroutine.core)
+    implementation(Deps.Coroutine.android)
 }

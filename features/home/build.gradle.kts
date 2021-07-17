@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = Deps.Core.compileSdk
+    compileSdk = Deps.Build.compileSdk
 
     defaultConfig {
-        minSdk = Deps.Core.minSdk
-        targetSdk = Deps.Core.targetSdk
+        minSdk = Deps.Build.minSdk
+        targetSdk = Deps.Build.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Deps.Core.java
-        targetCompatibility = Deps.Core.java
+        sourceCompatibility = Deps.Build.java
+        targetCompatibility = Deps.Build.java
     }
     kotlinOptions {
-        jvmTarget = Deps.Core.java.toString()
+        jvmTarget = Deps.Build.java.toString()
         useIR = true
     }
     buildFeatures {
@@ -44,7 +44,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Deps.Compose.coreVersion
+        kotlinCompilerExtensionVersion = Versions.compose
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -57,8 +57,8 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

@@ -3,26 +3,21 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl("https://plugins.gradle.org/m2/") }
     }
     dependencies {
-        classpath(Deps.Core.androidGradle)
-        classpath(Deps.Core.kotlinGradlePlugin)
+        classpath(Deps.Build.androidGradle)
+        classpath(Deps.Build.kotlinGradlePlugin)
         classpath(Deps.Spotless.classPath)
     }
+}
+
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
 }
 
 subprojects {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl("https://plugins.gradle.org/m2/") }
-        maven { setUrl("https://jitpack.io") }
-    }
-}
-
-tasks {
-    val clean by registering(Delete::class) {
-        delete(buildDir)
     }
 }
