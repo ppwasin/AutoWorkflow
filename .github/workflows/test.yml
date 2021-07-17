@@ -15,7 +15,7 @@ on:
 
 jobs:
   prepare:
-    name: Prepare Environment
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -41,23 +41,3 @@ jobs:
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
-
-  apk:
-    name: Generate APK
-    runs-on: ubuntu-latest
-    needs: prepare
-    steps:
-      - name: Assemble App APK
-        run: ./gradlew assembleDebug
-      - name: Upload App APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-      - name: Assemble Android Instrumented Unit Test
-        run: ./gradlew assembleDebugAndroidTest
-      - name: Upload Android Test APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-debug-androidTest
-          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
