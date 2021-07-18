@@ -69,4 +69,7 @@ dependencies {
     implementation(Deps.Compose.materialIconsExt)
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
+    
+    androidTestImplementation(Deps.Test.espresso)
+    androidTestImplementation(Deps.Test.junitInstrumental)
 }

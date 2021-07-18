@@ -14,7 +14,7 @@ on:
 
 
 jobs:
-  prepare:
+  verification:
     name: Verification
     runs-on: ubuntu-latest
     steps:
@@ -38,12 +38,20 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       - name: Unit tests
         run: ./gradlew testDebugUnitTest
+      - name: Android Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
+
+  android_tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          script: ./gradlew connectedAndroidTest
           arch: x86_64
-          script: ./gradlew connectedDebugAndroidTest
       - name: Android Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
+      uses: asadmansr/android-test-report-action@v1.2.0
+      if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
