@@ -1,19 +1,18 @@
 package plugin.spotless
 
-import Deps
+import Build
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.register
 import java.io.File
-import kotlin.reflect.jvm.jvmName
 
 class SpotlessPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
     project.run {
-      apply(plugin = Deps.Spotless.pluginId)
+      apply(plugin = Build.Spotless.pluginId)
       configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         ratchetFrom = "origin/main"
         kotlin {

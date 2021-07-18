@@ -5,9 +5,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(Deps.Build.androidGradle)
-        classpath(Deps.Build.kotlinGradlePlugin)
-        classpath(Deps.Spotless.classPath)
+        classpath(Build.androidGradle)
+        classpath(Build.kotlinGradlePlugin)
+        classpath(Build.GoogleService.classpath)
+        classpath(Build.FirebaseAppDistribution.classpath)
+        classpath(Build.Spotless.classpath)
+        classpath(Build.PlayPublisher.classpath)
     }
 }
 

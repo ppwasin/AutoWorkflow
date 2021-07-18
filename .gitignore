@@ -8,6 +8,7 @@ build/
 # Built application files
 *.apk
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -44,10 +45,6 @@ captures/
 .idea/*/*
 +!.idea/codeStyles/*
 
-# Keystore files
-*.jks
-keystore.properties
-
 # External native execute folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
@@ -74,21 +71,17 @@ gradle-app.setting
 # Room Scheme #
 app/schemas
 
-report.xml
-google-play-api-secret.json
-secrets.tar
-id_rsa
-keystore.jks
-app/keystore.jks
-
 *.DS_Store
 l10n
 
 # Kotlintest
 .kotlintest/spec_failures
 
-#fabric
-/app/fabric.properties
-app/fabric.properties
-
-release-app.json
+### Release ###
+# Keystore
+*.jks
+keystore.properties
+# Firebase
+google-services.json
+# Google Play Console and Google Could Platform
+google-api-service.json

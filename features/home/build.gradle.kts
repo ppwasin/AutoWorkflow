@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = Deps.Build.compileSdk
+    compileSdk = Build.compileSdk
 
     defaultConfig {
-        minSdk = Deps.Build.minSdk
-        targetSdk = Deps.Build.targetSdk
+        minSdk = Build.minSdk
+        targetSdk = Build.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Deps.Build.java
-        targetCompatibility = Deps.Build.java
+        sourceCompatibility = Build.java
+        targetCompatibility = Build.java
     }
     kotlinOptions {
-        jvmTarget = Deps.Build.java.toString()
+        jvmTarget = Build.java.toString()
         useIR = true
     }
     buildFeatures {

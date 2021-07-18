@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Deps.Build.java
-        targetCompatibility = Deps.Build.java
+        sourceCompatibility = Build.java
+        targetCompatibility = Build.java
     }
     kotlinOptions {
-        jvmTarget = Deps.Build.java.toString()
+        jvmTarget = Build.java.toString()
 //        languageVersion = "1.5"
 //        apiVersion = "1.5"
     }

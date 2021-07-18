@@ -1,19 +1,5 @@
-import org.gradle.api.JavaVersion
 
 object Deps {
-  object Build {
-    const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    val java = JavaVersion.VERSION_11
-    const val compileSdk = 30
-    const val minSdk = 23
-    const val targetSdk = 30
-  }
-  object Spotless {
-    const val classPath = "com.diffplug.spotless:spotless-plugin-gradle:${Versions.spotless}"
-    const val pluginId = "com.diffplug.spotless"
-  }
-
   object Rx {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"

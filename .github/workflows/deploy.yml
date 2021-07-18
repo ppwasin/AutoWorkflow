@@ -1,14 +1,11 @@
-# Workflow name
-name: Build
+name: Deploy
 on:
   push:
     branches:
       - 'rc-*'
-
-
 jobs:
   prepare:
-    name: Prepare Environment
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -29,11 +26,18 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-      - name: Assemble App APK
-        run: ./gradlew assembleDebug
-      - name: Upload App APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-      c
+      - name: Extract secrets
+        run: |
+          echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
+          gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
+          tar xvf secrets.tar
+      - name: Publish to Firebase Distribution
+        run: ./gradlew app:bundleRelease app:appDistributionUploadRelease
+      - name: Cleanup
+        if: ${{ always() }}
+        run: rm -rf secrets.tar.asc secrets.tar keystore.jks keystore.properties
+#      - name: Upload App APK
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: app-debug
+#          path: app/build/outputs/apk/debug/app-debug.apk

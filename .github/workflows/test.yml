@@ -1,5 +1,5 @@
 # Workflow name
-name: Build
+name: Tests
 on:
   # When it will be triggered
   # And in which branch
@@ -22,8 +22,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.8.0
         with:
           access_token: ${{ github.token }}
-      - name: Prepare
-        uses: github-actions/hello@v1
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -38,7 +36,7 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-      - name: Unit tests
+      - name: Tests
         run: ./gradlew testDebugUnitTest
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
