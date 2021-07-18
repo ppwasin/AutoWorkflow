@@ -21,11 +21,11 @@ jobs:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.8.0
         with:
-          access_token: ${{ user.token }}
+          access_token: ${{ github.token }}
       - name: Prepare
-        uses: user/composite@v1
+        uses: github-actions/hello@v1
       - name: Checkout the code
-        uses: actions/checkout@v2 # user other action, The uses parameter follow this syntax {owner}/{repo}@{ref}.
+        uses: actions/checkout@v2
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
