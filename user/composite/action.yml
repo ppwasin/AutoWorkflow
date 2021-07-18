@@ -1,11 +1,7 @@
+name: 'Hello'
+description: 'Pretends to copy some files and return the number of files copied'
 runs:
   using: "composite"
   steps:
-    - run: chmod +x ${{ user.action_path }}/test/script2.sh
-      shell: bash
-    - run: chmod +x $GITHUB_ACTION_PATH/script.sh
-      shell: bash
-    - run: ${{ user.action_path }}/test/script2.sh
-      shell: bash
-    - run: $GITHUB_ACTION_PATH/script.sh
+    - run:  echo "Hello"
       shell: bash
