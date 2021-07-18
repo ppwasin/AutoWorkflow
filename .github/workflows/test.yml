@@ -15,8 +15,8 @@ on:
 
 jobs:
   tests:
-    name: Tests
-    runs-on: ubuntu-latest
+    name: Verification
+    runs-on: macos-latest
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.8.0
@@ -40,15 +40,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       - name: Unit tests
         run: ./gradlew testDebugUnitTest
-      - name: Android Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
-
-  instrumental-tests:
-    name: Instrumentation Tests
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:

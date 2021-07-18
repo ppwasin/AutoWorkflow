@@ -1,7 +1,0 @@
-name: 'Hello'
-description: 'Pretends to copy some files and return the number of files copied'
-runs:
-  using: "composite"
-  steps:
-    - run:  echo "Hello"
-      shell: bash
