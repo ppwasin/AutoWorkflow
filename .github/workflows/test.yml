@@ -23,7 +23,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - name: Prepare
-        uses: .github/actions/say-hello@v1
+        uses: github/actions/say-hello@v1
       - name: Checkout the code
         uses: actions/checkout@v2 # user other action, The uses parameter follow this syntax {owner}/{repo}@{ref}.
       - name: Set up JDK 11
@@ -45,6 +45,7 @@ jobs:
         if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
 
   instrumental-tests:
+    name: Instrumentation Tests
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
