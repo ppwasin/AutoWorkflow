@@ -15,24 +15,31 @@
  */
 package com.boot.home.screen
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.BottomAppBar
+import androidx.compose.material.DrawerValue
+import androidx.compose.material.FabPosition
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.rememberDrawerState
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomeScreen() {
-  Surface(color = MaterialTheme.colors.background) {
-    Column {
-      Text("Home")
-      Text("Home")
-      Text("Home")
-      Text("Home")
-      Text("Home")
-    }
-  }
+  val materialBlue700 = Color(0xFF1976D2)
+  val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Open))
+  Scaffold(
+      scaffoldState = scaffoldState,
+      topBar = { TopAppBar(title = { Text("Home") }, backgroundColor = materialBlue700) },
+      floatingActionButtonPosition = FabPosition.End,
+      floatingActionButton = { FloatingActionButton(onClick = {}) { Text("X") } },
+      drawerContent = { Text(text = "drawerContent") },
+      content = { Text("BodyContent") },
+      bottomBar = { BottomAppBar(backgroundColor = materialBlue700) { Text("BottomAppBar") } })
 }
 
 @Preview
