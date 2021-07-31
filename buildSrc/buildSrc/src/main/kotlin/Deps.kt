@@ -27,7 +27,6 @@ object Deps {
 
     const val animation = "androidx.compose.animation:animation:${Versions.compose}"
     const val animationCore = "androidx.compose.animation:animation-core:${Versions.compose}"
-    const val uiTesting = "androidx.compose.ui:ui-test-junit4::${Versions.compose}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
     const val uiGeometry = "androidx.compose.ui:ui-geometry:${Versions.compose}"
     const val uiGraphic = "androidx.compose.ui:ui-graphics:${Versions.compose}"
@@ -35,6 +34,12 @@ object Deps {
     const val uiText = "androidx.compose.ui:ui-text:${Versions.compose}"
     const val uiUtils = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
+    
+    // Test
+    // Test rules and transitive dependencies:
+    const val uiTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+    // Needed for createComposeRule, but not createAndroidComposeRule:
+    const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
   }
 
   object WorkManager {

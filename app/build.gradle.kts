@@ -1,4 +1,5 @@
 import java.util.*
+import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
 
 apply<plugin.Junit5Plugin>()
 
@@ -12,10 +13,25 @@ plugins {
   id(Build.PlayPublisher.pluginId)
 }
 
+/** Publish **/
 play {
-  serviceAccountCredentials.set(rootProject.file("release-app.json"))
+  track.set("internal") //default is `internal`
+  serviceAccountCredentials.set(rootProject.file("google-api-service.json"))
   defaultToAppBundles.set(true)
-  artifactDir.set(file("build/outputs/bundle/betaDebug"))
+  artifactDir.set(file("build/outputs/bundle/release"))
+  resolutionStrategy.set(AUTO) //Automatically increase versionCode
+}
+androidComponents {
+  onVariants {
+    for (output in it.outputs) {
+      val processedVersionCode = output.versionCode.map { playVersionCode ->
+        // Do something to the version code...
+        // In this example, version names will look like `myCustomVersionName.123`
+        "${output.versionName}.$playVersionCode"
+      }
+      output.versionName.set(processedVersionCode)
+    }
+  }
 }
 
 android {
@@ -25,7 +41,7 @@ android {
     applicationId = Build.appId
     minSdk = Build.minSdk
     targetSdk = Build.targetSdk
-    versionCode = 3
+    versionCode = 4
     versionName = "1.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
