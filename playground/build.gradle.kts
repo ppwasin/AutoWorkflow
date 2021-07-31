@@ -1,5 +1,6 @@
 apply<plugin.Junit5Plugin>()
 apply<plugin.DaggerPlugin>()
+apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")

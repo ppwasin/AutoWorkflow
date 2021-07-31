@@ -1,7 +1,6 @@
 package plugin.spotless
 
 import Build
-import com.diffplug.spotless.java.GoogleJavaFormatStep
 import com.diffplug.spotless.kotlin.KtfmtStep.Style
 import org.gradle.api.Plugin
 import org.gradle.api.Project

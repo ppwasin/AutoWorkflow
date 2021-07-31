@@ -10,7 +10,7 @@ internal class NestedTestWithHierarchicalSetupMethods {
   var state = ""
   @BeforeEach
   fun outerSetup() {
-	  state += "outer"
+    state += "outer"
   }
 
   @Nested
