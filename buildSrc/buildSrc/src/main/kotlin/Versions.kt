@@ -1,7 +1,7 @@
 object Versions {
 	const val kotlin = "1.5.10"
 	const val androidGradle = "7.0.0"
-	const val spotless = "5.10.2"
+	const val spotless = "5.14.2"
 	const val rxjava = "2.2.21"
 	const val rxAndroid = "2.1.1"
 	const val coroutine = "1.5.1"

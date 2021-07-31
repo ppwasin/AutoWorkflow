@@ -1,6 +1,8 @@
 package plugin.spotless
 
 import Build
+import com.diffplug.spotless.java.GoogleJavaFormatStep
+import com.diffplug.spotless.kotlin.KtfmtStep.Style
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -17,7 +19,7 @@ class SpotlessPlugin : Plugin<Project> {
         ratchetFrom = "origin/main"
         kotlin {
           // by default the target is every '.kt' and '.kts` file in the java sourcesets
-          ktfmt()
+          ktfmt().style(Style.GOOGLE)
 //          ktlint("0.41.0")
 //          licenseHeaderFile(rootProject.file("spotless/copyright.kt")) // or licenseHeaderFile
           target("**/*.kt")
