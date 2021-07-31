@@ -29,7 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(versionDescription: String) {
   val materialBlue700 = Color(0xFF1976D2)
   val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Open))
   Scaffold(
@@ -38,7 +38,7 @@ fun HomeScreen() {
     floatingActionButtonPosition = FabPosition.End,
     floatingActionButton = { FloatingActionButton(onClick = {}) { Text("X") } },
     drawerContent = { Text(text = "drawerContent") },
-    content = { Text("BodyContent") },
+    content = { Text("Running on version $versionDescription") },
     bottomBar = { BottomAppBar(backgroundColor = materialBlue700) { Text("BottomAppBar") } }
   )
 }
@@ -46,5 +46,5 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-  HomeScreen()
+  HomeScreen("")
 }

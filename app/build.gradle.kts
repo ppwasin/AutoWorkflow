@@ -82,7 +82,7 @@ android {
     compose = true
 
     // Disable unused AGP features
-    buildConfig = false
+    buildConfig = true
     aidl = false
     renderScript = false
     resValues = false
@@ -102,7 +102,6 @@ android {
 dependencies {
   implementation(project(":features:home"))
   implementation(platform(Build.GoogleService.firebasePlatform))
-  implementation(Build.GoogleService.firebaseAnalytic)
 
   implementation(Deps.appcompat)
   implementation(Deps.material)

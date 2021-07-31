@@ -3,9 +3,11 @@
 # Build bundle
 ./gradlew app:bundleRelease
 
-# Publish on Firebase
+### FirebaseDistribution Gradle Plugin ###
+# Publish on Firebase via
 ./gradlew app:appDistributionUploadRelease
 
+### Gradle Play Publisher (GPP) ###
 # Publish on internal app sharing
 ./gradlew app:uploadReleasePrivateBundle
 

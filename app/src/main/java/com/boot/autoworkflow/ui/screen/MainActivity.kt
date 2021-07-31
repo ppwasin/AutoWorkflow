@@ -18,16 +18,18 @@ package com.boot.autoworkflow.ui.screen
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.boot.autoworkflow.BuildConfig
 import com.boot.home.screen.HomeScreen
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.analytics.ktx.logEvent
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    Firebase.analytics.logEvent("App Launch") {}
-    setContent { HomeScreen() }
+
+    setContent {
+      HomeScreen(
+        versionDescription = "Name: ${BuildConfig.VERSION_NAME}, Code: ${BuildConfig.VERSION_CODE}"
+      )
+    }
   }
 }
