@@ -1,19 +1,5 @@
 package com.boot.playground.algorithm
 
-fun main() {
-  //  val count = solution2("BALLOON")
-  //  println("result: $count")
-
-  //  val count = solution2("LLOONBA")
-  //  println("result: $count")
-
-  //  val count = solution2("LwAweNdsfOLBO")
-  //  println("result: $count")
-
-  //  val count = solution2("LwAweLwAweNdsfOLBONdsfOLBOLwAweNdsfOLBO")
-  //  println("result: $count")
-}
-
 fun solution(S: String): Int {
   val sb = StringBuilder(S)
   val charMatcher = CharMatcher("BALLOON")

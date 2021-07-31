@@ -1,6 +1,6 @@
 package com.boot.playground.algorithm
 
-class StringMapHelper(var string: String) {
+class StringMapHelper(string: String) {
   private val map = mutableMapOf<Char, Int>()
   init {
     for (char in string) {
