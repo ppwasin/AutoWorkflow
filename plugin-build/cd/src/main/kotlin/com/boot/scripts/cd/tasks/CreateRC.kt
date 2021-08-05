@@ -7,7 +7,7 @@ import org.gradle.api.tasks.TaskAction
 open class CreateRC : DefaultTask() {
   @TaskAction
   fun setup() {
-    println("Hello From CreateRC ")
+    println("Hello From CreateRC")
     //		Runtime.getRuntime().exec("./my_script.sh")
     //		val shellLocation = ShellLocation.HOME.resolve(project.rootDir)
     //		val output = shellRun("git", listOf("status"), shellLocation)
