@@ -24,12 +24,14 @@ play {
 androidComponents {
   onVariants {
     for (output in it.outputs) {
-      val processedVersionCode = output.versionCode.map { playVersionCode ->
-        // Do something to the version code...
-        // In this example, version names will look like `myCustomVersionName.123`
-        "${output.versionName}.$playVersionCode"
+      val newVersionName = output.versionCode.map { playVersionCode ->
+        // major.minor.patch
+        "${output.versionName.get()}.$playVersionCode"
       }
-      output.versionName.set(processedVersionCode)
+      println("processedVersionCode.get: ${newVersionName.get()}")
+      println("versionName: ${output.versionName.get()}")
+      
+      output.versionName.set(newVersionName.get())
     }
   }
 }
@@ -41,7 +43,7 @@ android {
     applicationId = Build.appId
     minSdk = Build.minSdk
     targetSdk = Build.targetSdk
-    versionCode = 4
+    versionCode = 1
     versionName = "1.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
