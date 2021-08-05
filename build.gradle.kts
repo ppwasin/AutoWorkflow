@@ -24,3 +24,7 @@ subprojects {
         mavenCentral()
     }
 }
+
+plugins {
+    id("com.boot.scripts.cd.CDPlugin")
+}
