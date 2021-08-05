@@ -13,7 +13,7 @@ open class CreateRC : DefaultTask() {
     //		val shellLocation = ShellLocation.HOME.resolve(project.rootDir)
     //		val output = shellRun("git", listOf("status"), shellLocation)
     //		println(output)
-    println(ShellLocation.CURRENT_WORKING)
+//    println(ShellLocation.CURRENT_WORKING)
 
     shellRun {
       git.gitCommand(listOf("fetch", "--prune", "--tags"))
