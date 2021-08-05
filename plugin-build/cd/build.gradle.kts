@@ -16,3 +16,7 @@ gradlePlugin {
 		}
 	}
 }
+
+dependencies {
+	implementation("com.lordcodes.turtle:turtle:0.5.0")
+}
