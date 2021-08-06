@@ -4,7 +4,7 @@ import com.boot.scripts.cd.internal.shell
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
-class RCDistribute : DefaultTask() {
+class RCPublish : DefaultTask() {
   @TaskAction
   fun buildAndRelease() {
 	  val appModule = "app:"
