@@ -14,7 +14,7 @@ open class CreateRC : DefaultTask() {
     val currentVersion = getTagVersion(prefix = "v")
     val newVersion = currentVersion.copy(patch = 0).asDotVersion()
     val tagName = "v$newVersion"
-    val rcBranch = "rc-$currentVersion"
+    val rcBranch = "rc-${currentVersion.asDotVersion()}"
 
     // Push RC Branch
     shell("git checkout -b $rcBranch")
