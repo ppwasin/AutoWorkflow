@@ -21,23 +21,13 @@ open class CreateRC : DefaultTask() {
     val tagName = "v$newVersion"
     val rcBranch = "rc-${currentVersion.asDotVersion()}"
 
-    // Push RC Branch
-//    shellRun {
-//      git.currentBranch().also(::println)
-//      git.checkout(rcBranch)
-//      git.push(remote = "origin", branch = rcBranch)
-//    }
-//    shell("git checkout -b '$rcBranch'")
+    // Create RC Branch
     shell("git branch $rcBranch")
-    shell("git switch $rcBranch")
-//    shell("git push origin $rcBranch")
-//
-//
-//    // Back to Develop
-//    shell("git checkout develop")
-//    // Bump Version
-//    shell("git tag -a $tagName -m 'Bump version to $newVersion'")
-//    shell("git push origin $tagName")
+    shell("git push origin $rcBranch")
+    // Bump Version
+    shell("git tag -a $tagName -m 'Bump version to $newVersion'")
+    shell("git push origin $tagName")
+
 //
 //    // Back To RC
 //    shell("git checkout $rcBranch")
