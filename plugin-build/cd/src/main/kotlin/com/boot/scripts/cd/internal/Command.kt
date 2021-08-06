@@ -1,10 +1,12 @@
 package com.boot.scripts.cd.internal
 
-fun getTagVersion(prefix: String): ReleaseVersion {
+fun getLastTag(matchRegex: String): ReleaseVersion {
   val versions =
-    runCatching { shell("git describe --tags --abbrev=0 --first-parent --match '$prefix*'") }
+    runCatching {
+        shell("git describe --tags --abbrev=0 --first-parent --match '$matchRegex'")
+      }
       .getOrNull()
-      ?.removePrefix(prefix)
+      ?.removePrefix(matchRegex)
       ?.split(".")
 
   return ReleaseVersion(
