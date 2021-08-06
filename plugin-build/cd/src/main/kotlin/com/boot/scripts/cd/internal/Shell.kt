@@ -1,29 +1,19 @@
 package com.boot.scripts.cd.internal
 
-import java.util.concurrent.Executors
-
 internal fun shell(
 	command: String,
-	log: Boolean = true,
-	config: ProcessBuilder.() -> Unit = {}
-): () -> String {
-	if (log) println("$ $command")
+): String {
+	println("$ $command")
 	
-	val process = ProcessBuilder("sh", "-c", command).apply(config).redirectErrorStream(true).start()
-	
-	val pool = Executors.newSingleThreadExecutor()
-	val pendingOutput =
-		pool.submit<List<String>?> {
-			process.inputStream?.bufferedReader()?.useLines {
-				it.onEach { if (log) println(it) }.toList()
-			}
-		}
+	// "/bin/bash"
+	val process = ProcessBuilder("sh", "-c", command).start()
 	
 	val code = process.waitFor()
-	check(code == 0) { "Command failed with exit code $code." }
+	val error = process.errorStream?.bufferedReader()?.use { it.readText() }?.trim()
+	val output = process.inputStream?.bufferedReader()?.use { it.readText() }?.trim()
 	
-	val output = pendingOutput.get()
-	pool.shutdownNow()
+	if(!error.isNullOrEmpty())
+		throw IllegalStateException("$ $command\nExitCode: $code\n$error")
 	
-	return { output?.joinToString("\n").orEmpty() }
+	return output ?: ""
 }
