@@ -10,6 +10,7 @@ open class CreateRC : DefaultTask() {
   @TaskAction
   fun setup() {
     println("Hello From CreateRC")
+    shell("git status")
 
     val currentVersion = getTagVersion(prefix = "v")
     val newVersion = currentVersion.copy(patch = 0).asDotVersion()
