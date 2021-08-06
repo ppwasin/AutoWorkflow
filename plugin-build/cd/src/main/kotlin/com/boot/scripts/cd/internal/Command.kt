@@ -13,7 +13,3 @@ fun getTagVersion(prefix: String): ReleaseVersion {
     patch = versions?.getOrNull(2)?.toIntOrNull() ?: 0
   )
 }
-
-fun gitCreateTag(tagName: String, annotated: String) {
-  shell("git tag -a $tagName -m $annotated")
-}
