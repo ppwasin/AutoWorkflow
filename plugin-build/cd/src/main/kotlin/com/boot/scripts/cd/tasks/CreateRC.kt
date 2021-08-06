@@ -29,7 +29,7 @@ open class CreateRC : DefaultTask() {
 //    }
 //    shell("git checkout -b '$rcBranch'")
     shell("git branch $rcBranch")
-    shell("git checkout $rcBranch")
+    shell("git switch $rcBranch")
 //    shell("git push origin $rcBranch")
 //
 //
