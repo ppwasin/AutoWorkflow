@@ -33,5 +33,6 @@ open class CreateRC : DefaultTask() {
     shell("./gradlew app:bundleRelease")
     shell("./gradlew app:appDistributionUploadRelease")
     shell("./gradlew app:publishReleaseBundle --track 'alpha' --release-name '$currentVersion'")
+    println("apply 0.2.3")
   }
 }
