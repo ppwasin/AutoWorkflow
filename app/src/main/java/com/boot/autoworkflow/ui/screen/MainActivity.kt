@@ -34,6 +34,4 @@ class MainActivity : AppCompatActivity() {
   }
 }
 
-sealed interface Test{
-
-}
+sealed interface Test {}
