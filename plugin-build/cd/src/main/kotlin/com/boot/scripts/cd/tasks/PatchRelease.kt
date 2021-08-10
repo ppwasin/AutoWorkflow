@@ -25,9 +25,8 @@ open class PatchRelease : DefaultTask() {
         .let(ReleaseVersion::increasePatch)
 
     // Annotate Version with Tag
-    val tagName = "$newVersion"
-    shell("git tag -a $tagName -m 'Release version $newVersion'")
-    shell("git push origin $tagName")
+    shell("git tag -a $newVersion -m 'Release version $newVersion'")
+    shell("git push origin $newVersion")
 
     // Release
     val distributor = ReleaseDistributor(versionName = newVersion.toString())

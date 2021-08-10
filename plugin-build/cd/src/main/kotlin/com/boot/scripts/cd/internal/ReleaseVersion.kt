@@ -7,6 +7,10 @@ data class ReleaseVersion(val major: Int, val minor: Int, val patch: Int){
 	fun increasePatch(): ReleaseVersion {
 		return copy(patch = patch + 1)
 	}
+	
+	override fun toString(): String {
+		return ReleaseVersionParser.toString(this)
+	}
 }
 
 
