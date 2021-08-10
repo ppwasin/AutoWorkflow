@@ -12,17 +12,20 @@ open class PatchRelease : DefaultTask() {
 
   @TaskAction
   fun setup() {
-    //Get version number
+    val currentBranch = shell("git branch --show-current")
+    check(currentBranch.startsWith("rc-")) {
+      "Must run on release candidate branch (e.g., rc-1.0.0)"
+    }
+
+    // Get version number
     val versionString = project.property("version").toString()
-    
-    //Fetch tags from origin
+
+    // Fetch tags from origin
     shell("git fetch --prune --tags")
 
     // Increase Patch version
     val newVersion =
-      versionString
-        .run(ReleaseVersionParser::fromString)
-        .let(ReleaseVersion::increasePatch)
+      versionString.run(ReleaseVersionParser::fromString).let(ReleaseVersion::increasePatch)
 
     // Annotate Version with Tag
     shell("git tag -a $newVersion -m 'Release version $newVersion'")

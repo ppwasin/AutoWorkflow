@@ -81,7 +81,7 @@ l10n
 # Keystore
 *.jks
 keystore.properties
-# Firebase
-google-services.json
+## Firebase
+#google-services.json
 # Google Play Console and Google Could Platform
 google-api-service.json

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314313474986",
+    "project_id": "autoworkflow-cd676",
+    "storage_bucket": "autoworkflow-cd676.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314313474986:android:85f5efdc6822af7448a1d3",
+        "android_client_info": {
+          "package_name": "com.boot.autoworkflow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314313474986-8obermiibicqum27vjik6ffe5pkcikos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiPfNe2vK7GsrbhMOrpdWfKPUyuROrzbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314313474986-8obermiibicqum27vjik6ffe5pkcikos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
