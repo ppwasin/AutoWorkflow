@@ -15,3 +15,5 @@ fun getLastTag(matchRegex: String): ReleaseVersion {
     patch = versions?.getOrNull(2)?.toIntOrNull() ?: 0
   )
 }
+
+fun getCurrentVersion() = getLastTag(matchRegex = "v*.*.*")

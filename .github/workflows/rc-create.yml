@@ -15,4 +15,4 @@ jobs:
           access_token: ${{ github-actions.token }}
       - name: Checkout the code
         uses: actions/checkout@v2
-      - run: ./gradlew CreateRC
+      - run: ./gradlew RCCreate
