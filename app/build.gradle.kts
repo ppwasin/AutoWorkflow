@@ -69,6 +69,7 @@ android {
       isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       firebaseAppDistribution {
+        serviceCredentialsFile = "project-firebase-api-service.json"
         artifactType = "AAB"
         testers = "pp.wasin@gmail.com, ex@gmail.com"
       }

@@ -1,12 +1,16 @@
 package com.boot.scripts.cd.internal
 
-fun getLastTagString(matchRegex: String): String {
+fun getCurrentVersion(matchRegex: String): ReleaseVersion {
   val tagVersionString =
-    runCatching { shell("git describe --tags --abbrev=0 --first-parent --match '$matchRegex'") }
+    runCatching { shell(buildLastTagCmd(matchRegex)) }
       .getOrNull()
   return if (tagVersionString.isNullOrEmpty()) {
-    val initialVersion = ReleaseVersion.initial()
-    println("[Warn] No tag found use initial version: $initialVersion")
-    return initialVersion.toString()
-  } else tagVersionString
+    return ReleaseVersion.initial().also {
+      println("[Warn] No tag found use initial version: $it")
+    }
+  } else ReleaseVersion.fromString(tagVersionString)
+}
+
+private fun buildLastTagCmd(matchRegex: String): String{
+  return "git describe --tags --abbrev=0 --first-parent --match '$matchRegex'"
 }

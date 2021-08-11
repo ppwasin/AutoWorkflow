@@ -12,7 +12,7 @@ internal fun shell(
 	val error = process.errorStream?.bufferedReader()?.use { it.readText() }?.trim()
 	val output = process.inputStream?.bufferedReader()?.use { it.readText() }?.trim()
 	
-	if(!error.isNullOrEmpty())
+	if(code != 0 && !error.isNullOrEmpty())
 		throw IllegalStateException("$ $command\nExitCode: $code\n$error")
 	
 	return output ?: ""

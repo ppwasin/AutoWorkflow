@@ -87,3 +87,5 @@ keystore.properties
 google-api-service.json
 secrets.tar.asc
 secrets.tar
+# Firebase App Distribution serviceCredentialsFile
+project-firebase-api-service.json
