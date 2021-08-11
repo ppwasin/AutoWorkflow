@@ -18,7 +18,7 @@ open class MinorRelease : DefaultTask() {
     println("Current running branch is: $currentBranch")
 
     println("Fetch tags from origin")
-    shell("git fetch --prune origin \"+refs/tags/*:refs/tags/*\" ")
+    shell("git fetch --unshallow --tags")
 
     // Increase Minor version
     println("### Start increase minor version ###")
