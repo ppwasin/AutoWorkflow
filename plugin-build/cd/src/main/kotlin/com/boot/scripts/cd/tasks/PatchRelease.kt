@@ -18,9 +18,6 @@ open class PatchRelease : DefaultTask() {
     val majorVersion = version[0]
     val minorVersion = version[1]
 
-    // Fetch tags from origin
-    shell("git fetch --prune origin \"+refs/tags/*:refs/tags/*\"")
-
     // Increase Patch version from property version
     val newVersion =
       getCurrentVersion(matchRegex = "$majorVersion.$minorVersion.*")
