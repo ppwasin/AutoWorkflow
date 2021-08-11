@@ -12,3 +12,7 @@ jobs:
       - uses: ./.github/actions/hello-world-action
         with:
           who-to-greet: 'Mona the Octocat'
+      - run: |
+          git fetch --unshallow --tags
+          echo $?
+          git tag --list
