@@ -31,7 +31,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       - name: Extract secrets
         run: |
+          apt-get install gnupg
           echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
           gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
       - run: ./gradlew MinorRelease
+      - name: Cleanup
+        uses: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
+        if: ${{ always() }}

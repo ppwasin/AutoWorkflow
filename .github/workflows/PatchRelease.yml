@@ -33,3 +33,6 @@ jobs:
           gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
       - run: ./gradlew PatchRelease
+      - name: Cleanup
+        uses: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
+        if: ${{ always() }}
