@@ -39,13 +39,13 @@ jobs:
           echo "$RELEASE_SECRETS" > secrets.tar.asc
           gpg -d --passphrase "$RELEASE_SECRETS_PASSPHRASE" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
-      - uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: secrets.tar.asc
-          path: secrets.tar.asc
       - name: Increase Minor version tag, Create RC branch and Release
         run: ./gradlew MinorRelease
+      - uses: actions/upload-artifact@v2
+          if: failure()
+          with:
+            name: report
+            path: build/reports/kotlin-build/
       - name: Cleanup
         run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
         if: ${{ always() }}
