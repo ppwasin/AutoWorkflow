@@ -85,3 +85,5 @@ keystore.properties
 #google-services.json
 # Google Play Console and Google Could Platform
 google-api-service.json
+secrets.tar.asc
+secrets.tar

@@ -30,10 +30,18 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       ## Release ##
       - name: Extract secrets
+        env:
+          RELEASE_SECRETS: ${{ secrets.RELEASE_SECRETS }}
+          RELEASE_SECRETS_PASSPHRASE: ${{ secrets.RELEASE_SECRETS_PASSPHRASE }}
         run: |
-          echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
-          gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
+          echo "$RELEASE_SECRETS" > secrets.tar.asc
+          gpg -d --passphrase "$RELEASE_SECRETS_PASSPHRASE" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: secrets.tar.asc
+          path: secrets.tar.asc
       - name: Increase Minor version tag, Create RC branch and Release
         run: ./gradlew MinorRelease
       - name: Cleanup
