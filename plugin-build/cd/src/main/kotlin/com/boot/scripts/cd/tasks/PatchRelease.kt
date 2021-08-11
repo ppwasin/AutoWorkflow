@@ -16,13 +16,17 @@ open class PatchRelease : DefaultTask() {
   fun setup() {
     val currentBranch = shell("git branch --show-current")
     check(currentBranch.startsWith("rc-")) { "Must run on release candidate branch (e.g., rc-1.0)" }
+    val version = currentBranch.removePrefix("rc-")
+      .split(".")
+    val majorVersion = version[0]
+    val minorVersion = version[1]
 
     // Fetch tags from origin
     shell("git fetch --prune --tags")
 
     // Increase Patch version from property version
     val newVersion =
-      getCurrentVersion(matchRegex = "*.*.*")
+      getCurrentVersion(matchRegex = "$majorVersion.$minorVersion.*")
         .let(ReleaseVersion::increasePatch)
 
     // Annotate Version with Tag

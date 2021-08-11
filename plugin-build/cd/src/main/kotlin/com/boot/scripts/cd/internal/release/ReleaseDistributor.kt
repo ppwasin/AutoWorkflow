@@ -26,6 +26,6 @@ class ReleaseDistributor(private val appModule: String = "app:", versionName: St
   }
 
   private fun uploadOnGooglePlay() {
-    shell("./gradlew ${appModule}publishBundle --track alpha $versionNameProp")
+    shell("./gradlew ${appModule}publishReleaseBundle --track alpha $versionNameProp")
   }
 }

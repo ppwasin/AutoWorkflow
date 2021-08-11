@@ -26,14 +26,26 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+      ## Release ##
+      - name: Setup Git username and email as the @action user
+        uses: fregante/setup-git-user@v1
       - name: Extract secrets
+        env:
+          RELEASE_SECRETS: ${{ secrets.RELEASE_SECRETS }}
+          RELEASE_SECRETS_PASSPHRASE: ${{ secrets.RELEASE_SECRETS_PASSPHRASE }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
-          gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
+          export FIREBASE_TOKEN=$FIREBASE_TOKEN
+          echo "$RELEASE_SECRETS" > secrets.tar.asc
+          gpg -d --passphrase "$RELEASE_SECRETS_PASSPHRASE" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
       - name: Patch Release
-        description: Increase Patch version tag and Release
         run: ./gradlew PatchRelease
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: report
+          path: build/reports/kotlin-build/
       - name: Cleanup
-        uses: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
+        run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
         if: ${{ always() }}

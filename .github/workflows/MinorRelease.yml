@@ -5,8 +5,8 @@ on:
 #    - cron:  '0 0 * * 1'
 
 jobs:
-  MinorRelease:
-    name: Minor release from main branch
+  Prepare:
+    name: Prepare for release
     runs-on: ubuntu-latest
     steps:
       ## Prepare ##
