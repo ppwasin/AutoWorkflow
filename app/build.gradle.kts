@@ -48,7 +48,8 @@ android {
 
   val keystorePropertiesFile = rootProject.file("keystore.properties")
   val signConfigName = "config"
-  if (keystorePropertiesFile.exists()) {
+  val hasKeyStore = keystorePropertiesFile.exists()
+  if (hasKeyStore) {
     val keystoreProperties = Properties()
     keystoreProperties.load(keystorePropertiesFile.inputStream())
     signingConfigs {
@@ -63,7 +64,8 @@ android {
 
   buildTypes {
     getByName("release") {
-      signingConfig = signingConfigs.getByName(signConfigName)
+      if(hasKeyStore) signingConfig = signingConfigs.getByName(signConfigName)
+      
       isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       firebaseAppDistribution {
