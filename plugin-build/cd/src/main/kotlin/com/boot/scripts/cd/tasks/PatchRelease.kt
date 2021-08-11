@@ -14,7 +14,7 @@ open class PatchRelease : DefaultTask() {
   fun setup() {
     val currentBranch = shell("git branch --show-current")
     check(currentBranch.startsWith("rc-")) {
-      "Must run on release candidate branch (e.g., rc-1.0.0)"
+      "Must run on release candidate branch (e.g., rc-1.0)"
     }
 
     // Get version number

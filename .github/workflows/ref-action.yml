@@ -1,0 +1,14 @@
+name: Ref Action
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # This step checks out a copy of your repository.
+      - uses: actions/checkout@v2
+      # This step references the directory that contains the action.
+      - uses: ./.github/actions/hello-world-action
+        with:
+          who-to-greet: 'Mona the Octocat'

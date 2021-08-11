@@ -15,7 +15,7 @@ open class MinorRelease : DefaultTask() {
   fun setup() {
     // Guard Environment
     val currentBranch = shell("git branch --show-current")
-    check(currentBranch == "main") { "Must run on main branch" }
+    check(currentBranch == "main") { "Must run on 'main' branch" }
 
     // Fetch tags from origin
     shell("git fetch --prune --tags")
