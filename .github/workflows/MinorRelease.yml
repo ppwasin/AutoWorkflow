@@ -33,7 +33,7 @@ jobs:
         run: |
           sudo apt-get install gnupg
           echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
-          gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
+          sudo gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
       - run: ./gradlew MinorRelease
       - name: Cleanup
