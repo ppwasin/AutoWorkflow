@@ -11,6 +11,12 @@ data class ReleaseVersion(val major: Int, val minor: Int, val patch: Int){
 	override fun toString(): String {
 		return ReleaseVersionParser.toString(this)
 	}
+	
+	companion object {
+		fun initial(): ReleaseVersion {
+			return ReleaseVersion(0, 0, 0)
+		}
+	}
 }
 
 
