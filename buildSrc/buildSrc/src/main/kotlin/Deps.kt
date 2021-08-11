@@ -1,4 +1,3 @@
-
 object Deps {
   object Rx {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
@@ -21,7 +20,8 @@ object Deps {
     // Material Design
     const val material = "androidx.compose.material:material:${Versions.compose}"
     const val materialIcon = "androidx.compose.material:material-icons-core:${Versions.compose}"
-    const val materialIconsExt = "androidx.compose.material:material-icons-extended:${Versions.compose}"
+    const val materialIconsExt =
+      "androidx.compose.material:material-icons-extended:${Versions.compose}"
     // Tooling support (Previews, etc.)
     const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
 
@@ -34,12 +34,19 @@ object Deps {
     const val uiText = "androidx.compose.ui:ui-text:${Versions.compose}"
     const val uiUtils = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
-    
+
     // Test
     // Test rules and transitive dependencies:
     const val uiTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     // Needed for createComposeRule, but not createAndroidComposeRule:
     const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+
+    // Accompanist
+    object Accompanist {
+      //built on top of 2.4.0-alpha06
+      const val navigationAnimation =
+        "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
+    }
   }
 
   object WorkManager {
@@ -48,12 +55,12 @@ object Deps {
     const val androidTest = "androidx.work:work-testing:${Versions.workManager}"
     const val optionalMultiprocess = "androidx.work:work-multiprocess:${Versions.workManager}"
   }
-  
-  //Android UI
+
+  // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
-  
-  //Test
+
+  // Test
   object Test {
     const val junit5platform = "org.junit:junit-bom:${Versions.junit5}"
     const val junit5Jupiter = "org.junit.jupiter:junit-jupiter"

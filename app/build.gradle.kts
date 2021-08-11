@@ -24,14 +24,6 @@ play {
   artifactDir.set(file("build/outputs/bundle/release"))
   resolutionStrategy.set(AUTO) //Automatically increase versionCode
 }
-//androidComponents {
-//  onVariants {
-//    println("versionName: $versionNameOverride")
-//    for (output in it.outputs) {
-//      output.versionName.set(versionNameOverride)
-//    }
-//  }
-//}
 
 android {
   compileSdk = Build.compileSdk
@@ -116,6 +108,7 @@ dependencies {
   implementation(Deps.Compose.materialIconsExt)
   implementation(Deps.Coroutine.core)
   implementation(Deps.Coroutine.android)
+  implementation(Deps.Compose.Accompanist.navigationAnimation)
 
   androidTestImplementation(Deps.Test.espresso)
   androidTestImplementation(Deps.Test.junitInstrumental)
