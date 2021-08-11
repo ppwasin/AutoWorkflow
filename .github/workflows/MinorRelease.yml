@@ -29,8 +29,6 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       ## Release ##
-      - name: Setup GPG
-        uses: olafurpg/setup-gpg@v3
       - name: Extract secrets
         run: |
           echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
