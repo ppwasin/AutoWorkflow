@@ -12,5 +12,5 @@ fun getCurrentVersion(matchRegex: String): ReleaseVersion {
 }
 
 private fun buildLastTagCmd(matchRegex: String): String{
-  return "git describe --tags --abbrev=0 --first-parent --match '$matchRegex'"
+  return "git describe --tags --abbrev=0 --first-parent --match \"$matchRegex\""
 }

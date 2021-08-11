@@ -5,8 +5,8 @@ on:
 #    - cron:  '0 0 * * 1'
 
 jobs:
-  Prepare:
-    name: Prepare for release
+  MinorRelease:
+    name: Bump minor version and create RC branch
     runs-on: ubuntu-latest
     steps:
       ## Prepare ##
