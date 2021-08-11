@@ -7,14 +7,14 @@
 # Code Formatting with Spotless & ktmft
 - ./gradlew spotlessCheck
 - ./gradlew spotlessApply
-## Install spotless pre-commit hook
+### Install spotless pre-commit hook
 ./gradlew installSpotlessHook 
 
 # CI/CD Github Actions
-# Unittest & InstrumentationTest 
-.github/workflows/MainVerification.yml
+### Unittest & InstrumentationTest 
+- .github/workflows/MainVerification.yml
 
-# Release via GooglePlay Alpha track and FirebaseDistribution
+### Release via GooglePlay Alpha track and FirebaseDistribution
 - .github/workflows/MinorRelease.yml --> against main branch
 - .github/workflows/PatchRelease.yml --> against rc branch
 
