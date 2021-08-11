@@ -42,10 +42,10 @@ jobs:
       - name: Increase Minor version tag, Create RC branch and Release
         run: ./gradlew MinorRelease
       - uses: actions/upload-artifact@v2
-          if: failure()
-          with:
-            name: report
-            path: build/reports/kotlin-build/
+        if: failure()
+        with:
+          name: report
+          path: build/reports/kotlin-build/
       - name: Cleanup
         run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
         if: ${{ always() }}
