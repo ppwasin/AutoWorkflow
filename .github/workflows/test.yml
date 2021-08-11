@@ -1,16 +1,14 @@
 # Workflow name
 name: Tests
 on:
-  # When it will be triggered
-  # And in which branch
+  # Trigger the workflow on push or pull request
+  # But only for the main branch
   pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
-#    trigger when publish to the branch other than main and release
-#      - '*'
-#      - '!main'
-#      - '!release*'
 
 
 jobs:
