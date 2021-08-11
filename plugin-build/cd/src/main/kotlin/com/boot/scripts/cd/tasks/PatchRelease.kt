@@ -1,8 +1,6 @@
 package com.boot.scripts.cd.tasks
 
 import com.boot.scripts.cd.internal.ReleaseVersion
-import com.boot.scripts.cd.internal.ReleaseVersionExt
-import com.boot.scripts.cd.internal.fromString
 import com.boot.scripts.cd.internal.getCurrentVersion
 import com.boot.scripts.cd.internal.release.ReleaseChannel
 import com.boot.scripts.cd.internal.release.ReleaseDistributor
@@ -16,13 +14,12 @@ open class PatchRelease : DefaultTask() {
   fun setup() {
     val currentBranch = shell("git branch --show-current")
     check(currentBranch.startsWith("rc-")) { "Must run on release candidate branch (e.g., rc-1.0)" }
-    val version = currentBranch.removePrefix("rc-")
-      .split(".")
+    val version = currentBranch.removePrefix("rc-").split(".")
     val majorVersion = version[0]
     val minorVersion = version[1]
 
     // Fetch tags from origin
-    shell("git fetch --prune --tags")
+    shell("git fetch --prune origin \"+refs/tags/*:refs/tags/*\"")
 
     // Increase Patch version from property version
     val newVersion =
