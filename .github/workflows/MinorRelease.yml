@@ -37,5 +37,5 @@ jobs:
           tar xvf secrets.tar
       - run: ./gradlew MinorRelease
       - name: Cleanup
-        uses: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
+        run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
         if: ${{ always() }}
