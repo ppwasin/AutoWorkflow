@@ -29,6 +29,8 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
       ## Release ##
+      - name: Setup Git username and email as the @action user
+        uses: fregante/setup-git-user@v1
       - name: Extract secrets
         env:
           RELEASE_SECRETS: ${{ secrets.RELEASE_SECRETS }}
