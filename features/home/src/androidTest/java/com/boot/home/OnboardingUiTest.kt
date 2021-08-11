@@ -10,6 +10,6 @@ class OnboardingUiTest {
 
   @Test
   fun test() {
-    composeTestRule.setContent { HomeScreen() }
+    composeTestRule.setContent { HomeScreen("") }
   }
 }
