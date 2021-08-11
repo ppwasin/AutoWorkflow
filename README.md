@@ -11,14 +11,16 @@
 ./gradlew installSpotlessHook 
 
 # CI/CD Github Actions
-# Unittest
-.github-workflows/ci.yml
+# Unittest & InstrumentationTest 
+.github/workflows/MainVerification.yml
 
-# [TODO] InstrumentationTest & Snap-shot test
+# Release via GooglePlay Alpha track and FirebaseDistribution
+- .github/workflows/MinorRelease.yml --> against main branhc
+- .github/workflows/PatchRelease.yml --> against rc branch
 
-# [TODO] CD FirebaseDistribution
+# [TODO] 
+- Snap-shot test
 
-- TODO references
-    - https://wkrzywiec.medium.com/github-actions-for-android-first-approach-f616c24aa0f9
-    - https://medium.com/google-developer-experts/github-actions-for-android-developers-6b54c8a32f55
-    - https://www.somkiat.cc/github-actions-for-android-app/
+# [Continuous]
+- Practice Compose
+- Practice DS & Alg
