@@ -36,8 +36,7 @@ jobs:
           echo "${{ secrets.RELEASE_SECRETS }}" > secrets.tar.asc
           gpg -d --passphrase "${{ secrets.RELEASE_SECRETS_PASSPHRASE }}" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
-      - name: Minior Release
-        description: Increase Minor version tag, Create RC branch and Release
+      - name: Increase Minor version tag, Create RC branch and Release
         run: ./gradlew MinorRelease
       - name: Cleanup
         run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
