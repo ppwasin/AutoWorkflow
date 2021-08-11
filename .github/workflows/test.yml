@@ -16,6 +16,8 @@ jobs:
     name: Verification
     runs-on: macos-latest
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
       - name: Prepare
         uses: ./.github/actions/prepare-cicd
       - name: Tests
