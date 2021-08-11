@@ -16,9 +16,9 @@ open class MinorRelease : DefaultTask() {
     val currentBranch = shell("git branch --show-current")
     check(currentBranch == "main") { "Must run on 'main' branch" }
     println("Current running branch is: $currentBranch")
-    
+
     println("Fetch tags from origin")
-    shell("git fetch --prune --tags")
+    shell("git fetch --prune origin \"+refs/tags/*:refs/tags/*\" ")
 
     // Increase Minor version
     println("### Start increase minor version ###")
