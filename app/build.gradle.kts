@@ -1,5 +1,5 @@
-import java.util.*
 import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
+import java.util.*
 
 apply<plugin.Junit5Plugin>()
 
@@ -14,6 +14,9 @@ plugins {
 }
 
 /** Publish **/
+val versionNameOverride =
+  if(project.hasProperty("versionName")) project.property("versionName").toString()
+  else "No versionName"
 play {
   track.set("internal") //default is `internal`
   serviceAccountCredentials.set(rootProject.file("google-api-service.json"))
@@ -21,20 +24,14 @@ play {
   artifactDir.set(file("build/outputs/bundle/release"))
   resolutionStrategy.set(AUTO) //Automatically increase versionCode
 }
-androidComponents {
-  onVariants {
-    for (output in it.outputs) {
-      val newVersionName = output.versionCode.map { playVersionCode ->
-        // major.minor.patch
-        "${output.versionName.get()}.$playVersionCode"
-      }
-      println("processedVersionCode.get: ${newVersionName.get()}")
-      println("versionName: ${output.versionName.get()}")
-      
-      output.versionName.set(newVersionName.get())
-    }
-  }
-}
+//androidComponents {
+//  onVariants {
+//    println("versionName: $versionNameOverride")
+//    for (output in it.outputs) {
+//      output.versionName.set(versionNameOverride)
+//    }
+//  }
+//}
 
 android {
   compileSdk = Build.compileSdk
@@ -44,14 +41,15 @@ android {
     minSdk = Build.minSdk
     targetSdk = Build.targetSdk
     versionCode = 1
-    versionName = "1.0"
+    versionName = versionNameOverride
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
   val keystorePropertiesFile = rootProject.file("keystore.properties")
   val signConfigName = "config"
-  if (keystorePropertiesFile.exists()) {
+  val hasKeyStore = keystorePropertiesFile.exists()
+  if (hasKeyStore) {
     val keystoreProperties = Properties()
     keystoreProperties.load(keystorePropertiesFile.inputStream())
     signingConfigs {
@@ -66,7 +64,8 @@ android {
 
   buildTypes {
     getByName("release") {
-      signingConfig = signingConfigs.getByName(signConfigName)
+      if(hasKeyStore) signingConfig = signingConfigs.getByName(signConfigName)
+      
       isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       firebaseAppDistribution {
