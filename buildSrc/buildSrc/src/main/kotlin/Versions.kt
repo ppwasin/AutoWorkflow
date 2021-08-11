@@ -27,5 +27,5 @@ object Versions {
 	
 	/** Build **/
 	const val googleService = "4.3.8"
-	const val playPublisher = "3.5.0"
+	const val playPublisher = "3.6.0"
 }

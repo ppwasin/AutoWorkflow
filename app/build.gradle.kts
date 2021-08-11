@@ -18,7 +18,7 @@ val versionNameOverride =
   if(project.hasProperty("versionName")) project.property("versionName").toString()
   else "No versionName"
 play {
-  track.set("internal") //default is `internal`
+  track.set("alpha") //default is `internal`
   serviceAccountCredentials.set(rootProject.file("google-api-service.json"))
   defaultToAppBundles.set(true)
   artifactDir.set(file("build/outputs/bundle/release"))
