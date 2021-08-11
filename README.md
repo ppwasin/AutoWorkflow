@@ -15,7 +15,7 @@
 .github/workflows/MainVerification.yml
 
 # Release via GooglePlay Alpha track and FirebaseDistribution
-- .github/workflows/MinorRelease.yml --> against main branhc
+- .github/workflows/MinorRelease.yml --> against main branch
 - .github/workflows/PatchRelease.yml --> against rc branch
 
 # [TODO] 
