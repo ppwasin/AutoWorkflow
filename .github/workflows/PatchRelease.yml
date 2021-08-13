@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  PatchRelease:
+  patch-release:
     name: Bump Patch Version on RC branch and Release
     runs-on: ubuntu-latest
     steps:
