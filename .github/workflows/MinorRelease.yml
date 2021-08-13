@@ -1,5 +1,4 @@
-# Workflow name
-name: Minor Release
+name: MinorRelease
 on:
   workflow_dispatch:
 #  schedule:
