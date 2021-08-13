@@ -116,8 +116,9 @@ jobs:
           script: ./gradlew connectedDebugAndroidTest --stacktrace
           arch: x86_64
 
-      - name: Archive Test APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: tests-apk
-          path: app/build/outputs/apk/androidTest/debug
+#      - name: Archive Test APK
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: tests-apk
+#          path: app/build/outputs/apk/androidTest/debug
+# Do it after we have screenshot/acceptance test in other jobs
