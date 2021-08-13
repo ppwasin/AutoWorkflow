@@ -32,7 +32,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties')}}-${{ hashFiles('**/buildSrc/**/*.kt') }}
       ## Verification ##
       - name: Tests
         run: ./gradlew testDebugUnitTest
@@ -65,7 +65,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties')}}-${{ hashFiles('**/buildSrc/**/*.kt') }}
       ## Verification ##
       - name: AVD cache
         uses: actions/cache@v2
@@ -93,6 +93,3 @@ jobs:
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest
           arch: x86_64
-      - name: Print Android Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }} # IMPORTANT: run Android Test Report regardless
