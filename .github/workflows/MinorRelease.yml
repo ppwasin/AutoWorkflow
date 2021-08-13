@@ -14,23 +14,30 @@ jobs:
         uses: styfle/cancel-workflow-action@0.8.0
         with:
           access_token: ${{ github.token }}
+
       - name: Checkout the code
         uses: actions/checkout@v2
+
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: '11'
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
       - uses: actions/cache@v2
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties')}}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          restore-keys: ${{ runner.os }}-${{ github.job }}-
+
       ## Release ##
       - name: Setup Git username and email as the @action user
         uses: fregante/setup-git-user@v1
+
       - name: Extract secrets
         env:
           RELEASE_SECRETS: ${{ secrets.RELEASE_SECRETS }}
@@ -39,13 +46,16 @@ jobs:
           echo "$RELEASE_SECRETS" > secrets.tar.asc
           gpg -d --passphrase "$RELEASE_SECRETS_PASSPHRASE" --batch secrets.tar.asc > secrets.tar
           tar xvf secrets.tar
+
       - name: Increase Minor version tag, Create RC branch and Release
         run: ./gradlew MinorRelease
+
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: report
           path: build/reports/kotlin-build/
+
       - name: Cleanup
         run: rm -rf secrets.tar keystore.jks keystore.properties google-api-service.json
         if: ${{ always() }}
