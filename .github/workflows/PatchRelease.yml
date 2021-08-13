@@ -1,5 +1,4 @@
-# Workflow name
-name: Patch Release
+name: PatchRelease
 on:
   workflow_dispatch:
 
@@ -32,7 +31,6 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
           restore-keys: ${{ runner.os }}-${{ github.job }}-
-
       ## Release ##
       - name: Setup Git username and email as the @action user
         uses: fregante/setup-git-user@v1

@@ -1,4 +1,3 @@
-# Workflow name
 name: Verification
 on:
   # Trigger on every pull request and on push
