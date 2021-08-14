@@ -98,7 +98,7 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-${{ matrix.api-level }}
+          key: avd-x86_64-${{ matrix.api-level }}
 
       - name: create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
@@ -108,6 +108,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
+          arch: x86_64
           script: echo "Generated AVD snapshot for caching."
 
       - name: Instrumentation Tests
@@ -117,8 +118,8 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: ./gradlew connectedDebugAndroidTest --stacktrace
           arch: x86_64
+          script: ./gradlew connectedDebugAndroidTest --stacktrace
 
 #      - name: Archive Test APK
 #        uses: actions/upload-artifact@v2
