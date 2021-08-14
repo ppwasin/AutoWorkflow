@@ -11,6 +11,7 @@ buildscript {
         classpath(Build.FirebaseAppDistribution.classpath)
         classpath(Build.Spotless.classpath)
         classpath(Build.PlayPublisher.classpath)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     }
 }
 
