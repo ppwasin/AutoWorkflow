@@ -1,7 +1,7 @@
 rootProject.name = "AutoWorkflow"
 include(":app")
 include(":playground")
-include(":features:home")
+include(":features:entrypoint")
 include(":platform:navigation")
 
 includeBuild("plugin-build")
