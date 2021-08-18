@@ -13,20 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.home
+package com.boot.entrypoint.theme
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import androidx.compose.ui.graphics.Color
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
+val Purple200 = Color(0xFFBB86FC)
 
-  @Test
-  fun addition_isCorrect() {
-    assertEquals(4, 2 + 2)
-  }
-}
+val Purple500 = Color(0xFF6200EE)
+
+val Purple700 = Color(0xFF3700B3)
+
+val Teal200 = Color(0xFF03DAC5)

@@ -13,14 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.home.theme
+package com.boot.entrypoint.screen
 
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import com.boot.entrypoint.platform.BtmSlot
+import com.boot.entrypoint.screen.main.MainScreenItems
+import com.boot.entrypoint.screen.main.bottomNav
 
-val Purple200 = Color(0xFFBB86FC)
-
-val Purple500 = Color(0xFF6200EE)
-
-val Purple700 = Color(0xFF3700B3)
-
-val Teal200 = Color(0xFF03DAC5)
+@Composable
+fun EntrypointScreen(versionDescription: String) {
+  val screen = remember { MainScreenItems.values().toSet() }
+  val screenBottomNav = remember { MainScreenItems.bottomNav() }
+  BtmSlot(screen, screenBottomNav)
+}

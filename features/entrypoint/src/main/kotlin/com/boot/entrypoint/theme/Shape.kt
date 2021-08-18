@@ -13,23 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.ui.screen
+package com.boot.entrypoint.theme
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.boot.autoworkflow.BuildConfig
-import com.boot.entrypoint.screen.EntrypointScreen
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Shapes
+import androidx.compose.ui.unit.dp
 
-class MainActivity : AppCompatActivity() {
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-
-    setContent {
-      EntrypointScreen(
-        versionDescription = "Name: ${BuildConfig.VERSION_NAME}, Code: ${BuildConfig.VERSION_CODE}"
-      )
-    }
-  }
-}
+val Shapes =
+  Shapes(
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(4.dp),
+    large = RoundedCornerShape(0.dp)
+  )

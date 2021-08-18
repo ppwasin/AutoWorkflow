@@ -1,7 +1,7 @@
-package com.boot.home
+package com.boot.entrypoint
 
 import androidx.compose.ui.test.junit4.createComposeRule
-import com.boot.home.screen.HomeScreen
+import com.boot.entrypoint.screen.EntrypointScreen
 import org.junit.Rule
 import org.junit.Test
 
@@ -10,6 +10,6 @@ class OnboardingUiTest {
 
   @Test
   fun test() {
-    composeTestRule.setContent { HomeScreen("") }
+    composeTestRule.setContent { EntrypointScreen("") }
   }
 }

@@ -108,7 +108,7 @@ dependencies {
   implementation(Deps.Compose.materialIconsExt)
   implementation(Deps.Coroutine.core)
   implementation(Deps.Coroutine.android)
-  implementation(Deps.Compose.Accompanist.navigationAnimation)
+  implementation(Deps.Compose.navigation)
 
   androidTestImplementation(Deps.Test.espresso)
   androidTestImplementation(Deps.Test.junitInstrumental)
