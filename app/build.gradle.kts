@@ -94,7 +94,7 @@ android {
 }
 
 dependencies {
-  implementation(project(":features:home"))
+  implementation(project(":features:entrypoint"))
   implementation(platform(Build.GoogleService.firebasePlatform))
 
   implementation(Deps.appcompat)
@@ -108,7 +108,7 @@ dependencies {
   implementation(Deps.Compose.materialIconsExt)
   implementation(Deps.Coroutine.core)
   implementation(Deps.Coroutine.android)
-  implementation(Deps.Compose.Accompanist.navigationAnimation)
+  implementation(Deps.Compose.navigation)
 
   androidTestImplementation(Deps.Test.espresso)
   androidTestImplementation(Deps.Test.junitInstrumental)

@@ -13,23 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.ui.screen
+package com.boot.entrypoint.theme
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.boot.autoworkflow.BuildConfig
-import com.boot.entrypoint.screen.EntrypointScreen
+import androidx.compose.ui.graphics.Color
 
-class MainActivity : AppCompatActivity() {
+val Purple200 = Color(0xFFBB86FC)
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+val Purple500 = Color(0xFF6200EE)
 
-    setContent {
-      EntrypointScreen(
-        versionDescription = "Name: ${BuildConfig.VERSION_NAME}, Code: ${BuildConfig.VERSION_CODE}"
-      )
-    }
-  }
-}
+val Purple700 = Color(0xFF3700B3)
+
+val Teal200 = Color(0xFF03DAC5)

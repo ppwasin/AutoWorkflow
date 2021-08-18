@@ -47,6 +47,9 @@ object Deps {
       const val navigationAnimation =
         "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
     }
+    
+    //Nav
+    const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNav}"
   }
 
   object WorkManager {

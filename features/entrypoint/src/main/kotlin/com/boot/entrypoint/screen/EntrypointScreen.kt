@@ -13,23 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.ui.screen
+package com.boot.entrypoint.screen
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.boot.autoworkflow.BuildConfig
-import com.boot.entrypoint.screen.EntrypointScreen
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import com.boot.entrypoint.platform.BtmSlot
+import com.boot.entrypoint.screen.main.MainScreenItems
+import com.boot.entrypoint.screen.main.bottomNav
 
-class MainActivity : AppCompatActivity() {
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-
-    setContent {
-      EntrypointScreen(
-        versionDescription = "Name: ${BuildConfig.VERSION_NAME}, Code: ${BuildConfig.VERSION_CODE}"
-      )
-    }
-  }
+@Composable
+fun EntrypointScreen(versionDescription: String) {
+  val screen = remember { MainScreenItems.values().toSet() }
+  val screenBottomNav = remember { MainScreenItems.bottomNav() }
+  BtmSlot(screen, screenBottomNav)
 }

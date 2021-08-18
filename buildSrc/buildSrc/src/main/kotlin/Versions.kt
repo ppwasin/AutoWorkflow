@@ -7,6 +7,7 @@ object Versions {
 	const val coroutine = "1.5.1"
 	const val compose = "1.0.1"
 	const val composeActivity = "1.3.0"
+	const val composeNav = "2.4.0-alpha05"
 	const val accompanist = "0.16.1"
 	
 	const val workManager = "2.5.0"
