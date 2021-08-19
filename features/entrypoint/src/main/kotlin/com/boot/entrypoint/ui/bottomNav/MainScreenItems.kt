@@ -1,4 +1,4 @@
-package com.boot.entrypoint.screen.main
+package com.boot.entrypoint.ui.bottomNav
 
 enum class MainScreenItems {
   Recipes,

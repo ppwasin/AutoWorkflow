@@ -1,4 +1,4 @@
-package com.boot.entrypoint.screen
+package com.boot.entrypoint.ui
 
 import androidx.compose.runtime.Composable
 

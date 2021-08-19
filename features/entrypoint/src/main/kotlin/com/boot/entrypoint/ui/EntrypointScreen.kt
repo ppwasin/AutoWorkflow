@@ -13,23 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.entrypoint.screen
+package com.boot.entrypoint.ui
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.navigation.compose.rememberNavController
 import com.boot.entrypoint.platform.BtmSlot
-import com.boot.entrypoint.screen.main.MainScreenItems
-import com.boot.entrypoint.screen.main.bottomNav
+import com.boot.entrypoint.ui.bottomNav.MainScreenItems
+import com.boot.entrypoint.ui.bottomNav.bottomNav
+import com.boot.mealplan.recipes.RecipeEntrypoint
 import com.boot.theme.AppTheme
 
 @Composable
 fun EntrypointScreen(versionDescription: String) {
+  // hoist navctrl here to save/restore navigation state when swap between BTN
+  val recipeNavController = rememberNavController()
   AppTheme {
     BtmSlot(
-      MainScreenItems.values().toSet(),
-      MainScreenItems.bottomNav { item ->
+      screenItems = MainScreenItems.values().toSet(),
+      infoGetter = MainScreenItems.bottomNav(),
+      navigateTo = { item ->
         when (item) {
-          MainScreenItems.Recipes -> Recipes()
+          MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
           else -> Text(item.name)
         }
       }

@@ -55,6 +55,7 @@ dependencies {
     implementation(Deps.Compose.material)
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
+    implementation(Deps.Compose.navigation)
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
 
