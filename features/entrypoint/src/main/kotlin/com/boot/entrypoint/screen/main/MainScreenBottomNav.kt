@@ -1,6 +1,5 @@
 package com.boot.entrypoint.screen.main
 
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.NextPlan
@@ -9,10 +8,11 @@ import androidx.compose.material.icons.filled.ShoppingBasket
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.boot.entrypoint.platform.BottomNavTypeClasses
-import com.boot.entrypoint.screen.Recipes
 import java.util.Locale
 
-fun MainScreenItems.Companion.bottomNav(): BottomNavTypeClasses<MainScreenItems> {
+fun MainScreenItems.Companion.bottomNav(
+  navigateTo: @Composable (MainScreenItems) -> Unit
+): BottomNavTypeClasses<MainScreenItems> {
   return object : BottomNavTypeClasses<MainScreenItems> {
     override fun MainScreenItems.route(): String = name.lowercase()
     override fun MainScreenItems.label(): String =
@@ -31,10 +31,7 @@ fun MainScreenItems.Companion.bottomNav(): BottomNavTypeClasses<MainScreenItems>
 
     @Composable
     override fun MainScreenItems.Screen() {
-      return when (this) {
-        MainScreenItems.Recipes -> Recipes()
-        else -> Text(name)
-      }
+      return navigateTo(this)
     }
   }
 }

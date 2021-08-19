@@ -15,15 +15,24 @@
  */
 package com.boot.entrypoint.screen
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.screen.main.MainScreenItems
 import com.boot.entrypoint.screen.main.bottomNav
+import com.boot.theme.AppTheme
 
 @Composable
 fun EntrypointScreen(versionDescription: String) {
-  val screen = remember { MainScreenItems.values().toSet() }
-  val screenBottomNav = remember { MainScreenItems.bottomNav() }
-  BtmSlot(screen, screenBottomNav)
+  AppTheme {
+    BtmSlot(
+      MainScreenItems.values().toSet(),
+      MainScreenItems.bottomNav { item ->
+        when (item) {
+          MainScreenItems.Recipes -> Recipes()
+          else -> Text(item.name)
+        }
+      }
+    )
+  }
 }
