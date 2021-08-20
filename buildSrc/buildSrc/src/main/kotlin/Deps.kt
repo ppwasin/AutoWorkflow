@@ -27,7 +27,8 @@ object Deps {
 
     const val animation = "androidx.compose.animation:animation:${Versions.compose}"
     const val animationCore = "androidx.compose.animation:animation-core:${Versions.compose}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
+    const val constraintLayout =
+      "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"
     const val uiGeometry = "androidx.compose.ui:ui-geometry:${Versions.compose}"
     const val uiGraphic = "androidx.compose.ui:ui-graphics:${Versions.compose}"
     const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
@@ -43,12 +44,12 @@ object Deps {
 
     // Accompanist
     object Accompanist {
-      //built on top of 2.4.0-alpha06
+      // built on top of 2.4.0-alpha06
       const val navigationAnimation =
         "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
     }
-    
-    //Nav
+
+    // Nav
     const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNav}"
   }
 

@@ -13,10 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.boot.components.SubTitle
 import com.boot.components.Title
-import com.boot.components.search.SearchButton
 
 @Composable
-fun RecipeList(onClickSearch: () -> Unit) {
+fun RecipeList(searchBar: @Composable () -> Unit) {
   val dummyItems = remember { (0..5).toList() }
   LazyColumn(
     modifier = Modifier.fillMaxWidth(),
@@ -25,7 +24,7 @@ fun RecipeList(onClickSearch: () -> Unit) {
   ) {
     item { Title("Plan Your Meal") }
     item { SubTitle(text = "Take care of the planet\n and your wallet at the same time") }
-    item { SearchButton(onClickSearch) }
+    item { searchBar() }
 
     items(dummyItems) { item -> Text(item.toString()) }
   }
