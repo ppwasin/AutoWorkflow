@@ -43,11 +43,33 @@ fun SearchItemSlot(
   startIcon: ImageVector,
   text: String,
   endIcon: ImageVector?,
-  layoutType: SearchItemSlotLayoutType = Row
+  layoutType: SearchItemSlotLayoutType = ConstraintLayout
 ) {
   when (layoutType) {
     Row -> SearchItemSlotRow(startIcon, text, endIcon)
-    ConstraintLayout -> SearchItemConstraintLayout(startIcon, text, endIcon)
+    ConstraintLayout ->
+      SearchItemConstraintLayout(
+        startIcon = {
+          Icon(
+            startIcon,
+            contentDescription = "SearchStartIcon",
+          )
+        },
+        text = {
+          Text(
+            text,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Start,
+          )
+        },
+        endIcon = {
+          Icon(
+            endIcon!!,
+            contentDescription = "SearchEndIcon",
+          )
+        }
+      )
   }
 }
 
@@ -86,9 +108,9 @@ private fun SearchItemSlotRow(startIcon: ImageVector, text: String, endIcon: Ima
 
 @Composable
 private fun SearchItemConstraintLayout(
-  startIcon: ImageVector,
-  text: String,
-  endIcon: ImageVector?
+  startIcon: @Composable () -> Unit,
+  text: @Composable () -> Unit,
+  endIcon: @Composable (() -> Unit)?
 ) {
   BoxWithConstraints {
     val boxWithConstraintsScope = this
@@ -102,12 +124,7 @@ private fun SearchItemConstraintLayout(
           constraintVertical()
           start.linkTo(parent.start)
         },
-      ) {
-        Icon(
-          startIcon,
-          contentDescription = "SearchStartIcon",
-        )
-      }
+      ) { startIcon() }
 
       Box(
         modifier =
@@ -115,14 +132,7 @@ private fun SearchItemConstraintLayout(
             constraintVertical()
             start.linkTo(startIconConst.end, margin = iconSpace)
           }
-      ) {
-        Text(
-          text,
-          maxLines = 1,
-          overflow = TextOverflow.Ellipsis,
-          textAlign = TextAlign.Start,
-        )
-      }
+      ) { text() }
 
       if (endIcon != null)
         Box(
@@ -131,12 +141,7 @@ private fun SearchItemConstraintLayout(
               constraintVertical()
               end.linkTo(parent.end)
             },
-        ) {
-          Icon(
-            endIcon,
-            contentDescription = "SearchEndIcon",
-          )
-        }
+        ) { endIcon() }
     }
   }
 }
