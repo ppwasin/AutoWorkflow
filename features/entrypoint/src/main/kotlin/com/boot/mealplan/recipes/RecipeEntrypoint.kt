@@ -11,8 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.boot.components.search.SearchButton
-import com.boot.components.search.SearchItemSlot
 import com.boot.components.search.SearchScreenSlot
+import com.boot.components.search.item.SearchItemSlot
 import com.boot.entrypoint.ui.RecipeList
 
 enum class RecipeRoute {
