@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.boot.theme.AppTheme
 
 @Composable
 fun SearchScreenSlot(
@@ -25,12 +26,14 @@ fun SearchScreenSlot(
 @Preview(showBackground = true)
 @Composable
 fun SearchScreenPreview() {
-  SearchScreenSlot(
-    onSubmit = {},
-    onBack = {},
-    content = {
-      item { Text("1") }
-      item { Text("2") }
-    }
-  )
+  AppTheme {
+    SearchScreenSlot(
+      onSubmit = {},
+      onBack = {},
+      content = {
+        item { Text("1") }
+        item { Text("2") }
+      }
+    )
+  }
 }

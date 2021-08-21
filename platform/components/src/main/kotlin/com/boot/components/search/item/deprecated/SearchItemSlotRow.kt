@@ -27,7 +27,15 @@ import com.boot.components.search.item.SearchItemPreviewProvider
 import com.boot.theme.AppTheme
 
 @Composable
-internal fun SearchItemSlotRow(startIcon: ImageVector, text: String, endIcon: ImageVector?) {
+@Deprecated(
+  "use SearchItemSlot instead",
+  replaceWith =
+    ReplaceWith(
+      "SearchItemSlot(startIcon = { startIcon }, text = { Text(text) }, endIcon = { endIcon })",
+      imports = ["com.boot.components.search.item.SearchItemSlot", "androidx.compose.material.Text"]
+    )
+)
+private fun SearchItemSlotRow(startIcon: ImageVector, text: String, endIcon: ImageVector?) {
   BoxWithConstraints {
     val boxWithConstraintsScope = this
     val iconSize = ButtonDefaults.IconSize

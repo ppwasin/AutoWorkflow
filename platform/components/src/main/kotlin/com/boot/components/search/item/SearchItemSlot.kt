@@ -1,27 +1,34 @@
 package com.boot.components.search.item
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarm
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintSet
+import androidx.constraintlayout.compose.Dimension
+import com.boot.components.search.item.Tag.EndLayoutId
+import com.boot.components.search.item.Tag.MiddleLayoutId
+import com.boot.components.search.item.Tag.StartLayoutId
 import com.boot.components.utils.constraintVertical
 import com.boot.theme.AppTheme
+
+private enum class Tag {
+  StartLayoutId,
+  MiddleLayoutId,
+  EndLayoutId
+}
 
 @Composable
 fun SearchItemSlot(
@@ -29,37 +36,40 @@ fun SearchItemSlot(
   text: @Composable () -> Unit,
   endIcon: @Composable (() -> Unit)? = null
 ) {
-  BoxWithConstraints {
-    val boxWithConstraintsScope = this
-    val iconSize = ButtonDefaults.IconSize
-    val iconSpace = ButtonDefaults.IconSpacing
-    val textWidth = boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
-    ConstraintLayout(Modifier.fillMaxWidth().wrapContentHeight()) {
-      val (startIconConst, textConst, endIconConst) = createRefs()
-      Box(
-        Modifier.size(ButtonDefaults.IconSize).constrainAs(startIconConst) {
+  val iconSize = ButtonDefaults.IconSize
+  val iconSpace = ButtonDefaults.IconSpacing
+
+  ConstraintLayout(
+    modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+    constraintSet =
+      ConstraintSet {
+        val startConst = createRefFor(StartLayoutId)
+        val middleConst = createRefFor(MiddleLayoutId)
+        val endConst = createRefFor(EndLayoutId)
+
+        constrain(startConst) {
           constraintVertical()
           start.linkTo(parent.start)
-        },
-      ) { startIcon() }
-
-      Box(
-        modifier =
-          Modifier.width(textWidth).constrainAs(textConst) {
-            constraintVertical()
-            start.linkTo(startIconConst.end, margin = iconSpace)
+        }
+        constrain(middleConst) {
+          constraintVertical()
+          start.linkTo(startConst.end, margin = iconSpace)
+          if (endIcon != null) {
+            end.linkTo(endConst.start, margin = iconSpace)
+          } else {
+            end.linkTo(parent.end, margin = iconSpace)
           }
-      ) { text() }
-
-      if (endIcon != null)
-        Box(
-          modifier =
-            Modifier.size(ButtonDefaults.IconSize).constrainAs(endIconConst) {
-              constraintVertical()
-              end.linkTo(parent.end)
-            },
-        ) { endIcon() }
-    }
+          width = Dimension.fillToConstraints
+        }
+        constrain(endConst) {
+          constraintVertical()
+          end.linkTo(parent.end)
+        }
+      }
+  ) {
+    Box(Modifier.layoutId(StartLayoutId).size(iconSize)) { startIcon() }
+    Box(modifier = Modifier.layoutId(MiddleLayoutId)) { text() }
+    if (endIcon != null) Box(modifier = Modifier.layoutId(EndLayoutId).size(iconSize)) { endIcon() }
   }
 }
 
@@ -77,14 +87,7 @@ fun SearchItemSlotPreview(
           contentDescription = "SearchStartIcon",
         )
       },
-      text = {
-        Text(
-          data.text,
-          maxLines = 1,
-          overflow = TextOverflow.Ellipsis,
-          textAlign = TextAlign.Start,
-        )
-      },
+      text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
       endIcon = data.endIcon
     )
   }

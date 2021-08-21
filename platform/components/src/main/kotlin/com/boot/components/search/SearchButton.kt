@@ -17,9 +17,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.boot.components.ComponentColors
 
 @Composable
 fun SearchButton(onClick: () -> Unit) {
@@ -27,7 +27,10 @@ fun SearchButton(onClick: () -> Unit) {
     modifier =
       Modifier.fillMaxWidth()
         .clickable { onClick() }
-        .background(color = Color(0xFFEBEBEB), shape = RoundedCornerShape(10.dp))
+        .background(
+          color = ComponentColors.searchInputBackground,
+          shape = RoundedCornerShape(10.dp)
+        )
         .padding(8.dp),
     verticalAlignment = Alignment.CenterVertically
   ) {
