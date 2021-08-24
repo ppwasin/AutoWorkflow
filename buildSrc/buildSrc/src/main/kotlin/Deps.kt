@@ -36,21 +36,22 @@ object Deps {
     const val uiUtils = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
 
-    // Test
     // Test rules and transitive dependencies:
     const val uiTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     // Needed for createComposeRule, but not createAndroidComposeRule:
     const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
-    // Accompanist
-    object Accompanist {
-      // built on top of 2.4.0-alpha06
-      const val navigationAnimation =
-        "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
-    }
+    // Others Compose related libs
+    const val swipeToRefresh =
+      "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
+    const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
 
     // Nav
-    const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNav}"
+    private const val navIsStable: Boolean = false
+    val navigation =
+      if (navIsStable)
+        "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
+      else "androidx.navigation:navigation-compose:${Versions.composeNav}"
   }
 
   object WorkManager {
@@ -63,6 +64,7 @@ object Deps {
   // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
+  const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
   // Test
   object Test {
