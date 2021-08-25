@@ -1,6 +1,7 @@
 package com.boot.components.fake
 
-import com.boot.components.search.FakeSearchFetcher.FakeItem
+import com.boot.components.fake.model.FakeItem
+import com.boot.components.fake.model.PagingResponse
 
 object FakePlaceHolderConfig {
   const val isEnable: Boolean = true

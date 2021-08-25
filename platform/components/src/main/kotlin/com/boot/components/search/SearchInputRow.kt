@@ -24,7 +24,10 @@ import androidx.compose.ui.unit.sp
 fun SearchInputRow(text: String, setText: (String) -> Unit) {
   TextField(
     value = text,
-    onValueChange = { value -> setText(value) },
+    onValueChange = { value ->
+      println("value: $value")
+      setText(value)
+    },
     modifier = Modifier.fillMaxWidth(),
     textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
     leadingIcon = {

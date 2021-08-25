@@ -20,9 +20,13 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.boot.autoworkflow.BuildConfig
 import com.boot.entrypoint.ui.EntrypointScreen
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 class MainActivity : AppCompatActivity() {
 
+  @ExperimentalCoroutinesApi
+  @FlowPreview
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 

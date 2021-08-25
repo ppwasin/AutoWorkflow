@@ -1,4 +1,4 @@
-package com.boot.components.fake
+package com.boot.components.fake.model
 
 data class PagingResponse<T>(
   val totalPages: Int,

@@ -1,15 +1,18 @@
 package com.boot.mealplan.recipes
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.boot.components.fake.FakeFactory
 import com.boot.components.search.SearchButton
 import com.boot.components.search.SearchScreenSlot
 import com.boot.entrypoint.ui.RecipeList
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 enum class RecipeRoute {
   List,
@@ -19,9 +22,11 @@ enum class RecipeRoute {
   fun route() = this.name
 }
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @Composable
 fun RecipeEntrypoint(navController: NavHostController = rememberNavController()) {
-  val (searchText, setSearchText) = remember { mutableStateOf("") }
+  val coroutineScope = rememberCoroutineScope()
   NavHost(navController = navController, startDestination = RecipeRoute.List.route()) {
     composable(RecipeRoute.List.route()) {
       RecipeList(
@@ -29,10 +34,7 @@ fun RecipeEntrypoint(navController: NavHostController = rememberNavController())
       )
     }
     composable(RecipeRoute.Search.route()) {
-      SearchScreenSlot(
-        onBack = { navController.popBackStack() },
-        onSubmit = { /* TODO() */},
-      )
+      SearchScreenSlot(viewModel = remember { FakeFactory.createViewModel(coroutineScope) })
     }
     composable(RecipeRoute.Details.route()) { RecipeDetails() }
   }

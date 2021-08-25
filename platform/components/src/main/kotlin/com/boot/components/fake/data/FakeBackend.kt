@@ -1,5 +1,7 @@
-package com.boot.components.fake
+package com.boot.components.fake.data
 
+import com.boot.components.fake.model.PagingResponse
+import com.boot.components.utils.logDebug
 import kotlinx.coroutines.delay
 
 class FakeBackend<T>(private val totalItems: Int, createFakeItem: (index: Int) -> T) {
@@ -15,6 +17,6 @@ class FakeBackend<T>(private val totalItems: Int, createFakeItem: (index: Int) -
         page = page,
         items = allItems.subList(fromIndex = startIndex, toIndex = lastIndex)
       )
-      .also { println("get items at page $page => Result: $it") }
+      .also { logDebug("get items at page $page => Result: $it") }
   }
 }

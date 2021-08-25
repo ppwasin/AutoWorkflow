@@ -64,7 +64,7 @@ object Deps {
   // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
-  const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+  const val pagingRuntime = "androidx.paging:paging-runtime:${Versions.paging}"
 
   // Test
   object Test {
