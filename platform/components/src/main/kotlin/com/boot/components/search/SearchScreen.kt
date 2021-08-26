@@ -34,12 +34,16 @@ fun SearchScreenSlot(viewModel: QueryViewModel<String, FakeItem>) {
   Column {
     SearchInputRow(query, setQuery)
     LazyColumn {
-      if (paging.loadState.refresh != LoadState.Loading) {
-        items(items = paging, key = FakeItem::id) { item ->
-          Box(Modifier.height(128.dp).fillMaxWidth()) {
-            when {
-              item != null -> Text(item.text)
-              else -> Text("Show Place holder")
+      if (paging.loadState.refresh is LoadState.NotLoading) {
+        if (paging.itemCount == 0) {
+          item { Text("Empty content") }
+        } else {
+          items(items = paging, key = FakeItem::id) { item ->
+            Box(Modifier.height(128.dp).fillMaxWidth()) {
+              when {
+                item != null -> Text(item.text)
+                else -> Text("Show Place holder")
+              }
             }
           }
         }
