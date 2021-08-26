@@ -60,13 +60,12 @@ fun SearchScreenSlot(viewModel: QueryViewModel<String, FakeItem>) {
               modifier = Modifier.clickable { paging.retry() }
             )
           }
-        paging.loadState.append == LoadState.Loading -> {
+        paging.loadState.append == LoadState.Loading ->
           item {
             CircularProgressIndicator(
               modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
             )
           }
-        }
         paging.loadState.append is LoadState.Error ->
           item {
             val e = paging.loadState.append as LoadState.Error
