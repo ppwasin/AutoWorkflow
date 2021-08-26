@@ -15,6 +15,7 @@
  */
 package com.boot.entrypoint.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
@@ -26,6 +27,7 @@ import com.boot.theme.AppTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
+@ExperimentalFoundationApi
 @FlowPreview
 @ExperimentalCoroutinesApi
 @Composable

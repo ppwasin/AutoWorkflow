@@ -12,9 +12,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.shareIn
 
 @FlowPreview
@@ -31,9 +29,7 @@ class QueryViewModel<QueryInput : Any, Output : Any>(
     state =
       snapshotFlow { query.value }
         .debounce { if (it == initialQuery) 0 else 600 }
-        .distinctUntilChanged()
         .flatMapLatest { queryInput -> repository.buildPager(queryInput).flow.cachedIn(scope) }
-        .onEach { println("$it") }
         .shareIn(scope = scope, started = SharingStarted.WhileSubscribed(3000), replay = 1)
   }
 }

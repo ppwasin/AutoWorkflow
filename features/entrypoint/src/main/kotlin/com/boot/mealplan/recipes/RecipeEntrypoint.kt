@@ -1,5 +1,6 @@
 package com.boot.mealplan.recipes
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -22,6 +23,7 @@ enum class RecipeRoute {
   fun route() = this.name
 }
 
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @FlowPreview
 @Composable
