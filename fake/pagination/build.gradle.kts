@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-    
+
     compileOptions {
         sourceCompatibility = Build.java
         targetCompatibility = Build.java
@@ -48,8 +48,7 @@ android {
 
 dependencies {
     implementation(project(":platform:theme"))
-    implementation(project(":platform:components"))
-    implementation(project(":fake:pagination"))
+    implementation(project(":platform:theme"))
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
@@ -58,10 +57,14 @@ dependencies {
     implementation(Deps.Compose.materialIcon)
     implementation(Deps.Compose.materialIconsExt)
     implementation(Deps.Compose.navigation)
+    implementation(Deps.Compose.swipeToRefresh)
+    implementation(Deps.Compose.constraintLayout)
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
-    implementation(Deps.Compose.paging)
     
+    implementation(Deps.Compose.paging)
+    implementation(Deps.pagingRuntime)
+
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)
     androidTestImplementation(Deps.Compose.uiTest)

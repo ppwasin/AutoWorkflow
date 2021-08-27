@@ -3,9 +3,9 @@ package com.boot.components.search.viewmodel
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshotFlow
+import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.boot.components.search.data.QueryRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.shareIn
 @FlowPreview
 @ExperimentalCoroutinesApi
 class QueryViewModel<QueryInput : Any, Output : Any>(
-  private val repository: QueryRepository<QueryInput, Output>,
+  private val pagerFactory: (QueryInput) -> Pager<Int, Output>,
   scope: CoroutineScope,
   initialQuery: QueryInput
 ) {
@@ -28,8 +28,8 @@ class QueryViewModel<QueryInput : Any, Output : Any>(
   init {
     state =
       snapshotFlow { query.value }
-        .debounce { if (it == initialQuery) 0 else 600 }
-        .flatMapLatest { queryInput -> repository.buildPager(queryInput).flow.cachedIn(scope) }
+        .debounce { if (it == initialQuery) 0 else 400 }
+        .flatMapLatest { queryInput -> pagerFactory(queryInput).flow.cachedIn(scope) }
         .shareIn(scope = scope, started = SharingStarted.WhileSubscribed(3000), replay = 1)
   }
 }

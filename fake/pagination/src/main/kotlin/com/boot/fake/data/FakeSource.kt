@@ -1,4 +1,4 @@
-package com.boot.components.fake.data
+package com.boot.fake.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingSource.LoadResult.Error
@@ -6,8 +6,7 @@ import androidx.paging.PagingSource.LoadResult.Page
 import androidx.paging.PagingState
 import com.boot.components.fake.FakePagingConstant
 import com.boot.components.fake.FakePlaceHolderConfig
-import com.boot.components.fake.model.FakeItem
-import com.boot.components.utils.logDebug
+import com.boot.fake.model.FakeItem
 
 class FakeSource(private val searchInput: String, private val fakeBackend: FakeBackend<FakeItem>) :
   PagingSource<Int, FakeItem>() {
@@ -24,7 +23,7 @@ class FakeSource(private val searchInput: String, private val fakeBackend: FakeB
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FakeItem> {
     return try {
       val page = params.key ?: FakePagingConstant.START_PAGE_INDEX
-      logDebug("load with query: $searchInput at page $page")
+      println("load with query: $searchInput at page $page")
       val response = fakeBackend.getFakeItems(page, FakePagingConstant.PER_PAGE)
       val isLastPage = response.page == response.totalPages
       Page(

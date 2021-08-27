@@ -31,7 +31,7 @@ import kotlinx.coroutines.FlowPreview
 @FlowPreview
 @ExperimentalCoroutinesApi
 @Composable
-fun EntrypointScreen(versionDescription: String) {
+fun EntrypointScreen() {
   // hoist navctrl here to save/restore navigation state when swap between BTN
   val recipeNavController = rememberNavController()
   AppTheme {

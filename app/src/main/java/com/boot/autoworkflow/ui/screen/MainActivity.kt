@@ -18,22 +18,19 @@ package com.boot.autoworkflow.ui.screen
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.boot.autoworkflow.BuildConfig
+import androidx.compose.foundation.ExperimentalFoundationApi
 import com.boot.entrypoint.ui.EntrypointScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
 class MainActivity : AppCompatActivity() {
 
+  @ExperimentalFoundationApi
   @ExperimentalCoroutinesApi
   @FlowPreview
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    setContent {
-      EntrypointScreen(
-        versionDescription = "Name: ${BuildConfig.VERSION_NAME}, Code: ${BuildConfig.VERSION_CODE}"
-      )
-    }
+    setContent { EntrypointScreen() }
   }
 }
