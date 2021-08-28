@@ -23,6 +23,11 @@ subprojects {
         google()
         mavenCentral()
     }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class){
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+    }
 }
 
 plugins {

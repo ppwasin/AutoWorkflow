@@ -27,7 +27,8 @@ object Deps {
 
     const val animation = "androidx.compose.animation:animation:${Versions.compose}"
     const val animationCore = "androidx.compose.animation:animation-core:${Versions.compose}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
+    const val constraintLayout =
+      "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"
     const val uiGeometry = "androidx.compose.ui:ui-geometry:${Versions.compose}"
     const val uiGraphic = "androidx.compose.ui:ui-graphics:${Versions.compose}"
     const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
@@ -35,21 +36,22 @@ object Deps {
     const val uiUtils = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val uiViewBinding = "androidx.compose.ui:ui-viewbinding:${Versions.compose}"
 
-    // Test
     // Test rules and transitive dependencies:
     const val uiTest = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     // Needed for createComposeRule, but not createAndroidComposeRule:
     const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
-    // Accompanist
-    object Accompanist {
-      //built on top of 2.4.0-alpha06
-      const val navigationAnimation =
+    // Others Compose related libs
+    const val swipeToRefresh =
+      "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
+    const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
+
+    // Nav
+    private const val navIsStable: Boolean = false
+    val navigation =
+      if (navIsStable)
         "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
-    }
-    
-    //Nav
-    const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNav}"
+      else "androidx.navigation:navigation-compose:${Versions.composeNav}"
   }
 
   object WorkManager {
@@ -62,6 +64,7 @@ object Deps {
   // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
+  const val pagingRuntime = "androidx.paging:paging-runtime:${Versions.paging}"
 
   // Test
   object Test {
@@ -69,5 +72,9 @@ object Deps {
     const val junit5Jupiter = "org.junit.jupiter:junit-jupiter"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val junitInstrumental = "androidx.test.ext:junit:${Versions.junitInstrumental}"
+  }
+  
+  object Room {
+    const val runtime =  "androidx.room:room-runtime:${Versions.room}"
   }
 }

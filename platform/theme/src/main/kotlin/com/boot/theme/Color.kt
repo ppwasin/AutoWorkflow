@@ -13,24 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.autoworkflow.ui.screen
+package com.boot.navigation
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.ExperimentalFoundationApi
-import com.boot.entrypoint.ui.EntrypointScreen
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
+import androidx.compose.ui.graphics.Color
 
-class MainActivity : AppCompatActivity() {
+val Purple200 = Color(0xFFBB86FC)
 
-  @ExperimentalFoundationApi
-  @ExperimentalCoroutinesApi
-  @FlowPreview
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+val Purple500 = Color(0xFF6200EE)
 
-    setContent { EntrypointScreen() }
-  }
-}
+val Purple700 = Color(0xFF3700B3)
+
+val Teal200 = Color(0xFF03DAC5)

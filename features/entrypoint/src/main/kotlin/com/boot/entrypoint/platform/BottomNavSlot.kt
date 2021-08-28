@@ -17,43 +17,45 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun <T> BtmSlot(screenItems: Set<T>, parser: BottomNavTypeClasses<T>) =
-  parser.run {
-    val navController = rememberNavController()
-    //	val items = listOf(Screen.Recipes, Screen.Plan, Screen.Basket, Screen.Profile)
-    navController.currentDestination
-    Scaffold(
-      bottomBar = {
-        BottomNavigation {
-          val navBackStackEntry by navController.currentBackStackEntryAsState()
-          val currentDestination = navBackStackEntry?.destination
-          screenItems.forEach { item ->
-            BottomNavigationItem(
-              icon = { Icon(item.icon(), contentDescription = null) },
-              label = { Text(item.label()) },
-              selected = currentDestination?.hierarchy?.any { it.route == item.route() } == true,
-              onClick = {
-                navController.navigate(item.route()) {
-                  // Pop up to the start destination of the graph to
-                  // avoid building up a large stack of destinations
-                  // on the back stack as users select items
-                  popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                  // Avoid multiple copies of the same destination when
-                  // reselecting the same item
-                  launchSingleTop = true
-                  // Restore state when reselecting a previously selected item
-                  restoreState = true
-                }
+fun <T> BtmSlot(
+  screenItems: Set<T>,
+  infoGetter: BottomNavInfoGetter<T>,
+  navigateTo: @Composable (T) -> Unit
+) {
+  val navController = rememberNavController()
+  Scaffold(
+    bottomBar = {
+      BottomNavigation {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+        screenItems.forEach { item ->
+          BottomNavigationItem(
+            icon = { Icon(infoGetter.getIcon(item), contentDescription = null) },
+            label = { Text(infoGetter.getLabel(item)) },
+            selected =
+              currentDestination?.hierarchy?.any { it.route == infoGetter.getRoute(item) } == true,
+            onClick = {
+              navController.navigate(infoGetter.getRoute(item)) {
+                // Pop up to the start destination of the graph to
+                // avoid building up a large stack of destinations
+                // on the back stack as users select items
+                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                // Avoid multiple copies of the same destination when
+                // reselecting the same item
+                launchSingleTop = true
+                // Restore state when reselecting a previously selected item
+                restoreState = true
               }
-            )
-          }
+            }
+          )
         }
       }
-    ) { innerPadding ->
-      NavHost(
-        navController,
-        startDestination = screenItems.first().route(),
-        Modifier.padding(innerPadding)
-      ) { screenItems.forEach { item -> composable(item.route()) { item.Screen() } } }
     }
+  ) { innerPadding ->
+    NavHost(
+      navController,
+      startDestination = infoGetter.getRoute(screenItems.first()),
+      Modifier.padding(innerPadding)
+    ) { screenItems.forEach { item -> composable(infoGetter.getRoute(item)) { navigateTo(item) } } }
   }
+}
