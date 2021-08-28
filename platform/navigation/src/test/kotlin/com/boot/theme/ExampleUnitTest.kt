@@ -1,4 +1,4 @@
-package com.boot.navigation
+package com.boot.theme
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

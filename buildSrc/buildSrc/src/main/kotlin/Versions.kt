@@ -16,7 +16,7 @@ object Versions {
   const val composePaging = "1.0.0-alpha12"
   const val accompanist = "0.17.0"
 
-  /** AppCompat & UI */
+  /** Android Platform */
   /* Beware!! DFM + Compose issue in old version
   // Alpha for propagate ViewTreeLifecycleOwner from main to dynamic feature (Compose)
   const val appCompat = "1.3.0-alpha02"
@@ -26,6 +26,7 @@ object Versions {
   const val appCompat = "1.3.0"
   const val material = "1.4.0"
   const val paging = "3.0.1"
+  const val room = "2.3.0"
 
   /** Test */
   const val junit5 = "5.7.0"

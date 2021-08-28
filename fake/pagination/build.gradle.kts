@@ -48,7 +48,6 @@ android {
 
 dependencies {
     implementation(project(":platform:theme"))
-    implementation(project(":platform:theme"))
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
@@ -64,7 +63,8 @@ dependencies {
     
     implementation(Deps.Compose.paging)
     implementation(Deps.pagingRuntime)
-
+    implementation(Deps.pagingRuntime)
+    
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)
     androidTestImplementation(Deps.Compose.uiTest)

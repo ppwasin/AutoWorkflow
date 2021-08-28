@@ -73,4 +73,8 @@ object Deps {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val junitInstrumental = "androidx.test.ext:junit:${Versions.junitInstrumental}"
   }
+  
+  object Room {
+    const val runtime =  "androidx.room:room-runtime:${Versions.room}"
+  }
 }

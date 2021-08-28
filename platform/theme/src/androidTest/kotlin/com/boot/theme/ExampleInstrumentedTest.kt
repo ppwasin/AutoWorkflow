@@ -1,4 +1,4 @@
-package com.boot.navigation
+package com.boot.theme
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -18,6 +18,6 @@ class ExampleInstrumentedTest {
   fun useAppContext() {
     // Context of the app under test.
     val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    assertEquals("com.boot.navigation.test", appContext.packageName)
+    assertEquals("com.boot.theme", appContext.packageName)
   }
 }
