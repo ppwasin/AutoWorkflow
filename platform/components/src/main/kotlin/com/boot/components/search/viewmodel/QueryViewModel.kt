@@ -7,16 +7,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.shareIn
 
-@FlowPreview
-@ExperimentalCoroutinesApi
 class QueryViewModel<QueryInput : Any, Output : Any>(
   private val pagerFactory: (QueryInput) -> Pager<Int, Output>,
   scope: CoroutineScope,

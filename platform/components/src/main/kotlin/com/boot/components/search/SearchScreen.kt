@@ -1,6 +1,5 @@
 package com.boot.components.search
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,12 +16,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.boot.components.search.viewmodel.QueryViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 
-@ExperimentalFoundationApi
-@FlowPreview
-@ExperimentalCoroutinesApi
 @Composable
 fun <T : Any> SearchScreenSlot(
   viewModel: QueryViewModel<String, T>,

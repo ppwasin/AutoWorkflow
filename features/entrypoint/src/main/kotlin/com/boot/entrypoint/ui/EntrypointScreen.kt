@@ -15,7 +15,6 @@
  */
 package com.boot.entrypoint.ui
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
@@ -23,13 +22,8 @@ import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
 import com.boot.entrypoint.ui.bottomNav.bottomNav
 import com.boot.mealplan.recipes.RecipeEntrypoint
-import com.boot.theme.AppTheme
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
+import com.boot.navigation.AppTheme
 
-@ExperimentalFoundationApi
-@FlowPreview
-@ExperimentalCoroutinesApi
 @Composable
 fun EntrypointScreen() {
   // hoist navctrl here to save/restore navigation state when swap between BTN

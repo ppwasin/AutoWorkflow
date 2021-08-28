@@ -1,4 +1,4 @@
-package com.boot.theme
+package com.boot.navigation
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

@@ -22,7 +22,7 @@ import com.boot.components.search.item.SearchItemPreviewProvider
 import com.boot.components.search.item.SearchItemPreviewProvider.Data
 import com.boot.components.search.item.SearchTextRow
 import com.boot.components.utils.constraintVertical
-import com.boot.theme.AppTheme
+import com.boot.navigation.AppTheme
 
 @Composable
 @Deprecated(

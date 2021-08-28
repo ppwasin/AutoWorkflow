@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.boot.theme
+package com.boot.navigation
 
 import androidx.compose.ui.graphics.Color
 

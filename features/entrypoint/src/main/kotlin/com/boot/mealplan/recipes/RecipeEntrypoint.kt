@@ -1,6 +1,5 @@
 package com.boot.mealplan.recipes
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,8 +15,6 @@ import com.boot.components.search.SearchButton
 import com.boot.components.search.SearchScreenSlot
 import com.boot.entrypoint.ui.RecipeList
 import com.boot.fake.model.FakeItem
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 
 enum class RecipeRoute {
   List,
@@ -27,9 +24,6 @@ enum class RecipeRoute {
   fun route() = this.name
 }
 
-@ExperimentalFoundationApi
-@ExperimentalCoroutinesApi
-@FlowPreview
 @Composable
 fun RecipeEntrypoint(navController: NavHostController = rememberNavController()) {
   NavHost(navController = navController, startDestination = RecipeRoute.List.route()) {
