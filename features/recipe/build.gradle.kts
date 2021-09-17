@@ -48,25 +48,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":platform:theme"))
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.uiTooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.materialIcon)
-    implementation(Deps.Compose.materialIconsExt)
-    implementation(Deps.Compose.navigation)
-    implementation(Deps.Compose.swipeToRefresh)
-    implementation(Deps.Compose.constraintLayout)
-    implementation(Deps.Coroutine.core)
-    implementation(Deps.Coroutine.android)
+
+    compileOnly(Deps.KSP.processing)
+    implementation(Deps.Room.runtime)
+    ksp(Deps.Room.compiler)
+    implementation(Deps.Room.ktxAndcoroutine)
     
     implementation(Deps.Compose.paging)
     implementation(Deps.pagingRuntime)
-    
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
-    androidTestImplementation(Deps.Compose.uiTest)
-    debugImplementation(Deps.Compose.uiTestManifest)
 }

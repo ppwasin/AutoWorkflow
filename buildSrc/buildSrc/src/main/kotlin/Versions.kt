@@ -1,6 +1,7 @@
 object Versions {
-  const val kotlin = "1.5.21"
-  const val androidGradle = "7.0.1"
+  const val kotlin = "1.5.30"
+  const val ksp = "1.5.30-1.0.0"
+  const val androidGradle = "7.0.2"
   const val spotless = "5.14.2"
   const val rxjava = "2.2.21"
   const val rxAndroid = "2.1.1"
@@ -9,7 +10,7 @@ object Versions {
   const val dagger = "2.35.1"
 
   /** Compose */
-  const val compose = "1.0.1"
+  const val compose = "1.1.0-alpha03"
   const val composeConstraintLayout = "1.0.0-beta02"
   const val composeActivity = "1.3.0"
   const val composeNav = "2.4.0-alpha05"
@@ -36,4 +37,8 @@ object Versions {
   /** Build */
   const val googleService = "4.3.8"
   const val playPublisher = "3.6.0"
+  
+  /** Network*/
+  const val retrofit = "1.6.3"
+  const val okhttp = "4.9.1"
 }
