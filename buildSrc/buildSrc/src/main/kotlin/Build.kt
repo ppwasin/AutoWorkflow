@@ -4,9 +4,9 @@ object Build {
 	const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
 	const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 	val java = JavaVersion.VERSION_11
-	const val compileSdk = 30
+	const val compileSdk = 31
 	const val minSdk = 23
-	const val targetSdk = 30
+	const val targetSdk = 31
 	const val appId = "com.boot.autoworkflow"
 	
 	object GoogleService {

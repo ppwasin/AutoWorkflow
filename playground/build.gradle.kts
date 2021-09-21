@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = Build.compileSdk
 
     defaultConfig {
         applicationId = "com.boot.playground"
-        minSdk = 23
-        targetSdk = 30
+        minSdk = Build.minSdk
+        targetSdk = Build.targetSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -59,12 +59,11 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.3.0")
+    implementation(Deps.material)
+    implementation(Deps.appcompat)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation(Deps.Test.espresso)
+    androidTestImplementation(Deps.Test.junitInstrumental)
 
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)

@@ -10,9 +10,9 @@ object Versions {
   const val dagger = "2.35.1"
 
   /** Compose */
-  const val compose = "1.1.0-alpha03"
+  const val compose = "1.1.0-alpha04"
   const val composeConstraintLayout = "1.0.0-beta02"
-  const val composeActivity = "1.3.0"
+  const val composeActivity = "1.4.0-alpha02"
   const val composeNav = "2.4.0-alpha05"
   const val composePaging = "1.0.0-alpha12"
   const val accompanist = "0.17.0"
