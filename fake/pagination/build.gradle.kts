@@ -3,7 +3,6 @@ apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id(Deps.KSP.plugin) version Versions.ksp
 }
 
 android {
@@ -63,6 +62,7 @@ dependencies {
     implementation(Deps.Coroutine.android)
     
     implementation(Deps.Compose.paging)
+    implementation(Deps.pagingRuntime)
     implementation(Deps.pagingRuntime)
     
     androidTestImplementation(Deps.Test.espresso)
