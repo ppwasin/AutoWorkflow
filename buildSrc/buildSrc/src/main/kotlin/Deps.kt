@@ -83,7 +83,7 @@ object Deps {
   }
   
   object KSP {
-    const val processing = "com.google.devtools.ksp:symbol-processing-api${Versions.ksp}"
+    const val processing = "com.google.devtools.ksp:symbol-processing-api:${Versions.ksp}"
     const val plugin = "com.google.devtools.ksp"
   }
 
