@@ -75,6 +75,36 @@ object Deps {
   }
   
   object Room {
+    const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val runtime =  "androidx.room:room-runtime:${Versions.room}"
+    const val ktxAndcoroutine = "androidx.room:room-ktx:${Versions.room}"
+    const val testHelper = "androidx.room:room-testing:${Versions.room}"
+    const val paging3 = "androidx.room:room-paging:${Versions.paging}"
+  }
+  
+  object KSP {
+    const val processing = "com.google.devtools.ksp:symbol-processing-api:${Versions.ksp}"
+    const val plugin = "com.google.devtools.ksp"
+  }
+
+  object Retrofit {
+    const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    const val moshi = "com.squareup.retrofit2:converter-moshi${Versions.retrofit}"
+    const val logging = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofit}"
+  }
+
+  object Arrowkt {
+    const val bomPlatform = "io.arrow-kt:arrow-stack:${Versions.arrowkt}"
+    const val core = "io.arrow-kt:arrow-core"
+
+    // Fx
+    const val fxCoroutine = "io.arrow-kt:arrow-fx-coroutines"
+    const val fxStm = "io.arrow-kt:arrow-fx-stm"
+
+    // Optics
+    const val metaKapt = "io.arrow-kt:arrow-meta"
+    const val optics = "io.arrow-kt:arrow-optics"
+
   }
 }

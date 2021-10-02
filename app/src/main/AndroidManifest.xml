@@ -19,6 +19,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!--Match: https://autoworkflow.onelink.me/2Hxu/7a749ce4 -->
+            <intent-filter  android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="autoworkflow.onelink.me"
+                    android:pathPrefix="/2Hxu" />
+            </intent-filter>
         </activity>
     </application>
 
