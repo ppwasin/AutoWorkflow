@@ -57,5 +57,6 @@ dependencies {
     implementation(Deps.Compose.paging)
     implementation(Deps.pagingRuntime)
 
+    androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)
 }
