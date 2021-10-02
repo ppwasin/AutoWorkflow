@@ -20,7 +20,8 @@
 
 # [TODO] 
 - Snap-shot test
+- [CI] Run test only in changed module: https://itnext.io/gradle-modules-running-unit-tests-only-in-affected-modules-fff89562339e
 
-# [Continuous]
-- Practice Compose
-- Practice DS & Alg
+# [InProgress]
+- Integrate with pagination-compose
+- 
