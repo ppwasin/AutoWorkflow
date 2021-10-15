@@ -22,7 +22,7 @@ import com.boot.components.search.item.Tag.EndLayoutId
 import com.boot.components.search.item.Tag.MiddleLayoutId
 import com.boot.components.search.item.Tag.StartLayoutId
 import com.boot.components.utils.constraintVertical
-import com.boot.navigation.AppTheme
+import com.boot.theme.AppTheme
 
 private enum class Tag {
   StartLayoutId,

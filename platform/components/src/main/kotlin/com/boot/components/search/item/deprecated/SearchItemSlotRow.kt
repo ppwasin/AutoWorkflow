@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.boot.components.search.item.SearchItemPreviewProvider
-import com.boot.navigation.AppTheme
+import com.boot.theme.AppTheme
 
 @Composable
 @Deprecated(
