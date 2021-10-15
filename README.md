@@ -14,6 +14,9 @@
 ### Unittest & InstrumentationTest 
 - .github/workflows/MainVerification.yml
 
+# Module
+- :platform:theme -> theme 
+
 ### Release via GooglePlay Alpha track and FirebaseDistribution
 - .github/workflows/MinorRelease.yml --> against main branch
 - .github/workflows/PatchRelease.yml --> against rc branch

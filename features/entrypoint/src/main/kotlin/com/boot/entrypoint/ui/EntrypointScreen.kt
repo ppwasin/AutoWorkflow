@@ -22,13 +22,13 @@ import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
 import com.boot.entrypoint.ui.bottomNav.bottomNav
 import com.boot.mealplan.recipes.RecipeEntrypoint
-import com.boot.theme.AppTheme
+import com.boot.theme.material.AppMaterialTheme
 
 @Composable
 fun EntrypointScreen() {
   // hoist navctrl here to save/restore navigation state when swap between BTN
   val recipeNavController = rememberNavController()
-  AppTheme {
+  AppMaterialTheme {
     BtmSlot(
       screenItems = MainScreenItems.values().toSet(),
       infoGetter = MainScreenItems.bottomNav(),

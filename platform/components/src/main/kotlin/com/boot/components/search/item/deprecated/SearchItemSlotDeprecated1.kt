@@ -22,7 +22,7 @@ import com.boot.components.search.item.SearchItemPreviewProvider
 import com.boot.components.search.item.SearchItemPreviewProvider.Data
 import com.boot.components.search.item.SearchTextRow
 import com.boot.components.utils.constraintVertical
-import com.boot.theme.AppTheme
+import com.boot.theme.material.AppMaterialTheme
 
 @Composable
 @Deprecated(
@@ -78,7 +78,7 @@ private fun SearchItemSlotDeprecated1(
 fun SearchItemSlotDeprecated1Preview(
   @PreviewParameter(SearchItemPreviewProvider::class) data: Data
 ) {
-  AppTheme {
+  AppMaterialTheme {
     SearchItemSlotDeprecated1(
       startIcon = {
         Icon(

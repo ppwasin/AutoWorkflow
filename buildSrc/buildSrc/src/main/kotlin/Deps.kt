@@ -52,6 +52,8 @@ object Deps {
       if (navIsStable)
         "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
       else "androidx.navigation:navigation-compose:${Versions.composeNav}"
+
+    const val coil = "io.coil-kt:coil-compose:${Versions.composeCoil}"
   }
 
   object WorkManager {

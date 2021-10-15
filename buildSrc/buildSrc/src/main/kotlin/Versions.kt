@@ -16,6 +16,7 @@ object Versions {
   const val composePaging = "1.0.0-alpha13" // https://developer.android.com/jetpack/androidx/releases/paging
   const val accompanist = "0.19.0" // https://github.com/google/accompanist
   const val composeNav = "2.4.0-alpha10" // https://developer.android.com/jetpack/androidx/releases/navigation
+  const val composeCoil = "1.4.0" // https://coil-kt.github.io/coil/compose/
 
   /** Android Platform */
   /* Beware!! DFM + Compose issue in old version
