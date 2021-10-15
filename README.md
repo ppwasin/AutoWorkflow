@@ -24,3 +24,27 @@
 
 # [InProgress]
 - Integrate with pagination-compose
+
+# Monitoring: App Launch time
+Concept:
+- Use Kotlin IR to hook and print out the start, end-time. 
+- Then use the plugin to capture the diff time.
+- Compare with the some metric and report through github comment or slack message.
+
+Open question: 
+- How to handler swing result. 
+  Is jetpack benchmark help us by isolating each target and run benchmark against them.
+  
+Tech stack: 
+IR hook, Jetpack benchmark, FTL, Kotlin Script
+
+Measure Level:
+- App.onCreate() -> First Activity
+- Activity Start -> Render to user (For each activity)
+
+Tasks: 
+- [TODO] All script use kotlin script
+- [TODO] Use Plugin build (Composite build). The related logic should not increase local build time of main project. 
+  So, it should only run on CI environment.
+- [TODO] Run with FTL, so may need FTL Plugin too
+- [TODO] Report exceed threshold
