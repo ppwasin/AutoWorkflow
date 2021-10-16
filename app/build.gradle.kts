@@ -14,9 +14,7 @@ plugins {
 }
 
 /** Publish **/
-val versionNameOverride =
-  if(project.hasProperty("versionName")) project.property("versionName").toString()
-  else "No versionName"
+val versionNameOverride = providers.gradleProperty("versionName").forUseAtConfigurationTime().orNull ?: "No versionName"
 play {
   track.set("alpha") //default is `internal`
   serviceAccountCredentials.set(rootProject.file("google-api-service.json"))
