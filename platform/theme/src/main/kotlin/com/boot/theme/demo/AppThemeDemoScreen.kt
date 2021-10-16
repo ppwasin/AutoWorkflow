@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.boot.theme.R
 import com.boot.theme.app.AppTheme
 
 @Composable
@@ -52,7 +53,8 @@ fun GalleryItem(item: PhotographItem) {
       modifier = Modifier.padding(AppTheme.dimensions.paddingSmall)
     )
     Image(
-      rememberImagePainter(item.photoUrl),
+      painter =
+        rememberImagePainter(data = item.photoUrl) { placeholder(R.drawable.ic_placeholder_24) },
       contentDescription = null,
       modifier = Modifier.size(256.dp)
     )
