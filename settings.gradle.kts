@@ -4,7 +4,7 @@ include(":app")
 include(":playground")
 
 include(":platform:navigation")
-include(":platform:theme")
+include(":platform:designSystem")
 include(":platform:components")
 
 include(":fake:pagination")

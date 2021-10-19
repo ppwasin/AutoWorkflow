@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.boot.theme.R
+import com.boot.designSystem.R
 import com.boot.theme.app.AppTheme
 
 @Composable

@@ -47,7 +47,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":platform:theme"))
+    implementation(project(":platform:designSystem"))
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
