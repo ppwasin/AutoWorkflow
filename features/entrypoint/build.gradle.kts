@@ -61,6 +61,7 @@ dependencies {
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
     implementation(Deps.Compose.paging)
+    implementation(Deps.Compose.insets)
     
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)

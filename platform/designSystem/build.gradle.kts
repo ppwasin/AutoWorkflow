@@ -57,6 +57,7 @@ dependencies {
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
     implementation(Deps.Compose.coil)
+    implementation(Deps.Compose.insets)
 
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)

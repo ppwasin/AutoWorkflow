@@ -42,9 +42,9 @@ object Deps {
     const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
     // Others Compose related libs
-    const val swipeToRefresh =
-      "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
+    const val swipeToRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
     const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
+    const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
 
     // Nav
     private const val navIsStable: Boolean = false

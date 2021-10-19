@@ -14,7 +14,7 @@ object Versions {
   const val composeConstraintLayout = "1.0.0-rc01" // https://developer.android.com/jetpack/androidx/releases/constraintlayout
   const val composeActivity = "1.4.0-beta01" // https://developer.android.com/jetpack/androidx/releases/activity
   const val composePaging = "1.0.0-alpha13" // https://developer.android.com/jetpack/androidx/releases/paging
-  const val accompanist = "0.19.0" // https://github.com/google/accompanist
+  const val accompanist = "0.20.0" // https://github.com/google/accompanist
   const val composeNav = "2.4.0-alpha10" // https://developer.android.com/jetpack/androidx/releases/navigation
   const val composeCoil = "1.4.0" // https://coil-kt.github.io/coil/compose/
 

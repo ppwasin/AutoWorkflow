@@ -1,4 +1,4 @@
-package com.boot.entrypoint.ui
+package com.boot.mealplan.recipes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth

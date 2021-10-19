@@ -18,26 +18,29 @@ package com.boot.entrypoint.ui
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import com.boot.designsystem.theme.material.AppMaterialTheme
+import com.boot.designsystem.theme.app.AppTheme
 import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
 import com.boot.entrypoint.ui.bottomNav.bottomNav
 import com.boot.mealplan.recipes.RecipeEntrypoint
+import com.google.accompanist.insets.ProvideWindowInsets
 
 @Composable
 fun EntrypointScreen() {
   // hoist navctrl here to save/restore navigation state when swap between BTN
   val recipeNavController = rememberNavController()
-  AppMaterialTheme {
-    BtmSlot(
-      screenItems = MainScreenItems.values().toSet(),
-      infoGetter = MainScreenItems.bottomNav(),
-      navigateTo = { item ->
-        when (item) {
-          MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
-          else -> Text(item.name)
+  AppTheme {
+    ProvideWindowInsets {
+      BtmSlot(
+        screenItems = MainScreenItems.values().toSet(),
+        infoGetter = MainScreenItems.bottomNav(),
+        navigateTo = { item ->
+          when (item) {
+            MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
+            else -> Text(item.name)
+          }
         }
-      }
-    )
+      )
+    }
   }
 }
