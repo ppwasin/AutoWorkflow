@@ -18,11 +18,11 @@ package com.boot.entrypoint.ui
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.boot.designsystem.theme.material.AppMaterialTheme
 import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
 import com.boot.entrypoint.ui.bottomNav.bottomNav
 import com.boot.mealplan.recipes.RecipeEntrypoint
-import com.boot.theme.material.AppMaterialTheme
 
 @Composable
 fun EntrypointScreen() {

@@ -92,7 +92,7 @@ android {
 }
 
 dependencies {
-  implementation(project(":features:entrypoint"))
+  implementation(projects.features.entrypoint)
   implementation(platform(Build.GoogleService.firebasePlatform))
 
   implementation(Deps.appcompat)

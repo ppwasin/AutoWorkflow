@@ -1,4 +1,4 @@
-package com.boot.theme.app
+package com.boot.designsystem.theme.app
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp

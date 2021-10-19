@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.boot.components.utils.getRandomString
-import com.boot.theme.material.AppMaterialTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun SubTitle(text: String) {

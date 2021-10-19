@@ -1,4 +1,4 @@
-package com.boot.theme.demo
+package com.boot.designsystem.demo
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.boot.designSystem.R
-import com.boot.theme.app.AppTheme
+import com.boot.designsystem.theme.app.AppTheme
 
 @Composable
 fun DemoScreen(items: List<PhotographItem>) {

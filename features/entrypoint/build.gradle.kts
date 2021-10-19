@@ -47,9 +47,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":platform:designSystem"))
-    implementation(project(":platform:components"))
-    implementation(project(":fake:pagination"))
+    implementation(projects.platform.designSystem)
+    implementation(projects.platform.components)
+    implementation(projects.fake.pagination)
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
