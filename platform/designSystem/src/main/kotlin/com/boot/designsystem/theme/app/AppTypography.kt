@@ -15,8 +15,10 @@ private val rubik = FontFamily(Font(R.font.rubik_regular, FontWeight.Normal))
 private val openSans = FontFamily(Font(R.font.open_sans_regular, FontWeight.Normal))
 
 data class AppTypography(
+  val title: TextStyle =
+    TextStyle(fontFamily = rubik, fontWeight = FontWeight.Bold, fontSize = 26.sp),
   val h1: TextStyle =
-    TextStyle(fontFamily = rubik, fontWeight = FontWeight.Normal, fontSize = 24.sp),
+    TextStyle(fontFamily = rubik, fontWeight = FontWeight.Normal, fontSize = 26.sp),
   val subtitle: TextStyle =
     TextStyle(fontFamily = openSans, fontWeight = FontWeight.Normal, fontSize = 16.sp),
   val body: TextStyle =
