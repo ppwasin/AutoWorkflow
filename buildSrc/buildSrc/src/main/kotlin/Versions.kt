@@ -1,21 +1,21 @@
 object Versions {
-  const val kotlin = "1.5.31"
-  const val ksp = "1.5.31-1.0.0"
-  const val androidGradle = "7.0.2"
-  const val spotless = "5.17.0"
+  const val kotlin = "1.5.31" // https://kotlinlang.org/docs/releases.html#release-details
+  const val ksp = "1.5.31-1.0.1" // https://github.com/google/ksp
+  const val androidGradle = "7.0.3"
+  const val spotless = "6.0.0" // https://github.com/diffplug/spotless/tree/main/plugin-gradle
   const val rxjava = "2.2.21"
   const val rxAndroid = "2.1.1"
-  const val coroutine = "1.5.1"
+  const val coroutine = "1.5.2" // https://github.com/Kotlin/kotlinx.coroutines
   const val workManager = "2.5.0"
-  const val dagger = "2.35.1"
+  const val dagger = "2.40.1" // https://github.com/google/dagger
 
   /** Compose */
-  const val compose = "1.1.0-alpha05" // https://developer.android.com/jetpack/androidx/releases/compose
+  const val compose = "1.1.0-beta03" // https://developer.android.com/jetpack/androidx/releases/compose
   const val composeConstraintLayout = "1.0.0-rc01" // https://developer.android.com/jetpack/androidx/releases/constraintlayout
-  const val composeActivity = "1.4.0-beta01" // https://developer.android.com/jetpack/androidx/releases/activity
-  const val composePaging = "1.0.0-alpha13" // https://developer.android.com/jetpack/androidx/releases/paging
-  const val accompanist = "0.20.0" // https://github.com/google/accompanist
-  const val composeNav = "2.4.0-alpha10" // https://developer.android.com/jetpack/androidx/releases/navigation
+  const val composeActivity = "1.4.0" // https://developer.android.com/jetpack/androidx/releases/activity
+  const val composePaging = "1.0.0-alpha14" // https://developer.android.com/jetpack/androidx/releases/paging
+  const val accompanist = "0.21.2-beta" // https://github.com/google/accompanist
+  const val composeNav = "2.4.0-beta02" // https://developer.android.com/jetpack/androidx/releases/navigation
   const val composeCoil = "1.4.0" // https://coil-kt.github.io/coil/compose/
 
   /** Android Platform */
