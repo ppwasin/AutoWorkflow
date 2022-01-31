@@ -1,0 +1,9 @@
+incremental_build_abi_change_in_app_module {
+    tasks = [":app:assembleDebug"]
+
+    apply-abi-change-to = "app/src/main/java/com/boot/autoworkflow/ui/screen/MainActivity.kt"
+
+    show-build-cache-size = true
+    warm-ups = 4
+    gradle-args = ["--offline", "--no-build-cache"]
+}

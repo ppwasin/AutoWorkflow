@@ -81,7 +81,7 @@ object Deps {
     const val runtime =  "androidx.room:room-runtime:${Versions.room}"
     const val ktxAndcoroutine = "androidx.room:room-ktx:${Versions.room}"
     const val testHelper = "androidx.room:room-testing:${Versions.room}"
-    const val paging3 = "androidx.room:room-paging:${Versions.paging}"
+    const val paging = "androidx.room:room-paging:${Versions.paging}"
   }
   
   object KSP {

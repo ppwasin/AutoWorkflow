@@ -1,0 +1,42 @@
+incremental_resource_change {
+    tasks = ["assembleDebug"]
+    warm-ups: 1
+    iterations: 3
+
+    apply-android-resource-change-to = ["app/src/main/res/values/strings.xml"]
+}
+
+incremental_layout_change {
+    tasks = ["assembleBrandRedEnvIntegrationDebug"]
+    warm-ups: 1
+    iterations: 3
+
+    apply-android-layout-change-to = ["app/src/main/res/layout/activity_charging.xml"]
+}
+
+incremental_code_change {
+    tasks = ["assembleBrandRedEnvIntegrationDebug"]
+    warm-ups: 1
+    iterations: 3
+
+    apply-abi-change-to = ["app/src/main/java/de/maibornwolff/sample/App.kt"]
+    apply-cpp-change-to = ["app/src/cpp/library.cpp"]
+}
+
+
+clean_build_default {
+    tasks = ["assembleBrandRedEnvIntegrationDebug"]
+    warm-ups: 1
+    iterations: 3
+
+    cleanup-tasks = ["clean"]
+}
+
+clean_build_4gb_ram {
+    tasks = ["assembleBrandRedEnvIntegrationDebug"]
+    warm-ups: 1
+    iterations: 3
+
+    cleanup-tasks = ["clean"]
+    jvm-args = ["-Xmx4g", "-XX:MaxMetaspaceSize=512m"]
+}
