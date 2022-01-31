@@ -43,7 +43,6 @@ object Deps {
 
     // Others Compose related libs
     const val swipeToRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
-    const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
     const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
 
     // Nav
@@ -78,9 +77,8 @@ object Deps {
   object Room {
     const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val runtime =  "androidx.room:room-runtime:${Versions.room}"
-    const val ktxAndcoroutine = "androidx.room:room-ktx:${Versions.room}"
+    const val ktxAndCoroutine = "androidx.room:room-ktx:${Versions.room}"
     const val testHelper = "androidx.room:room-testing:${Versions.room}"
-    const val paging = "androidx.room:room-paging:${Versions.room}"
   }
   object Paging {
     const val runtime = "androidx.paging:paging-runtime:${Versions.paging}"
@@ -110,5 +108,10 @@ object Deps {
     const val metaKapt = "io.arrow-kt:arrow-meta"
     const val optics = "io.arrow-kt:arrow-optics"
 
+  }
+  
+  object Integration {
+    const val composePaging = "androidx.paging:paging-compose:${Versions.composePaging}"
+    const val roomPaging = "androidx.room:room-paging:${Versions.room}"
   }
 }

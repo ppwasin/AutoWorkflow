@@ -60,7 +60,7 @@ dependencies {
     implementation(Deps.Compose.navigation)
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
-    implementation(Deps.Compose.paging)
+    implementation(Deps.Integration.composePaging)
     implementation(Deps.Compose.insets)
     
     androidTestImplementation(Deps.Test.espresso)

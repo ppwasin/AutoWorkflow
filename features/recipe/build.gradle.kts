@@ -52,10 +52,10 @@ dependencies {
     compileOnly(Deps.KSP.processing)
     implementation(Deps.Room.runtime)
     ksp(Deps.Room.compiler)
-    implementation(Deps.Compose.paging)
+    implementation(Deps.Integration.composePaging)
     implementation(Deps.Paging.runtime)
-    implementation(Deps.Room.paging)
-    implementation(Deps.Room.ktxAndcoroutine)
+    implementation(Deps.Integration.roomPaging)
+    implementation(Deps.Room.ktxAndCoroutine)
 
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)
