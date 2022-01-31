@@ -62,7 +62,7 @@ dependencies {
     implementation(Deps.Coroutine.android)
     
     implementation(Deps.Compose.paging)
-    implementation(Deps.pagingRuntime)
+    implementation(Deps.Paging.runtime)
     
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)

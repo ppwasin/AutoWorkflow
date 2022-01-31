@@ -66,7 +66,6 @@ object Deps {
   // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
-  const val pagingRuntime = "androidx.paging:paging-runtime:${Versions.paging}"
 
   // Test
   object Test {
@@ -81,7 +80,10 @@ object Deps {
     const val runtime =  "androidx.room:room-runtime:${Versions.room}"
     const val ktxAndcoroutine = "androidx.room:room-ktx:${Versions.room}"
     const val testHelper = "androidx.room:room-testing:${Versions.room}"
-    const val paging = "androidx.room:room-paging:${Versions.paging}"
+    const val paging = "androidx.room:room-paging:${Versions.room}"
+  }
+  object Paging {
+    const val runtime = "androidx.paging:paging-runtime:${Versions.paging}"
   }
   
   object KSP {

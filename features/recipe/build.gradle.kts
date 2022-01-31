@@ -53,9 +53,8 @@ dependencies {
     implementation(Deps.Room.runtime)
     ksp(Deps.Room.compiler)
     implementation(Deps.Compose.paging)
-    implementation(Deps.pagingRuntime)
+    implementation(Deps.Paging.runtime)
     implementation(Deps.Room.paging)
-    
     implementation(Deps.Room.ktxAndcoroutine)
 
     androidTestImplementation(Deps.Test.espresso)
