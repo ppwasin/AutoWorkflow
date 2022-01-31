@@ -61,7 +61,7 @@ dependencies {
 
     implementation(Deps.material)
     implementation(Deps.appcompat)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)
 
