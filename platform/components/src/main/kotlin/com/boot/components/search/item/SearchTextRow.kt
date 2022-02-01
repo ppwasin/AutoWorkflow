@@ -8,7 +8,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.boot.components.ComponentColors
-import com.boot.navigation.AppTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun SearchTextRow(title: String, subTitle: String? = null) {
@@ -35,5 +35,5 @@ fun SearchTextRow(title: String, subTitle: String? = null) {
 @Preview(showBackground = true)
 @Composable
 fun SearchTextRowPreview() {
-  AppTheme { SearchTextRow(title = "title", subTitle = "subtitle") }
+  AppMaterialTheme { SearchTextRow(title = "title", subTitle = "subtitle") }
 }

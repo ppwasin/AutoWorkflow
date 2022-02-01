@@ -42,9 +42,8 @@ object Deps {
     const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
     // Others Compose related libs
-    const val swipeToRefresh =
-      "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
-    const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
+    const val swipeToRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
+    const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
 
     // Nav
     private const val navIsStable: Boolean = false
@@ -52,6 +51,8 @@ object Deps {
       if (navIsStable)
         "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
       else "androidx.navigation:navigation-compose:${Versions.composeNav}"
+
+    const val coil = "io.coil-kt:coil-compose:${Versions.composeCoil}"
   }
 
   object WorkManager {
@@ -64,7 +65,6 @@ object Deps {
   // Android UI
   const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   const val material = "com.google.android.material:material:${Versions.material}"
-  const val pagingRuntime = "androidx.paging:paging-runtime:${Versions.paging}"
 
   // Test
   object Test {
@@ -77,9 +77,11 @@ object Deps {
   object Room {
     const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val runtime =  "androidx.room:room-runtime:${Versions.room}"
-    const val ktxAndcoroutine = "androidx.room:room-ktx:${Versions.room}"
+    const val ktxAndCoroutine = "androidx.room:room-ktx:${Versions.room}"
     const val testHelper = "androidx.room:room-testing:${Versions.room}"
-    const val paging3 = "androidx.room:room-paging:${Versions.paging}"
+  }
+  object Paging {
+    const val runtime = "androidx.paging:paging-runtime:${Versions.paging}"
   }
   
   object KSP {
@@ -106,5 +108,10 @@ object Deps {
     const val metaKapt = "io.arrow-kt:arrow-meta"
     const val optics = "io.arrow-kt:arrow-optics"
 
+  }
+  
+  object Integration {
+    const val composePaging = "androidx.paging:paging-compose:${Versions.composePaging}"
+    const val roomPaging = "androidx.room:room-paging:${Versions.room}"
   }
 }

@@ -1,10 +1,12 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "AutoWorkflow"
 includeBuild("plugin-build")
 include(":app")
 include(":playground")
 
 include(":platform:navigation")
-include(":platform:theme")
+include(":platform:designSystem")
 include(":platform:components")
 
 include(":fake:pagination")

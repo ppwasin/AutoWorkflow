@@ -18,11 +18,9 @@ package com.boot.playground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import kotlin.time.ExperimentalTime
 
 class PlaygroundActivity : ComponentActivity() {
 
-  @ExperimentalTime
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent { Playground() }

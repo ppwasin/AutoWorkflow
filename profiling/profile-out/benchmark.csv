@@ -1,0 +1,18 @@
+scenario,incremental_build_abi_change_in_app_module
+version,Gradle 7.3
+tasks,:app:assembleDebug
+value,execution
+warm-up build #1,25349
+warm-up build #2,2052
+warm-up build #3,1641
+warm-up build #4,1761
+measured build #1,1530
+measured build #2,1349
+measured build #3,1421
+measured build #4,1337
+measured build #5,1339
+measured build #6,1418
+measured build #7,1331
+measured build #8,1406
+measured build #9,1152
+measured build #10,1416

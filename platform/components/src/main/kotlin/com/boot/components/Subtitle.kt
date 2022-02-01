@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.boot.components.utils.getRandomString
-import com.boot.navigation.AppTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun SubTitle(text: String) {
@@ -23,5 +23,5 @@ fun SubTitle(text: String) {
 @Preview(showSystemUi = true)
 @Composable
 fun SubTitlePreview() {
-  AppTheme { SubTitle(getRandomString(100)) }
+  AppMaterialTheme { SubTitle(getRandomString(100)) }
 }

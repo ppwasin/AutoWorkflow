@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.boot.components.search.item.SearchItemPreviewProvider
-import com.boot.navigation.AppTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 @Deprecated(
@@ -73,7 +73,7 @@ private fun SearchItemSlotRow(startIcon: ImageVector, text: String, endIcon: Ima
 internal fun SearchItemSlotPreview(
   @PreviewParameter(SearchItemPreviewProvider::class) text: String
 ) {
-  AppTheme {
+  AppMaterialTheme {
     SearchItemSlotRow(
       startIcon = Icons.Default.AccessAlarm,
       text = text,

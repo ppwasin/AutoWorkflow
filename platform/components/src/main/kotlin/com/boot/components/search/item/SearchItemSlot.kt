@@ -22,7 +22,7 @@ import com.boot.components.search.item.Tag.EndLayoutId
 import com.boot.components.search.item.Tag.MiddleLayoutId
 import com.boot.components.search.item.Tag.StartLayoutId
 import com.boot.components.utils.constraintVertical
-import com.boot.navigation.AppTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 private enum class Tag {
   StartLayoutId,
@@ -79,7 +79,7 @@ fun SearchItemSlot(
 fun SearchItemSlotPreview(
   @PreviewParameter(SearchItemPreviewProvider::class) data: SearchItemPreviewProvider.Data
 ) {
-  AppTheme {
+  AppMaterialTheme {
     SearchItemSlot(
       startIcon = {
         Icon(

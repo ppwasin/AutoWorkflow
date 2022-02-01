@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.boot.navigation.AppTheme
+import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun Title(text: String) {
@@ -22,5 +22,5 @@ fun Title(text: String) {
 @Preview(showSystemUi = true)
 @Composable
 fun TitlePreview() {
-  AppTheme { Title("Title") }
+  AppMaterialTheme { Title("Title") }
 }

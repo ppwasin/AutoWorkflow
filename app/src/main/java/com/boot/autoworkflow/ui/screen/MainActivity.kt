@@ -18,6 +18,8 @@ package com.boot.autoworkflow.ui.screen
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import com.boot.entrypoint.ui.EntrypointScreen
 
 class MainActivity : AppCompatActivity() {
@@ -27,4 +29,10 @@ class MainActivity : AppCompatActivity() {
 
     setContent { EntrypointScreen() }
   }
+}
+
+@Preview(showBackground = true, widthDp = 380, heightDp = 1400)
+@Composable
+fun DefaultPreview() {
+  EntrypointScreen()
 }

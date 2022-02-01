@@ -47,9 +47,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":platform:theme"))
-    implementation(project(":platform:components"))
-    implementation(project(":fake:pagination"))
+    implementation(projects.platform.designSystem)
+    implementation(projects.platform.components)
+    implementation(projects.fake.pagination)
     implementation(Deps.Compose.activity)
     implementation(Deps.Compose.ui)
     implementation(Deps.Compose.uiTooling)
@@ -60,7 +60,8 @@ dependencies {
     implementation(Deps.Compose.navigation)
     implementation(Deps.Coroutine.core)
     implementation(Deps.Coroutine.android)
-    implementation(Deps.Compose.paging)
+    implementation(Deps.Integration.composePaging)
+    implementation(Deps.Compose.insets)
     
     androidTestImplementation(Deps.Test.espresso)
     androidTestImplementation(Deps.Test.junitInstrumental)

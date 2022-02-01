@@ -13,7 +13,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.boot.components.search.SearchButton
 import com.boot.components.search.SearchScreenSlot
-import com.boot.entrypoint.ui.RecipeList
 import com.boot.fake.model.FakeItem
 
 enum class RecipeRoute {

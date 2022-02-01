@@ -14,6 +14,9 @@
 ### Unittest & InstrumentationTest 
 - .github/workflows/MainVerification.yml
 
+# Module
+- :platform:theme -> theme 
+
 ### Release via GooglePlay Alpha track and FirebaseDistribution
 - .github/workflows/MinorRelease.yml --> against main branch
 - .github/workflows/PatchRelease.yml --> against rc branch
@@ -21,6 +24,4 @@
 # [TODO] 
 - Snap-shot test
 - [CI] Run test only in changed module: https://itnext.io/gradle-modules-running-unit-tests-only-in-affected-modules-fff89562339e
-
-# [InProgress]
 - Integrate with pagination-compose
