@@ -5,6 +5,7 @@ pluginManagement {
 	}
 }
 
-rootProject.name = "plugin-build"
+rootProject.name = "pluginBuild"
 
 include(":cd")
+include(":buildPref")

@@ -1,7 +1,7 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "AutoWorkflow"
-includeBuild("plugin-build")
+includeBuild("pluginBuild")
 include(":app")
 include(":playground")
 
