@@ -38,5 +38,5 @@ object Versions {
   const val okhttp = "4.9.1"
 
   /** Architecture **/
-  const val arrowkt = "1.0.0"
+  const val arrowkt = "1.0.1"
 }
