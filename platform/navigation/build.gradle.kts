@@ -34,7 +34,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -47,18 +47,11 @@ android {
 }
 
 dependencies {
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.uiTooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.materialIcon)
-    implementation(Deps.Compose.materialIconsExt)
-    implementation(Deps.Coroutine.core)
-    implementation(Deps.Coroutine.android)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.coroutine)
 
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
-    androidTestImplementation(Deps.Compose.uiTest)
-    debugImplementation(Deps.Compose.uiTestManifest)
+    androidTestImplementation(libs.androidTest.espresso)
+    androidTestImplementation(libs.androidTest.junit)
+    androidTestImplementation(libs.androidTest.compose)
+    debugImplementation(libs.test.composeRule)
 }

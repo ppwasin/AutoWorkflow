@@ -1,5 +1,6 @@
 plugins {
 	`kotlin-dsl`
+	alias(build.plugins.buildconfig)
 }
 
 repositories {
@@ -9,12 +10,14 @@ repositories {
 }
 
 dependencies {
-	implementation(Build.androidGradle)
-	implementation(Build.kotlinGradlePlugin)
-	implementation(Build.Spotless.classpath)
+	implementation(build.androidGradle)
+	implementation(build.kotlinGradle)
+	implementation(build.spotless)
 }
 
-kotlin {
-	// Add Deps to compilation, so it will become available in main project
-	sourceSets.getByName("main").kotlin.srcDir("buildSrc/src/main/kotlin")
+buildConfig {
+	forClass(packageName = "com.boot.env", className = "Versions") {
+		buildConfigField("String", "junit5", "\"${libs.versions.junit5.get()}\"")
+		buildConfigField("String", "dagger", "\"${libs.versions.dagger.get()}\"")
+	}
 }

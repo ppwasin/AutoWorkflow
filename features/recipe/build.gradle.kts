@@ -3,7 +3,7 @@ apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id(Deps.KSP.plugin) version Versions.ksp
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -35,7 +35,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -49,14 +49,15 @@ android {
 
 dependencies {
 
-    compileOnly(Deps.KSP.processing)
-    implementation(Deps.Room.runtime)
-    ksp(Deps.Room.compiler)
-    implementation(Deps.Integration.composePaging)
-    implementation(Deps.Paging.runtime)
-    implementation(Deps.Integration.roomPaging)
-    implementation(Deps.Room.ktxAndCoroutine)
+    compileOnly(libs.ksp.processing)
+    implementation(libs.paging.compose)
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.room)
 
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+
+    androidTestImplementation(libs.androidTest.espresso)
+    androidTestImplementation(libs.androidTest.junit)
 }

@@ -45,7 +45,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -59,25 +59,17 @@ android {
 
 dependencies {
 
-    implementation(Deps.material)
-    implementation(Deps.appcompat)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
+    implementation(libs.material)
+    implementation(libs.appcompat)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
 
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.uiTooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.materialIcon)
-    implementation(Deps.Compose.materialIconsExt)
-    //    androidTestImplementation(Deps.Compose.uiTesting)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.coroutine)
 
-    implementation(Deps.Rx.rxJava)
-    implementation(Deps.Rx.rxAndroid)
+    implementation(libs.rx.android)
+    implementation(libs.rx.java)
 
-    implementation(Deps.Coroutine.core)
-    implementation(Deps.Coroutine.android)
-    testImplementation(Deps.Coroutine.test)
+    testImplementation(libs.test.coroutine)
+    androidTestImplementation(libs.androidTest.espresso)
+    androidTestImplementation(libs.androidTest.junit)
 }
