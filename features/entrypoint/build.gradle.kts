@@ -34,7 +34,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -50,21 +50,12 @@ dependencies {
     implementation(projects.platform.designSystem)
     implementation(projects.platform.components)
     implementation(projects.fake.pagination)
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.uiTooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.materialIcon)
-    implementation(Deps.Compose.materialIconsExt)
-    implementation(Deps.Compose.navigation)
-    implementation(Deps.Coroutine.core)
-    implementation(Deps.Coroutine.android)
-    implementation(Deps.Integration.composePaging)
-    implementation(Deps.Compose.insets)
-    
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
-    androidTestImplementation(Deps.Compose.uiTest)
-    debugImplementation(Deps.Compose.uiTestManifest)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.coroutine)
+    implementation(libs.paging.compose)
+
+    androidTestImplementation(libs.androidTest.espresso)
+    androidTestImplementation(libs.androidTest.junit)
+    androidTestImplementation(libs.androidTest.compose)
+    debugImplementation(libs.test.composeRule)
 }

@@ -13,7 +13,7 @@ class SpotlessPlugin : Plugin<Project> {
 
   override fun apply(project: Project) {
     project.run {
-      apply(plugin = Build.Spotless.pluginId)
+      apply(plugin = "com.diffplug.spotless")
       configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         ratchetFrom = "origin/main"
         kotlin {

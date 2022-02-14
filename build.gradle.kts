@@ -1,3 +1,6 @@
+//val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+//val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -5,12 +8,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(Build.androidGradle)
-        classpath(Build.kotlinGradlePlugin)
-        classpath(Build.GoogleService.classpath)
-        classpath(Build.FirebaseAppDistribution.classpath)
-        classpath(Build.Spotless.classpath)
-        classpath(Build.PlayPublisher.classpath)
+        classpath(build.androidGradle)
+        classpath(build.kotlinGradle)
+        classpath(build.googleServices)
+        classpath(build.firebaseAppdistribution)
+        classpath(build.spotless)
+        classpath(build.playPublisher)
     }
 }
 

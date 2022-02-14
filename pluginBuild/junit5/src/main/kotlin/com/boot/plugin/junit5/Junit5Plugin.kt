@@ -1,14 +1,13 @@
-package plugin
+package com.boot.plugin.junit5
 
-import ext.testImplementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
-import com.boot.env.Versions
 
 class Junit5Plugin : Plugin<Project> {
     companion object{
-        private const val junit5platform = "org.junit:junit-bom:${Versions.junit5}"
+        private const val version = "5.7.0"
+        private const val junit5platform = "org.junit:junit-bom:$version"
         private const val junit5Jupiter = "org.junit.jupiter:junit-jupiter"
     }
 

@@ -2,15 +2,14 @@ import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
 import java.util.*
 
 apply<plugin.Junit5Plugin>()
-
 apply<plugin.spotless.SpotlessPlugin>()
 
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id(Build.GoogleService.pluginId)
-    id(Build.FirebaseAppDistribution.pluginId)
-    id(Build.PlayPublisher.pluginId)
+    id(build.plugins.googleServices.get().pluginId)
+    id(build.plugins.firebaseAppdistribution.get().pluginId)
+    id(build.plugins.playPublisher.get().pluginId)
 }
 
 /** Publish **/
@@ -84,7 +83,7 @@ android {
         resValues = false
         shaders = false
     }
-    composeOptions { kotlinCompilerExtensionVersion = Versions.compose }
+    composeOptions { kotlinCompilerExtensionVersion = libs.versions.compose.get() }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
         // our test APK to build (has no effect on our AARs)
@@ -97,21 +96,13 @@ android {
 
 dependencies {
     implementation(projects.features.entrypoint)
-    implementation(platform(Build.GoogleService.firebasePlatform))
+//    implementation(platform(Build.GoogleService.firebasePlatform))
 
-    implementation(Deps.appcompat)
-    implementation(Deps.material)
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.uiTooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.materialIcon)
-    implementation(Deps.Compose.materialIconsExt)
-    implementation(Deps.Coroutine.core)
-    implementation(Deps.Coroutine.android)
-    implementation(Deps.Compose.navigation)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.coroutine)
 
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.junitInstrumental)
+    androidTestImplementation(libs.androidTest.espresso)
+    androidTestImplementation(libs.androidTest.junit)
 }
