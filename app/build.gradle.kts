@@ -100,6 +100,7 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.splashscreen)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
 

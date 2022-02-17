@@ -19,6 +19,7 @@ appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/ap
 material = "1.5.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.0" # https://developer.android.com/jetpack/androidx/releases/paging
 room = "2.4.1" # https://developer.android.com/jetpack/androidx/releases/room
+splashscreen = "1.0.0-beta01" # https://developer.android.com/jetpack/androidx/releases/core
 
 # Test
 junit5 = "5.7.0"
@@ -64,9 +65,10 @@ compose-swipeToRefresh = { module = "com.google.accompanist:accompanist-swiperef
 compose-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanist" }
 compose-coil = { module = "io.coil-kt:coil-compose", version.ref = "composeCoil" }
 
-# Androidx
+# Android Core
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
+splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
 
 # Room
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
