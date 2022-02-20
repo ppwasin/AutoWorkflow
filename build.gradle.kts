@@ -17,10 +17,6 @@ buildscript {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}
-
 subprojects {
     repositories {
         google()
@@ -33,6 +29,15 @@ subprojects {
     }
 }
 
+//@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.boot.scripts.cd.CDPlugin")
+
+//    // this is necessary to avoid the plugins to be loaded multiple times
+//    // in each subproject's classloader
+//    kotlin("jvm") apply false
+//    kotlin("multiplatform") apply false
+//    kotlin("android") apply false
+//    id("com.android.application") apply false
+//    id("com.android.library") apply false
 }

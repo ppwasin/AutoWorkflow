@@ -25,3 +25,11 @@
 - Snap-shot test
 - [CI] Run test only in changed module: https://itnext.io/gradle-modules-running-unit-tests-only-in-affected-modules-fff89562339e
 - Integrate with pagination-compose
+
+# Backend
+## Run backend
+Currently there is only one backend module, :backend:shopping
+1) Run backend on android studio:
+    - disable Android studio's feature: do not build gradle task list during sync
+2) Run backend on intellij
+    - lower the android-gradle plugin version to 7.0.4

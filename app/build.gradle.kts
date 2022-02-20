@@ -4,10 +4,13 @@ import java.util.*
 apply<plugin.Junit5Plugin>()
 apply<plugin.spotless.SpotlessPlugin>()
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+//    id("kotlin-android")
+    kotlin("android")
     id(infra.plugins.googleServices.get().pluginId)
+//    alias(infra.plugins.googleServices)
     id(infra.plugins.firebaseAppdistribution.get().pluginId)
     id(infra.plugins.playPublisher.get().pluginId)
 }
@@ -96,7 +99,6 @@ android {
 
 dependencies {
     implementation(projects.features.entrypoint)
-//    implementation(platform(Build.GoogleService.firebasePlatform))
 
     implementation(libs.appcompat)
     implementation(libs.material)

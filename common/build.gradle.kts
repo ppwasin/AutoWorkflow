@@ -1,13 +1,57 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
     id("com.android.library")
+    id(infra.plugins.kotlin.multiplatform.get().pluginId)
+//    kotlin("multiplatform")
+//    alias(infra.plugins.kotlin.multiplatform)
     alias(infra.plugins.kotlin.serialization)
+    kotlin("native.cocoapods")
 }
 
 version = "1.0"
 
 kotlin {
+    /**########## Target setup ############**/
+    /** Backend **/
+    jvm()
+//    jvm {
+//        compilations.all {
+//            kotlinOptions.jvmTarget = Build.java.toString()
+//        }
+//        withJava()
+//    }
+    targets.all {
+        compilations.all {
+            kotlinOptions {
+                jvm {
+                    version = Build.java.toString()
+                }
+            }
+        }
+    }
+    /** Web **/
+//    js {
+//        browser {
+//            binaries.executable()
+//            commonWebpackConfig {
+//                cssSupport.enabled = true
+//            }
+//        }
+//    }
+    js(IR) {
+        browser {
+            testTask {
+                testLogging.showStandardStreams = true
+                useKarma {
+                    useChromeHeadless()
+                    useFirefox()
+                }
+            }
+        }
+        binaries.executable()
+    }
+
+    /** Mobile **/
     android()
     iosX64()
     iosArm64()
@@ -21,7 +65,8 @@ kotlin {
             baseName = "common"
         }
     }
-    
+
+    /**########## SourceSets setup ############**/
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -66,5 +111,9 @@ android {
         minSdk = 23
         targetSdk = 31
         consumerProguardFiles("lib-proguard-rules.pro") //See also: https://developer.android.com/studio/projects/android-library#Considerations
+    }
+    compileOptions {
+        sourceCompatibility = Build.java
+        targetCompatibility = Build.java
     }
 }

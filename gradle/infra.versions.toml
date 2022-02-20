@@ -1,14 +1,17 @@
+############################## Versions ###########################################
 [versions]
 # Core
 kotlin = "1.6.10" # https://kotlinlang.org/docs/releases.html#release-details
+kotlin-react = "17.0.2-pre.299-kotlin-1.6.10"
 spotless = "6.2.0" # https://github.com/diffplug/spotless/tree/main/plugin-gradle
 
 # Android
-androidGradle = "7.2.0-beta02"
+androidGradle = "7.1.1" # https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
 googleServices = "4.3.8"
 playPublisher = "3.6.0"
 firebaseAppdistribution = "2.1.3"
 
+############################## Libraries ###########################################
 [libraries]
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
@@ -19,6 +22,11 @@ googleServices = { module = "com.google.gms:google-services", version.ref = "goo
 firebaseAppdistribution = { module = "com.google.firebase:firebase-appdistribution-gradle", version.ref = "firebaseAppdistribution" }
 playPublisher = { module = "com.github.triplet.gradle:play-publisher", version.ref = "playPublisher" }
 
+# Web
+kotlin-react = { module = "org.jetbrains.kotlin-wrappers:kotlin-react", version.ref = "kotlin-react" }
+kotlin-react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom", version.ref = "kotlin-react" }
+
+############################## Plugings ###########################################
 [plugins]
 spotless = { id = "com.diffplug.spotless"}
 googleServices = { id = "com.google.gms.google-services" }

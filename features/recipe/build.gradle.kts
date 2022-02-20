@@ -1,5 +1,6 @@
 apply<plugin.Junit5Plugin>()
 apply<plugin.spotless.SpotlessPlugin>()
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.android.library")
     id("kotlin-android")
