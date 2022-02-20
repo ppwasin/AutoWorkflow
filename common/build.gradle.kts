@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    alias(infra.plugins.kotlin.serialization)
 }
 
 version = "1.0"
@@ -27,6 +28,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation(libs.kotlin.serialization)
             }
         }
         val androidMain by getting
@@ -63,5 +65,6 @@ android {
     defaultConfig {
         minSdk = 23
         targetSdk = 31
+        consumerProguardFiles("lib-proguard-rules.pro") //See also: https://developer.android.com/studio/projects/android-library#Considerations
     }
 }

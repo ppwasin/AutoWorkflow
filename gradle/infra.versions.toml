@@ -28,3 +28,4 @@ buildconfig = { id = "com.github.gmazzo.buildconfig", version = "3.0.3" } # http
 
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # https://github.com/Kotlin/kotlinx.serialization
