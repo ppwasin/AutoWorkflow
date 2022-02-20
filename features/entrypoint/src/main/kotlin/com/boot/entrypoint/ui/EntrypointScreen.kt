@@ -18,6 +18,7 @@ package com.boot.entrypoint.ui
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.boot.common.Platform
 import com.boot.designsystem.theme.app.AppTheme
 import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
@@ -29,6 +30,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 fun EntrypointScreen() {
   // hoist navctrl here to save/restore navigation state when swap between BTN
   val recipeNavController = rememberNavController()
+  println("Test kmp: ${Platform().platform}")
   AppTheme {
     ProvideWindowInsets {
       BtmSlot(

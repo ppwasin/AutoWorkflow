@@ -5,8 +5,8 @@ pluginManagement {
 	}
 	dependencyResolutionManagement {
 		versionCatalogs {
-			create("build") {
-				from(files("../gradle/build.versions.toml"))
+			create("infra") {
+				from(files("../gradle/infra.versions.toml"))
 			}
 		}
 	}

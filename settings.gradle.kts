@@ -1,4 +1,11 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("infra") {
+            from(files("gradle/infra.versions.toml"))
+        }
+    }
+}
 
 rootProject.name = "AutoWorkflow"
 includeBuild("pluginBuild")
@@ -15,10 +22,4 @@ include(":fake:pagination")
 include(":features:entrypoint")
 include(":features:recipe")
 
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("build") {
-            from(files("gradle/build.versions.toml"))
-        }
-    }
-}
+include(":common")

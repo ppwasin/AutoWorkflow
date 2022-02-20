@@ -7,9 +7,9 @@ apply<plugin.spotless.SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id(build.plugins.googleServices.get().pluginId)
-    id(build.plugins.firebaseAppdistribution.get().pluginId)
-    id(build.plugins.playPublisher.get().pluginId)
+    id(infra.plugins.googleServices.get().pluginId)
+    id(infra.plugins.firebaseAppdistribution.get().pluginId)
+    id(infra.plugins.playPublisher.get().pluginId)
 }
 
 /** Publish **/

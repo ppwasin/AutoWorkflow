@@ -1,16 +1,20 @@
 [versions]
+# Core
 kotlin = "1.6.10" # https://kotlinlang.org/docs/releases.html#release-details
-androidGradle = "7.2.0-beta02"
-
 spotless = "6.2.0" # https://github.com/diffplug/spotless/tree/main/plugin-gradle
+
+# Android
+androidGradle = "7.2.0-beta02"
 googleServices = "4.3.8"
 playPublisher = "3.6.0"
 firebaseAppdistribution = "2.1.3"
 
 [libraries]
-androidGradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
 kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+
+# Android
+androidGradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
 googleServices = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 firebaseAppdistribution = { module = "com.google.firebase:firebase-appdistribution-gradle", version.ref = "firebaseAppdistribution" }
 playPublisher = { module = "com.github.triplet.gradle:play-publisher", version.ref = "playPublisher" }
@@ -20,5 +24,7 @@ spotless = { id = "com.diffplug.spotless"}
 googleServices = { id = "com.google.gms.google-services" }
 firebaseAppdistribution = { id = "com.google.firebase.appdistribution" }
 playPublisher = { id = "com.github.triplet.play"}
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 buildconfig = { id = "com.github.gmazzo.buildconfig", version = "3.0.3" } # https://github.com/gmazzo/gradle-buildconfig-plugin
+
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
