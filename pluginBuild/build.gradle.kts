@@ -1,5 +1,5 @@
 plugins {
-	alias(build.plugins.kotlin.jvm)
+	alias(infra.plugins.kotlin.jvm)
 }
 
 allprojects {

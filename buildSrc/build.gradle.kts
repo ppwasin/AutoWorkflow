@@ -1,6 +1,6 @@
 plugins {
 	`kotlin-dsl`
-	alias(build.plugins.buildconfig)
+	alias(infra.plugins.buildconfig)
 }
 
 repositories {
@@ -10,9 +10,9 @@ repositories {
 }
 
 dependencies {
-	implementation(build.androidGradle)
-	implementation(build.kotlinGradle)
-	implementation(build.spotless)
+	implementation(infra.androidGradle)
+	implementation(infra.kotlinGradle)
+	implementation(infra.spotless)
 }
 
 buildConfig {
