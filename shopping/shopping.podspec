@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'common'
-    spec.version                  = '11'
+    spec.name                     = 'shopping'
+    spec.version                  = '1.0'
     spec.homepage                 = 'Link to the Shared Module homepage'
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = ''
@@ -16,13 +16,13 @@ Pod::Spec.new do |spec|
                 
 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':common',
-        'PRODUCT_MODULE_NAME' => 'common',
+        'KOTLIN_PROJECT_PATH' => ':shopping',
+        'PRODUCT_MODULE_NAME' => 'shopping',
     }
 
     spec.script_phases = [
         {
-            :name => 'Build common',
+            :name => 'Build shopping',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

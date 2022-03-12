@@ -6,7 +6,7 @@ kotlin-react = "17.0.2-pre.299-kotlin-1.6.10"
 spotless = "6.2.0" # https://github.com/diffplug/spotless/tree/main/plugin-gradle
 
 # Android
-androidGradle = "7.1.1" # https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
+androidGradle = "7.0.4" # https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
 googleServices = "4.3.8"
 playPublisher = "3.6.0"
 firebaseAppdistribution = "2.1.3"

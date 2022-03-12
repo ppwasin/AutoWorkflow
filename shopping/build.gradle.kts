@@ -1,11 +1,14 @@
-@Suppress("DSL_SCOPE_VIOLATION")
-plugins {
+import org.jetbrains.kotlin.cli.jvm.main
+
+@Suppress("DSL_SCOPE_VIOLATION") plugins {
     id("com.android.library")
     id(infra.plugins.kotlin.multiplatform.get().pluginId)
 //    kotlin("multiplatform")
 //    alias(infra.plugins.kotlin.multiplatform)
     alias(infra.plugins.kotlin.serialization)
     kotlin("native.cocoapods")
+    alias(libs.plugins.ksp)
+    id(libs.plugins.sqldelight.get().pluginId)
 }
 
 version = "1.0"
@@ -14,42 +17,28 @@ kotlin {
     /**########## Target setup ############**/
     /** Backend **/
     jvm()
-//    jvm {
+//    targets.all {
 //        compilations.all {
-//            kotlinOptions.jvmTarget = Build.java.toString()
-//        }
-//        withJava()
-//    }
-    targets.all {
-        compilations.all {
-            kotlinOptions {
-                jvm {
-                    version = Build.java.toString()
-                }
-            }
-        }
-    }
-    /** Web **/
-//    js {
-//        browser {
-//            binaries.executable()
-//            commonWebpackConfig {
-//                cssSupport.enabled = true
+//            kotlinOptions {
+//                jvm {
+//                    version = Build.java.toString()
+//                }
 //            }
 //        }
 //    }
-    js(IR) {
-        browser {
-            testTask {
-                testLogging.showStandardStreams = true
-                useKarma {
-                    useChromeHeadless()
-                    useFirefox()
-                }
-            }
-        }
-        binaries.executable()
-    }
+    /** Web **/
+//    js(IR) {
+//        browser {
+//            testTask {
+//                testLogging.showStandardStreams = true
+//                useKarma {
+//                    useChromeHeadless()
+//                    useFirefox()
+//                }
+//            }
+//        }
+//        binaries.executable()
+//    }
 
     /** Mobile **/
     android()
@@ -68,21 +57,54 @@ kotlin {
 
     /**########## SourceSets setup ############**/
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.kotlin.serialization)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.cio)
+                implementation(libs.ktor.client.log)
+                implementation(libs.coroutine.core)
+                implementation(libs.arrowkt.core)
+                implementation(libs.klock.common)
+                implementation(libs.bundles.koin)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation(libs.kotlin.serialization)
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.sqldelight.android)
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.ktor.serialization)
+                implementation(libs.ktor.server.core)
+                implementation(libs.ktor.server.netty)
+                implementation(libs.logback)
+                implementation(libs.kmongo)
+                implementation(libs.sqldelight.jvm)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.ktor.client.mock)
+                implementation(libs.test.kotest.junit5)
+                implementation(libs.test.kotest.assert)
+            }
+        }
+
         val iosX64Main by getting
         val iosArm64Main by getting
         //val iosSimulatorArm64Main by getting
@@ -99,7 +121,7 @@ kotlin {
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
-            //iosSimulatorArm64Test.dependsOn(this)
+            //iosSimulatorArm64Test.dependsOn(this)you
         }
     }
 }
@@ -115,5 +137,16 @@ android {
     compileOptions {
         sourceCompatibility = Build.java
         targetCompatibility = Build.java
+    }
+}
+
+dependencies {
+    add("kspJvm", libs.ksp.koin) //https://kotlinlang.org/docs/ksp-multiplatform.html?section=posts#compilation-and-processing
+}
+
+sqldelight {
+    database("ShoppingDatabase") {
+        packageName = "com.boot.shopping.db"
+//        sourceFolders = listOf("sqldelight")
     }
 }

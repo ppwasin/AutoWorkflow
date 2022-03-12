@@ -14,6 +14,7 @@ buildscript {
         classpath(infra.firebaseAppdistribution)
         classpath(infra.spotless)
         classpath(infra.playPublisher)
+        classpath(libs.sqldelight)
     }
 }
 
@@ -41,3 +42,7 @@ plugins {
 //    id("com.android.application") apply false
 //    id("com.android.library") apply false
 }
+
+rootDir.resolve("gradle.properties")
+    .copyTo(target = rootDir.resolve("buildSrc").resolve("gradle.properties"), overwrite = true)
+    .copyTo(target = rootDir.resolve("pluginBuild").resolve("gradle.properties"), overwrite = true)
