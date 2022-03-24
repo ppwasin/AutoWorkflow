@@ -19,10 +19,6 @@ buildscript {
 }
 
 subprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class) {
         kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
         kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
@@ -46,3 +42,10 @@ plugins {
 rootDir.resolve("gradle.properties")
     .copyTo(target = rootDir.resolve("buildSrc").resolve("gradle.properties"), overwrite = true)
     .copyTo(target = rootDir.resolve("pluginBuild").resolve("gradle.properties"), overwrite = true)
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

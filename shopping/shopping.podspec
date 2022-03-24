@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     spec.license                  = ''
     spec.summary                  = 'Some description for the Shared Module'
 
-    spec.vendored_frameworks      = "build/cocoapods/framework/common.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/shopping.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 

@@ -1,9 +1,8 @@
-import org.jetbrains.kotlin.cli.jvm.main
-
-@Suppress("DSL_SCOPE_VIOLATION") plugins {
+@Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
+plugins {
     id("com.android.library")
-    id(infra.plugins.kotlin.multiplatform.get().pluginId)
-//    kotlin("multiplatform")
+//    id(infra.plugins.kotlin.multiplatform.get().pluginId)
+    kotlin("multiplatform")
 //    alias(infra.plugins.kotlin.multiplatform)
     alias(infra.plugins.kotlin.serialization)
     kotlin("native.cocoapods")
@@ -12,11 +11,21 @@ import org.jetbrains.kotlin.cli.jvm.main
 }
 
 version = "1.0"
+group = "com.boot"
+
 
 kotlin {
     /**########## Target setup ############**/
-    /** Backend **/
-    jvm()
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = Build.java.toString()
+        }
+//        withJava()
+        testRuns["test"].executionTask.configure {
+            useJUnitPlatform()
+        }
+    }
+//    jvm()
 //    targets.all {
 //        compilations.all {
 //            kotlinOptions {
@@ -44,14 +53,14 @@ kotlin {
     android()
     iosX64()
     iosArm64()
-    //iosSimulatorArm64() sure all ios dependencies support this target
+    iosSimulatorArm64()
 
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "common"
+            baseName = "shopping"
         }
     }
 
@@ -67,7 +76,7 @@ kotlin {
                 implementation(libs.coroutine.core)
                 implementation(libs.arrowkt.core)
                 implementation(libs.klock.common)
-                implementation(libs.bundles.koin)
+//                implementation(libs.bundles.koin)
             }
         }
         val commonTest by getting {
@@ -107,21 +116,21 @@ kotlin {
 
         val iosX64Main by getting
         val iosArm64Main by getting
-        //val iosSimulatorArm64Main by getting
+        val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
-            //iosSimulatorArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
         val iosX64Test by getting
         val iosArm64Test by getting
-        //val iosSimulatorArm64Test by getting
+        val iosSimulatorArm64Test by getting
         val iosTest by creating {
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
-            //iosSimulatorArm64Test.dependsOn(this)you
+            iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }
@@ -141,7 +150,8 @@ android {
 }
 
 dependencies {
-    add("kspJvm", libs.ksp.koin) //https://kotlinlang.org/docs/ksp-multiplatform.html?section=posts#compilation-and-processing
+//    add("kspJvm", libs.ksp.koin) //https://kotlinlang.org/docs/ksp-multiplatform.html?section=posts#compilation-and-processing
+//    implementation(project(":backend:contract"))
 }
 
 sqldelight {
