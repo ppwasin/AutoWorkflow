@@ -1,3 +1,4 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 	`kotlin-dsl`
 	alias(infra.plugins.buildconfig)

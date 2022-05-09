@@ -50,7 +50,7 @@ dependencies {
     implementation(projects.platform.designSystem)
     implementation(projects.platform.components)
     implementation(projects.fake.pagination)
-    implementation(projects.common)
+    implementation(projects.shopping)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
     implementation(libs.paging.compose)

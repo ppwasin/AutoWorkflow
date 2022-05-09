@@ -1,0 +1,27 @@
+CREATE TABLE shoppingItem (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  description TEXT NOT NULL
+);
+
+insertItem:
+INSERT OR REPLACE INTO shoppingItem (id, name, description) VALUES (?, ?, ?);
+
+selectAll:
+SELECT * FROM shoppingItem ORDER BY name;
+
+deleteAll:
+DELETE FROM shoppingItem;
+
+isEmpty:
+SELECT EXISTS(SELECT 1 FROM shoppingItem);
+-- SELECT COUNT(1) FROM shoppingItem;
+
+-- isEmpty:
+-- WHERE [NOT] EXISTS
+-- ( SELECT 1 FROM shoppingItem );
+
+-- CREATE INDEX hockeyPlayer_full_name ON shoppingItem(full_name);
+--
+-- INSERT INTO hockeyPlayer (player_number, full_name)
+-- VALUES (15, 'Ryan Getzlaf');

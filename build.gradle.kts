@@ -14,18 +14,11 @@ buildscript {
         classpath(infra.firebaseAppdistribution)
         classpath(infra.spotless)
         classpath(infra.playPublisher)
+        classpath(libs.sqldelight)
     }
-}
-
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
 }
 
 subprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class) {
         kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
         kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
@@ -33,6 +26,26 @@ subprojects {
     }
 }
 
+//@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.boot.scripts.cd.CDPlugin")
+
+//    // this is necessary to avoid the plugins to be loaded multiple times
+//    // in each subproject's classloader
+//    kotlin("jvm") apply false
+//    kotlin("multiplatform") apply false
+//    kotlin("android") apply false
+//    id("com.android.application") apply false
+//    id("com.android.library") apply false
+}
+
+rootDir.resolve("gradle.properties")
+    .copyTo(target = rootDir.resolve("buildSrc").resolve("gradle.properties"), overwrite = true)
+    .copyTo(target = rootDir.resolve("pluginBuild").resolve("gradle.properties"), overwrite = true)
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }

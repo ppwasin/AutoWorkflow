@@ -1,4 +1,12 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 dependencyResolutionManagement {
     versionCatalogs {
         create("infra") {
@@ -8,18 +16,19 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AutoWorkflow"
+// Infra
 includeBuild("pluginBuild")
+include(":shopping")
+
+// Mobile
 include(":app")
 include(":playground")
-
 include(":platform:navigation")
 include(":platform:designSystem")
 include(":platform:components")
-include(":platform:map")
-
 include(":fake:pagination")
-
 include(":features:entrypoint")
 include(":features:recipe")
 
-include(":common")
+// Backend
+include(":backend")
