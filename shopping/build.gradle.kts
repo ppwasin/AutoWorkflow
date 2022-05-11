@@ -136,11 +136,11 @@ kotlin {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Build.compileSdk
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 23
-        targetSdk = 31
+        minSdk = Build.minSdk
+        targetSdk = Build.targetSdk
         consumerProguardFiles("lib-proguard-rules.pro") //See also: https://developer.android.com/studio/projects/android-library#Considerations
     }
     compileOptions {
