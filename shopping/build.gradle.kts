@@ -81,8 +81,7 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
         val androidMain by getting {
@@ -111,6 +110,7 @@ kotlin {
                 implementation(libs.ktor.client.mock)
                 implementation(libs.test.kotest.junit5)
                 implementation(libs.test.kotest.assert)
+                implementation(libs.test.coroutine)
             }
         }
 
