@@ -1,17 +1,19 @@
 [versions]
-ksp = "1.6.10-1.0.2" # https://github.com/google/ksp
+ksp = "1.6.20-1.0.5" # https://github.com/google/ksp
 rxJava = "2.2.21"
 rxAndroid = "2.1.1"
-coroutine = "1.6.0" # https://github.com/Kotlin/kotlinx.coroutines
+coroutine = "1.6.1" # https://github.com/Kotlin/kotlinx.coroutines
 
 # Compose
-compose = "1.1.0" # https://developer.android.com/jetpack/androidx/releases/compose
+# https://developer.android.com/jetpack/androidx/releases/compose
+# https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+compose = "1.2.0-alpha08"
 composeConstraintLayout = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 composeActivity = "1.4.0" # https://developer.android.com/jetpack/androidx/releases/activity
 composePaging = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx/releases/paging
-accompanist = "0.23.0" # https://github.com/google/accompanist
-composeNav = "2.4.0" # https://developer.android.com/jetpack/androidx/releases/navigation
-composeCoil = "1.4.0" # https://coil-kt.github.io/coil/compose/
+accompanist = "0.24.7-alpha" # https://github.com/google/accompanist
+composeNav = "2.4.2" # https://developer.android.com/jetpack/androidx/releases/navigation
+composeCoil = "2.0.0" # https://coil-kt.github.io/coil/compose/
 
 # Android Platform
 appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
