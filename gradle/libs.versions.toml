@@ -1,5 +1,5 @@
 [versions]
-ksp = "1.6.20-1.0.5" # https://github.com/google/ksp
+ksp = "1.6.21-1.0.5" # https://github.com/google/ksp
 rxJava = "2.2.21"
 rxAndroid = "2.1.1"
 coroutine = "1.6.1" # https://github.com/Kotlin/kotlinx.coroutines
@@ -7,7 +7,7 @@ coroutine = "1.6.1" # https://github.com/Kotlin/kotlinx.coroutines
 # Compose
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-compose = "1.2.0-alpha08"
+compose = "1.2.0-beta01"
 composeConstraintLayout = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 composeActivity = "1.4.0" # https://developer.android.com/jetpack/androidx/releases/activity
 composePaging = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx/releases/paging
@@ -19,7 +19,7 @@ composeCoil = "2.0.0" # https://coil-kt.github.io/coil/compose/
 appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
 material = "1.5.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.0" # https://developer.android.com/jetpack/androidx/releases/paging
-splashscreen = "1.0.0-beta01" # https://developer.android.com/jetpack/androidx/releases/core
+splashscreen = "1.0.0-beta02" # https://developer.android.com/jetpack/androidx/releases/core
 
 # Test
 junit5 = "5.7.0"
@@ -52,7 +52,7 @@ sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite
 
 
 # Architecture
-arrowkt = "1.0.1" # https://arrow-kt.io/docs/quickstart/#setup
+arrowkt = "1.1.2" # https://arrow-kt.io/docs/quickstart/#setup
 kotlin-serialization = "1.3.2" # https://github.com/Kotlin/kotlinx.serialization
 
 [libraries]
