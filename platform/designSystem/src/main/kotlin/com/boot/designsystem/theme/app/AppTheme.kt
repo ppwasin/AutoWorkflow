@@ -1,5 +1,6 @@
 package com.boot.designsystem.theme.app
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -18,6 +19,7 @@ object AppTheme {
 
 @Composable
 fun AppTheme(
+//  colors: AppColors = if (isSystemInDarkTheme()) AppTheme.colors else AppTheme.colors,
   colors: AppColors = AppTheme.colors,
   typography: AppTypography = AppTheme.typography,
   dimensions: AppDimensions = AppTheme.dimensions,
