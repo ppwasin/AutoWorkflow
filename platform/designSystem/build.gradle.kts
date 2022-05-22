@@ -49,6 +49,7 @@ android {
 dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
+    implementation(libs.material)
 
     androidTestImplementation(libs.androidTest.espresso)
     androidTestImplementation(libs.androidTest.junit)
