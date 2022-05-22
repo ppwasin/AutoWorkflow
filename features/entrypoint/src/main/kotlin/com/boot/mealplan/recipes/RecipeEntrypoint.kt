@@ -16,8 +16,8 @@ import com.boot.components.search.SearchScreenSlot
 import com.boot.fake.model.FakeItem
 
 enum class RecipeRoute {
-  List,
-  Search,
+  Home,
+  SearchResult,
   Details;
 
   fun route() = this.name
@@ -25,13 +25,13 @@ enum class RecipeRoute {
 
 @Composable
 fun RecipeEntrypoint(navController: NavHostController = rememberNavController()) {
-  NavHost(navController = navController, startDestination = RecipeRoute.List.route()) {
-    composable(RecipeRoute.List.route()) {
+  NavHost(navController = navController, startDestination = RecipeRoute.Home.route()) {
+    composable(RecipeRoute.Home.route()) {
       RecipeList(
-        searchBar = { SearchButton { navController.navigate(RecipeRoute.Search.route()) } }
+        searchBar = { SearchButton { navController.navigate(RecipeRoute.SearchResult.route()) } }
       )
     }
-    composable(RecipeRoute.Search.route()) {
+    composable(RecipeRoute.SearchResult.route()) {
       SearchScreenSlot(
         viewModel = RecipeInjector.rememberQueryViewModel(),
         itemKey = FakeItem::id,

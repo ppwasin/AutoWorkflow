@@ -20,7 +20,7 @@ composeMaterial3 = "1.0.0-alpha12" # https://developer.android.com/jetpack/andro
 appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
 material = "1.6.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.0" # https://developer.android.com/jetpack/androidx/releases/paging
-splashscreen = "1.0.0-beta02" # https://developer.android.com/jetpack/androidx/releases/core
+splashscreen = "1.0.0-rc01" # https://developer.android.com/jetpack/androidx/releases/core
 
 # Test
 junit5 = "5.7.0"
