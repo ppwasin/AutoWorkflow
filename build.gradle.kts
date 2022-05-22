@@ -27,7 +27,8 @@ subprojects {
       listOf(
         "-Xopt-in=kotlin.RequiresOptIn",
         "-Xopt-in=kotlinx.coroutines.FlowPreview",
-        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api",
       )
   }
 }

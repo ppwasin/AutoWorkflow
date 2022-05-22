@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.boot.designSystem.R
 import com.boot.designsystem.theme.app.AppTheme
+import com.boot.designsystem.theme.material.AppTypography
 import com.boot.designsystem.theme.material.Shapes
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.statusBarsPadding

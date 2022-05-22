@@ -14,11 +14,11 @@ composePaging = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx
 accompanist = "0.24.7-alpha" # https://github.com/google/accompanist
 composeNav = "2.4.2" # https://developer.android.com/jetpack/androidx/releases/navigation
 composeCoil = "2.0.0" # https://coil-kt.github.io/coil/compose/
-composeMaterial3 = "1.0.0-alpha12"
+composeMaterial3 = "1.0.0-alpha12" # https://developer.android.com/jetpack/androidx/releases/compose-material3
 
 # Android Platform
 appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
-material = "1.5.0" # https://github.com/material-components/material-components-android/releases
+material = "1.6.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.0" # https://developer.android.com/jetpack/androidx/releases/paging
 splashscreen = "1.0.0-beta02" # https://developer.android.com/jetpack/androidx/releases/core
 
@@ -183,6 +183,7 @@ compose = [
     "compose-material",
     "compose-material-icons-core",
     "compose-material-icons-ext",
+    "compose-material-3",
     "compose-nav",
     "compose-constraintLayout",
     "compose-swipeToRefresh",

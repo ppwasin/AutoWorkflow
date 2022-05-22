@@ -2,7 +2,7 @@ package com.boot.components.search.item
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,7 +26,6 @@ fun SearchTextRow(title: String, subTitle: String? = null) {
         overflow = TextOverflow.Ellipsis,
         textAlign = TextAlign.Start,
         style = MaterialTheme.typography.subtitle1,
-        color = ComponentColors.subTitleText
       )
     }
   }

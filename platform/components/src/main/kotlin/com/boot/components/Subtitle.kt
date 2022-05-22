@@ -1,7 +1,7 @@
 package com.boot.components
 
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
@@ -14,8 +14,8 @@ fun SubTitle(text: String) {
   Text(
     text = text,
     overflow = TextOverflow.Ellipsis,
-    style = MaterialTheme.typography.h5,
-    color = Color.Gray,
+    style = MaterialTheme.typography.subtitle1,
+//    color = MaterialTheme.colors.secondaryVariant,
     maxLines = 2,
   )
 }

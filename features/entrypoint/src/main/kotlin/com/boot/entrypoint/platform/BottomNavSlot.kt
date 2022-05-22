@@ -1,14 +1,16 @@
 package com.boot.entrypoint.platform
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -25,11 +27,11 @@ fun <T> BtmSlot(
   val navController = rememberNavController()
   Scaffold(
     bottomBar = {
-      BottomNavigation {
+      NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         screenItems.forEach { item ->
-          BottomNavigationItem(
+          NavigationBarItem(
             icon = { Icon(infoGetter.getIcon(item), contentDescription = null) },
             label = { Text(infoGetter.getLabel(item)) },
             selected =
