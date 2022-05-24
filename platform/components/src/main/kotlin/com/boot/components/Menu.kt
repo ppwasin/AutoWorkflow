@@ -60,8 +60,8 @@ fun MenuToClose(
   val lineThreeEndY by
     animateFloatAsState(targetValue = if (isShow) endY else 0f, animationSpec = springSpec())
 
-  val selected = remember { mutableStateOf(false) }
-  val scale by animateFloatAsState(if (!selected.value) 1.2f else 1f)
+  var selected by remember { mutableStateOf(false) }
+  val scale by animateFloatAsState(if (!selected) 1.2f else 1f)
 
   Canvas(
     Modifier.size(height = initialHeight, width = canvasWidth)
@@ -72,9 +72,9 @@ fun MenuToClose(
       .pointerInput(Unit) {
         detectTapGestures(
           onPress = {
-            selected.value = true
-            if (tryAwaitReleaseInsidetarget()) onClick()
-            selected.value = false
+            selected = true
+            if (tryAwaitRelease()) onClick()
+            selected = false
           }
         )
       }
@@ -102,14 +102,6 @@ fun MenuToClose(
     line(start = Offset(x = 0f, y = height), end = Offset(x = width, y = lineThreeEndY))
   }
 }
-
-private suspend fun PressGestureScope.tryAwaitReleaseInsidetarget() =
-  try {
-    tryAwaitRelease()
-  } catch (c: CancellationException) {
-    // return false when pointer-up outside the target
-    false
-  }
 
 @Preview(name = "MenuToClose")
 @Composable
