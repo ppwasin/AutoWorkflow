@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.boot.designsystem.theme.material.AppMaterialTheme
+import kotlinx.coroutines.CancellationException
 
 @Composable
 fun MenuToClose(
@@ -104,9 +105,8 @@ fun MenuToClose(
 
 private suspend fun PressGestureScope.tryAwaitReleaseInsidetarget() =
   try {
-    awaitRelease()
-    true
-  } catch (c: GestureCancellationException) {
+    tryAwaitRelease()
+  } catch (c: CancellationException) {
     // return false when pointer-up outside the target
     false
   }
