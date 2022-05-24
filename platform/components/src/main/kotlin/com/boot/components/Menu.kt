@@ -4,8 +4,7 @@ import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.GestureCancellationException
-import androidx.compose.foundation.gestures.PressGestureScope
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,8 +30,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.boot.components.gesture.pressGesture
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import kotlinx.coroutines.CancellationException
 
 @Composable
 fun MenuToClose(
@@ -60,24 +59,10 @@ fun MenuToClose(
   val lineThreeEndY by
     animateFloatAsState(targetValue = if (isShow) endY else 0f, animationSpec = springSpec())
 
-  var selected by remember { mutableStateOf(false) }
-  val scale by animateFloatAsState(if (!selected) 1.2f else 1f)
-
   Canvas(
-    Modifier.size(height = initialHeight, width = canvasWidth)
-      .graphicsLayer {
-        scaleX = scale
-        scaleY = scale
-      }
-      .pointerInput(Unit) {
-        detectTapGestures(
-          onPress = {
-            selected = true
-            if (tryAwaitRelease()) onClick()
-            selected = false
-          }
-        )
-      }
+    Modifier
+      .size(height = initialHeight, width = canvasWidth)
+      .pressGesture(onClick = onClick)
   ) {
     val (width, height) = size
 
