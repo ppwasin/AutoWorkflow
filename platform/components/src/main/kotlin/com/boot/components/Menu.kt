@@ -19,7 +19,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -34,7 +33,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.boot.designsystem.theme.material.AppMaterialTheme
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MenuToClose(
   isShow: Boolean,
@@ -74,7 +72,7 @@ fun MenuToClose(
         detectTapGestures(
           onPress = {
             selected.value = true
-            if (isReleaseInsideTarget()) onClick()
+            if (tryAwaitReleaseInsidetarget()) onClick()
             selected.value = false
           }
         )
@@ -104,7 +102,7 @@ fun MenuToClose(
   }
 }
 
-private suspend fun PressGestureScope.isReleaseInsideTarget() =
+private suspend fun PressGestureScope.tryAwaitReleaseInsidetarget() =
   try {
     awaitRelease()
     true
