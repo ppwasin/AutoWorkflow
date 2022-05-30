@@ -1,8 +1,8 @@
 package com.modular.plugin.extensions
 
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.*
 
-fun LibraryExtension.setupCompose(composeVersion: String){
+fun <A : BuildFeatures, B : BuildType, C : DefaultConfig, D : ProductFlavor> CommonExtension<A, B, C, D>.setupCompose(composeVersion: String) {
     buildFeatures {
         compose = true
 

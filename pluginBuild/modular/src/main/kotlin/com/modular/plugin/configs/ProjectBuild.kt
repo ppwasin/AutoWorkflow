@@ -1,4 +1,4 @@
-package com.modular.plugin
+package com.modular.plugin.configs
 
 import org.gradle.api.JavaVersion
 

@@ -25,6 +25,11 @@ gradlePlugin {
       id = "com.modular.kotlin"
       implementationClass = "com.modular.plugin.KotlinLib"
     }
+
+    create("extension-module") {
+      id = "com.modular.extension"
+      implementationClass = "com.modular.plugin.ExtensionPlugin"
+    }
   }
 }
 

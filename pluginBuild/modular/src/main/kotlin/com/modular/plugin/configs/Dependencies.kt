@@ -1,4 +1,4 @@
-package com.modular.plugin.extensions
+package com.modular.plugin.configs
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
