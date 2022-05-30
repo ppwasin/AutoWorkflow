@@ -1,3 +1,4 @@
+import com.modular.plugin.configs.ProjectBuild
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
 
@@ -21,7 +22,7 @@ buildscript {
 subprojects {
   tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class) {
     kotlinOptions {
-      jvmTarget = Build.java.toString()
+      jvmTarget = ProjectBuild.java.toString()
     }
     kotlinOptions.freeCompilerArgs +=
       listOf(

@@ -1,3 +1,6 @@
+import com.modular.plugin.configs.ProjectBuild
+import com.modular.plugin.extensions.setupSdk
+
 @Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
 plugins {
   id("com.android.library")
@@ -17,7 +20,7 @@ group = "com.boot"
 kotlin {
   /** ########## Target setup ############ */
   jvm {
-    compilations.all { kotlinOptions.jvmTarget = Build.java.toString() }
+    compilations.all { kotlinOptions.jvmTarget = ProjectBuild.java.toString() }
     //        withJava()
     testRuns["test"].executionTask.configure { useJUnitPlatform() }
   }
@@ -127,19 +130,8 @@ kotlin {
 }
 
 android {
-  compileSdk = Build.compileSdk
+  setupSdk()
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-  defaultConfig {
-    minSdk = Build.minSdk
-    targetSdk = Build.targetSdk
-    consumerProguardFiles(
-      "lib-proguard-rules.pro"
-    ) // See also: https://developer.android.com/studio/projects/android-library#Considerations
-  }
-  compileOptions {
-    sourceCompatibility = Build.java
-    targetCompatibility = Build.java
-  }
 }
 
 dependencies {
