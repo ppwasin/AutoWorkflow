@@ -16,3 +16,4 @@ rootProject.name = "pluginBuild"
 
 include(":cd")
 include(":junit5")
+include(":modular")
