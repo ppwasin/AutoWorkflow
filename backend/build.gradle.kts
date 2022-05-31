@@ -1,3 +1,4 @@
+import com.modular.plugin.configs.ProjectBuild
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -24,7 +25,7 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = Build.java.toString()
+    kotlinOptions.jvmTarget = ProjectBuild.java.toString()
 }
 
 dependencies {

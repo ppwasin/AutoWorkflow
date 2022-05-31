@@ -1,4 +1,6 @@
 import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
+import com.modular.plugin.extensions.setupCompose
+import com.modular.plugin.extensions.setupSdk
 import java.util.*
 
 apply<plugin.Junit5Plugin>()
@@ -27,17 +29,8 @@ play {
 }
 
 android {
-    compileSdk = Build.compileSdk
-
-    defaultConfig {
-        applicationId = Build.appId
-        minSdk = Build.minSdk
-        targetSdk = Build.targetSdk
-        versionCode = 1
-        versionName = versionNameOverride
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+    setupCompose(libs.versions.compose.get())
+    setupSdk(versionName = versionNameOverride, applicationId = "com.boot.autoworkflow")
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
     val signConfigName = "config"
@@ -69,30 +62,6 @@ android {
                 artifactType = "AAB"
                 testers = "pp.wasin@gmail.com, ex@gmail.com"
             }
-        }
-    }
-    compileOptions {
-        sourceCompatibility = Build.java
-        targetCompatibility = Build.java
-    }
-    kotlinOptions { jvmTarget = Build.java.toString() }
-    buildFeatures {
-        compose = true
-
-        // Disable unused AGP features
-        buildConfig = true
-        aidl = false
-        renderScript = false
-        resValues = false
-        shaders = false
-    }
-    composeOptions { kotlinCompilerExtensionVersion = libs.versions.compose.get() }
-    packagingOptions {
-        // Multiple dependency bring these files in. Exclude them to enable
-        // our test APK to build (has no effect on our AARs)
-        resources.excludes.run {
-            add("META-INF/AL2.0")
-            add("META-INF/LGPL2.1")
         }
     }
 }

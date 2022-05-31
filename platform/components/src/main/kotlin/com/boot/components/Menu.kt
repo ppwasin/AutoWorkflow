@@ -4,8 +4,6 @@ import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.graphics.drawscope.withTransform
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -60,9 +56,7 @@ fun MenuToClose(
     animateFloatAsState(targetValue = if (isShow) endY else 0f, animationSpec = springSpec())
 
   Canvas(
-    Modifier
-      .size(height = initialHeight, width = canvasWidth)
-      .pressGesture(onClick = onClick)
+    Modifier.size(height = initialHeight, width = canvasWidth).pressGesture(onClick = onClick)
   ) {
     val (width, height) = size
 

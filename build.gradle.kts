@@ -1,3 +1,4 @@
+import com.modular.plugin.configs.ProjectBuild
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
 
@@ -21,7 +22,7 @@ buildscript {
 subprojects {
   tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class) {
     kotlinOptions {
-      jvmTarget = Build.java.toString()
+      jvmTarget = ProjectBuild.java.toString()
     }
     kotlinOptions.freeCompilerArgs +=
       listOf(
@@ -36,6 +37,7 @@ subprojects {
 // @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   id("com.boot.scripts.cd.CDPlugin")
+  id("com.modular.extension") // Apply on all sub-project. So they can use extensions from com.modular
 
   //    // this is necessary to avoid the plugins to be loaded multiple times
   //    // in each subproject's classloader
