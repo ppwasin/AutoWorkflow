@@ -1,8 +1,23 @@
+import com.modular.plugin.extensions.setupCompose
+import com.modular.plugin.extensions.setupSdk
+
 apply<plugin.Junit5Plugin>()
 apply<plugin.DaggerPlugin>()
 apply<plugin.spotless.SpotlessPlugin>()
 plugins {
-    id("com.modular.composelib")
+    id("com.android.application")
+    id("kotlin-android")
+}
+
+android {
+    setupCompose(libs.versions.compose.get())
+    setupSdk(versionName = "1.0", applicationId = "com.boot.playground")
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
 }
 
 dependencies {

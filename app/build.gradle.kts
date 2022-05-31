@@ -30,7 +30,7 @@ play {
 
 android {
     setupCompose(libs.versions.compose.get())
-    setupSdk(versionNameOverride)
+    setupSdk(versionName = versionNameOverride, applicationId = "com.boot.autoworkflow")
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
     val signConfigName = "config"

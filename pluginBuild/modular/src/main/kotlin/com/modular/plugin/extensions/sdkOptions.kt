@@ -22,16 +22,18 @@ fun LibraryExtension.setupSdk(){
     }
 }
 
-fun BaseAppModuleExtension.setupSdk(versionNameOverride: String){
+fun BaseAppModuleExtension.setupSdk(
+    versionName: String,
+    applicationId: String
+){
     compileSdk = ProjectBuild.compileSdk
     defaultConfig {
-        applicationId = ProjectBuild.appId
-        minSdk = ProjectBuild.minSdk
-        targetSdk = ProjectBuild.targetSdk
-        versionCode = 1
-        versionName = versionNameOverride
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        this.applicationId = applicationId
+        this.minSdk = ProjectBuild.minSdk
+        this.targetSdk = ProjectBuild.targetSdk
+        this.versionCode = 1
+        this.versionName = versionName
+        this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = ProjectBuild.java

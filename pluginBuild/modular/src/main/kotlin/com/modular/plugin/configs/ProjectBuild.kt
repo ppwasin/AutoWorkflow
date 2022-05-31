@@ -7,6 +7,4 @@ object ProjectBuild {
     const val compileSdk = 31
     const val minSdk = 23
     const val targetSdk = 31
-    const val appId = "com.boot.autoworkflow"
-
 }
