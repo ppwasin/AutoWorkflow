@@ -17,7 +17,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "AutoWorkflow"
 // Infra
-includeBuild("pluginBuild")
+includeBuild("build-logic")
 include(":shopping")
 
 // Mobile

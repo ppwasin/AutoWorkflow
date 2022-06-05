@@ -13,7 +13,7 @@ pluginManagement {
 	}
 }
 
-rootProject.name = "pluginBuild"
+rootProject.name = "build-logic"
 
 include(":cd")
 include(":convention")
