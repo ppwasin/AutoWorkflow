@@ -1,12 +1,12 @@
 import com.convention.extensions.setupCompose
 import com.convention.extensions.setupSdk
 
-apply<Junit5Plugin>()
-apply<DaggerPlugin>()
-apply<SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("plugin.junit5")
+    id("plugin.spotless")
+    id("plugin.dagger")
 }
 
 android {

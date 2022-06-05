@@ -3,12 +3,14 @@ import com.convention.extensions.setupCompose
 import com.convention.extensions.setupSdk
 import java.util.*
 
-apply<Junit5Plugin>()
-apply<SpotlessPlugin>()
+//apply<Junit5Plugin>()
+//apply<SpotlessPlugin>()
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.android.application")
+    id("plugin.junit5")
+    id("plugin.spotless")
 //    id("kotlin-android")
     kotlin("android")
     id(infra.plugins.googleServices.get().pluginId)

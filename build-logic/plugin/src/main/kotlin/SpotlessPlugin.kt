@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.register
-import com.convention.extensions.InstallSpotlessPreCommitHook
+import utils.InstallSpotlessPreCommitHook
 import java.io.File
 
 class SpotlessPlugin : Plugin<Project> {

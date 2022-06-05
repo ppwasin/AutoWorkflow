@@ -31,17 +31,12 @@ gradlePlugin {
       id = "com.convention.extension"
       implementationClass = "com.convention.ExtensionPlugin"
     }
-//    create("junit5-plugin") {
-//      id = "com.convention.plugins.junit5"
-//      implementationClass = "Junit5Plugin"
-//    }
   }
 }
 
 dependencies {
   implementation(infra.kotlinGradle)
   implementation(infra.androidGradle)
-  implementation(infra.spotless)
 }
 
 //buildConfig {
