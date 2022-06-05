@@ -16,5 +16,4 @@ pluginManagement {
 rootProject.name = "pluginBuild"
 
 include(":cd")
-include(":junit5")
 include(":convention")

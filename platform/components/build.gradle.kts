@@ -1,5 +1,5 @@
-apply<plugin.Junit5Plugin>()
-apply<plugin.spotless.SpotlessPlugin>()
+apply<Junit5Plugin>()
+apply<SpotlessPlugin>()
 plugins {
     id("com.convention.composeandroidlib")
 }

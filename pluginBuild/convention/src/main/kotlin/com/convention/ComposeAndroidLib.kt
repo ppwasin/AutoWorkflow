@@ -1,7 +1,7 @@
 package com.convention
 
 import com.android.build.gradle.LibraryExtension
-import com.convention.configs.Dependencies
+import com.convention.configs.VersionCatalogs
 import com.convention.extensions.setupCompose
 import com.convention.extensions.setupSdk
 import org.gradle.api.Plugin
@@ -14,10 +14,10 @@ class ComposeAndroidLib: Plugin<Project> {
             apply("com.android.library")
             apply("kotlin-android")
         }
-        val dependencies = Dependencies(project)
+        val versionCatalogs = VersionCatalogs(project)
         project.configure<LibraryExtension> {
             setupSdk()
-            setupCompose(dependencies.versions.compose)
+            setupCompose(versionCatalogs.versions.compose)
         }
     }
 
