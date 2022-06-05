@@ -50,7 +50,6 @@ plugins {
 
 rootDir
   .resolve("gradle.properties")
-  .copyTo(target = rootDir.resolve("buildSrc").resolve("gradle.properties"), overwrite = true)
   .copyTo(target = rootDir.resolve("pluginBuild").resolve("gradle.properties"), overwrite = true)
 
 allprojects {
