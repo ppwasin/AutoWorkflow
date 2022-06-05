@@ -1,5 +1,5 @@
-import com.modular.plugin.extensions.setupCompose
-import com.modular.plugin.extensions.setupSdk
+import com.convention.extensions.setupCompose
+import com.convention.extensions.setupSdk
 
 apply<plugin.Junit5Plugin>()
 apply<plugin.DaggerPlugin>()

@@ -1,4 +1,4 @@
-package com.modular.plugin.configs
+package com.convention.configs
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog

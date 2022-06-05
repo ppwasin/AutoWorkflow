@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
 	repositories {
 		gradlePluginPortal()
@@ -16,4 +17,4 @@ rootProject.name = "pluginBuild"
 
 include(":cd")
 include(":junit5")
-include(":modular")
+include(":convention")

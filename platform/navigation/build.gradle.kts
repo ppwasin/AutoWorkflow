@@ -1,7 +1,7 @@
 apply<plugin.Junit5Plugin>()
 apply<plugin.spotless.SpotlessPlugin>()
 plugins {
-    id("com.modular.composelib")
+    id("com.convention.composeandroidlib")
 }
 
 dependencies {

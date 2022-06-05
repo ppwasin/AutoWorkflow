@@ -1,6 +1,6 @@
 import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
-import com.modular.plugin.extensions.setupCompose
-import com.modular.plugin.extensions.setupSdk
+import com.convention.extensions.setupCompose
+import com.convention.extensions.setupSdk
 import java.util.*
 
 apply<plugin.Junit5Plugin>()

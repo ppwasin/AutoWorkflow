@@ -1,5 +1,5 @@
-import com.modular.plugin.configs.ProjectBuild
-import com.modular.plugin.extensions.setupSdk
+import com.convention.configs.ProjectBuild
+import com.convention.extensions.setupSdk
 
 @Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
 plugins {

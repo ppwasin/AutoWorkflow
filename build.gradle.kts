@@ -1,4 +1,4 @@
-import com.modular.plugin.configs.ProjectBuild
+import com.convention.configs.ProjectBuild
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
 
@@ -37,7 +37,7 @@ subprojects {
 // @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   id("com.boot.scripts.cd.CDPlugin")
-  id("com.modular.extension") // Apply on all sub-project. So they can use extensions from com.modular
+  id("com.convention.extension") // Apply on all sub-project. So they can use extensions from com.convention
 
   //    // this is necessary to avoid the plugins to be loaded multiple times
   //    // in each subproject's classloader
