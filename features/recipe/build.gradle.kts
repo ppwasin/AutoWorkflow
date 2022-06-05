@@ -1,9 +1,9 @@
-apply<Junit5Plugin>()
-apply<SpotlessPlugin>()
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.convention.composeandroidlib")
     alias(libs.plugins.ksp)
+    id("plugin.junit5")
+    id("plugin.spotless")
 }
 
 dependencies {

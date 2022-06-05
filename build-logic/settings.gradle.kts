@@ -16,4 +16,5 @@ pluginManagement {
 rootProject.name = "build-logic"
 
 include(":cd")
+include(":plugin")
 include(":convention")
