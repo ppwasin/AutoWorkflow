@@ -1,4 +1,4 @@
-package com.convention.config
+package utils
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog

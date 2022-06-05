@@ -1,4 +1,4 @@
-package com.convention.extensions
+package utils
 
 import java.io.File
 import org.gradle.api.DefaultTask
