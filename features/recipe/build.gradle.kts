@@ -1,8 +1,8 @@
-apply<plugin.Junit5Plugin>()
-apply<plugin.spotless.SpotlessPlugin>()
+apply<Junit5Plugin>()
+apply<SpotlessPlugin>()
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.modular.composelib")
+    id("com.convention.composeandroidlib")
     alias(libs.plugins.ksp)
 }
 

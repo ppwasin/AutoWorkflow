@@ -1,4 +1,4 @@
-package com.modular.plugin
+package com.convention
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

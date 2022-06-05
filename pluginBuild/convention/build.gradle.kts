@@ -14,28 +14,34 @@ repositories {
 gradlePlugin {
   plugins {
     create("android-lib-module") {
-      id = "com.modular.androidlib"
-      implementationClass = "com.modular.plugin.SimpleAndroidLib"
+      id = "com.convention.simpleandroidlib"
+      implementationClass = "com.convention.SimpleAndroidLib"
     }
     create("compose-lib-module") {
-      id = "com.modular.composelib"
-      implementationClass = "com.modular.plugin.ComposeAndroidLib"
+      id = "com.convention.composeandroidlib"
+      implementationClass = "com.convention.ComposeAndroidLib"
     }
     create("kotlin-lib-module") {
-      id = "com.modular.kotlin"
-      implementationClass = "com.modular.plugin.KotlinLib"
+      id = "com.convention.kotlin"
+      implementationClass = "com.convention.KotlinLib"
     }
 
+    // Plugins
     create("extension-module") {
-      id = "com.modular.extension"
-      implementationClass = "com.modular.plugin.ExtensionPlugin"
+      id = "com.convention.extension"
+      implementationClass = "com.convention.ExtensionPlugin"
     }
+//    create("junit5-plugin") {
+//      id = "com.convention.plugins.junit5"
+//      implementationClass = "Junit5Plugin"
+//    }
   }
 }
 
 dependencies {
   implementation(infra.kotlinGradle)
   implementation(infra.androidGradle)
+  implementation(infra.spotless)
 }
 
 //buildConfig {

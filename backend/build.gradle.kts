@@ -1,4 +1,4 @@
-import com.modular.plugin.configs.ProjectBuild
+import com.convention.configs.ProjectBuild
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {

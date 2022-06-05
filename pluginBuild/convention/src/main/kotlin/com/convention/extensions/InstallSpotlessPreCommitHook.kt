@@ -1,4 +1,4 @@
-package plugin.spotless
+package com.convention.extensions
 
 import java.io.File
 import org.gradle.api.DefaultTask

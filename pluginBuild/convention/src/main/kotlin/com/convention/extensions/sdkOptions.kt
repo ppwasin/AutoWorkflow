@@ -1,8 +1,9 @@
-package com.modular.plugin.extensions
+package com.convention.extensions
 
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.modular.plugin.configs.ProjectBuild
+import com.convention.extensions.kotlinOptions
+import com.convention.configs.ProjectBuild
 
 fun LibraryExtension.setupSdk(){
     compileSdk = ProjectBuild.compileSdk

@@ -1,8 +1,8 @@
-package com.modular.plugin.extensions
+package com.convention.extensions
 
 import com.android.build.api.dsl.*
 
-fun <A : BuildFeatures, B : BuildType, C : DefaultConfig, D : ProductFlavor> CommonExtension<A, B, C, D>.setupCompose(composeVersion: String) {
+fun  CommonExtension<*, *, *, *>.setupCompose(composeVersion: String) {
     buildFeatures {
         compose = true
 

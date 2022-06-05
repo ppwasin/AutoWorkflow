@@ -1,8 +1,8 @@
-package com.modular.plugin
+package com.convention
 
 import com.android.build.gradle.LibraryExtension
-import com.modular.plugin.configs.Dependencies
-import com.modular.plugin.extensions.setupSdk
+import com.convention.configs.VersionCatalogs
+import com.convention.extensions.setupSdk
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -13,7 +13,7 @@ class SimplAndroidLib : Plugin<Project> {
             apply("com.android.library")
             apply("kotlin-android")
         }
-        val dependencies = Dependencies(project)
+        val versionCatalogs = VersionCatalogs(project)
         project.configure<LibraryExtension> {
             setupSdk()
         }

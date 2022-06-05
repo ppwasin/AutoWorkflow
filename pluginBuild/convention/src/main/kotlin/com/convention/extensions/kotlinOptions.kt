@@ -1,4 +1,4 @@
-package com.modular.plugin.extensions
+package com.convention.extensions
 
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.AppExtension

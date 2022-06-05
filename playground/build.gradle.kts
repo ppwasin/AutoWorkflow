@@ -1,9 +1,9 @@
-import com.modular.plugin.extensions.setupCompose
-import com.modular.plugin.extensions.setupSdk
+import com.convention.extensions.setupCompose
+import com.convention.extensions.setupSdk
 
-apply<plugin.Junit5Plugin>()
-apply<plugin.DaggerPlugin>()
-apply<plugin.spotless.SpotlessPlugin>()
+apply<Junit5Plugin>()
+apply<DaggerPlugin>()
+apply<SpotlessPlugin>()
 plugins {
     id("com.android.application")
     id("kotlin-android")
