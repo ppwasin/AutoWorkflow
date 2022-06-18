@@ -1,7 +1,7 @@
 package com.boot.mealplan.recipes
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -18,7 +18,7 @@ import com.boot.components.Title
 fun RecipeList(searchBar: @Composable () -> Unit) {
   val dummyItems = remember { (0..5).toList() }
   LazyColumn(
-    modifier = Modifier.fillMaxWidth(),
+    modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.spacedBy(8.dp),
     horizontalAlignment = Alignment.Start
   ) {
