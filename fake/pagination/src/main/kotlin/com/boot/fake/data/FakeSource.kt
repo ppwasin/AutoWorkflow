@@ -1,5 +1,7 @@
 package com.boot.fake.data
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingSource
 import androidx.paging.PagingSource.LoadResult.Error
 import androidx.paging.PagingSource.LoadResult.Page
@@ -7,6 +9,7 @@ import androidx.paging.PagingState
 import com.boot.components.fake.FakePagingConstant
 import com.boot.components.fake.FakePlaceHolderConfig
 import com.boot.fake.model.FakeItem
+import kotlinx.coroutines.launch
 
 class FakeSource(private val searchInput: String, private val fakeBackend: FakeBackend<FakeItem>) :
   PagingSource<Int, FakeItem>() {
@@ -36,6 +39,14 @@ class FakeSource(private val searchInput: String, private val fakeBackend: FakeB
       )
     } catch (e: Exception) {
       Error(e)
+    }
+  }
+}
+
+class BasicVieModel: ViewModel(){
+  fun test(){
+    viewModelScope.launch {
+
     }
   }
 }
