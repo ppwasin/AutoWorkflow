@@ -3,6 +3,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import utils.VersionCatalogs
 
+@Suppress("unused")
 class DaggerPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     if (project.plugins.findPlugin("kotin-kapt") == null){

@@ -8,8 +8,8 @@ import org.gradle.kotlin.dsl.register
 import utils.InstallSpotlessPreCommitHook
 import java.io.File
 
+@Suppress("unused")
 class SpotlessPlugin : Plugin<Project> {
-
   override fun apply(project: Project) {
     project.run {
       apply(plugin = "com.diffplug.spotless")
