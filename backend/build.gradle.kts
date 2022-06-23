@@ -1,8 +1,6 @@
-import com.convention.configs.ProjectBuild
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm")
+    id("plugin.junit5")
     application
 //    alias(infra.plugins.kotlin.jvm)
 
@@ -18,14 +16,6 @@ application {
 
 repositories {
     mavenCentral()
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = ProjectBuild.java.toString()
 }
 
 dependencies {

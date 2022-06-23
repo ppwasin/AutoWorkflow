@@ -6,7 +6,7 @@ import org.gradle.api.tasks.testing.Test
 class Junit5Plugin : Plugin<Project> {
   override fun apply(project: Project) {
     with(project) {
-      tasks.withType(Test::class.java) {
+      tasks.withType(Test::class.java).configureEach {
         useJUnitPlatform()
         testLogging { events("passed", "skipped", "failed") }
       }

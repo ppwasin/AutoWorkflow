@@ -7,7 +7,6 @@ import org.gradle.api.tasks.TaskAction
 open class InstallSpotlessPreCommitHook : DefaultTask() {
   @TaskAction
   fun installHook() {
-    print("CreateSpotlessPreCommitHook Hello")
     val gitHooksDirectory = File("${project.rootDir}/.git/hooks/")
     if (!gitHooksDirectory.exists()) {
       gitHooksDirectory.mkdirs()

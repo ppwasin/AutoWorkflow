@@ -30,11 +30,11 @@
 ## Run backend
 Currently, there is only one backend module, :backend:shopping
 1) Run Backend via IDE
-   - Go to :backend:shopping > Application.kt > Run main
+   - Go to :backend > Application.kt > Run main
 2) Run Backend via CMD
-   - ./gradlew  backend:shopping:run
+   - ./gradlew :backend:run
 ## Auto Reload
-   - ./gradlew -t backend:shopping:build -x test -i
+   - ./gradlew -t :backend:build -x test -i
 
 ## Trobleshooting
 - Lower the android-gradle plugin version to 7.0.4 if found any error
