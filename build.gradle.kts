@@ -20,7 +20,7 @@ buildscript {
 }
 
 subprojects {
-  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class) {
+  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
     kotlinOptions {
       jvmTarget = ProjectBuild.java.toString()
     }

@@ -3,7 +3,7 @@
 # Core
 kotlin = "1.6.21" # https://kotlinlang.org/docs/releases.html#release-details
 kotlin-react = "18.1.0-pre.336" # https://github.com/JetBrains/kotlin-wrappers
-spotless = "6.2.0" # https://github.com/diffplug/spotless/tree/main/plugin-gradle
+spotless = "6.7.2" # https://github.com/diffplug/spotless/tree/main/plugin-gradle
 
 # Android
 androidGradle = "7.2.0" # https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
