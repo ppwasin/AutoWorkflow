@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     implementation(projects.platform.designSystem)
+    implementation(libs.appcompat)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
     
@@ -18,4 +19,5 @@ dependencies {
     androidTestImplementation(libs.androidTest.junit)
     androidTestImplementation(libs.androidTest.compose)
     debugImplementation(libs.test.composeRule)
+    testImplementation(libs.test.composeRule)
 }
