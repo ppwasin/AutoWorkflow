@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.entrypoint.ui.EntrypointScreen
+import java.io.File
 
 class MainActivity : ComponentActivity() {
 
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     installSplashScreen()
     setContent { EntrypointScreen() }
+
   }
 }
 
