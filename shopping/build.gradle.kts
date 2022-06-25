@@ -126,6 +126,17 @@ kotlin {
         iosSimulatorArm64Test.dependsOn(this)
       }
     }
+
+    /**
+     * Workaround unused sourceset which generate by AGP
+     * https://issuetracker.google.com/issues/152187160
+     * */
+    sourceSets.apply {
+      remove(getByName("androidAndroidTestRelease"))
+      remove(getByName("androidTestFixtures"))
+      remove(getByName("androidTestFixturesDebug"))
+      remove(getByName("androidTestFixturesRelease"))
+    }
   }
 }
 

@@ -2,7 +2,7 @@
 plugins {
     id("com.convention.composeandroidlib")
     alias(libs.plugins.ksp)
-    id("plugin.junit5")
+    id("plugin.junit")
     id("plugin.spotless")
 }
 

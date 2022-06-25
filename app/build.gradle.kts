@@ -9,7 +9,7 @@ import java.util.*
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.android.application")
-    id("plugin.junit5")
+    id("plugin.junit")
     id("plugin.spotless")
 //    id("kotlin-android")
     kotlin("android")

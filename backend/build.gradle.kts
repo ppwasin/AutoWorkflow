@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm")
-    id("plugin.junit5")
+    id("plugin.junit")
     application
 //    alias(infra.plugins.kotlin.jvm)
 

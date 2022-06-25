@@ -11,8 +11,8 @@ repositories {
 gradlePlugin {
   plugins {
     create("junit5-plugin") {
-      id = "plugin.junit5"
-      implementationClass = "Junit5Plugin"
+      id = "plugin.junit"
+      implementationClass = "JunitPlugin"
     }
     create("spotless-plugin") {
       id = "plugin.spotless"

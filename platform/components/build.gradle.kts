@@ -1,9 +1,13 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("com.convention.composeandroidlib")
-    id("plugin.junit5")
+    id("plugin.junit")
     id("plugin.spotless")
     alias(libs.plugins.paparazzi)
+}
+
+configure<JunitPluginConfig> {
+    includeJunit4.set(true)
 }
 
 dependencies {

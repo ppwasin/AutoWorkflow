@@ -1,6 +1,6 @@
 plugins {
     id("com.convention.composeandroidlib")
-    id("plugin.junit5")
+    id("plugin.junit")
     id("plugin.spotless")
 }
 
