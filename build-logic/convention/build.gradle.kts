@@ -15,16 +15,16 @@ gradlePlugin {
   plugins {
     create("android-lib-module") {
       id = "com.convention.simpleandroidlib"
-      implementationClass = "com.convention.SimpleAndroidLib"
+      implementationClass = "com.convention.SimplAndroidLib"
     }
     create("compose-lib-module") {
       id = "com.convention.composeandroidlib"
       implementationClass = "com.convention.ComposeAndroidLib"
     }
-    create("kotlin-lib-module") {
-      id = "com.convention.kotlin"
-      implementationClass = "com.convention.KotlinLib"
-    }
+//    create("kotlin-lib-module") {
+//      id = "com.convention.kotlin"
+//      implementationClass = "com.convention.KotlinLib"
+//    }
 
     // Plugins
     create("extension-module") {

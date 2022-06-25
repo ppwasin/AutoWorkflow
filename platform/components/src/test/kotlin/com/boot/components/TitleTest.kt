@@ -14,17 +14,16 @@ internal class TitleTest {
   private lateinit var parentView: FrameLayout
   private lateinit var testNameTextView: TextView
 
-  //    @Test
-  //    fun simple() {
-  //        paparazzi.snapshot {
-  //            Title("Random")
-  //        }
-  //    }
   @Before
   fun setup() {
     parentView = paparazzi.inflate(R.layout.layout_to_test)
     testNameTextView = parentView.findViewById(R.id.testName)
   }
+
+  //  @Test
+  //  fun simple() {
+  //    paparazzi.snapshot { Title("Random") }
+  //  }
 
   @Test
   fun `Default configuration`() {
