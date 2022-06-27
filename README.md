@@ -26,7 +26,7 @@
 - [CI] Run test only in changed module: https://itnext.io/gradle-modules-running-unit-tests-only-in-affected-modules-fff89562339e
 - Integrate with pagination-compose
 
-# Backend
+# Backend POC
 ## Run backend
 Currently, there is only one backend module, :backend:shopping
 1) Run Backend via IDE
@@ -38,3 +38,19 @@ Currently, there is only one backend module, :backend:shopping
 
 ## Trobleshooting
 - Lower the android-gradle plugin version to 7.0.4 if found any error
+
+## Snapshot POC
+https://github.com/cashapp/paparazzi/issues/388
+- ./gradlew :moduleName:recordPaparazziDebug
+- ./gradlew :moduleName:verifyPaparazziDebug
+### Git LFS
+Everytime we have new large file
+- git lfs track "*.png"
+- git add file.png
+- git commit -m "Add snapshot file"
+- git push origin main
+### Trobleshooting
+Use following options if record or verify task is not run
+- --no-configuration-cache 
+- --no-build-cache 
+- --rerun-tasks

@@ -8,10 +8,7 @@ import utils.VersionCatalogs
 interface JunitPluginConfig {
   val includeJunit4: Property<Boolean>
 }
-/**
- * Jupiter – the engine to run JUnit 5 tests.
- * Vintage – the engine to run JUnit 4 tests.
- * */
+/** Jupiter – the engine to run JUnit 5 tests. Vintage – the engine to run JUnit 4 tests. */
 @Suppress("unused")
 class JunitPlugin : Plugin<Project> {
   override fun apply(project: Project) {
