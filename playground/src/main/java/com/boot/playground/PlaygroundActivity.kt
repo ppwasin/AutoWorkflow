@@ -18,11 +18,12 @@ package com.boot.playground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.boot.playground.file.FilePlayground
 
 class PlaygroundActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContent { Playground() }
+    setContent { FilePlayground() }
   }
 }

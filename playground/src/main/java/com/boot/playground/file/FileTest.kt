@@ -4,8 +4,8 @@ import java.io.File
 
 class FileTest(val fullPath: String?, val fileName: String) {
 
-  fun writeFile(text: String) {
-    try {
+  fun writeFile(text: String): String {
+    return try {
       val file =
         if (fullPath != null) {
           File(fullPath).mkdirs()
@@ -14,9 +14,9 @@ class FileTest(val fullPath: String?, val fileName: String) {
 
       file.writeText(text)
       file.createNewFile()
-      println("Write success: ${file.absolutePath}")
+      "Write success: ${file.absolutePath}"
     } catch (ex: Exception) {
-      println("Write error: $ex")
+      "Write error: $ex"
     }
   }
 
