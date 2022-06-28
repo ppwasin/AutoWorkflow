@@ -27,7 +27,7 @@ jobs:
 
       - name: Gradle - Verify snapshots with Paparazzi
         id: testStep
-        run: ./gradlew clean platform:components:verifyPaparazziDebug
+        run: ./gradlew clean verifyPaparazziDebug
 
       - name: Upload snapshot failure deltas
         if: failure()

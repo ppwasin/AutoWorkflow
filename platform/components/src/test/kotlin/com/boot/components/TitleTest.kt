@@ -8,6 +8,6 @@ internal class TitleTest {
   @get:Rule val paparazzi = Paparazzi(maxPercentDifference = 0.001)
   @Test
   fun simple() {
-    paparazzi.snapshot { Title("Random") }
+    paparazzi.snapshot { Title("Randoms") }
   }
 }
