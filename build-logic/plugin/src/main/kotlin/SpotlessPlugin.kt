@@ -16,7 +16,9 @@ class SpotlessPlugin : Plugin<Project> {
       ratchetFrom = "origin/main"
       kotlin {
         // by default the target is every '.kt' and '.kts` file in the java sourcesets
-        ktfmt().googleStyle()
+        ktfmt().googleStyle().configure {
+          it.setMaxWidth(80)
+        }
         target("**/*.kt")
         targetExclude("$buildDir/**/*.kt")
         targetExclude("bin/**/*.kt")

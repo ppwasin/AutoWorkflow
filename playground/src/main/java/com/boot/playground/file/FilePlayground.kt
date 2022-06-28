@@ -26,7 +26,10 @@ fun FilePlayground() {
         ),
         FileViewState(
           title = "Access via Lib",
-          FileInfo(fullPath = "${context.filesDir}/data/etc/appchannel", fileName = "test.txt")
+          FileInfo(
+            fullPath = "${context.filesDir}/data/etc/appchannel",
+            fileName = "test.txt"
+          )
         ),
         FileViewState(
           title = "Explicitly define path",
@@ -46,7 +49,8 @@ fun FilePlayground() {
         item: FileViewState ->
         FileRunner(title = item.title, fileInfo = item.fileInfo)
 
-        if (fileStateList.lastIndex != index) Divider(Modifier.padding(vertical = 12.dp))
+        if (fileStateList.lastIndex != index)
+          Divider(Modifier.padding(vertical = 12.dp))
       }
     }
   }
@@ -68,7 +72,11 @@ fun FileRunner(title: String, fileInfo: FileInfo) {
   var writeResult by remember { mutableStateOf("") }
   var readResult by remember { mutableStateOf("") }
   Column(Modifier.padding(12.dp)) {
-    Text(title, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+    Text(
+      title,
+      style = MaterialTheme.typography.headlineMedium,
+      fontWeight = FontWeight.Bold
+    )
     Text("path: ${fileInfo.fullPath}")
     Button(
       onClick = {
