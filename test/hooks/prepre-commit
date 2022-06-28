@@ -1,0 +1,13 @@
+this is a new line
+
+### Start LFS ###
+sh /Users/wpassornpako/dev/AutoWorkflow/scripts/git-hooks/lfs/lfs-autoadd-snapshot-pattern.sh
+### End LFS ###
+
+### Start Spotless ###
+sh /Users/wpassornpako/dev/AutoWorkflow/scripts/git-hooks/spotless/spotless-apply.sh
+### End Spotless ###
+
+### Start Spotless ###
+./gradlew /Users/wpassornpako/dev/AutoWorkflow/scripts/git-hooks/spotless/spotless-apply.sh
+### End Spotless ###

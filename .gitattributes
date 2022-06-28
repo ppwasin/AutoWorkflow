@@ -1,0 +1,2 @@
+platform/components/src/test/snapshots/images/com.boot.components_TitleTest_simple.png filter=lfs diff=lfs merge=lfs -text
+**snapshots/**/*.png filter=lfs diff=lfs merge=lfs -text

@@ -4,7 +4,7 @@ import com.convention.extensions.setupSdk
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("plugin.junit5")
+    id("plugin.junit")
     id("plugin.spotless")
     id("plugin.dagger")
 }

@@ -7,7 +7,7 @@ coroutine = "1.6.1" # https://github.com/Kotlin/kotlinx.coroutines
 # Compose
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-compose = "1.2.0-rc01"
+compose = "1.2.0-rc02"
 composeConstraintLayout = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 composeActivity = "1.4.0" # https://developer.android.com/jetpack/androidx/releases/activity
 composePaging = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx/releases/paging
