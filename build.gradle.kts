@@ -30,6 +30,7 @@ subprojects {
         "-Xopt-in=kotlinx.coroutines.FlowPreview",
         "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
         "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+        "-Xcontext-receivers",
       )
   }
 }
