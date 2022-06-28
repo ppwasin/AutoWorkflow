@@ -2,7 +2,7 @@ package com.boot.playground.file
 
 import java.io.File
 
-class FileTest(val fullPath: String?, val fileName: String) {
+class FileInfo(val fullPath: String?, val fileName: String) {
 
   fun writeFile(text: String): String {
     return try {

@@ -21,10 +21,8 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.material)
-    implementation(libs.appcompat)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    implementation(libs.splashscreen)
+    implementation(projects.platform.designSystem)
 
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)

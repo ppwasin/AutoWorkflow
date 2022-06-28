@@ -18,12 +18,19 @@ package com.boot.playground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.boot.designsystem.theme.material.AppMaterialTheme
 import com.boot.playground.file.FilePlayground
 
 class PlaygroundActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContent { FilePlayground() }
+    installSplashScreen()
+    setContent {
+      AppMaterialTheme {
+        FilePlayground()
+      }
+    }
   }
 }
