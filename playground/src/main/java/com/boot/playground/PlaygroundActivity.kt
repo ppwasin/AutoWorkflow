@@ -15,22 +15,24 @@
  */
 package com.boot.playground
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import com.boot.playground.file.FilePlayground
+import com.boot.playground.notification.NotificationPlayground
+import com.boot.playground.notification.notificationPlaygroundDiProvider
 
 class PlaygroundActivity : ComponentActivity() {
 
+  @RequiresApi(Build.VERSION_CODES.TIRAMISU)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
     setContent {
-      AppMaterialTheme {
-        FilePlayground()
-      }
+      AppMaterialTheme { notificationPlaygroundDiProvider().run { NotificationPlayground() } }
     }
   }
 }
