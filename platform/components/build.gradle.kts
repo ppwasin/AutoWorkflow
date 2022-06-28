@@ -10,21 +10,21 @@ configure<JunitPluginConfig> {
     includeJunit4.set(true)
 }
 
-//May not needed
-val cleanFailures = tasks.register<Delete>("deleteFailures") {
-    setDelete(layout.projectDirectory.dir("out/failures"))
-}
-tasks.withType<Test>().configureEach {
-    val test = this
-    val isPaparazziTask = gradle.startParameter.taskNames.none { it.contains("Paparazzi") }
-    dependsOn(cleanFailures)
-    doFirst {
-        if (isPaparazziTask) {
-            test.systemProperties["paparazzi.test.record"] = false
-            test.systemProperties["paparazzi.test.verify"] = true
-        }
-    }
-}
+////May not needed
+//val cleanFailures = tasks.register<Delete>("deleteFailures") {
+//    setDelete(layout.projectDirectory.dir("out/failures"))
+//}
+//tasks.withType<Test>().configureEach {
+//    val test = this
+//    val isPaparazziTask = gradle.startParameter.taskNames.none { it.contains("Paparazzi") }
+//    dependsOn(cleanFailures)
+//    doFirst {
+//        if (isPaparazziTask) {
+//            test.systemProperties["paparazzi.test.record"] = false
+//            test.systemProperties["paparazzi.test.verify"] = true
+//        }
+//    }
+//}
 
 dependencies {
     implementation(projects.platform.designSystem)
