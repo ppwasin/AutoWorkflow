@@ -120,11 +120,12 @@ fun redirectToSystemPermission() {
 @Composable
 fun ComposableLifecycle(
         lifeCycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-        onEvent: (LifecycleOwner, Lifecycle.Event) -> Unit
+        onEvent: (Lifecycle.Event) -> Unit
 ) {
+    val currentOnEvent by rememberUpdatedState(onEvent)
     DisposableEffect(lifeCycleOwner) {
-        val observer = LifecycleEventObserver { source, event ->
-            onEvent(source, event)
+        val observer = LifecycleEventObserver { _, event ->
+            currentOnEvent(event)
         }
         lifeCycleOwner.lifecycle.addObserver(observer)
         onDispose {
