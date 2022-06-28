@@ -26,10 +26,10 @@ import com.boot.playground.effect.RememberUpdatePlayground
 
 class PlaygroundActivity : ComponentActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        installSplashScreen()
-        setContent { AppMaterialTheme { RememberUpdatePlayground() } }
-    }
+  @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    installSplashScreen()
+    setContent { AppMaterialTheme { RememberUpdatePlayground() } }
+  }
 }
