@@ -13,15 +13,11 @@ abstract class InstallSpotlessPreCommitHook @Inject constructor(private val root
     File(hooksDir, "pre-commit")
       .writeText(
         """
-# compares files that match .gitattributes filter to those actually tracked by git-lfs
-diff <(git ls-files ':(attr:filter=lfs)' | sort) <(git lfs ls-files -n | sort) >/dev/null
-
-if [[ '$' -ne 0 ]]; then
-  echo >&2 "This remote has detected files committed without using Git LFS. 
-  Run 'brew install git-lfs && git lfs install' to install it and re-commit your files.";
-  exit 1;
-fi
-""".trimIndent()
+        #!/bin/bash
+        echo "Running spotless check"
+        ./gradlew spotlessApply
+        git add .
+        """.trimIndent()
       )
     Runtime.getRuntime().exec("chmod +x .git/hooks/pre-commit")
   }

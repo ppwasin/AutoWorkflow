@@ -7,8 +7,7 @@
 # Code Formatting with Spotless & ktmft
 - ./gradlew spotlessCheck
 - ./gradlew spotlessApply
-### Install spotless pre-commit hook
-./gradlew installSpotlessHook 
+- [Optional] run spotlessApply on every commit. See 'Install Git hooks' section
 
 # CI/CD Github Actions
 ### Unittest & InstrumentationTest 
@@ -54,3 +53,10 @@ Use following options if record or verify task is not run
 - --no-configuration-cache 
 - --no-build-cache 
 - --rerun-tasks
+
+### Install Git hooks
+For Spotless and LFS
+
+- Go to project's root
+- chmod 777 scripts/git-hooks/setup-hook-main.sh
+- ./scripts/git-hooks/setup-hook-main.sh
