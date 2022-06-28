@@ -13,14 +13,14 @@ fun Calculation(input: Int) {
 
   Text(
     modifier = Modifier.recomposeHighlighter(),
-    text = "rememberUpdatedState: $rememberUpdatedStateInput"
+    text = "rememberUpdatedState: $rememberUpdatedStateInput",
   )
   Text(
     modifier = Modifier.recomposeHighlighter(),
-    text = "rememberedInput: $rememberedInput"
+    text = "rememberedInput: $rememberedInput",
   )
   Text(
     modifier = Modifier.recomposeHighlighter(),
-    text = "rememberWithMutableStateOf: $rememberWithMutableStateOf"
+    text = "rememberWithMutableStateOf: $rememberWithMutableStateOf",
   )
 }
