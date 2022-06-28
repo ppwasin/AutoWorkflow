@@ -12,6 +12,8 @@
 # CI/CD Github Actions
 ### Unittest & InstrumentationTest 
 - .github/workflows/MainVerification.yml
+### SnapshotTest
+- .github/workflows/SnapshotTest.yml
 
 # Module
 - :platform:theme -> theme 
@@ -34,7 +36,6 @@ Currently, there is only one backend module, :backend:shopping
    - ./gradlew :backend:run
 ## Auto Reload
    - ./gradlew -t :backend:build -x test -i
-
 ## Trobleshooting
 - Lower the android-gradle plugin version to 7.0.4 if found any error
 
@@ -54,9 +55,8 @@ Use following options if record or verify task is not run
 - --no-build-cache 
 - --rerun-tasks
 
-### Install Git hooks
+# Install Git hooks
 For Spotless and LFS
-
 - Go to project's root
 - chmod 777 scripts/git-hooks/setup-hook-main.sh
 - ./scripts/git-hooks/setup-hook-main.sh
