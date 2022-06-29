@@ -41,8 +41,8 @@ Currently, there is only one backend module, :backend:shopping
 
 ## Snapshot POC
 https://github.com/cashapp/paparazzi/issues/388
-- ./gradlew :moduleName:recordPaparazziDebug
-- ./gradlew :moduleName:verifyPaparazziDebug
+- record shot: ./gradlew :moduleName:recordPaparazziDebug
+- verify shot: ./gradlew :moduleName:verifyPaparazziDebug
 ### Git LFS
 Everytime we have new large file
 - git lfs track "*.png"
