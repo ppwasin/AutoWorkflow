@@ -7,25 +7,22 @@
 # Code Formatting with Spotless & ktmft
 - ./gradlew spotlessCheck
 - ./gradlew spotlessApply
+- Don't use ktfmt. Use .editorconfig in project for maxwidth customization.
 - [Optional] run spotlessApply on every commit. See 'Install Git hooks' section
 
 # CI/CD Github Actions
-### Unittest & InstrumentationTest 
-- .github/workflows/MainVerification.yml
-### SnapshotTest
-- .github/workflows/SnapshotTest.yml
+## CI
+- Unittest & InstrumentationTest: .github/workflows/MainVerification.yml
+- SnapshotTest: .github/workflows/SnapshotTest.yml
 
-# Module
-- :platform:theme -> theme 
-
-### Release via GooglePlay Alpha track and FirebaseDistribution
+## CD: Release via GooglePlay Alpha track and FirebaseDistribution
 - .github/workflows/MinorRelease.yml --> against main branch
 - .github/workflows/PatchRelease.yml --> against rc branch
 
 # [TODO] 
-- Snapshot test
 - [CI] Run test only in changed module: https://itnext.io/gradle-modules-running-unit-tests-only-in-affected-modules-fff89562339e
 - Integrate with pagination-compose
+
 
 # Backend POC
 ## Run backend
@@ -39,11 +36,11 @@ Currently, there is only one backend module, :backend:shopping
 ## Trobleshooting
 - Lower the android-gradle plugin version to 7.0.4 if found any error
 
-## Snapshot POC
-https://github.com/cashapp/paparazzi/issues/388
+# JVM Snapshot POC
+Library: https://github.com/cashapp/paparazzi/issues/388
 - record shot: ./gradlew :moduleName:recordPaparazziDebug
 - verify shot: ./gradlew :moduleName:verifyPaparazziDebug
-### Git LFS
+## Git LFS
 Everytime we have new large file
 - git lfs track "*.png"
 - git add file.png
