@@ -60,3 +60,6 @@ For Spotless and LFS
 - Go to project's root
 - chmod 777 scripts/git-hooks/setup-hook-main.sh
 - ./scripts/git-hooks/setup-hook-main.sh
+
+# Useful references and resources
+- Snapshot test: https://betterprogramming.pub/sanely-test-your-android-ui-libraries-with-paparazzi-b6d46c55f6b0
