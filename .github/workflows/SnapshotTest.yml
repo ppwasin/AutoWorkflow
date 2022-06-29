@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && contains(github.event.comment.html_url, '/pull/') && github.event.comment.body == '!snapshot')
-    name: Test against snapshots
+    name: Snapshot JVM Tests
     runs-on: ubuntu-latest
     steps:
       ## Prepare ##
@@ -24,17 +24,24 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ github.job }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+          restore-keys: ${{ runner.os }}-${{ github.job }}-
 
       - name: Gradle - Verify snapshots with Paparazzi
         id: testStep
-        run: ./gradlew clean platform:components:verifyPaparazziDebug
+        run: ./gradlew clean verifyPaparazziDebug
 
       - name: Upload snapshot failure deltas
-        if: failure()
-        uses: actions/upload-artifact@v2
+        if: failure() # upload artifacts only when the previous step of a job failed
+        uses: actions/upload-artifact@v3
         with:
           name: snapshot-failure-deltas
-          path: snapshot-test/out/failures/delta-*.png
+          path: "**/out/failures/delta-*.png"
 
       - name: Find PR number
         uses: jwalton/gh-find-current-pr@v1
@@ -72,7 +79,7 @@ jobs:
           body: |
             Snapshot testing result: :x:
             Some of the snapshot tests seem to have failed. Please:
-            - Head over to the artifacts section of the [CI Run](https://github.com/loukwn/StageStepBar/actions/runs/${{ github.run_id }}).
+            - Head over to the artifacts section of the [CI Run](https://github.com/ppwasin/AutoWorkflow/actions/runs/${{ github.run_id }}).
             - Download the zip.
             - Unzip and you can find one or more images that show the expected and the actual test results.
             - If these changes are fixing an issue or are part of a new feature then please speak to the maintainer. If they are not intended then please fix them and repush again.
