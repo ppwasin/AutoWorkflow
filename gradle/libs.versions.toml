@@ -1,25 +1,29 @@
 [versions]
-ksp = "1.6.21-1.0.5" # https://github.com/google/ksp
+ksp = "1.7.0-1.0.6" # https://github.com/google/ksp
 rxJava = "2.2.21"
 rxAndroid = "2.1.1"
-coroutine = "1.6.1" # https://github.com/Kotlin/kotlinx.coroutines
+coroutine = "1.6.3" # https://github.com/Kotlin/kotlinx.coroutines
 
 # Compose
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-compose = "1.2.0-rc02"
+compose = "1.2.0"
 composeConstraintLayout = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
-composeActivity = "1.4.0" # https://developer.android.com/jetpack/androidx/releases/activity
-composePaging = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx/releases/paging
-accompanist = "0.24.11-rc" # https://github.com/google/accompanist
-composeNav = "2.4.2" # https://developer.android.com/jetpack/androidx/releases/navigation
-composeCoil = "2.0.0" # https://coil-kt.github.io/coil/compose/
-composeMaterial3 = "1.0.0-alpha12" # https://developer.android.com/jetpack/androidx/releases/compose-material3
+composeActivity = "1.5.0" # https://developer.android.com/jetpack/androidx/releases/activity
+composePaging = "1.0.0-alpha15" # https://developer.android.com/jetpack/androidx/releases/paging
+accompanist = "0.24.13-rc" # https://github.com/google/accompanist
+composeNav = "2.5.0" # https://developer.android.com/jetpack/androidx/releases/navigation
+composeCoil = "2.1.0" # https://coil-kt.github.io/coil/compose/
+composeMaterial3 = "1.0.0-alpha14" # https://developer.android.com/jetpack/androidx/releases/compose-material3
+composeUi = "1.3.0-alpha01" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeMaterial = "1.3.0-alpha01" # https://developer.android.com/jetpack/androidx/releases/compose-material
+composeFoundation = "1.3.0-alpha01" # https://developer.android.com/jetpack/androidx/releases/compose-foundation
+composeAnimation = "1.3.0-alpha01" # https://developer.android.com/jetpack/androidx/releases/compose-ui
 
 # Android Platform
-appCompat = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
+appCompat = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/appcompat
 material = "1.6.0" # https://github.com/material-components/material-components-android/releases
-paging = "3.1.0" # https://developer.android.com/jetpack/androidx/releases/paging
+paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
 splashscreen = "1.0.0-rc01" # https://developer.android.com/jetpack/androidx/releases/core
 
 # Test
@@ -44,12 +48,12 @@ kmongo = "4.5.0"
 klock = "2.4.13"
 
 # DI
-dagger = "2.40.5" # https://github.com/google/dagger
+dagger = "2.42" # https://github.com/google/dagger
 koin = "3.1.5" # https://insert-koin.io/docs/setup/v3.1
 koin-ksp = "1.0.0-beta-1" # https://insert-koin.io/docs/setup/ka_1.0
 
 # Database
-room = "2.4.1" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.4.2" # https://developer.android.com/jetpack/androidx/releases/room
 sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite/
 
 # Architecture
@@ -68,21 +72,21 @@ coroutine-rx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", versio
 
 # Compose
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
 ## Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "composeFoundation" }
 ## Material Design
-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "compose" }
-compose-material-icons-ext = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial" }
+compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "composeMaterial" }
+compose-material-icons-ext = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMaterial" }
 compose-material-3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
 ## Navigation
 compose-nav = { module = "androidx.navigation:navigation-compose", version.ref = "composeNav" }
 ## Tooling support (Previews, etc.)
-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUi" }
 ## Animation
-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
-compose-animationCore = { module = "androidx.compose.animation:animation-core", version.ref = "compose" }
+compose-animation = { module = "androidx.compose.animation:animation", version.ref = "composeAnimation" }
+compose-animationCore = { module = "androidx.compose.animation:animation-core", version.ref = "composeAnimation" }
 ## Components
 compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
 compose-swipeToRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
@@ -136,11 +140,11 @@ rx-java = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxJava" }
 ## AndroidTest
 androidTest-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidTest-junit = { module = "androidx.test.ext:junit", version.ref = "junitInstrumental" }
-androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUi" }
 ## Test
 test-room = { module = "androidx.room:room-testing", version.ref = "room" }
 test-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
-test-composeRule = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" } # Needed for createComposeRule, but not createAndroidComposeRule:
+test-composeRule = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUi" } # Needed for createComposeRule, but not createAndroidComposeRule:
 ## Kotest
 test-kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 test-kotest-assert = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -178,11 +182,11 @@ sqldelight-native = { module = "com.squareup.sqldelight:native-driver", version.
 sqldelight-jvm = { module = "com.squareup.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 
 # Sync
-startup = { module = "androidx.startup:startup-runtime", version.ref = "startup"}
-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workManager"}
-work-runtimektx = { module = "androidx.work:work-runtime-ktx", version.ref = "workManager"}
-work-androidtest = { module = "androidx.work:work-testing", version.ref = "workManager"}
-work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workManager"}
+startup = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
+work-runtime = { module = "androidx.work:work-runtime", version.ref = "workManager" }
+work-runtimektx = { module = "androidx.work:work-runtime-ktx", version.ref = "workManager" }
+work-androidtest = { module = "androidx.work:work-testing", version.ref = "workManager" }
+work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workManager" }
 
 
 [bundles]
@@ -200,6 +204,7 @@ compose = [
     "compose-swipeToRefresh",
     "compose-insets",
     "compose-coil",
+    "compose-animation",
 ]
 
 coroutine = [
@@ -215,4 +220,4 @@ koin = [
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
-paparazzi = { id = "app.cash.paparazzi", version.ref="paparazzi" }
+paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazzi" }
