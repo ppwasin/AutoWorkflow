@@ -1,9 +1,5 @@
 [![Minor Release](https://github.com/wasinpp/AutoWorkflow/actions/workflows/MinorRelease.yml/badge.svg?branch=main)](https://github.com/wasinpp/AutoWorkflow/actions/workflows/MinorRelease.yml)
 
-# Clone the Project with auto rename the package and application id
-- run script on the project directory.
-> `AutoWorkflow git:(main) ✗` sh scripts/newProject/main.sh -p com.boot.sample -t Sample
-
 # Code Formatting with Spotless & ktmft
 - ./gradlew spotlessCheck
 - ./gradlew spotlessApply
@@ -57,6 +53,12 @@ For Spotless and LFS
 - Go to project's root
 - chmod 777 scripts/git-hooks/setup-hook-main.sh
 - ./scripts/git-hooks/setup-hook-main.sh
+
+# Clone the Project with auto rename the package and application id
+- brew install coreutils
+- run script on the project directory.
+> `AutoWorkflow git:(main) ✗` sh scripts/newProject/main.sh -p com.boot.sample -t Sample
+- remove / rename remaining file / package / string that may not be changed from com.boot.autoworkflow
 
 # Useful references and resources
 - Snapshot test: https://betterprogramming.pub/sanely-test-your-android-ui-libraries-with-paparazzi-b6d46c55f6b0
