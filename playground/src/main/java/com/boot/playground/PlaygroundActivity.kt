@@ -15,20 +15,18 @@
  */
 package com.boot.playground
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.RequiresApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import com.boot.playground.effect.RememberUpdatePlayground
+import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLinesDemo
 
 class PlaygroundActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
-    setContent { AppMaterialTheme { RememberUpdatePlayground() } }
+    setContent { AppMaterialTheme { LookaheadLayoutWithAlignmentLinesDemo() } }
   }
 }
