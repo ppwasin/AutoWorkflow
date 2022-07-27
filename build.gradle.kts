@@ -26,11 +26,11 @@ subprojects {
     }
     kotlinOptions.freeCompilerArgs +=
       listOf(
-        "-Xopt-in=kotlin.RequiresOptIn",
-        "-Xopt-in=kotlinx.coroutines.FlowPreview",
-        "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-        "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-        "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+        "-opt-in=kotlin.RequiresOptIn",
+        "-opt-in=kotlinx.coroutines.FlowPreview",
+        "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+        "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
         "-Xcontext-receivers",
       )
   }

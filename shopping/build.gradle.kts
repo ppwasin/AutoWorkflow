@@ -11,6 +11,7 @@ plugins {
   kotlin("native.cocoapods")
   alias(libs.plugins.ksp)
   id(libs.plugins.sqldelight.get().pluginId)
+  id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 version = "1.0"
@@ -76,7 +77,6 @@ kotlin {
         implementation(libs.coroutine.core)
         implementation(libs.arrowkt.core)
         implementation(libs.klock.common)
-        //                implementation(libs.bundles.koin)
       }
     }
     val commonTest by getting { dependencies { implementation(kotlin("test")) } }
@@ -155,5 +155,13 @@ sqldelight {
   database("ShoppingDatabase") {
     packageName = "com.boot.shopping.db"
     //        sourceFolders = listOf("sqldelight")
+  }
+}
+
+multiplatformSwiftPackage {
+  packageName("KmpBoot")
+  swiftToolsVersion("5.3")
+  targetPlatforms {
+    iOS { v("14") }
   }
 }

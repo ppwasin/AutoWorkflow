@@ -62,3 +62,6 @@ For Spotless and LFS
 
 # Useful references and resources
 - Snapshot test: https://betterprogramming.pub/sanely-test-your-android-ui-libraries-with-paparazzi-b6d46c55f6b0
+
+# Simulate Process death
+- sh scripts/adb/killProcess.sh
