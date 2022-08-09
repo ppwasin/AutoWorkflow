@@ -66,6 +66,7 @@ android {
             }
         }
     }
+	dynamicFeatures += setOf(":dynamicfeature")
 }
 
 dependencies {

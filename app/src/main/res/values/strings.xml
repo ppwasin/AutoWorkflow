@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AutoWorkflow</string>
+    <string name="title_dynamicfeature">Sample DynamicFeature</string>
 </resources>

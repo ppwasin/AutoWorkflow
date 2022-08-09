@@ -39,7 +39,9 @@ subprojects {
 // @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   id("com.boot.scripts.cd.CDPlugin")
-  id("com.convention.extension") // Apply on all sub-project. So they can use extensions from com.convention
+  id("com.convention.extension")
+  id("com.android.dynamic-feature") version "7.2.1" apply false
+  id("org.jetbrains.kotlin.android") version "1.7.0" apply false // Apply on all sub-project. So they can use extensions from com.convention
 
   //    // this is necessary to avoid the plugins to be loaded multiple times
   //    // in each subproject's classloader

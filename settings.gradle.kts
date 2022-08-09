@@ -34,3 +34,4 @@ include(":features:recipe")
 
 // Backend
 include(":backend")
+include(":dynamicfeature")
