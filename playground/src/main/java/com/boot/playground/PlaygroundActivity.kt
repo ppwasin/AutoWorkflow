@@ -20,13 +20,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLinesDemo
 
 class PlaygroundActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
-    setContent { AppMaterialTheme { LookaheadLayoutWithAlignmentLinesDemo() } }
+    setContent { AppMaterialTheme { Playground() } }
   }
 }
