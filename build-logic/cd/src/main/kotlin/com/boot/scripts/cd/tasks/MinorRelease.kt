@@ -29,16 +29,25 @@ open class MinorRelease : DefaultTask() {
     val rcBranchName = "rc-${newVersion.major}.${newVersion.minor}"
     println("### Create RC branch: $rcBranchName ###")
     shell("git branch $rcBranchName")
-    shell("git push origin $rcBranchName")
 
-    // Annotate Version with Tag
-    println("### Create Tag: $newVersion ###")
-    shell("git tag -a $newVersion -m 'Release version $newVersion'")
-    shell("git push origin $newVersion")
+    kotlin.runCatching {
+      // Annotate Version with Tag
+      println("### Create Tag: $newVersion ###")
+      shell("git tag -a $newVersion -m 'Release version $newVersion'")
 
-    // Release
-    println("### Release ###")
-    val uploader = ReleaseDistributor(versionName = newVersion.toString())
-    uploader.release(setOf(ReleaseChannel.AppDistribution, ReleaseChannel.Firebase))
+      // Release
+      println("### Release ###")
+      val uploader = ReleaseDistributor(versionName = newVersion.toString())
+      uploader.release(
+        setOf(
+          ReleaseChannel.AppDistribution,
+          ReleaseChannel.Firebase,
+        ),
+      )
+    }.onSuccess {
+      shell("git push origin $rcBranchName")
+      shell("git push origin $newVersion")
+    }
   }
+
 }

@@ -2,9 +2,12 @@ package com.boot.scripts.cd.internal
 
 fun getCurrentVersion(matchRegex: String): ReleaseVersion {
   println("Fetch tags from origin")
-  shell("git fetch --unshallow --tags")
+  runCatching { shell("git fetch --unshallow --tags") }
+    .onFailure { shell("git fetch --tags") }
 
-  val tagVersionString = runCatching { shell(buildLastTagCmd(matchRegex)) }.getOrNull()
+  val tagVersionString = runCatching {
+    shell(buildLastTagCmd(matchRegex))
+  }.getOrNull()
 
   return if (tagVersionString.isNullOrEmpty()) {
     return ReleaseVersion.initial().also { println("[Warn] No tag found use initial version: $it") }
