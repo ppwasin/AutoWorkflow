@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 rootProject.name = "AutoWorkflow"
 // Infra
 includeBuild("build-logic")
-include(":shopping")
+//include(":shopping")
 
 // Mobile
 include(":app")
@@ -34,5 +34,5 @@ include(":features:recipe")
 include(":features:payment")
 
 // Backend
-include(":backend")
+//include(":backend")
 include(":dynamicfeature")

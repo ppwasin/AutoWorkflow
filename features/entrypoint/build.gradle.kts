@@ -8,7 +8,7 @@ dependencies {
     implementation(projects.platform.components)
     implementation(projects.features.payment)
     implementation(projects.fake.pagination)
-    implementation(projects.shopping)
+//    implementation(projects.shopping)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
     implementation(libs.paging.compose)
