@@ -11,7 +11,7 @@ plugins {
   kotlin("native.cocoapods")
   alias(libs.plugins.ksp)
   id(libs.plugins.sqldelight.get().pluginId)
-  id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
+//  id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 version = "1.0"
@@ -158,10 +158,10 @@ sqldelight {
   }
 }
 
-multiplatformSwiftPackage {
-  packageName("KmpBoot")
-  swiftToolsVersion("5.3")
-  targetPlatforms {
-    iOS { v("14") }
-  }
-}
+//multiplatformSwiftPackage {
+//  packageName("KmpBoot")
+//  swiftToolsVersion("5.3")
+//  targetPlatforms {
+//    iOS { v("14") }
+//  }
+//}

@@ -31,6 +31,7 @@ include(":platform:sync")
 include(":fake:pagination")
 include(":features:entrypoint")
 include(":features:recipe")
+include(":features:payment")
 
 // Backend
 include(":backend")

@@ -6,12 +6,11 @@ plugins {
 dependencies {
     implementation(projects.platform.designSystem)
     implementation(projects.platform.components)
-    implementation(projects.features.payment)
-    implementation(projects.fake.pagination)
-    implementation(projects.shopping)
+    implementation(libs.billing)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.coroutine)
     implementation(libs.paging.compose)
+    implementation(libs.bundles.arrowkt)
 
     androidTestImplementation(libs.androidTest.espresso)
     androidTestImplementation(libs.androidTest.junit)
