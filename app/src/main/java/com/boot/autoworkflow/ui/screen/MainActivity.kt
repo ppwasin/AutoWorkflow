@@ -15,6 +15,7 @@
  */
 package com.boot.autoworkflow.ui.screen
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,13 +23,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.entrypoint.ui.EntrypointScreen
+import com.boot.external.appsflyerwrapper.ui.AppsflyerProvider
+import com.boot.external.appsflyerwrapper.ui.AppsflyerScreen
 
 class MainActivity : ComponentActivity() {
-
+  private val appsflyerSDK by lazy {
+    (application as AppsflyerProvider).appsflyerSDK
+  }
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
-    setContent { EntrypointScreen() }
+    println("[Appsflyer] onCreate ${intent?.data}")
+    setContent { AppsflyerScreen(appsflyerSDK) }
+  }
+
+  override fun onStart() {
+    super.onStart()
+    println("[Appsflyer] onStart ${intent?.data}")
+  }
+
+  override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    setIntent(intent)
+    println("[Appsflyer] onNewIntent ${intent?.data}")
+    //    application.appsflyerWrapper.appsflyer.performOnDeepLinking(intent!!, this)
+
   }
 }
 

@@ -32,6 +32,8 @@ include(":fake:pagination")
 include(":features:entrypoint")
 include(":features:recipe")
 include(":features:payment")
+include(":external:appsflyerWrapper")
+include(":external:agodaAppsflyer")
 
 // Backend
 //include(":backend")

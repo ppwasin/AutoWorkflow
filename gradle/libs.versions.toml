@@ -66,6 +66,7 @@ startup = "1.1.1"
 workManager = "2.7.1"
 
 billing = "5.0.0"
+appsflyer = "6.9.1"
 
 [libraries]
 # Coroutine
@@ -194,6 +195,7 @@ work-androidtest = { module = "androidx.work:work-testing", version.ref = "workM
 work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "workManager" }
 
 billing = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
+appsflyer = { module = "com.appsflyer:af-android-sdk", version.ref = "appsflyer" }
 
 [bundles]
 compose = [

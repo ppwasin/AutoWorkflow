@@ -64,13 +64,14 @@ android {
                 artifactType = "AAB"
                 testers = "pp.wasin@gmail.com, ex@gmail.com"
             }
+          isDebuggable = true
         }
     }
-	dynamicFeatures += setOf(":dynamicfeature")
 }
 
 dependencies {
     implementation(projects.features.entrypoint)
+    implementation(projects.external.appsflyerWrapper)
 
     implementation(libs.appcompat)
     implementation(libs.material)
