@@ -6,12 +6,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material3.Button
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +19,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.boot.external.appsflyerwrapper.ui.AppsflyerProvider
+import com.boot.external.appsflyerwrapper.ui.AppsflyerScreen
 import com.boot.playground.ads.AdsPlayground
 import com.boot.playground.ads.AdsViewModel
 import com.boot.playground.animation.AnimAsStatePlayground
@@ -36,9 +36,8 @@ import com.boot.playground.async.AsyncPlayground
 fun Playground() {
   val navController = rememberNavController()
   val routes = remember { PlaygroundRoute.values() }
-  LaunchedEffect(Unit) { navController.navigate(PlaygroundRoute.AdsId.name) }
 
-  Surface(color = MaterialTheme.colors.background) {
+  Surface {
     NavHost(navController = navController, startDestination = "initial") {
       composable("initial") {
         LazyColumn(
@@ -70,7 +69,8 @@ enum class PlaygroundRoute {
   InfiniteTransition,
   DecayAnimation,
   LookAhead,
-  AdsId;
+  AdsId,
+  Appsflyer;
 
   @Composable
   fun Screen() {
@@ -92,7 +92,11 @@ enum class PlaygroundRoute {
           viewModel =
             viewModel {
               AdsViewModel(context.applicationContext as Application)
-            }
+            },
+        )
+      Appsflyer ->
+        AppsflyerScreen(
+          (context.applicationContext as AppsflyerProvider).appsflyerSDK
         )
     }
   }

@@ -23,19 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.entrypoint.ui.EntrypointScreen
-import com.boot.external.appsflyerwrapper.ui.AppsflyerProvider
 
 class MainActivity : ComponentActivity() {
-  private val appsflyerSDK by lazy {
-    (application as AppsflyerProvider).appsflyerSDK
-  }
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
-    setContent {
-      //      AppsflyerScreen(appsflyerSDK)
-      EntrypointScreen()
-    }
+    setContent { EntrypointScreen() }
   }
 
   override fun onNewIntent(intent: Intent?) {

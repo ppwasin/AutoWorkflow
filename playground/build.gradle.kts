@@ -26,6 +26,7 @@ android {
 dependencies {
   implementation(libs.splashscreen)
   implementation(projects.platform.designSystem)
+  implementation(projects.external.appsflyerWrapper)
 
   implementation(libs.bundles.compose)
   implementation(libs.bundles.coroutine)

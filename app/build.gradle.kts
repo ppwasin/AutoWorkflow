@@ -72,7 +72,6 @@ android {
 
 dependencies {
     implementation(projects.features.entrypoint)
-    implementation(projects.external.appsflyerWrapper)
 
     implementation(libs.appcompat)
     implementation(libs.material)
