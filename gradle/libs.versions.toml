@@ -67,6 +67,7 @@ workManager = "2.7.1"
 
 billing = "5.0.0"
 appsflyer = "6.9.1"
+zipline = "0.9.4"
 
 [libraries]
 # Coroutine
@@ -196,6 +197,7 @@ work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = 
 
 billing = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
 appsflyer = { module = "com.appsflyer:af-android-sdk", version.ref = "appsflyer" }
+zipline = { module = "app.cash.zipline:zipline", version.ref = "zipline"}
 
 [bundles]
 compose = [

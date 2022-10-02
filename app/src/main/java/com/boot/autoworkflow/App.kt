@@ -11,15 +11,8 @@ class App : Application(), AppsflyerProvider {
   override val appsflyerSDK by lazy { AppsflyerSDK(this, appCoroutineScope) }
 
   override fun onCreate() {
-    //    appsflyerSDK.start()
-    println("App:onCreate")
     super.onCreate()
-    appsflyerSDK.startObserveEvents()
+    //    appsflyerSDK.startObserveEvents()
     //        if(hasJunit()) error("!!!Alert!!! Has junit in the build")
   }
 }
-
-// val Application.appCoroutineScope: CoroutineScope
-//  get() = (this as App).appCoroutineScope
-// val Application.appsflyerWrapper: AppsflyerSDK
-//  get() = (this as App).appsflyerSDK

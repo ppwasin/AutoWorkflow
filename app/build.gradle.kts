@@ -66,6 +66,7 @@ android {
             }
           isDebuggable = true
         }
+      dynamicFeatures += setOf(":dynamicfeature")
     }
 }
 
