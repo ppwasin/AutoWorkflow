@@ -15,7 +15,6 @@
  */
 package com.boot.autoworkflow.ui.screen
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,12 +28,6 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     installSplashScreen()
     setContent { EntrypointScreen() }
-  }
-
-  override fun onNewIntent(intent: Intent?) {
-    super.onNewIntent(intent)
-    setIntent(intent)
-    println("[Appsflyer] onNewIntent ${intent?.data}")
   }
 }
 

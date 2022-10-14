@@ -69,7 +69,16 @@ billing = "5.0.0"
 appsflyer = "6.9.1"
 zipline = "0.9.4"
 
+# AppCompanist
+appcompanist = "0.24.13-rc"
+activity = "1.6.0"
+
+datastore = "1.0.0" #https://developer.android.com/topic/libraries/architecture/datastore
+
 [libraries]
+activity = { module = "androidx.activity:activity", version.ref = "activity" }
+activityKtx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
+
 # Coroutine
 coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
 coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
@@ -197,7 +206,11 @@ work-multiprocess = { module = "androidx.work:work-multiprocess", version.ref = 
 
 billing = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
 appsflyer = { module = "com.appsflyer:af-android-sdk", version.ref = "appsflyer" }
-zipline = { module = "app.cash.zipline:zipline", version.ref = "zipline"}
+zipline = { module = "app.cash.zipline:zipline", version.ref = "zipline" }
+appcompanist-permission = { module = "com.google.accompanist:accompanist-permissions", version.ref = "appcompanist" }
+
+datastoreAndroid = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+datastoreCore = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" } # No Android
 
 [bundles]
 compose = [

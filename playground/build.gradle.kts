@@ -37,6 +37,11 @@ dependencies {
   testImplementation(libs.test.coroutine)
   androidTestImplementation(libs.androidTest.espresso)
   androidTestImplementation(libs.androidTest.junit)
+  implementation(libs.appcompanist.permission)
+  implementation(libs.datastoreCore)
+  implementation(libs.datastoreAndroid)
+  implementation(libs.activityKtx)
+  implementation(libs.activity)
 
   //Playground libraries
   implementation("com.google.android.gms:play-services-ads:21.1.0")

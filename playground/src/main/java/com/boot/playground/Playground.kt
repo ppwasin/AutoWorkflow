@@ -1,12 +1,14 @@
 package com.boot.playground
 
 import android.app.Application
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +33,7 @@ import com.boot.playground.animation.control.TargetBasedAnimationPlayground
 import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLinesDemo
 import com.boot.playground.animation.transition.InfiniteTransitionPlayground
 import com.boot.playground.async.AsyncPlayground
+import com.boot.playground.permission.PermissionScreen
 
 @Composable
 fun Playground() {
@@ -70,7 +73,8 @@ enum class PlaygroundRoute {
   DecayAnimation,
   LookAhead,
   AdsId,
-  Appsflyer;
+  Appsflyer,
+  Permission;
 
   @Composable
   fun Screen() {
@@ -98,6 +102,13 @@ enum class PlaygroundRoute {
         AppsflyerScreen(
           (context.applicationContext as AppsflyerProvider).appsflyerSDK
         )
+      Permission ->
+        PermissionScreen {
+          Column {
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
+            Text("User allow permission")
+          }
+        }
     }
   }
 }
