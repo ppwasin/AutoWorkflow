@@ -26,14 +26,21 @@ fun quickSortBestEasyToUnderstand(nums: List<Int>): List<Int> =
     nums.size < 2 -> nums
     else -> {
       val pivot = nums.first()
-      val (smaller, greater) = nums.subList(1, nums.size).partition { it <= pivot }
-      quickSortBestEasyToUnderstand(smaller) + pivot + quickSortBestEasyToUnderstand(greater)
+      val (smaller, greater) =
+        nums.subList(1, nums.size).partition { it <= pivot }
+      quickSortBestEasyToUnderstand(smaller) +
+        pivot +
+        quickSortBestEasyToUnderstand(greater)
     }
   }
 
 // Worstcase: O(n^2)
 // Bestcase: O(n log n)
-fun quickSort(nums: IntArray, startIndex: Int = 0, endIndex: Int = nums.size - 1) {
+fun quickSort(
+  nums: IntArray,
+  startIndex: Int = 0,
+  endIndex: Int = nums.size - 1
+) {
   if (startIndex < endIndex) {
     val pivotIndex = partition(nums, startIndex, endIndex) // n
     quickSort(nums, startIndex, pivotIndex - 1) // Before pivot index
@@ -54,7 +61,10 @@ fun partition(nums: IntArray, startIndex: Int, endIndex: Int): Int {
     // the element at smallerElementIndex
     val valueAtIndex = nums[index] // [0]:7
     if (valueAtIndex < pivotValue) { // 7<6, 8<6, 1<6
-      nums.swap(smallerElementIndex, index) // swap between 0, 2: 7,8,1,... -> 1,8,7,...
+      nums.swap(
+        smallerElementIndex,
+        index
+      ) // swap between 0, 2: 7,8,1,... -> 1,8,7,...
       smallerElementIndex++ // 0 -> 1
     }
   }
@@ -73,9 +83,13 @@ fun IntArray.swap(i: Int, j: Int) {
 }
 
 fun main() {
-  println(quickSortRecursive(listOf(7, 8, 1, 0, 100, 9, 6)) == listOf(0, 1, 6, 7, 8, 9, 100))
   println(
-    quickSortBestEasyToUnderstand(listOf(7, 8, 1, 0, 100, 9, 6)) == listOf(0, 1, 6, 7, 8, 9, 100)
+    quickSortRecursive(listOf(7, 8, 1, 0, 100, 9, 6)) ==
+      listOf(0, 1, 6, 7, 8, 9, 100)
+  )
+  println(
+    quickSortBestEasyToUnderstand(listOf(7, 8, 1, 0, 100, 9, 6)) ==
+      listOf(0, 1, 6, 7, 8, 9, 100)
   )
 
   val nums = intArrayOf(7, 8, 1, 0, 100, 9, 6)
