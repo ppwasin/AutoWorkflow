@@ -42,6 +42,7 @@ dependencies {
   implementation(libs.datastoreAndroid)
   implementation(libs.activityKtx)
   implementation(libs.activity)
+  implementation(libs.lifecycle.process)
 
   //Playground libraries
   implementation("com.google.android.gms:play-services-ads:21.1.0")

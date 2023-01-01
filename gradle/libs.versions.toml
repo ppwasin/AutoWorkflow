@@ -26,6 +26,7 @@ appCompat = "1.5.1" # https://developer.android.com/jetpack/androidx/releases/ap
 material = "1.6.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
 splashscreen = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/core
+lifecycle = "2.5.1"
 
 # Test
 junit5 = "5.7.0"
@@ -112,6 +113,7 @@ compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose",
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
+lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 
 # Paging
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
