@@ -37,15 +37,14 @@ fun PermissionScreen(
   viewModel: PermissionViewModel = viewModel(),
   content: @Composable () -> Unit
 ) {
-  //  val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission())
-  // {
-  //
-  //  }
 
   val context = LocalContext.current
   val permissionDatastore = rememberPermissionDatastore(context)
   val permissionState =
-    rememberPermissionState(permission) { permissionDatastore.update(it) }
+    rememberPermissionState(permission) {
+      println("User action with soft-prompt (Activity Permission Result)")
+      permissionDatastore.update(it)
+    }
   //  rememberLifecycleEvent(
   //    doOnStart = { permissionState.launchPermissionRequest() },
   //  )
@@ -69,22 +68,23 @@ fun PermissionScreen(
     val status = permissionState.status
     KeyValue("CheckSelfPermission", context.selfCheckEnum(permission))
     KeyValue("App status", status)
-    KeyValue("LocalDatasource status", permissionDatastore.isAllow)
+    KeyValue("User action", permissionDatastore.userActionWithSoftprompt)
 
     when {
       // If the permission is granted, then show screen with the feature enabled
       status == PermissionStatus.Granted -> {
         content()
       }
-      permissionDatastore.isAllow == null || status.shouldShowRationale -> {
+      // only true when user click don't allow for the first time
+      //      status.shouldShowRationale -> {
+      permissionDatastore.userActionWithSoftprompt == null ||
+        status.shouldShowRationale -> {
         Button(onClick = viewModel::tapRequestPermission) {
-          Text("Request permission")
+          Text("Turn on Notification")
         }
       }
       else -> {
-        Text(
-          "Go to settings and then select: Permission > Microhpone > Allow Permission"
-        )
+        Text("Go to settings and then select: Permission  > Allow Permission")
         Button(onClick = viewModel::tapGotoSettings) { Text("Go to Settings") }
       }
     }

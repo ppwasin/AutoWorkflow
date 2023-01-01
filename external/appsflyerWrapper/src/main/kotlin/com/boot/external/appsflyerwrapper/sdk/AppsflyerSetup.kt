@@ -1,14 +1,13 @@
-package com.boot.external.appsflyerwrapper.appsetup
+package com.boot.external.appsflyerwrapper.sdk
 
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import com.boot.external.appsflyerwrapper.sdk.AppsflyerSDK
 
 context(Application)
 
-fun setupForAppsflyerOnCreate(sdk: AppsflyerSDK) {
-  sdk.startObserveEvents()
+fun createAppsflyerSDK(): AppsflyerInitializer {
+  return AppsflyerInitializer(this@Application, AppsflyerConstant.DEV_KEY)
 }
 
 context(Activity)

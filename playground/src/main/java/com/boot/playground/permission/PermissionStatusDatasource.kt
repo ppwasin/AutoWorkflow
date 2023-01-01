@@ -52,7 +52,7 @@ class PermissionStatusDatastore(private val dataStore: DataStore<Preferences>) {
 
 @Stable
 interface PermissionStatus {
-  val isAllow: Boolean?
+  val userActionWithSoftprompt: Boolean?
   fun update(isAllow: Boolean)
 }
 
@@ -65,7 +65,7 @@ fun rememberPermissionDatastore(context: Context): PermissionStatus {
 
   val status = remember {
     object : PermissionStatus {
-      override var isAllow: Boolean? by mutableStateOf(null)
+      override var userActionWithSoftprompt: Boolean? by mutableStateOf(null)
       override fun update(isAllow: Boolean) {
         coroutine.launch { datastore.setIsUserAllow(isAllow) }
       }
@@ -73,7 +73,10 @@ fun rememberPermissionDatastore(context: Context): PermissionStatus {
   }
 
   LaunchedEffect(Unit) {
-    datastore.isUserAllow().onEach { status.isAllow = it }.launchIn(this)
+    datastore
+      .isUserAllow()
+      .onEach { status.userActionWithSoftprompt = it }
+      .launchIn(this)
   }
 
   return status

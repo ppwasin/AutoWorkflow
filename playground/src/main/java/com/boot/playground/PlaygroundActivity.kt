@@ -15,13 +15,11 @@
  */
 package com.boot.playground
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import com.boot.external.appsflyerwrapper.appsetup.setupForAppsflyerOnNewIntent
 
 class PlaygroundActivity : ComponentActivity() {
 
@@ -29,10 +27,5 @@ class PlaygroundActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     installSplashScreen()
     setContent { AppMaterialTheme { Playground() } }
-  }
-
-  override fun onNewIntent(intent: Intent?) {
-    super.onNewIntent(intent)
-    setupForAppsflyerOnNewIntent(intent)
   }
 }

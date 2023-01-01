@@ -21,7 +21,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.boot.external.appsflyerwrapper.ui.AppsflyerProvider
 import com.boot.external.appsflyerwrapper.ui.AppsflyerScreen
 import com.boot.playground.ads.AdsPlayground
 import com.boot.playground.ads.AdsViewModel
@@ -33,6 +32,7 @@ import com.boot.playground.animation.control.TargetBasedAnimationPlayground
 import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLinesDemo
 import com.boot.playground.animation.transition.InfiniteTransitionPlayground
 import com.boot.playground.async.AsyncPlayground
+import com.boot.playground.flow.FlowTestScreen
 import com.boot.playground.permission.PermissionScreen
 
 @Composable
@@ -74,7 +74,8 @@ enum class PlaygroundRoute {
   LookAhead,
   AdsId,
   Appsflyer,
-  Permission;
+  Permission,
+  FlowTest;
 
   @Composable
   fun Screen() {
@@ -98,10 +99,7 @@ enum class PlaygroundRoute {
               AdsViewModel(context.applicationContext as Application)
             },
         )
-      Appsflyer ->
-        AppsflyerScreen(
-          (context.applicationContext as AppsflyerProvider).appsflyerSDK
-        )
+      Appsflyer -> AppsflyerScreen()
       Permission ->
         PermissionScreen {
           Column {
@@ -109,6 +107,7 @@ enum class PlaygroundRoute {
             Text("User allow permission")
           }
         }
+      FlowTest -> FlowTestScreen()
     }
   }
 }
