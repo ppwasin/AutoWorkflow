@@ -68,7 +68,6 @@ android {
         artifactType = "AAB"
         testers = "pp.wasin@gmail.com, ex@gmail.com"
       }
-      isDebuggable = true
     }
     dynamicFeatures += setOf(":dynamicfeature")
   }
