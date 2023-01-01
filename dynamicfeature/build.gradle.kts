@@ -5,17 +5,11 @@ plugins {
 }
 android {
 	namespace = "com.boot.dynamicfeature"
-	compileSdk = 32
+	compileSdk = 33
 
 	defaultConfig {
 		minSdk = 24
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-	}
-
-	buildTypes {
-		release {
-			isMinifyEnabled = false
-		}
 	}
 }
 

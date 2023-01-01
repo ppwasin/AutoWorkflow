@@ -1,4 +1,4 @@
-package com.boot.playground.ds
+package com.boot.playground.ds.unorganize
 
 // fun dfsWithoutRecursion(adjVertices: Array<Int>, start: Int) {
 //    val stack: Stack<Int> = Stack<Int>()
@@ -25,7 +25,10 @@ fun minimumWaitingTime(queries: MutableList<Int>): Int {
   return newList
     .scan(State(0, 0)) { acc: State, item: Int ->
       val currentWaitingTime = acc.nextWaiting
-      acc.copy(nextWaiting = currentWaitingTime + item, sum = acc.sum + currentWaitingTime)
+      acc.copy(
+        nextWaiting = currentWaitingTime + item,
+        sum = acc.sum + currentWaitingTime
+      )
     }
     .last()
     .sum

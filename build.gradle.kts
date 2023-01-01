@@ -7,6 +7,7 @@ buildscript {
   repositories {
     google()
     mavenCentral()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/") //paparazzi
   }
   dependencies {
     classpath(infra.androidGradle)
@@ -60,5 +61,6 @@ allprojects {
   repositories {
     google()
     mavenCentral()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/") //paparazzi
   }
 }

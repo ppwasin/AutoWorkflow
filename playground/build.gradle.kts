@@ -26,6 +26,7 @@ android {
 dependencies {
   implementation(libs.splashscreen)
   implementation(projects.platform.designSystem)
+  implementation(projects.external.appsflyerWrapper)
 
   implementation(libs.bundles.compose)
   implementation(libs.bundles.coroutine)
@@ -36,6 +37,12 @@ dependencies {
   testImplementation(libs.test.coroutine)
   androidTestImplementation(libs.androidTest.espresso)
   androidTestImplementation(libs.androidTest.junit)
+  implementation(libs.appcompanist.permission)
+  implementation(libs.datastoreCore)
+  implementation(libs.datastoreAndroid)
+  implementation(libs.activityKtx)
+  implementation(libs.activity)
+  implementation(libs.lifecycle.process)
 
   //Playground libraries
   implementation("com.google.android.gms:play-services-ads:21.1.0")

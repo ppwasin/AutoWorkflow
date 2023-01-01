@@ -24,11 +24,20 @@ enum class RecipeRoute {
 }
 
 @Composable
-fun RecipeEntrypoint(navController: NavHostController = rememberNavController()) {
-  NavHost(navController = navController, startDestination = RecipeRoute.Home.route()) {
+fun RecipeEntrypoint(
+  navController: NavHostController = rememberNavController()
+) {
+  NavHost(
+    navController = navController,
+    startDestination = RecipeRoute.Home.route(),
+  ) {
     composable(RecipeRoute.Home.route()) {
       RecipeList(
-        searchBar = { SearchButton { navController.navigate(RecipeRoute.SearchResult.route()) } }
+        searchBar = {
+          SearchButton {
+            navController.navigate(RecipeRoute.SearchResult.route())
+          }
+        },
       )
     }
     composable(RecipeRoute.SearchResult.route()) {

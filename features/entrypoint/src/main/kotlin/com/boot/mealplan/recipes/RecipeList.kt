@@ -1,9 +1,14 @@
 package com.boot.mealplan.recipes
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -23,10 +28,25 @@ fun RecipeList(searchBar: @Composable () -> Unit) {
     horizontalAlignment = Alignment.Start
   ) {
     item { Title("Plan Your Meal") }
-    item { SubTitle(text = "Take care of the planet and your wallet at the same time") }
+    item {
+      SubTitle(
+        text = "Take care of the planet and your wallet at the same time"
+      )
+    }
     item { searchBar() }
 
-    items(dummyItems) { item -> Text(item.toString()) }
+    items(dummyItems) { item ->
+      Surface(shadowElevation = 6.dp) {
+        Row(
+          Modifier.padding(60.dp)
+            .background(MaterialTheme.colorScheme.onPrimary)
+        ) {
+          Text(item.toString())
+          Text(item.toString())
+          Text(item.toString())
+        }
+      }
+    }
   }
 }
 
