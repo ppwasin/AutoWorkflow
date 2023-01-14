@@ -1,4 +1,4 @@
-package com.boot.playground.algorithm
+package com.boot.playground.algorithm.unorganize
 
 import java.util.stream.Stream
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -52,8 +52,15 @@ class WordSearchTest2 {
     )
 
   private val testScenarios: Collection<TestScenario> =
-    assertList.combineLatest(solutionList) { (input, expected), (label, function) ->
-      TestScenario(input = input, expected = expected, function = function, label = label)
+    assertList.combineLatest(solutionList) {
+      (input, expected),
+      (label, function) ->
+      TestScenario(
+        input = input,
+        expected = expected,
+        function = function,
+        label = label
+      )
     }
 
   @TestFactory
@@ -73,6 +80,9 @@ class WordSearchTest2 {
   )
 }
 
-fun <A, B, C> Collection<A>.combineLatest(other: Collection<B>, merge: (A, B) -> C): Collection<C> {
+fun <A, B, C> Collection<A>.combineLatest(
+  other: Collection<B>,
+  merge: (A, B) -> C
+): Collection<C> {
   return flatMap { a -> other.map { b -> merge(a, b) } }
 }

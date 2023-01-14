@@ -33,6 +33,7 @@ import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLines
 import com.boot.playground.animation.transition.InfiniteTransitionPlayground
 import com.boot.playground.async.AsyncPlayground
 import com.boot.playground.flow.FlowTestScreen
+import com.boot.playground.navigation.PrelaunchScreen
 import com.boot.playground.permission.PermissionScreen
 
 @Composable
@@ -75,7 +76,8 @@ enum class PlaygroundRoute {
   AdsId,
   Appsflyer,
   Permission,
-  FlowTest;
+  FlowTest,
+  PrivacyNavigation;
 
   @Composable
   fun Screen() {
@@ -108,6 +110,7 @@ enum class PlaygroundRoute {
           }
         }
       FlowTest -> FlowTestScreen()
+      PrivacyNavigation -> PrelaunchScreen()
     }
   }
 }

@@ -47,4 +47,9 @@ dependencies {
   //Playground libraries
   implementation("com.google.android.gms:play-services-ads:21.1.0")
 //  implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
+
+  androidTestImplementation(libs.androidTest.espresso)
+  androidTestImplementation(libs.androidTest.junit)
+  androidTestImplementation(libs.androidTest.compose)
+  debugImplementation(libs.test.composeRule)
 }

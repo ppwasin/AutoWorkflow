@@ -11,6 +11,7 @@ plugins {
   id("com.android.application")
   id("plugin.junit")
   id("plugin.spotless")
+  id("kotlin-parcelize")
 //    id("kotlin-android")
   kotlin("android")
   id(infra.plugins.googleServices.get().pluginId)

@@ -1,4 +1,4 @@
-package com.boot.playground.ds
+package com.boot.playground.ds.unorganize
 
 fun <T> linearSearch(values: Array<T>, isMatch: (T) -> Boolean): T? {
   //    values.find(isMatch)

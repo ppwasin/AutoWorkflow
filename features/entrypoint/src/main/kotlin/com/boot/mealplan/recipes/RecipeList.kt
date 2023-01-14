@@ -11,23 +11,48 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.boot.components.SubTitle
 import com.boot.components.Title
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class RecipeViewModel : ViewModel() {
+  var count by mutableStateOf(0)
+  init {
+    viewModelScope.launch {
+      while (true) {
+        ++count
+        delay(Duration.run { 1.seconds })
+      }
+    }
+  }
+}
 
 @Composable
-fun RecipeList(searchBar: @Composable () -> Unit) {
+fun RecipeList(
+  viewModel: RecipeViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+  searchBar: @Composable () -> Unit
+) {
   val dummyItems = remember { (0..5).toList() }
+
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.spacedBy(8.dp),
     horizontalAlignment = Alignment.Start
   ) {
-    item { Title("Plan Your Meal") }
+    item { Title("Plan Your Meal: ${viewModel.count}") }
     item {
       SubTitle(
         text = "Take care of the planet and your wallet at the same time"

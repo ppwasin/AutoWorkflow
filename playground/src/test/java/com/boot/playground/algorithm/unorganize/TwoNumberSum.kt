@@ -1,8 +1,10 @@
-package com.boot.playground.algorithm
+package com.boot.playground.algorithm.unorganize
 
 fun twoNumberSum(array: MutableList<Int>, targetSum: Int): List<Int> {
   val map =
-    array.foldIndexed(hashMapOf<Int, Int>()) { index, acc, item -> acc.also { it[item] = index } }
+    array.foldIndexed(hashMapOf<Int, Int>()) { index, acc, item ->
+      acc.also { it[item] = index }
+    }
 
   var current: Int
   array.forEachIndexed { index, item ->

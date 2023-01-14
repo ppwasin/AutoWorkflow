@@ -1,4 +1,4 @@
-package com.boot.playground.algorithm
+package com.boot.playground.algorithm.unorganize
 
 class StringMapHelper(string: String) {
   private val map = mutableMapOf<Char, Int>()

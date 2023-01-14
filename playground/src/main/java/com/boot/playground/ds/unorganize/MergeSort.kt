@@ -1,4 +1,4 @@
-package com.boot.playground.ds
+package com.boot.playground.ds.unorganize
 
 fun mergeSort(list: MutableList<String>): MutableList<String> {
   // Can't split lists anymore, so stop recursion

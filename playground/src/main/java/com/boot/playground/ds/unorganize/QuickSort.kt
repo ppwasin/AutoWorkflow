@@ -1,4 +1,4 @@
-package com.boot.playground.ds
+package com.boot.playground.ds.unorganize
 
 /*
 https://developerlife.com/2018/08/16/algorithms-in-kotlin-1/#quick-sort

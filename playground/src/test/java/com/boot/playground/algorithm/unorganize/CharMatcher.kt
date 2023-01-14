@@ -1,4 +1,4 @@
-package com.boot.playground.algorithm
+package com.boot.playground.algorithm.unorganize
 
 class CharMatcher(private val word: String) {
   private var runningIndex: Int = 0

@@ -1,4 +1,4 @@
-package com.boot.playground.algorithm
+package com.boot.playground.algorithm.unorganize
 
 fun solution(S: String): Int {
   val sb = StringBuilder(S)

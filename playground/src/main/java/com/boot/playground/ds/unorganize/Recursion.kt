@@ -1,4 +1,4 @@
-package com.boot.playground.ds
+package com.boot.playground.ds.unorganize
 
 fun sum(vararg nums: Int): Int {
   return if (nums.isEmpty()) 0

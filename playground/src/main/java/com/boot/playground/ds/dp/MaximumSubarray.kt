@@ -1,4 +1,4 @@
-package com.boot.playground.ds.a1_slidewindow
+package com.boot.playground.ds.dp
 
 import kotlin.math.max
 
@@ -17,7 +17,18 @@ fun maxSubArray_1(nums: IntArray): Int {
   return highestSum
 }
 
+// DP: Kadane's algorithm O(n)
 fun maxSubArray_2(nums: IntArray): Int {
+  //  var highestSum = Int.MIN_VALUE
+  //  var currentSum = 0
+  //  for (i in nums.indices) {
+  //    println("$i(${nums[i]}): $currentSum + ${nums[i]} <> ${nums[i]} => ${max(currentSum +
+  // nums[i], nums[i])}")
+  //    currentSum = max(currentSum + nums[i], nums[i])
+  //    highestSum = max(highestSum, currentSum)
+  //  }
+  //  return highestSum
+
   var highestSum = Int.MIN_VALUE
   var currentSum = 0
   for (i in nums.indices) {
@@ -29,5 +40,5 @@ fun maxSubArray_2(nums: IntArray): Int {
 
 fun main() {
   //  maxSubArray_1(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4))
-  println(maxSubArray_2(intArrayOf(5, 4, -1, 7, 8)))
+  println(maxSubArray_2(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4)))
 }
