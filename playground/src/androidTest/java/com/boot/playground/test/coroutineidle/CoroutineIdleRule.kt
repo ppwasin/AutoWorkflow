@@ -1,7 +1,8 @@
-package com.boot.playground.test
+package com.boot.playground.test.coroutineidle
 
 import android.util.Log
 import androidx.test.espresso.IdlingRegistry
+import com.boot.playground.test.DispatcherProvider
 import kotlinx.coroutines.Dispatchers
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description

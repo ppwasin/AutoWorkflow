@@ -1,4 +1,4 @@
-package com.boot.playground.test
+package com.boot.playground.test.activityidle
 
 import android.app.Activity
 import android.app.Application

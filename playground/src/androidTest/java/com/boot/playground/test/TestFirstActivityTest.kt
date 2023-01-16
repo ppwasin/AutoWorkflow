@@ -1,17 +1,12 @@
 package com.boot.playground.test
 
-import android.app.Application
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import kotlinx.coroutines.Dispatchers
-import org.junit.After
-import org.junit.Before
+import com.boot.playground.test.activityidle.ActivityIdleRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

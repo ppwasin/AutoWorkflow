@@ -1,7 +1,8 @@
-package com.boot.playground.test
+package com.boot.playground.test.coroutineidle
 
 import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
+import com.boot.playground.test.TestLogger
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.ContinuationInterceptor
 import kotlin.coroutines.CoroutineContext
@@ -56,7 +57,7 @@ class MyContext : CoroutineContext.Element {
 
 val myInterceptor =
   object : ContinuationInterceptor {
-    override val key: CoroutineContext.Key<MyContext> = MyContext.Key
+    override val key: CoroutineContext.Key<MyContext> = MyContext
 
     override fun <T> interceptContinuation(
       continuation: Continuation<T>

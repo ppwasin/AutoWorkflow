@@ -1,4 +1,4 @@
-package com.boot.playground.test
+package com.boot.playground.test.coroutineidle
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
