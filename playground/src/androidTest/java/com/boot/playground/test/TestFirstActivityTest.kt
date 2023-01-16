@@ -6,7 +6,12 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -15,32 +20,18 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 internal class TestFirstActivityTest {
-  // create a compose test rule
-  @get:Rule val composeTestRule = createEmptyComposeRule()
-  val testDispatcher = StandardTestDispatcher()
-  private lateinit var ruleTask: TestRuleTask
+//  val testDispatcher = StandardTestDispatcher()
 
-  @Before
-  fun setup() {
-    with(DispatcherProvider) {
-      ruleTask =
-        CoroutineIdlingResourceTask(
-          IdlingResourceDispatcher(testDispatcher).apply {
-            dispatcherMain = this
-          },
-          IdlingResourceDispatcher(dispatcherIO),
-          IdlingResourceDispatcher(dispatcherDefault),
-        )
-    }
 
-    ruleTask.beforeActivityLaunched()
+  @get:Rule
+  val composeTestRule = createEmptyComposeRule()
+  @get:Rule
+  val coroutineIdleRule = CoroutineIdleRule()
+//  @get:Rule
+//  val mainDispatcherRule = MainDispatcherRule(coroutineIdleRule.dispatcherProvider.dispatcherMain)
 
-    //    DispatcherProvider.dispatcherMain = testDispatcher
-  }
-
-  @After
-  fun clenup() {
-    //    ruleTask.afterActivityFinished()
+  init {
+    TestActivityDependencies.dispatcherProvider = coroutineIdleRule.dispatcherProvider
   }
 
   @Test
@@ -51,7 +42,6 @@ internal class TestFirstActivityTest {
     appContext.startActivity(intent)
     composeTestRule.waitForIdle()
 
-    //    testDispatcher.scheduler.advanceUntilIdle()
     composeTestRule
       .onNode(hasTestTag(TestSecondActivity.TAG_SAMPLE_TEXT))
       .assertExists()
