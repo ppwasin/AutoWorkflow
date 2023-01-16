@@ -22,24 +22,12 @@ class IdlingResourceDispatcher(
 
   private val counter =
     CountingIdlingResource(actualDispatcher::class.simpleName)
-  override fun dispatch(context: CoroutineContext, block: Runnable) {
-
-    val runnable = Runnable {
+  override fun dispatch(context: CoroutineContext, block: Runnable) =
+    actualDispatcher.dispatch(context, Runnable {
       counter.increment()
-      TestLogger.log(
-        "IdlingResource:dispatch start for $name ($actualDispatcher), ${counter.isIdleNow}"
-      )
-      try {
-        block.run()
-      } finally {
-        counter.decrement()
-        TestLogger.log(
-          "IdlingResource:dispatch stop for $name ($actualDispatcher), ${counter.isIdleNow}",
-        )
-      }
-    }
-    actualDispatcher.dispatch(context, runnable)
-  }
+      block.run()
+      counter.decrement()
+    })
 
   override fun getName(): String = counter.name
 

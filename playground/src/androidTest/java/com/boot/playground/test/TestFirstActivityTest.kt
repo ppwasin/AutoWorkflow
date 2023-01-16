@@ -1,17 +1,15 @@
 package com.boot.playground.test
 
+import android.app.Application
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -25,14 +23,11 @@ internal class TestFirstActivityTest {
 
   @get:Rule
   val composeTestRule = createEmptyComposeRule()
-  @get:Rule
-  val coroutineIdleRule = CoroutineIdleRule()
 //  @get:Rule
-//  val mainDispatcherRule = MainDispatcherRule(coroutineIdleRule.dispatcherProvider.dispatcherMain)
+//  val coroutineIdleRule = CoroutineIdleRule()
 
-  init {
-    TestActivityDependencies.dispatcherProvider = coroutineIdleRule.dispatcherProvider
-  }
+  @get:Rule
+  val activityIdleRule = ActivityIdleRule(TestFirstActivity::class.java)
 
   @Test
   fun testArriveToActivity2() {

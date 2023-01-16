@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.whenStarted
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filter
@@ -17,9 +18,15 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-object TestActivityDependencies{
-  lateinit var dispatcherProvider: DispatcherProvider<CoroutineDispatcher>
+object TestActivityDependencies {
+  var dispatcherProvider: DispatcherProvider<CoroutineDispatcher> =
+    DispatcherProvider(
+      dispatcherIO = Dispatchers.IO,
+      dispatcherMain = Dispatchers.Main,
+      dispatcherDefault = Dispatchers.Default,
+    )
 }
+
 class TestFirstActivity : ComponentActivity() {
   val viewModel by viewModels<TestFirstViewModel>()
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +36,11 @@ class TestFirstActivity : ComponentActivity() {
 
     TestLogger.log("lifecycleScope.launch outside")
     lifecycleScope.launch(TestActivityDependencies.dispatcherProvider.dispatcherMain) {
-//      whenStarted {
+      whenStarted {
         TestLogger.log("lifecycleScope.launch inside start delay")
         viewModel.state
           .filter { it == 1 }
           .first()
-
-//        delay(10000)
 
         TestLogger.log("lifecycleScope.launch inside end delay")
         startActivity(
@@ -44,17 +49,18 @@ class TestFirstActivity : ComponentActivity() {
             TestSecondActivity::class.java,
           ),
         )
+        finish()
         TestLogger.log("lifecycleScope.launch inside after startactivity")
       }
-
-//    }
+    }
   }
 }
 
-class TestFirstViewModel: ViewModel(){
+class TestFirstViewModel : ViewModel() {
   val state = MutableStateFlow(0)
-  fun start() = viewModelScope.launch(TestActivityDependencies.dispatcherProvider.dispatcherIO) {
-    delay(5000)
-    state.value = 1
-  }
+  fun start() =
+    viewModelScope.launch(TestActivityDependencies.dispatcherProvider.dispatcherIO) {
+      delay(5000)
+      state.value = 1
+    }
 }
