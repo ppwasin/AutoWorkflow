@@ -23,16 +23,19 @@ internal class TestFirstActivityTest {
   @Before
   fun setup() {
     with(DispatcherProvider) {
-      //      ruleTask = CoroutineIdlingResourceTask(
-      //        IdlingResourceDispatcher(testDispatcher).apply { dispatcherMain = this },
-      //        IdlingResourceDispatcher(dispatcherIO),
-      //        IdlingResourceDispatcher(dispatcherDefault),
-      //      )
+      ruleTask =
+        CoroutineIdlingResourceTask(
+          IdlingResourceDispatcher(testDispatcher).apply {
+            dispatcherMain = this
+          },
+          IdlingResourceDispatcher(dispatcherIO),
+          IdlingResourceDispatcher(dispatcherDefault),
+        )
     }
 
-    //    ruleTask.beforeActivityLaunched()
+    ruleTask.beforeActivityLaunched()
 
-    DispatcherProvider.dispatcherMain = testDispatcher
+    //    DispatcherProvider.dispatcherMain = testDispatcher
   }
 
   @After
@@ -48,7 +51,7 @@ internal class TestFirstActivityTest {
     appContext.startActivity(intent)
     composeTestRule.waitForIdle()
 
-    testDispatcher.scheduler.advanceUntilIdle()
+    //    testDispatcher.scheduler.advanceUntilIdle()
     composeTestRule
       .onNode(hasTestTag(TestSecondActivity.TAG_SAMPLE_TEXT))
       .assertExists()
