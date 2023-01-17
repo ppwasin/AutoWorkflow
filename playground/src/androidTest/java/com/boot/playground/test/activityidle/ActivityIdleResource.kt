@@ -10,17 +10,19 @@ class ActivityIdleResource<T : Activity>(
   private val application: Application
 ) : IdlingResource {
   private val counter = CountingIdlingResource(this::class.simpleName)
-  private val callback = ActivityIdleCallbacks(
+  private val callback =
+    ActivityIdleCallbacks(
       onCreated = {
-          if (it.javaClass == activityCls) {
-              counter.increment()
-          }
+        if (it.javaClass == activityCls) {
+          counter.increment()
+        }
       },
       onDestroyed = {
-          if (it.javaClass == activityCls) {
-              counter.decrement()
-          }
-      })
+        if (it.javaClass == activityCls) {
+          counter.decrement()
+        }
+      }
+    )
 
   override fun getName(): String = "ActivityLifeIdlingResource"
 
@@ -28,11 +30,13 @@ class ActivityIdleResource<T : Activity>(
     return counter.isIdleNow
   }
 
-  override fun registerIdleTransitionCallback(callback: IdlingResource.ResourceCallback?) {
+  override fun registerIdleTransitionCallback(
+    callback: IdlingResource.ResourceCallback?
+  ) {
     counter.registerIdleTransitionCallback(callback)
   }
 
-  fun start(){
+  fun start() {
     application.registerActivityLifecycleCallbacks(callback)
   }
   fun cleanup() {

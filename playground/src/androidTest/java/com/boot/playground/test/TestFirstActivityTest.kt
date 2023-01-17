@@ -6,23 +6,20 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.boot.playground.test.activityidle.ActivityIdleRule
+import com.boot.playground.test.coroutineidle.CoroutineIdleRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 internal class TestFirstActivityTest {
-//  val testDispatcher = StandardTestDispatcher()
+  //  val testDispatcher = StandardTestDispatcher()
 
+  @get:Rule val composeTestRule = createEmptyComposeRule()
+  @get:Rule val coroutineIdleRule = CoroutineIdleRule()
 
-  @get:Rule
-  val composeTestRule = createEmptyComposeRule()
-//  @get:Rule
-//  val coroutineIdleRule = CoroutineIdleRule()
-
-  @get:Rule
-  val activityIdleRule = ActivityIdleRule(TestFirstActivity::class.java)
+  //  @get:Rule
+  //  val activityIdleRule = ActivityIdleRule(TestFirstActivity::class.java)
 
   @Test
   fun testArriveToActivity2() {

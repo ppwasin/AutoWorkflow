@@ -24,11 +24,14 @@ class IdlingResourceDispatcher(
   private val counter =
     CountingIdlingResource(actualDispatcher::class.simpleName)
   override fun dispatch(context: CoroutineContext, block: Runnable) =
-    actualDispatcher.dispatch(context, Runnable {
-      counter.increment()
-      block.run()
-      counter.decrement()
-    })
+    actualDispatcher.dispatch(
+      context,
+      Runnable {
+        counter.increment()
+        block.run()
+        counter.decrement()
+      }
+    )
 
   override fun getName(): String = counter.name
 
@@ -45,7 +48,7 @@ class IdlingResourceDispatcher(
     timeMillis: Long,
     continuation: CancellableContinuation<Unit>
   ) {
-    if(isDelayEnable) Thread.sleep(timeMillis)
+    if (isDelayEnable) Thread.sleep(timeMillis)
     continuation.resume(Unit)
   }
 }

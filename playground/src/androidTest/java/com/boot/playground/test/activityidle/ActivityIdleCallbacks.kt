@@ -7,7 +7,7 @@ import android.os.Bundle
 class ActivityIdleCallbacks(
   private val onCreated: (Activity) -> Unit,
   private val onDestroyed: (Activity) -> Unit
-): Application.ActivityLifecycleCallbacks {
+) : Application.ActivityLifecycleCallbacks {
   override fun onActivityCreated(
     activity: Activity,
     savedInstanceState: Bundle?

@@ -3,12 +3,10 @@ package com.boot.playground.test
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.whenStarted
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -16,7 +14,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 object TestActivityDependencies {
   var dispatcherProvider: DispatcherProvider<CoroutineDispatcher> =
@@ -35,23 +32,23 @@ class TestFirstActivity : ComponentActivity() {
     viewModel.start()
 
     TestLogger.log("lifecycleScope.launch outside")
-    lifecycleScope.launch(TestActivityDependencies.dispatcherProvider.dispatcherMain) {
-      whenStarted {
-        TestLogger.log("lifecycleScope.launch inside start delay")
-        viewModel.state
-          .filter { it == 1 }
-          .first()
+    lifecycleScope.launch(
+      TestActivityDependencies.dispatcherProvider.dispatcherMain
+    ) {
+      //      whenStarted {
+      TestLogger.log("lifecycleScope.launch inside start delay")
+      viewModel.state.filter { it == 1 }.first()
 
-        TestLogger.log("lifecycleScope.launch inside end delay")
-        startActivity(
-          Intent(
-            this@TestFirstActivity,
-            TestSecondActivity::class.java,
-          ),
-        )
-        finish()
-        TestLogger.log("lifecycleScope.launch inside after startactivity")
-      }
+      TestLogger.log("lifecycleScope.launch inside end delay")
+      startActivity(
+        Intent(
+          this@TestFirstActivity,
+          TestSecondActivity::class.java,
+        ),
+      )
+      finish()
+      TestLogger.log("lifecycleScope.launch inside after startactivity")
+      //      }
     }
   }
 }
@@ -59,7 +56,9 @@ class TestFirstActivity : ComponentActivity() {
 class TestFirstViewModel : ViewModel() {
   val state = MutableStateFlow(0)
   fun start() =
-    viewModelScope.launch(TestActivityDependencies.dispatcherProvider.dispatcherIO) {
+    viewModelScope.launch(
+      TestActivityDependencies.dispatcherProvider.dispatcherIO
+    ) {
       delay(5000)
       state.value = 1
     }

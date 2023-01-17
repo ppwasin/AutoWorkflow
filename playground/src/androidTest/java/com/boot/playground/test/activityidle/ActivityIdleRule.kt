@@ -8,10 +8,11 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 class ActivityIdleRule<T : Activity>(activityCls: Class<T>) : TestWatcher() {
-  private val idleResource = ActivityIdleResource(
+  private val idleResource =
+    ActivityIdleResource(
       activityCls = activityCls,
       application = ApplicationProvider.getApplicationContext() as Application,
-  )
+    )
 
   override fun starting(description: Description) {
     IdlingRegistry.getInstance().register(idleResource)
