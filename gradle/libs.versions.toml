@@ -1,5 +1,5 @@
 [versions]
-ksp = "1.7.20-1.0.8" # https://github.com/google/ksp
+ksp = "1.8.0-1.0.8" # https://github.com/google/ksp
 rxJava = "2.2.21"
 rxAndroid = "2.1.1"
 coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
@@ -7,19 +7,19 @@ coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
 # Compose
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-compose = "1.3.2"
-composeConstraintLayout = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
+compose = "1.4.0"
+composeConstraintLayout = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 composeActivity = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/activity
 composePaging = "1.0.0-alpha17" # https://developer.android.com/jetpack/androidx/releases/paging
 accompanist = "0.28.0" # https://github.com/google/accompanist
 composeNav = "2.5.3" # https://developer.android.com/jetpack/androidx/releases/navigation
 composeCoil = "2.2.2" # https://coil-kt.github.io/coil/compose/
 composeMaterial3 = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/compose-material3
-composeUi = "1.3.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeUi = "1.3.3" # https://developer.android.com/jetpack/androidx/releases/compose-ui
 composeMaterial = "1.3.1" # https://developer.android.com/jetpack/androidx/releases/compose-material
 composeFoundation = "1.3.1" # https://developer.android.com/jetpack/androidx/releases/compose-foundation
-composeAnimation = "1.3.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
-composeViewModel = "2.6.0-alpha03" # https://developer.android.com/jetpack/androidx/releases/lifecycle
+composeAnimation = "1.3.3" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeViewModel = "2.6.0-alpha04" # https://developer.android.com/jetpack/androidx/releases/lifecycle
 
 # Android Platform
 appCompat = "1.5.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
@@ -34,7 +34,7 @@ junit5 = "5.7.0"
 junitInstrumental = "1.1.3"
 espresso = "3.4.0"
 kotest = "5.1.0"
-paparazzi = "1.2.0-SNAPSHOT"
+paparazzi = "1.2.0" # https://github.com/cashapp/paparazzi
 
 # Build
 googleService = "4.3.8"
