@@ -9,7 +9,6 @@ fun LibraryExtension.setupSdk(){
     compileSdk = ProjectBuild.compileSdk
     defaultConfig {
         minSdk = ProjectBuild.minSdk
-        targetSdk = ProjectBuild.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
