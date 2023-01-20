@@ -33,7 +33,7 @@ class TestFirstActivity : ComponentActivity() {
 
     TestLogger.log("lifecycleScope.launch outside")
     lifecycleScope.launch(
-      TestActivityDependencies.dispatcherProvider.dispatcherMain
+      TestActivityDependencies.dispatcherProvider.dispatcherMain,
     ) {
       //      whenStarted {
       TestLogger.log("lifecycleScope.launch inside start delay")
@@ -57,7 +57,7 @@ class TestFirstViewModel : ViewModel() {
   val state = MutableStateFlow(0)
   fun start() =
     viewModelScope.launch(
-      TestActivityDependencies.dispatcherProvider.dispatcherIO
+      TestActivityDependencies.dispatcherProvider.dispatcherIO,
     ) {
       delay(5000)
       state.value = 1
