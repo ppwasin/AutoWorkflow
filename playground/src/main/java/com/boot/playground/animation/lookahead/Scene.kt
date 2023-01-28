@@ -72,9 +72,11 @@ internal constructor(lookaheadLayoutScope: LookaheadLayoutScope) :
           .collect { target ->
             if (target != null && target != offsetAnimation?.targetValue) {
               offsetAnimation?.run { launch { animateTo(target) } }
-                ?: Animatable(target, IntOffset.VectorConverter).let {
-                  offsetAnimation = it
-                }
+                ?: Animatable(
+                    target,
+                    IntOffset.VectorConverter,
+                  )
+                  .let { offsetAnimation = it }
             }
           }
       }
@@ -83,9 +85,11 @@ internal constructor(lookaheadLayoutScope: LookaheadLayoutScope) :
           .collect { target ->
             if (target != null && target != sizeAnimation?.targetValue) {
               sizeAnimation?.run { launch { animateTo(target) } }
-                ?: Animatable(target, IntSize.VectorConverter).let {
-                  sizeAnimation = it
-                }
+                ?: Animatable(
+                    target,
+                    IntSize.VectorConverter,
+                  )
+                  .let { sizeAnimation = it }
             }
           }
       }
@@ -143,9 +147,11 @@ internal constructor(lookaheadLayoutScope: LookaheadLayoutScope) :
         .collect { target ->
           if (target != null && target != sizeAnimation?.targetValue) {
             sizeAnimation?.run { launch { animateTo(target) } }
-              ?: Animatable(target, IntSize.VectorConverter).let {
-                sizeAnimation = it
-              }
+              ?: Animatable(
+                  target,
+                  IntSize.VectorConverter,
+                )
+                .let { sizeAnimation = it }
           }
         }
     }

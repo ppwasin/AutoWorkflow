@@ -50,8 +50,6 @@ class MainActivity : NodeActivity() {
     installSplashScreen()
     setContent {
       TestSwitchColumn()
-
-      //      EntrypointScreen()
       MaterialTheme {
         NodeHost(integrationPoint = appyxIntegrationPoint) { RootNode(it) }
       }

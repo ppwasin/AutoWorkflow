@@ -1,8 +1,12 @@
 package com.boot.playground.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 
-@Composable fun PrelaunchScreen() {}
+@Composable
+fun NavigationPlaygroundScreen() {
+  ExpandableFabBasic()
+}
 
 class PrelaunchRoot() {
   sealed interface NavTarget {
@@ -13,4 +17,10 @@ class PrelaunchRoot() {
   }
 
   @Composable fun Render() {}
+}
+
+@Preview
+@Composable
+fun NavigationPlaygroundPreview() {
+  NavigationPlaygroundScreen()
 }
