@@ -68,6 +68,7 @@ fun TestSwitchColumn() {
   var xy by remember { mutableStateOf(false) }
   val dummyItems = remember { (0..10).toList() }
   val state = rememberLazyListState()
+  val test = Test("")
   Column {
     Button(onClick = { xy = !xy }) { Text("Switch") }
     if (xy) {
