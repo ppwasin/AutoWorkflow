@@ -37,7 +37,7 @@ fun ListTest(viewModel: ExampleViewModel = remember { ExampleViewModel() }) {
 
   Column(
     Modifier.padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
+    verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
     Text(viewState.title, fontSize = 24.sp)
     Text(viewState.subtitle)

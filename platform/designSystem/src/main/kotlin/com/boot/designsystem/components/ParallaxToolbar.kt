@@ -76,7 +76,7 @@ fun ParallaxToolbar(
         Box(
           Modifier.height(imageHeight).graphicsLayer {
             alpha = 1f - offsetProgress
-          }
+          },
         ) {
           Image(
             painter = painterResource(id = R.drawable.strawberry_pie_1),
@@ -165,7 +165,7 @@ fun CircularButton(
     colors =
       ButtonDefaults.buttonColors(
         backgroundColor = White,
-        contentColor = color
+        contentColor = color,
       ),
     elevation = elevation,
     modifier = Modifier.width(38.dp).height(38.dp),

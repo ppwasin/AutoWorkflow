@@ -57,7 +57,7 @@ fun GalleryItem(item: PhotographItem) {
       painter =
         rememberAsyncImagePainter(
           item.photoUrl,
-          placeholder = painterResource(R.drawable.ic_placeholder_24)
+          placeholder = painterResource(R.drawable.ic_placeholder_24),
         ),
       contentDescription = null,
       modifier = Modifier.size(256.dp),

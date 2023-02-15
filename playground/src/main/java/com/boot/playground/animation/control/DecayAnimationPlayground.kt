@@ -26,7 +26,7 @@ fun DecayAnimationPlayground() {
 
   ControlCanvas(
     onClick = animationCtrl.onClick,
-    centerOffset = animationCtrl.offset
+    centerOffset = animationCtrl.offset,
   )
 }
 

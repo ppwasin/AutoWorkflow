@@ -151,6 +151,7 @@ div.controls .btn {
     margin: 0 1em;
 }
 
+
     </style>
 </head>
 <body>
@@ -239,7 +240,8 @@ div.controls .btn {
                                         v-if="baseline && baseline !== scenario">{{
                                         uTest(scenario, baseline, sample) | percent }}
                                     </td>
-                                    <td :rowspan="rowCount(scenario)" @click="baseline = baseline ? null : scenario"
+                                    <td :rowspan="rowCount(scenario)"
+                                        @click="baseline = baseline ? null : scenario"
                                         class="center title dark"
                                         v-else-if="index == 0">
                                         <input :checked="baseline" type="checkbox">
@@ -269,7 +271,8 @@ div.controls .btn {
                                     </template>
                                 </td>
                                 <template v-for="(iteration, index) in scenario.iterations">
-                                    <td :class="iteration.phase" :title="iteration.phase + ' #' + iteration.iteration"
+                                    <td :class="iteration.phase"
+                                        :title="iteration.phase + ' #' + iteration.iteration"
                                         class="numeric data">
                                         <span>{{ iteration.values[sample.name] | numeric }} {{ sample.unit }}</span>
                                         <template
@@ -998,6 +1001,7 @@ new Vue({
 });
 
 },{"mann-whitney-utest":1}]},{},[2]);
+
 
 
 

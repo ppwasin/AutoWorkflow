@@ -101,6 +101,6 @@ fun AppMaterialTheme(
   MaterialTheme(
     colorScheme = colorScheme,
     typography = AppTypography,
-    content = content
+    content = content,
   )
 }

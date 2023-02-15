@@ -31,7 +31,7 @@ class QueryViewModel<QueryInput : Any, Output : Any>(
         .shareIn(
           scope = scope,
           started = SharingStarted.WhileSubscribed(3000),
-          replay = 1
+          replay = 1,
         )
   }
 }

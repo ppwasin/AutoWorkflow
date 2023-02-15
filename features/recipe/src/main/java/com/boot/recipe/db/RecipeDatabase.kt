@@ -12,7 +12,7 @@ import com.boot.recipe.model.RemoteKeys
 @Database(
   entities = [Recipe::class, RemoteKeys::class],
   version = 1,
-  exportSchema = false
+  exportSchema = false,
 )
 abstract class RecipeDatabase : RoomDatabase() {
   abstract fun recipeDao(): RecipeDao
@@ -32,7 +32,7 @@ abstract class RecipeDatabase : RoomDatabase() {
       Room.databaseBuilder(
           context.applicationContext,
           RecipeDatabase::class.java,
-          "recipe.db"
+          "recipe.db",
         )
         .fallbackToDestructiveMigration()
         .build()

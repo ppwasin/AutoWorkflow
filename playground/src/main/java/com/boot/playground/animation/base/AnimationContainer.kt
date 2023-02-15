@@ -19,11 +19,11 @@ fun AnimationContainer(animRunner: @Composable (Boolean) -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
       Button(
         modifier = Modifier.padding(12.dp),
-        onClick = { setIsEnabled(!enabled) }
+        onClick = { setIsEnabled(!enabled) },
       ) { Text("Click To Animate") }
       Text(
         modifier = Modifier.padding(start = 4.dp),
-        text = "isEnable: $enabled"
+        text = "isEnable: $enabled",
       )
     }
     animRunner(enabled)

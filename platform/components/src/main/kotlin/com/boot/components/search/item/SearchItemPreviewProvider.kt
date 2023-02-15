@@ -22,6 +22,7 @@ class SearchItemPreviewProvider(
     val subTitle: String?,
     val endIcon: @Composable (() -> Unit)?
   )
+
   companion object {
     private val textParams: List<String> =
       listOf(getRandomString(100), getRandomString(10))

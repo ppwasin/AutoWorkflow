@@ -23,7 +23,7 @@ fun TargetBasedAnimationPlayground() {
 
   ControlCanvas(
     onClick = animationCtrl.onClick,
-    centerOffset = animationCtrl.offset
+    centerOffset = animationCtrl.offset,
   )
 }
 

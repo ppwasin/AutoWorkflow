@@ -49,22 +49,22 @@ fun MenuToClose(
   val lineOneEndY by
     animateFloatAsState(
       targetValue = if (isShow) 0f else endY,
-      animationSpec = springSpec()
+      animationSpec = springSpec(),
     )
   val lineTwoAlpha by
     animateFloatAsState(
       targetValue = if (isShow) 1f else 0f,
-      animationSpec = springSpec(0f)
+      animationSpec = springSpec(0f),
     )
   val lineTwoScale by
     animateFloatAsState(
       targetValue = if (isShow) 1f else 0f,
-      animationSpec = springSpec()
+      animationSpec = springSpec(),
     )
   val lineThreeEndY by
     animateFloatAsState(
       targetValue = if (isShow) endY else 0f,
-      animationSpec = springSpec()
+      animationSpec = springSpec(),
     )
 
   Canvas(
@@ -85,7 +85,7 @@ fun MenuToClose(
     }
     line(
       start = Offset(x = 0f, y = 0f),
-      end = Offset(x = width, y = lineOneEndY)
+      end = Offset(x = width, y = lineOneEndY),
     )
     withTransform({ scale(lineTwoScale, Offset(x = 0f, y = height / 2)) }) {
       line(
@@ -96,7 +96,7 @@ fun MenuToClose(
     }
     line(
       start = Offset(x = 0f, y = height),
-      end = Offset(x = width, y = lineThreeEndY)
+      end = Offset(x = width, y = lineThreeEndY),
     )
   }
 }

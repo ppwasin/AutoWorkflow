@@ -59,7 +59,7 @@ private fun testSubscribe(showText: (String) -> Unit) {
           getCompletable(),
           getCompletable(),
           getCompletable(),
-          getCompletable()
+          getCompletable(),
         ),
       )
     }
@@ -67,7 +67,7 @@ private fun testSubscribe(showText: (String) -> Unit) {
     .subscribeOn(Schedulers.io())
     .subscribe {
       showText(
-        "[${Thread.currentThread().name}]On subscribe: this will print later"
+        "[${Thread.currentThread().name}]On subscribe: this will print later",
       )
     }
 
@@ -83,7 +83,7 @@ private fun testSubscribe2(showText: (String) -> Unit) {
           getCompletable(),
           getCompletable(),
           getCompletable(),
-          getCompletable()
+          getCompletable(),
         ),
       )
     }
@@ -91,7 +91,7 @@ private fun testSubscribe2(showText: (String) -> Unit) {
     .observeOn(Schedulers.computation())
     .subscribe {
       showText(
-        "[${Thread.currentThread().name}]On subscribe: this will print later"
+        "[${Thread.currentThread().name}]On subscribe: this will print later",
       )
     }
   showText("Last line of function: this will print first")

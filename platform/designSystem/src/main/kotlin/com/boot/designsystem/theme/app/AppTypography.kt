@@ -20,37 +20,37 @@ data class AppTypography(
     TextStyle(
       fontFamily = rubik,
       fontWeight = FontWeight.Bold,
-      fontSize = 26.sp
+      fontSize = 26.sp,
     ),
   val h1: TextStyle =
     TextStyle(
       fontFamily = rubik,
       fontWeight = FontWeight.Normal,
-      fontSize = 26.sp
+      fontSize = 26.sp,
     ),
   val subtitle: TextStyle =
     TextStyle(
       fontFamily = openSans,
       fontWeight = FontWeight.Normal,
-      fontSize = 16.sp
+      fontSize = 16.sp,
     ),
   val body: TextStyle =
     TextStyle(
       fontFamily = openSans,
       fontWeight = FontWeight.Normal,
-      fontSize = 16.sp
+      fontSize = 16.sp,
     ),
   val button: TextStyle =
     TextStyle(
       fontFamily = rubik,
       fontWeight = FontWeight.Normal,
-      fontSize = 16.sp
+      fontSize = 16.sp,
     ),
   val caption: TextStyle =
     TextStyle(
       fontFamily = openSans,
       fontWeight = FontWeight.Normal,
-      fontSize = 12.sp
+      fontSize = 12.sp,
     )
 ) : Parcelable {
   constructor(
@@ -60,7 +60,7 @@ data class AppTypography(
     TODO("subtitle"),
     TODO("body"),
     TODO("button"),
-    TODO("caption")
+    TODO("caption"),
   ) {}
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {}

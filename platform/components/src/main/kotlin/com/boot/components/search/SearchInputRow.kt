@@ -33,7 +33,7 @@ fun SearchInputRow(text: String, setText: (String) -> Unit) {
         IconButton(
           onClick = {
             setText(
-              ""
+              "",
             ) // Remove text from TextField when you press the 'X' icon
           },
         ) {

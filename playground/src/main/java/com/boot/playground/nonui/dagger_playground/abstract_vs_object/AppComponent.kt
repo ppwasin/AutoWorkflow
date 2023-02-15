@@ -28,7 +28,7 @@ import dagger.Component
       ClassModule::class,
       ObjectModule::class,
       AbstractModule::class,
-      InterfaceModule::class
+      InterfaceModule::class,
     ],
 )
 interface AppComponent {

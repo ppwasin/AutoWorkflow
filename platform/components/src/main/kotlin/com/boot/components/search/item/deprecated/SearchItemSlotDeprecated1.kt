@@ -33,7 +33,7 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
       imports =
         [
           "com.boot.components.search.item.SearchItemSlot",
-          "androidx.compose.material.Text"
+          "androidx.compose.material.Text",
         ],
     ),
 )

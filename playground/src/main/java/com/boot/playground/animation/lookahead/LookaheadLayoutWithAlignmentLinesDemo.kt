@@ -65,7 +65,7 @@ fun LookaheadLayoutWithAlignmentLinesDemo() {
                   .sharedElement()
                   .background(
                     color = Color(0xffffb900),
-                    RoundedCornerShape(10)
+                    RoundedCornerShape(10),
                   ),
             )
           }

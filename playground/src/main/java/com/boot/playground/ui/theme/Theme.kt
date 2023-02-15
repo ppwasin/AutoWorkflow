@@ -25,7 +25,7 @@ private val DarkColorPalette =
   darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
   )
 
 private val LightColorPalette =
@@ -60,6 +60,6 @@ fun AutoWorkflowTheme(
     colors = colors,
     typography = Typography,
     shapes = Shapes,
-    content = content
+    content = content,
   )
 }

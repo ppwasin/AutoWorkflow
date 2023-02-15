@@ -35,7 +35,7 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
       imports =
         [
           "com.boot.components.search.item.SearchItemSlot",
-          "androidx.compose.material.Text"
+          "androidx.compose.material.Text",
         ],
     ),
 )
@@ -60,7 +60,7 @@ private fun SearchItemSlotRow(
         Icon(
           startIcon,
           contentDescription = "SearchStartIcon",
-          modifier = Modifier.size(iconSize)
+          modifier = Modifier.size(iconSize),
         )
 
         Spacer(Modifier.size(iconSpace))
@@ -77,7 +77,7 @@ private fun SearchItemSlotRow(
           Icon(
             endIcon,
             contentDescription = "SearchEndIcon",
-            modifier = Modifier.size(iconSize)
+            modifier = Modifier.size(iconSize),
           )
         }
     }

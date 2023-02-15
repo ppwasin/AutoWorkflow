@@ -54,6 +54,7 @@ object FactoryAtomic {
   }
 
   private var counter: AtomicReference<Counter> = AtomicReference()
+
   @SuppressLint("NewApi")
   fun getOrCreate(): Counter = counter.updateAndGet { Counter() }
 }

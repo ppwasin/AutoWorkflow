@@ -19,13 +19,13 @@ fun TransitionPlayground(isVisible: Boolean) {
   val circleAlpha =
     transition.animateFloat(
       transitionSpec = { tween(durationMillis = 3000) },
-      label = "circleAlpha"
+      label = "circleAlpha",
     ) { if (it) 0f else 1f }
 
   val circleRadius =
     transition.animateFloat(
       transitionSpec = { tween(durationMillis = 3000) },
-      label = "circleRadius"
+      label = "circleRadius",
     ) { if (it) 10f else 50f }
 
   CanvasWrapper(radius = circleRadius.value, alpha = circleAlpha.value)
