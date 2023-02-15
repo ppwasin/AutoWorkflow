@@ -37,16 +37,16 @@ fun ExpandableFabBasic(modifier: Modifier = Modifier) {
               size =
                 FabDefaults.size(
                   isExpanded = isExpanded,
-                  maxWidthDp = screenMaxWidth.dp
-                )
+                  maxWidthDp = screenMaxWidth.dp,
+                ),
             )
             .movement(lookaheadScope = this)
             .transformation(lookaheadScope = this)
             .noRippleClickable { isExpanded = !isExpanded },
-        isExpanded = isExpanded
+        isExpanded = isExpanded,
       )
     },
-    measurePolicy = DefaultMeasurePolicy
+    measurePolicy = DefaultMeasurePolicy,
   )
 }
 
@@ -54,14 +54,14 @@ fun ExpandableFabBasic(modifier: Modifier = Modifier) {
 private fun Fab(modifier: Modifier = Modifier, isExpanded: Boolean = false) {
   Box(
     modifier = Modifier.fillMaxSize(),
-    contentAlignment = Alignment.BottomEnd
+    contentAlignment = Alignment.BottomEnd,
   ) {
     Surface(
       modifier = modifier,
       shadowElevation = FabDefaults.elevation,
       color = FabDefaults.color,
       shape = FabDefaults.shape(isExpanded = isExpanded),
-      content = {}
+      content = {},
     )
   }
 }

@@ -10,7 +10,8 @@ import com.boot.recipe.model.Recipe
 @Dao
 interface RecipeDao {
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun insertAll(repos: List<Recipe>)
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun insertAll(repos: List<Recipe>)
 
   @Query("SELECT * FROM recipe WHERE name LIKE :queryString ORDER BY name ASC")
   fun queryByName(queryString: String): PagingSource<Int, Recipe>

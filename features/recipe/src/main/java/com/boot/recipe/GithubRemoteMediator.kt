@@ -14,7 +14,10 @@ class RecipeRemoteMediator(
   private val repoDatabase: RecipeDatabase
 ) : RemoteMediator<Int, Recipe>() {
 
-  override suspend fun load(loadType: LoadType, state: PagingState<Int, Recipe>): MediatorResult {
+  override suspend fun load(
+    loadType: LoadType,
+    state: PagingState<Int, Recipe>
+  ): MediatorResult {
     //    val page =
     //      when (loadType) {
     //        LoadType.REFRESH -> {

@@ -29,17 +29,17 @@ fun SubStringDemo() {
         addStyle(
           style = SpanStyle(fontWeight = FontWeight.Bold),
           start = nameIndex,
-          end = nameIndex + name.length
+          end = nameIndex + name.length,
         )
 
         for (substringRange in substrings) {
           addStyle(
             style = SpanStyle(textDecoration = TextDecoration.Underline),
             start = substringRange.first,
-            end = substringRange.last + 1
+            end = substringRange.last + 1,
           )
         }
-      }
+      },
   )
 }
 

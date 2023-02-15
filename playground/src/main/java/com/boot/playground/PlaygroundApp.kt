@@ -23,7 +23,7 @@ class PlaygroundApp : Application(), HasAppsflyerLauncherDependencies {
       appsflyerReceiver = AppsflyerEventReceiver(appsflyerSDK.sdk),
       launcherActivity = PlaygroundActivity::class.java,
       appLifecycleObserver = appLifecycleObserver,
-      appsFlyerLib = appsflyerSDK.sdk
+      appsFlyerLib = appsflyerSDK.sdk,
     )
   }
 }

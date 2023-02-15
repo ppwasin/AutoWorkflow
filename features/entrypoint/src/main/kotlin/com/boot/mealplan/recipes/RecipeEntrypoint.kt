@@ -51,7 +51,7 @@ fun RecipeEntrypoint(
               else -> Text("Show Place holder")
             }
           }
-        }
+        },
       )
     }
     composable(RecipeRoute.Details.route()) { RecipeDetails() }

@@ -70,7 +70,7 @@ fun Modifier.movement(lookaheadScope: LookaheadLayoutScope) = composed {
           lookaheadScopeCoordinates
             .localPositionOf(
               sourceCoordinates = layoutCoordinates,
-              relativeToSource = Offset.Zero
+              relativeToSource = Offset.Zero,
             )
             .round()
       }
@@ -108,7 +108,7 @@ fun Modifier.animateMovement(
           }
             ?: Animatable(
                 initialValue = target,
-                typeConverter = IntOffset.VectorConverter
+                typeConverter = IntOffset.VectorConverter,
               )
               .let { offsetAnimatable ->
                 targetOffsetAnimation = offsetAnimatable
@@ -128,7 +128,7 @@ fun Modifier.animateMovement(
           lookaheadScopeCoordinates
             .localPositionOf(
               sourceCoordinates = layoutCoordinates,
-              relativeToSource = Offset.Zero
+              relativeToSource = Offset.Zero,
             )
             .round()
       }
@@ -151,13 +151,13 @@ fun Modifier.transformation(lookaheadScope: LookaheadLayoutScope) =
       val animatedConstraints =
         Constraints.fixed(
           width = width.coerceAtLeast(0), // 최소 0 으로 설정
-          height = height.coerceAtLeast(0)
+          height = height.coerceAtLeast(0),
         )
 
       val placeable = measurable.measure(animatedConstraints)
       layout(
         width = placeable.width,
-        height = placeable.height
+        height = placeable.height,
       ) { // lookahead 크기에 맞게 배치
         placeable.place(x = 0, y = 0)
       }
@@ -184,7 +184,7 @@ fun Modifier.animateTransformation(
           }
             ?: Animatable(
                 initialValue = target,
-                typeConverter = IntSize.VectorConverter
+                typeConverter = IntSize.VectorConverter,
               )
               .let { sizeAnimatable -> targetSizeAnimation = sizeAnimatable }
         }
@@ -199,7 +199,7 @@ fun Modifier.animateTransformation(
       val animatedConstraints =
         Constraints.fixed(
           width = width.coerceAtLeast(0),
-          height = height.coerceAtLeast(0)
+          height = height.coerceAtLeast(0),
         )
 
       val placeable = measurable.measure(animatedConstraints)
@@ -213,6 +213,6 @@ fun Modifier.animateTransformation(
 fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier = composed {
   clickable(
     indication = null,
-    interactionSource = remember { MutableInteractionSource() }
+    interactionSource = remember { MutableInteractionSource() },
   ) { onClick() }
 }

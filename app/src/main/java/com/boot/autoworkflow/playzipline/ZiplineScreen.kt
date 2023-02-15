@@ -18,6 +18,7 @@ class RealTriviaService : TriviaService {
   override fun games(): List<TriviaGame> {
     return emptyList()
   }
+
   override fun answer(questionId: String, answer: String): AnswerResult {
     return AnswerResult()
   }

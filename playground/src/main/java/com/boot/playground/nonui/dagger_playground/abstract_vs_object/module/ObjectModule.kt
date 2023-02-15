@@ -26,6 +26,7 @@ object ObjectModule {
   fun getObjectModel(): ObjectModel {
     return ObjectModel()
   }
+
   @Provides
   fun getSecondObjectModel(): SecondObjectModel {
     return SecondObjectModel()

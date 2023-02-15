@@ -36,7 +36,7 @@ fun CraneDemo() {
       Box(
         Modifier.sharedElement()
           .background(Color(0xffff6f69), RoundedCornerShape(20))
-          .fillMaxSize()
+          .fillMaxSize(),
       )
     }
   }
@@ -46,7 +46,7 @@ fun CraneDemo() {
       Surface(
         modifier = Modifier.sharedElement().background(Color(0xfffdedac)),
         color = Color(0xfffdedac),
-        shape = RoundedCornerShape(10.dp)
+        shape = RoundedCornerShape(10.dp),
       ) { child() }
     }
   }
@@ -56,7 +56,7 @@ fun CraneDemo() {
     Modifier.fillMaxSize().padding(10.dp).clickable {
       fullScreen = !fullScreen
     },
-    contentAlignment = Alignment.Center
+    contentAlignment = Alignment.Center,
   ) {
     SceneHost(Modifier.fillMaxSize()) {
       if (fullScreen) {
@@ -65,7 +65,7 @@ fun CraneDemo() {
             Box(
               Modifier.padding(10.dp)
                 .wrapContentSize(Alignment.Center)
-                .size(50.dp)
+                .size(50.dp),
             ) { avatar() }
           }
         }
@@ -83,7 +83,7 @@ fun CraneDemo() {
                 .height(300.dp)
                 .graphicsLayer { this.alpha = alpha.value }
                 .background(Color.DarkGray)
-                .animateContentSize()
+                .animateContentSize(),
             )
             Box(Modifier.padding(10.dp).size(60.dp)) { avatar() }
           }

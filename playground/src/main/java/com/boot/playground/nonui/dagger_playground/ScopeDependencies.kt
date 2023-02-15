@@ -45,6 +45,7 @@ interface ChildScopeComponent {
 
 class A {
   private var count = 0
+
   init {
     println("[A] init")
   }
@@ -67,7 +68,8 @@ fun main() {
   val injectableChild = InjectableChild()
   val injectableParent = InjectableParent()
   val parent = DaggerParentSCopeComponent.builder().build()
-  val child = DaggerChildScopeComponent.builder().parentScopeDependencies(parent).build()
+  val child =
+    DaggerChildScopeComponent.builder().parentScopeDependencies(parent).build()
 
   println("Before inject parent")
   parent.inject(injectableParent)

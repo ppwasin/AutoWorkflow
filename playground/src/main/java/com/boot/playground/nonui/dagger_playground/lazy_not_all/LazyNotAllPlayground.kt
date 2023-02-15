@@ -38,6 +38,7 @@ object LazyNotAllPlayground {
   class A
   class B
   class C
+
   /** --------------------------- */
   class Injectable {
     @Inject lateinit var a: A

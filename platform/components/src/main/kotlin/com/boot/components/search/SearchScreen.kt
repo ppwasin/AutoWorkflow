@@ -40,7 +40,9 @@ fun <T : Any> SearchScreenSlot(
           item {
             Text(
               text = "Waiting for items to load from the backend",
-              modifier = Modifier.fillParentMaxSize().wrapContentSize(align = Alignment.Center)
+              modifier =
+                Modifier.fillParentMaxSize()
+                  .wrapContentSize(align = Alignment.Center),
             )
           }
         paging.loadState.refresh is LoadState.Error ->
@@ -48,13 +50,15 @@ fun <T : Any> SearchScreenSlot(
             val e = paging.loadState.refresh as LoadState.Error
             Text(
               text = "Error FirstPage: ${e.error.localizedMessage}",
-              modifier = Modifier.clickable { paging.retry() }
+              modifier = Modifier.clickable { paging.retry() },
             )
           }
         paging.loadState.append == LoadState.Loading ->
           item {
             CircularProgressIndicator(
-              modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
+              modifier =
+                Modifier.fillMaxWidth()
+                  .wrapContentWidth(Alignment.CenterHorizontally),
             )
           }
         paging.loadState.append is LoadState.Error ->
@@ -62,10 +66,11 @@ fun <T : Any> SearchScreenSlot(
             val e = paging.loadState.append as LoadState.Error
             Text(
               text = "Error FirstPage: ${e.error.localizedMessage}",
-              modifier = Modifier.clickable { paging.retry() }
+              modifier = Modifier.clickable { paging.retry() },
             )
           }
-        paging.loadState.append.endOfPaginationReached -> item { Text("end of pagination") }
+        paging.loadState.append.endOfPaginationReached ->
+          item { Text("end of pagination") }
       }
     }
   }

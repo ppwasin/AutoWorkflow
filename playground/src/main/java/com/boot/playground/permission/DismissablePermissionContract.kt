@@ -20,7 +20,7 @@ class DismissablePermissionContract :
     val grantResults =
       intent.getIntArrayExtra(
         ActivityResultContracts.RequestMultiplePermissions
-          .EXTRA_PERMISSION_GRANT_RESULTS
+          .EXTRA_PERMISSION_GRANT_RESULTS,
       )
     return grantResults?.any { result ->
       result == PackageManager.PERMISSION_GRANTED
@@ -45,11 +45,11 @@ class DismissablePermissionContract :
   internal fun createIntent(input: Array<String>): Intent {
     return Intent(
         ActivityResultContracts.RequestMultiplePermissions
-          .ACTION_REQUEST_PERMISSIONS
+          .ACTION_REQUEST_PERMISSIONS,
       )
       .putExtra(
         ActivityResultContracts.RequestMultiplePermissions.EXTRA_PERMISSIONS,
-        input
+        input,
       )
   }
 }

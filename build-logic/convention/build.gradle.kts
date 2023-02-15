@@ -1,42 +1,41 @@
-
 plugins {
-  `kotlin-dsl`
-  `java-gradle-plugin`
+	`kotlin-dsl`
+	`java-gradle-plugin`
 //  alias(infra.plugins.buildconfig)
 }
 
 repositories {
-  google()
-  gradlePluginPortal()
-  mavenCentral()
+	google()
+	gradlePluginPortal()
+	mavenCentral()
 }
 
 gradlePlugin {
-  plugins {
-    create("android-lib-module") {
-      id = "com.convention.simpleandroidlib"
-      implementationClass = "com.convention.SimplAndroidLib"
-    }
-    create("compose-lib-module") {
-      id = "com.convention.composeandroidlib"
-      implementationClass = "com.convention.ComposeAndroidLib"
-    }
+	plugins {
+		create("android-lib-module") {
+			id = "com.convention.simpleandroidlib"
+			implementationClass = "com.convention.SimplAndroidLib"
+		}
+		create("compose-lib-module") {
+			id = "com.convention.composeandroidlib"
+			implementationClass = "com.convention.ComposeAndroidLib"
+		}
 //    create("kotlin-lib-module") {
 //      id = "com.convention.kotlin"
 //      implementationClass = "com.convention.KotlinLib"
 //    }
 
-    // Plugins
-    create("extension-module") {
-      id = "com.convention.extension"
-      implementationClass = "com.convention.ExtensionPlugin"
-    }
-  }
+		// Plugins
+		create("extension-module") {
+			id = "com.convention.extension"
+			implementationClass = "com.convention.ExtensionPlugin"
+		}
+	}
 }
 
 dependencies {
-  implementation(infra.kotlinGradle)
-  implementation(infra.androidGradle)
+	implementation(infra.kotlinGradle)
+	implementation(infra.androidGradle)
 }
 
 //buildConfig {

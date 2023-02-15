@@ -10,44 +10,44 @@ import org.gradle.api.tasks.TaskAction
 
 open class MinorRelease : DefaultTask() {
 
-  @TaskAction
-  fun setup() {
-    // Guard Environment
-    val currentBranch = shell("git branch --show-current")
-    check(currentBranch == "main") { "Must run on 'main' branch" }
-    println("Current running branch is: $currentBranch")
+	@TaskAction
+	fun setup() {
+		// Guard Environment
+		val currentBranch = shell("git branch --show-current")
+		check(currentBranch == "main") { "Must run on 'main' branch" }
+		println("Current running branch is: $currentBranch")
 
-    // Increase Minor version
-    println("### Start increase minor version ###")
-    val newVersion =
-      getCurrentVersion(matchRegex = "*.*.*")
-        .also { println("Got current version: $it") }
-        .let(ReleaseVersion::increaseMinor)
-        .also { println("Increase to $it") }
+		// Increase Minor version
+		println("### Start increase minor version ###")
+		val newVersion =
+			getCurrentVersion(matchRegex = "*.*.*")
+				.also { println("Got current version: $it") }
+				.let(ReleaseVersion::increaseMinor)
+				.also { println("Increase to $it") }
 
-    // Create RC Branch
-    val rcBranchName = "rc-${newVersion.major}.${newVersion.minor}"
-    println("### Create RC branch: $rcBranchName ###")
-    shell("git branch $rcBranchName")
+		// Create RC Branch
+		val rcBranchName = "rc-${newVersion.major}.${newVersion.minor}"
+		println("### Create RC branch: $rcBranchName ###")
+		shell("git branch $rcBranchName")
 
-    kotlin.runCatching {
-      // Annotate Version with Tag
-      println("### Create Tag: $newVersion ###")
-      shell("git tag -a $newVersion -m 'Release version $newVersion'")
+		kotlin.runCatching {
+			// Annotate Version with Tag
+			println("### Create Tag: $newVersion ###")
+			shell("git tag -a $newVersion -m 'Release version $newVersion'")
 
-      // Release
-      println("### Release ###")
-      val uploader = ReleaseDistributor(versionName = newVersion.toString())
-      uploader.release(
-        setOf(
-          ReleaseChannel.AppDistribution,
-          ReleaseChannel.Firebase,
-        ),
-      )
-    }.onSuccess {
-      shell("git push origin $rcBranchName")
-      shell("git push origin $newVersion")
-    }
-  }
+			// Release
+			println("### Release ###")
+			val uploader = ReleaseDistributor(versionName = newVersion.toString())
+			uploader.release(
+				setOf(
+					ReleaseChannel.AppDistribution,
+					ReleaseChannel.Firebase,
+				),
+			)
+		}.onSuccess {
+			shell("git push origin $rcBranchName")
+			shell("git push origin $newVersion")
+		}
+	}
 
 }

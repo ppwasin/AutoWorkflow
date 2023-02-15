@@ -24,6 +24,7 @@ class Point1 {
   @Inject lateinit var scopedDependency: ScopedDependency
   @Inject lateinit var unScopedDependency: UnScopedDependency
   @Inject lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
+
   init {
     DaggerScopePlaygroundComponent.builder().build().inject(this)
   }
@@ -33,6 +34,7 @@ class Point2 {
   @Inject lateinit var scopedDependency: ScopedDependency
   @Inject lateinit var unScopedDependency: UnScopedDependency
   @Inject lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
+
   init {
     DaggerScopePlaygroundComponent.builder().build().inject(this)
   }

@@ -23,21 +23,24 @@ import kotlinx.coroutines.launch
 @Composable
 @Preview
 fun GesturePlayground() {
-  val offsetAnim = remember { Animatable(Offset(0f, 0f), Offset.VectorConverter) }
+  val offsetAnim = remember {
+    Animatable(Offset(0f, 0f), Offset.VectorConverter)
+  }
   Box(
-      modifier =
-          Modifier.fillMaxSize().background(Color.White).pointerInput(Unit) {
-            coroutineScope {
-              while (true) {
-                // Detect a tap event and obtain its position.
-                val position = awaitPointerEventScope { awaitFirstDown().position }
-                launch {
-                  // Animate to the tap position.
-                  offsetAnim.animateTo(position)
-                }
-              }
+    modifier =
+      Modifier.fillMaxSize().background(Color.White).pointerInput(Unit) {
+        coroutineScope {
+          while (true) {
+            // Detect a tap event and obtain its position.
+            val position = awaitPointerEventScope { awaitFirstDown().position }
+            launch {
+              // Animate to the tap position.
+              offsetAnim.animateTo(position)
             }
-          }) {
+          }
+        }
+      },
+  ) {
     Text("Offset: X: ${offsetAnim.value.x}, Y: ${offsetAnim.value.y}")
     Circle(offsetAnim.value)
   }
@@ -46,7 +49,7 @@ fun GesturePlayground() {
 @Composable
 fun Circle(offset: Offset) {
   Canvas(
-      modifier = Modifier.fillMaxSize(),
+    modifier = Modifier.fillMaxSize(),
   ) { drawCircle(color = Color.Red, radius = 40f, center = offset) }
 }
 

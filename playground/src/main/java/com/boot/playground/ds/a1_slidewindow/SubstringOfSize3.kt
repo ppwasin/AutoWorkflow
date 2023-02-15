@@ -34,6 +34,51 @@ fun lengthOfLongestSubstring(s: String): Int {
   return longest
 }
 
+fun lengthOfLongestSubstringTwoDistinct(s: String): Int {
+  val maxWindowSize = 2
+  var start = 0
+  var end = 0
+
+  var maxLength = 0
+  val windows = hashMapOf<Char, Int>()
+  while (end < s.length) {
+    val endChar = s[end]
+    windows[endChar] = (windows[endChar] ?: 0) + 1
+    ++end
+
+    while (windows.size > maxWindowSize) {
+      val startChar = s[start]
+      windows[startChar] = (windows[startChar]!!) - 1
+      ++start
+      if (windows[startChar] == 0) {
+        windows.remove(startChar)
+      }
+    }
+
+    maxLength = maxOf(maxLength, end - start)
+  }
+
+  return maxLength
+}
+
 fun main() {
-  println(lengthOfLongestSubstring("dvdf"))
+  //  println(lengthOfLongestSubstring("dvdf"))
+  //  println(lengthOfLongestSubstringTwoDistinct("eceba"))
+  //  println(lengthOfLongestSubstringTwoDistinct("ccaabbb"))
+  println(isPalindrome(10))
+  println(isPalindrome(121))
+  println(isPalindrome(-121))
+}
+
+fun isPalindrome(x: Int): Boolean {
+  val s = x.toString()
+  var start = 0
+  var end = s.lastIndex
+  while (start <= end) {
+    if (s[start] != s[end]) return false
+    start++
+    end--
+  }
+
+  return true
 }

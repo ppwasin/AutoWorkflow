@@ -4,12 +4,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ShoppingItemResponse(
-    val id: Long,
-    val name: String,
-    val desc: String
+	val id: Long,
+	val name: String,
+	val desc: String
 ) {
 
-    companion object {
-        const val path = "shoppingList"
-    }
+	companion object {
+		const val path = "shoppingList"
+	}
 }

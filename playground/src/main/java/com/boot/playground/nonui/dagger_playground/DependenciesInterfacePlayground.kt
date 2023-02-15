@@ -22,11 +22,14 @@ import javax.inject.Inject
 import javax.inject.Scope
 
 object DependenciesInterfacePlayground {
-  @Component(modules = [ThisModule::class]) @Scope1 interface ThisComponent : Dependencies
+  @Component(modules = [ThisModule::class])
+  @Scope1
+  interface ThisComponent : Dependencies
 
   interface Dependencies {
     fun getDepA(): DepA
   }
+
   @Scope @Retention(AnnotationRetention.RUNTIME) annotation class Scope1
 
   /** --------------------------- */

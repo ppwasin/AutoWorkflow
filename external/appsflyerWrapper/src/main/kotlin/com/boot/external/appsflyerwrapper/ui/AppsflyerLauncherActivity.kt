@@ -30,7 +30,7 @@ class AppsflyerLauncherActivity : ComponentActivity() {
           logger.debug("manual perform")
           appsFlyerLib.performOnDeepLinking(
             intent,
-            this@AppsflyerLauncherActivity
+            this@AppsflyerLauncherActivity,
           )
         }
 

@@ -46,7 +46,7 @@ fun intBinarySearch(sortedValues: Array<Int>, target: Int) =
     sortedValues = sortedValues,
     targetIsMatch = { target == it },
     targetIsLessThan = { target < it },
-    targetIsMoreThan = { target > it }
+    targetIsMoreThan = { target > it },
   )
 
 fun test() {

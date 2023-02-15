@@ -12,27 +12,27 @@ import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 
 fun main() {
-    embeddedServer(CIO, port = 8080, watchPaths = listOf("classes")) {
-        install(ContentNegotiation) {
-            json()
-        }
-        install(CORS) {
-            method(Get)
-            method(Post)
-            method(Delete)
-            anyHost()
-        }
-        install(Compression) { gzip() }
-        install(CallLogging)
+	embeddedServer(CIO, port = 8080, watchPaths = listOf("classes")) {
+		install(ContentNegotiation) {
+			json()
+		}
+		install(CORS) {
+			method(Get)
+			method(Post)
+			method(Delete)
+			anyHost()
+		}
+		install(Compression) { gzip() }
+		install(CallLogging)
 
-        routing {
-            get("/") {
-                call.respondText("Hello")
-            }
-            get("/xyz") {
-                call.respondText("Hello, world!")
-            }
-            shoppingRoutes()
-        }
-    }.start(wait = true)
+		routing {
+			get("/") {
+				call.respondText("Hello")
+			}
+			get("/xyz") {
+				call.respondText("Hello, world!")
+			}
+			shoppingRoutes()
+		}
+	}.start(wait = true)
 }

@@ -47,16 +47,29 @@ fun MenuToClose(
     spring(0.4f, 500f, visibilityThreshold)
 
   val lineOneEndY by
-    animateFloatAsState(targetValue = if (isShow) 0f else endY, animationSpec = springSpec())
+    animateFloatAsState(
+      targetValue = if (isShow) 0f else endY,
+      animationSpec = springSpec()
+    )
   val lineTwoAlpha by
-    animateFloatAsState(targetValue = if (isShow) 1f else 0f, animationSpec = springSpec(0f))
+    animateFloatAsState(
+      targetValue = if (isShow) 1f else 0f,
+      animationSpec = springSpec(0f)
+    )
   val lineTwoScale by
-    animateFloatAsState(targetValue = if (isShow) 1f else 0f, animationSpec = springSpec())
+    animateFloatAsState(
+      targetValue = if (isShow) 1f else 0f,
+      animationSpec = springSpec()
+    )
   val lineThreeEndY by
-    animateFloatAsState(targetValue = if (isShow) endY else 0f, animationSpec = springSpec())
+    animateFloatAsState(
+      targetValue = if (isShow) endY else 0f,
+      animationSpec = springSpec()
+    )
 
   Canvas(
-    Modifier.size(height = initialHeight, width = canvasWidth).pressGesture(onClick = onClick)
+    Modifier.size(height = initialHeight, width = canvasWidth)
+      .pressGesture(onClick = onClick),
   ) {
     val (width, height) = size
 
@@ -67,18 +80,24 @@ fun MenuToClose(
         cap = StrokeCap.Round,
         start = start,
         end = end,
-        alpha = alpha
+        alpha = alpha,
       )
     }
-    line(start = Offset(x = 0f, y = 0f), end = Offset(x = width, y = lineOneEndY))
+    line(
+      start = Offset(x = 0f, y = 0f),
+      end = Offset(x = width, y = lineOneEndY)
+    )
     withTransform({ scale(lineTwoScale, Offset(x = 0f, y = height / 2)) }) {
       line(
         start = Offset(x = 0f, y = height / 2),
         end = Offset(x = width, y = height / 2),
-        alpha = lineTwoAlpha
+        alpha = lineTwoAlpha,
       )
     }
-    line(start = Offset(x = 0f, y = height), end = Offset(x = width, y = lineThreeEndY))
+    line(
+      start = Offset(x = 0f, y = height),
+      end = Offset(x = width, y = lineThreeEndY)
+    )
   }
 }
 
@@ -89,8 +108,9 @@ fun MenuToClosePreview() {
   AppMaterialTheme {
     Column(
       modifier = Modifier.fillMaxSize(),
-      verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-      horizontalAlignment = Alignment.CenterHorizontally
+      verticalArrangement =
+        Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+      horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       Text(text = "isShow: $isShow")
       MenuToClose(

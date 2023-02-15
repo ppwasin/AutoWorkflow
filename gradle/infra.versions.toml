@@ -28,10 +28,10 @@ kotlin-react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom", 
 
 ############################## Plugings ###########################################
 [plugins]
-spotless = { id = "com.diffplug.spotless"}
+spotless = { id = "com.diffplug.spotless" }
 googleServices = { id = "com.google.gms.google-services" }
 firebaseAppdistribution = { id = "com.google.firebase.appdistribution" }
-playPublisher = { id = "com.github.triplet.play"}
+playPublisher = { id = "com.github.triplet.play" }
 buildconfig = { id = "com.github.gmazzo.buildconfig", version = "3.0.3" } # https://github.com/gmazzo/gradle-buildconfig-plugin
 
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

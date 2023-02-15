@@ -52,11 +52,12 @@ class BillingSdk(private val application: Application) {
             // The BillingClient is ready. You can query purchases here.
           }
         }
+
         override fun onBillingServiceDisconnected() {
           // Try to restart the connection on the next request to
           // Google Play by calling the startConnection() method.
         }
-      }
+      },
     )
   }
 
@@ -67,7 +68,7 @@ class BillingSdk(private val application: Application) {
         QueryProductDetailsParams.Product.newBuilder()
           .setProductId("product_id_example")
           .setProductType(BillingClient.ProductType.SUBS)
-          .build()
+          .build(),
       )
     val params =
       QueryProductDetailsParams.newBuilder().setProductList(productList)
@@ -96,7 +97,7 @@ class BillingSdk(private val application: Application) {
           // to get an offer token, call ProductDetails.subscriptionOfferDetails()
           // for a list of offers that are available to the user
           //        .setOfferToken(selectedOfferToken)
-          .build()
+          .build(),
       )
 
     val billingFlowParams =

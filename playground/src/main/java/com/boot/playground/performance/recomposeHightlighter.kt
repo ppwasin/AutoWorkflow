@@ -9,9 +9,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.geometry.lerp
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -28,7 +26,7 @@ fun Modifier.recomposeHighlighter(): Modifier = this.then(recomposeModifier)
 // Modifier.composed will still remember unique data per call site.
 private val recomposeModifier =
   Modifier.composed(
-    inspectorInfo = debugInspectorInfo { name = "recomposeHighlighter" }
+    inspectorInfo = debugInspectorInfo { name = "recomposeHighlighter" },
   ) {
     // The total number of compositions that have occurred. We're not using a State<> here be
     // able to read/write the value without invalidating (which would cause infinite
@@ -74,7 +72,7 @@ private val recomposeModifier =
               lerp(
                 Color.Yellow.copy(alpha = 0.8f),
                 Color.Red.copy(alpha = 0.5f),
-                min(1f, (numCompositionsSinceTimeout - 1).toFloat() / 100f)
+                min(1f, (numCompositionsSinceTimeout - 1).toFloat() / 100f),
               ) to numCompositionsSinceTimeout.toInt().dp.toPx()
             }
           }
@@ -93,7 +91,7 @@ private val recomposeModifier =
           brush = SolidColor(color),
           topLeft = rectTopLeft,
           size = size,
-          style = style
+          style = style,
         )
       }
     }

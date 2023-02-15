@@ -47,6 +47,7 @@ fun quickSort(
     quickSort(nums, pivotIndex + 1, endIndex) // After pivot index
   }
 }
+
 // 7, 8, 1, 0, 100, 9, 6
 fun partition(nums: IntArray, startIndex: Int, endIndex: Int): Int {
   // Element to be placed at the correct position in the list
@@ -63,7 +64,7 @@ fun partition(nums: IntArray, startIndex: Int, endIndex: Int): Int {
     if (valueAtIndex < pivotValue) { // 7<6, 8<6, 1<6
       nums.swap(
         smallerElementIndex,
-        index
+        index,
       ) // swap between 0, 2: 7,8,1,... -> 1,8,7,...
       smallerElementIndex++ // 0 -> 1
     }
@@ -85,11 +86,11 @@ fun IntArray.swap(i: Int, j: Int) {
 fun main() {
   println(
     quickSortRecursive(listOf(7, 8, 1, 0, 100, 9, 6)) ==
-      listOf(0, 1, 6, 7, 8, 9, 100)
+      listOf(0, 1, 6, 7, 8, 9, 100),
   )
   println(
     quickSortBestEasyToUnderstand(listOf(7, 8, 1, 0, 100, 9, 6)) ==
-      listOf(0, 1, 6, 7, 8, 9, 100)
+      listOf(0, 1, 6, 7, 8, 9, 100),
   )
 
   val nums = intArrayOf(7, 8, 1, 0, 100, 9, 6)

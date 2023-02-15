@@ -40,10 +40,10 @@ private fun Greeting(textGenerator: KFunction1<(String) -> Unit, Unit>) {
 }
 
 private val fakeAPICall =
-    Single.fromCallable {
-      Thread.sleep(500)
-      1
-    }
+  Single.fromCallable {
+    Thread.sleep(500)
+    1
+  }
 
 private val getCompletable: () -> Completable = {
   Completable.fromCallable { Thread.sleep(500) }.subscribeOn(Schedulers.io())
@@ -53,13 +53,23 @@ private val getCompletable: () -> Completable = {
 private fun testSubscribe(showText: (String) -> Unit) {
 
   fakeAPICall
-      .flatMapCompletable {
-        Completable.merge(
-            listOf(getCompletable(), getCompletable(), getCompletable(), getCompletable()))
-      }
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribeOn(Schedulers.io())
-      .subscribe { showText("[${Thread.currentThread().name}]On subscribe: this will print later") }
+    .flatMapCompletable {
+      Completable.merge(
+        listOf(
+          getCompletable(),
+          getCompletable(),
+          getCompletable(),
+          getCompletable()
+        ),
+      )
+    }
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribeOn(Schedulers.io())
+    .subscribe {
+      showText(
+        "[${Thread.currentThread().name}]On subscribe: this will print later"
+      )
+    }
 
   showText("Last line of function: this will print first")
 }
@@ -67,13 +77,23 @@ private fun testSubscribe(showText: (String) -> Unit) {
 @SuppressLint("CheckResult")
 private fun testSubscribe2(showText: (String) -> Unit) {
   fakeAPICall
-      .flatMapCompletable {
-        Completable.merge(
-            listOf(getCompletable(), getCompletable(), getCompletable(), getCompletable()))
-      }
-      .subscribeOn(Schedulers.io())
-      .observeOn(Schedulers.computation())
-      .subscribe { showText("[${Thread.currentThread().name}]On subscribe: this will print later") }
+    .flatMapCompletable {
+      Completable.merge(
+        listOf(
+          getCompletable(),
+          getCompletable(),
+          getCompletable(),
+          getCompletable()
+        ),
+      )
+    }
+    .subscribeOn(Schedulers.io())
+    .observeOn(Schedulers.computation())
+    .subscribe {
+      showText(
+        "[${Thread.currentThread().name}]On subscribe: this will print later"
+      )
+    }
   showText("Last line of function: this will print first")
 }
 

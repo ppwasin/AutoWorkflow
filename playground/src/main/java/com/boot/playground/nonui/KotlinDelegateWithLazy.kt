@@ -26,23 +26,28 @@ fun main() {
     test.runA()
   }
 }
+
 /** ------------- */
 object KotlinLazyPlayground {
   class AImpl : A {
     init {
       println("[AImpl] init")
     }
+
     override fun runA() {
       println("[AImpl] runA")
     }
   }
+
   interface A {
     fun runA()
   }
+
   class Factory {
     //    val aLazy by lazy { AImpl() }
     fun functionLazy() = AImpl()
   }
+
   /** ------------- */
   class Test(factory: Factory) : A by factory.functionLazy()
 }

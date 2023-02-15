@@ -2,7 +2,7 @@ package com.boot.external.appsflyerwrapper.utils
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import java.util.Stack
+import java.util.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class AppLifecycleObserver : DefaultLifecycleObserver {

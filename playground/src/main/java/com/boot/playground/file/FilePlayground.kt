@@ -3,7 +3,6 @@ package com.boot.playground.file
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,23 +21,23 @@ fun FilePlayground() {
       listOf(
         FileViewState(
           title = "System Path (Preinstall)",
-          FileInfo(fullPath = "/data/etc/appchannel", fileName = "test.txt")
+          FileInfo(fullPath = "/data/etc/appchannel", fileName = "test.txt"),
         ),
         FileViewState(
           title = "Access via Lib",
           FileInfo(
             fullPath = "${context.filesDir}/data/etc/appchannel",
-            fileName = "test.txt"
-          )
+            fileName = "test.txt",
+          ),
         ),
         FileViewState(
           title = "Explicitly define path",
           FileInfo(
             fullPath = "/data/data/com.boot.playground/data/etc/appchannel",
-            fileName = "test.txt"
-          )
-        )
-      )
+            fileName = "test.txt",
+          ),
+        ),
+      ),
     )
   }
 
@@ -63,7 +62,7 @@ fun RunResult(block: @Composable () -> Unit) {
       Modifier.fillMaxWidth()
         .padding(vertical = 8.dp)
         .background(Color.LightGray.copy(alpha = 0.3f)),
-    verticalArrangement = Arrangement.SpaceBetween
+    verticalArrangement = Arrangement.SpaceBetween,
   ) { block() }
 }
 
@@ -75,7 +74,7 @@ fun FileRunner(title: String, fileInfo: FileInfo) {
     Text(
       title,
       style = MaterialTheme.typography.headlineMedium,
-      fontWeight = FontWeight.Bold
+      fontWeight = FontWeight.Bold,
     )
     Text("path: ${fileInfo.fullPath}")
     Button(
@@ -84,7 +83,7 @@ fun FileRunner(title: String, fileInfo: FileInfo) {
           writeResult = writeFile("123456")
           readResult = readFile() ?: ""
         }
-      }
+      },
     ) { Text("Run") }
     RunResult {
       Text("Write Result:")

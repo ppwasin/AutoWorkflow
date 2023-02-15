@@ -3,18 +3,16 @@
     package="com.boot.autoworkflow">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/app_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App.Starting"
-        android:name=".App"
-        >
+        android:theme="@style/Theme.App.Starting">
         <activity
             android:name=".ui.screen.MainActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,13 +25,16 @@
 
                 <data android:scheme="autoworkflow" />
             </intent-filter>
-            <intent-filter  android:autoVerify="true">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
+
+                <data
                     android:host="autoworkflow.onelink.me"
-                    android:pathPrefix="/2Hxu" />
+                    android:pathPrefix="/2Hxu"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
     </application>

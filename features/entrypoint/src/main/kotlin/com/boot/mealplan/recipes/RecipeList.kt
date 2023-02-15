@@ -24,12 +24,12 @@ import androidx.lifecycle.viewModelScope
 import com.boot.components.SubTitle
 import com.boot.components.Title
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RecipeViewModel : ViewModel() {
   var count by mutableStateOf(0)
+
   init {
     viewModelScope.launch {
       while (true) {
@@ -50,12 +50,12 @@ fun RecipeList(
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.spacedBy(8.dp),
-    horizontalAlignment = Alignment.Start
+    horizontalAlignment = Alignment.Start,
   ) {
     item { Title("Plan Your Meal: ${viewModel.count}") }
     item {
       SubTitle(
-        text = "Take care of the planet and your wallet at the same time"
+        text = "Take care of the planet and your wallet at the same time",
       )
     }
     item { searchBar() }
@@ -64,7 +64,7 @@ fun RecipeList(
       Surface(shadowElevation = 6.dp) {
         Row(
           Modifier.padding(60.dp)
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.onPrimary),
         ) {
           Text(item.toString())
           Text(item.toString())

@@ -20,10 +20,10 @@ import javax.inject.Inject
 class DummyCall
 @Inject
 constructor(
-    private val classModel: ClassModel,
-    private val objectModel: ObjectModel,
-    private val abstractModel: AbstractModel,
-    private val interfaceModel: InterfaceModel
+  private val classModel: ClassModel,
+  private val objectModel: ObjectModel,
+  private val abstractModel: AbstractModel,
+  private val interfaceModel: InterfaceModel
 ) {
 
   fun test() {}

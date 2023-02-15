@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.boot.components.ComponentColors
 import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable

@@ -8,17 +8,17 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
-class ComposeAndroidLib: Plugin<Project> {
-    override fun apply(project: Project) {
-        with(project.pluginManager) {
-            apply("com.android.library")
-            apply("kotlin-android")
-        }
-        val versionCatalogs = VersionCatalogs(project)
-        project.configure<LibraryExtension> {
-            setupSdk()
-            setupCompose(versionCatalogs.versions.compose)
-        }
-    }
+class ComposeAndroidLib : Plugin<Project> {
+	override fun apply(project: Project) {
+		with(project.pluginManager) {
+			apply("com.android.library")
+			apply("kotlin-android")
+		}
+		val versionCatalogs = VersionCatalogs(project)
+		project.configure<LibraryExtension> {
+			setupSdk()
+			setupCompose(versionCatalogs.versions.compose)
+		}
+	}
 
 }

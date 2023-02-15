@@ -7,12 +7,14 @@
 #
 # If any option is wrong, PR are welcome
 
+root = true
+
 [{*.kt,*.kts}]
-indent_style = space
+indent_style = tab
 insert_final_newline = true
-max_line_length = 80
-indent_size = 2
-ij_continuation_indent_size = 2
+max_line_length = 120
+indent_size = 4
+ij_continuation_indent_size = 4
 ij_java_names_count_to_use_import_on_demand = 9999
 ij_kotlin_align_in_columns_case_branch = false
 ij_kotlin_align_multiline_binary_operation = false

@@ -52,10 +52,12 @@ object DaggerWithKotlinGet {
     init {
       println("[A] init ${hashCode()}")
     }
+
     fun run() {
       println("[A] runA ${hashCode()}")
     }
   }
+
   /** --------------------------- */
   class Injectable {
     @Inject lateinit var aLazy: Lazy<A>

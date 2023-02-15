@@ -43,12 +43,12 @@ class WordSearchTest2 {
       "BALLOON" to 1,
       "LLOONBA" to 1,
       "LwAweNdsfOLBO" to 1,
-      "LwAweLwAweNdsfOLBONdsfOLBOLwAweNdsfOLBO" to 3
+      "LwAweLwAweNdsfOLBONdsfOLBOLwAweNdsfOLBO" to 3,
     )
   private val solutionList =
     listOf(
       "solution1" to { s: String -> solution(s) },
-      "solution2" to { s: String -> solution2(s) }
+      "solution2" to { s: String -> solution2(s) },
     )
 
   private val testScenarios: Collection<TestScenario> =
@@ -59,7 +59,7 @@ class WordSearchTest2 {
         input = input,
         expected = expected,
         function = function,
-        label = label
+        label = label,
       )
     }
 

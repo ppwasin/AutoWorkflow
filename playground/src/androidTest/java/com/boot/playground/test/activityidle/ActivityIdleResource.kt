@@ -21,7 +21,7 @@ class ActivityIdleResource<T : Activity>(
         if (it.javaClass == activityCls) {
           counter.decrement()
         }
-      }
+      },
     )
 
   override fun getName(): String = "ActivityLifeIdlingResource"
@@ -39,6 +39,7 @@ class ActivityIdleResource<T : Activity>(
   fun start() {
     application.registerActivityLifecycleCallbacks(callback)
   }
+
   fun cleanup() {
     application.unregisterActivityLifecycleCallbacks(callback)
   }

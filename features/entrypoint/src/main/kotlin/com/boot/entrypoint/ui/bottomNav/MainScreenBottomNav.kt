@@ -7,14 +7,16 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingBasket
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.boot.entrypoint.platform.BottomNavInfoGetter
-import java.util.Locale
+import java.util.*
 
-fun MainScreenItems.Companion.bottomNav(): BottomNavInfoGetter<MainScreenItems> {
+fun MainScreenItems.Companion.bottomNav():
+  BottomNavInfoGetter<MainScreenItems> {
   return object : BottomNavInfoGetter<MainScreenItems> {
     override fun getRoute(item: MainScreenItems): String = item.name.lowercase()
     override fun getLabel(item: MainScreenItems): String =
       item.name.replaceFirstChar {
-        if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        if (it.isLowerCase()) it.titlecase(Locale.getDefault())
+        else it.toString()
       }
 
     override fun getIcon(item: MainScreenItems): ImageVector {

@@ -19,7 +19,9 @@ class AnimationClick(val onClick: () -> Unit, val animationValue: Float) {
 }
 
 @Composable
-fun <V : AnimationVector> generateOnClickAnimation(animation: Animation<Float, V>): AnimationClick {
+fun <V : AnimationVector> generateOnClickAnimation(
+  animation: Animation<Float, V>
+): AnimationClick {
 
   // We will manually handle the play time of the animation
   var playTime by remember { mutableStateOf(0L) }
@@ -34,10 +36,10 @@ fun <V : AnimationVector> generateOnClickAnimation(animation: Animation<Float, V
   val onClick: () -> Unit = {
     // Toggle animation state
     animationState =
-        when (animationState) {
-          RUNNING -> PAUSED
-          PAUSED -> RUNNING
-        }
+      when (animationState) {
+        RUNNING -> PAUSED
+        PAUSED -> RUNNING
+      }
 
     animationScope.launch {
       // Need to extract the already played time
@@ -48,7 +50,8 @@ fun <V : AnimationVector> generateOnClickAnimation(animation: Animation<Float, V
 
       // Only continue animating if the state is running
       while (animationState == RUNNING) {
-        if (animation.isFinishedFromNanos(playTime)) startTime = withFrameNanos { it }
+        if (animation.isFinishedFromNanos(playTime))
+          startTime = withFrameNanos { it }
         playTime = withFrameNanos { it } - startTime
         animationValue = animation.getValueFromNanos(playTime)
       }

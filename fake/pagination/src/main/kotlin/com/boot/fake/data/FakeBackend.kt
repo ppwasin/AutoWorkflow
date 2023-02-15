@@ -3,7 +3,10 @@ package com.boot.fake.data
 import com.boot.fake.model.PagingResponse
 import kotlinx.coroutines.delay
 
-class FakeBackend<T>(private val totalItems: Int, createFakeItem: (index: Int) -> T) {
+class FakeBackend<T>(
+  private val totalItems: Int,
+  createFakeItem: (index: Int) -> T
+) {
   private val allItems = (0..totalItems).map { index -> createFakeItem(index) }
 
   suspend fun getFakeItems(page: Int, perPage: Int): PagingResponse<T> {
@@ -14,7 +17,7 @@ class FakeBackend<T>(private val totalItems: Int, createFakeItem: (index: Int) -
         totalPages = totalItems / perPage,
         totalItems = totalItems,
         page = page,
-        items = allItems.subList(fromIndex = startIndex, toIndex = lastIndex)
+        items = allItems.subList(fromIndex = startIndex, toIndex = lastIndex),
       )
       .also { println("get items at page $page => Result: $it") }
   }

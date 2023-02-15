@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -48,17 +47,17 @@ class RootNode(
     Spotlight(
       items = listOf(NavTarget.Child1, NavTarget.Child2),
       initialActiveIndex = 0,
-      savedStateMap = mapOf()
+      savedStateMap = mapOf(),
     ),
   private val backStack: BackStack<NavTarget> =
     BackStack(
       initialElement = NavTarget.Child1,
-      savedStateMap = buildContext.savedStateMap
+      savedStateMap = buildContext.savedStateMap,
     )
 ) :
   ParentNode<RootNode.NavTarget>(
     buildContext = buildContext,
-    navModel = backStack
+    navModel = backStack,
   ) {
   @Composable
   private fun BottomTabs(currentTab: State<RootNode.NavTarget?>) {
@@ -85,11 +84,12 @@ class RootNode(
             icon = { tab.icon },
             label = { Text(tab.toString()) },
             selected = currentTab.value == tab.route,
-            onClick = { spotlight.activate(tab.route) }
+            onClick = { spotlight.activate(tab.route) },
           )
         }
     }
   }
+
   enum class NavTarget {
     Child1,
     Child2,
@@ -125,7 +125,7 @@ class RootNode(
       modifier = modifier.fillMaxSize(),
       floatingActionButtonPosition = FabPosition.Center,
       floatingActionButton = { PageButtons(hasPrevious.value, hasNext.value) },
-      bottomBar = { BottomTabs(currentTab) }
+      bottomBar = { BottomTabs(currentTab) },
     ) { Children(modifier = Modifier.padding(it), navModel = spotlight) }
   }
 
@@ -134,7 +134,7 @@ class RootNode(
     Row(
       modifier = Modifier.fillMaxWidth().padding(24.dp),
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceBetween
+      horizontalArrangement = Arrangement.SpaceBetween,
     ) {
       FilledIconButton(
         onClick = { spotlight.previous() },

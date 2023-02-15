@@ -37,7 +37,7 @@ fun EntrypointScreen() {
           MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
           else -> Text(item.name)
         }
-      }
+      },
     )
   }
 }

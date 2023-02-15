@@ -23,6 +23,7 @@ class IdlingResourceDispatcher(
 
   private val counter =
     CountingIdlingResource(actualDispatcher::class.simpleName)
+
   override fun dispatch(context: CoroutineContext, block: Runnable) =
     actualDispatcher.dispatch(
       context,
@@ -30,7 +31,7 @@ class IdlingResourceDispatcher(
         counter.increment()
         block.run()
         counter.decrement()
-      }
+      },
     )
 
   override fun getName(): String = counter.name
@@ -55,6 +56,7 @@ class IdlingResourceDispatcher(
 
 class MyContext : CoroutineContext.Element {
   companion object Key : CoroutineContext.Key<MyContext>
+
   override val key: CoroutineContext.Key<MyContext> = Key
 }
 

@@ -25,6 +25,7 @@ import java.util.concurrent.atomic.AtomicReference
 
 object CounterProvider {
   var counter = 0
+
   @Volatile // in Kotlin `volatile` is an annotation
   var counterVolatile = 0
   val atomicCounter = AtomicInteger()
@@ -32,46 +33,55 @@ object CounterProvider {
 
 object FactoryNormal {
   val numberOfInstance = AtomicInteger()
+
   class Counter {
     init {
       numberOfInstance.incrementAndGet()
     }
   }
+
   private var counter: Counter? = null
   fun getOrCreate(): Counter = counter ?: Counter().also { counter = it }
 }
 
 object FactoryAtomic {
   val numberOfInstance = AtomicInteger()
+
   class Counter {
     init {
       numberOfInstance.incrementAndGet()
     }
   }
+
   private var counter: AtomicReference<Counter> = AtomicReference()
-  @SuppressLint("NewApi") fun getOrCreate(): Counter = counter.updateAndGet { Counter() }
+  @SuppressLint("NewApi")
+  fun getOrCreate(): Counter = counter.updateAndGet { Counter() }
 }
 
 object FactorySynchronized {
   val numberOfInstance = AtomicInteger()
+
   class Counter {
     init {
       numberOfInstance.incrementAndGet()
     }
   }
+
   private var counter: Counter? = null
   private val lock = Any()
   fun getOrCreate(): Counter =
-      counter ?: synchronized(lock) { counter ?: Counter().also { counter = it } }
+    counter ?: synchronized(lock) { counter ?: Counter().also { counter = it } }
 }
 
 object FactoryGuardVolatile {
   val numberOfInstance = AtomicInteger()
+
   class Counter {
     init {
       numberOfInstance.incrementAndGet()
     }
   }
+
   @Volatile @GuardedBy("lock") private var counter: Counter? = null
   private val lock = Any()
   fun getOrCreate(): Counter {
@@ -86,8 +96,10 @@ object FactoryGuardVolatile {
   }
 }
 
-object FactoryGeneric : GetOrCreateFactory<Counter> by GetOrCreateFactory(create = { Counter() }) {
+object FactoryGeneric :
+  GetOrCreateFactory<Counter> by GetOrCreateFactory(create = { Counter() }) {
   val numberOfInstance = AtomicInteger()
+
   class Counter {
     init {
       numberOfInstance.incrementAndGet()
@@ -100,18 +112,23 @@ abstract class InstanceProviderBase<T> {
   private val lock = Any()
   abstract fun create(): T
   fun getOrCreate(): T =
-      instance ?: synchronized(lock) { instance ?: create().also { instance = it } }
+    instance
+      ?: synchronized(lock) { instance ?: create().also { instance = it } }
 }
 
 interface GetOrCreateFactory<T> {
   fun getOrCreate(): T
+
   companion object {
     operator fun <T> invoke(create: () -> T): GetOrCreateFactory<T> {
       return object : GetOrCreateFactory<T> {
         val lock = Any()
         private var instance: T? = null
         override fun getOrCreate(): T {
-          return instance ?: synchronized(lock) { instance ?: create().also { instance = it } }
+          return instance
+            ?: synchronized(lock) {
+              instance ?: create().also { instance = it }
+            }
         }
       }
     }
@@ -122,13 +139,17 @@ interface GetOrCreateFactory<T> {
 
 interface InstanceProvider<T> {
   fun getOrCreate(create: () -> T): T
+
   companion object {
     operator fun <T> invoke(): InstanceProvider<T> {
       return object : InstanceProvider<T> {
         val lock = Any()
         private var instance: T? = null
         override fun getOrCreate(create: () -> T): T {
-          return instance ?: synchronized(lock) { instance ?: create().also { instance = it } }
+          return instance
+            ?: synchronized(lock) {
+              instance ?: create().also { instance = it }
+            }
         }
       }
     }

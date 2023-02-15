@@ -1,6 +1,6 @@
 package com.boot.external.appsflyerwrapper.utils
 
-import java.util.Stack
+import java.util.*
 
 class CircularFifo<T>(private val sizeLimit: Int) {
   private val items = Stack<T>()

@@ -15,7 +15,7 @@ fun Title(text: String) {
     maxLines = 1,
     overflow = TextOverflow.Ellipsis,
     style = MaterialTheme.typography.headlineMedium,
-    fontWeight = FontWeight.Bold
+    fontWeight = FontWeight.Bold,
   )
 }
 

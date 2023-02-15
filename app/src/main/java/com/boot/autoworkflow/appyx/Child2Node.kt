@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import com.bumble.appyx.core.modality.BuildContext
 import com.bumble.appyx.core.node.Node
 import kotlin.time.Duration
-import kotlin.time.seconds
 import kotlinx.coroutines.delay
 
 class Child2Node(buildContext: BuildContext, private val onClick: () -> Unit) :

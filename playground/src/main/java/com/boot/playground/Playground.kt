@@ -54,7 +54,7 @@ fun Playground() {
               Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = { navController.navigate(route.name) },
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(8.dp),
               ) { Text(route.name) }
             }
           }

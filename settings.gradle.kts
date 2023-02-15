@@ -1,19 +1,19 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
-    }
+	repositories {
+		google()
+		gradlePluginPortal()
+		mavenCentral()
+		maven("https://oss.sonatype.org/content/repositories/snapshots/")
+	}
 }
 
 dependencyResolutionManagement {
-    versionCatalogs {
-        create("infra") {
-            from(files("gradle/infra.versions.toml"))
-        }
-    }
+	versionCatalogs {
+		create("infra") {
+			from(files("gradle/infra.versions.toml"))
+		}
+	}
 }
 
 rootProject.name = "AutoWorkflow"

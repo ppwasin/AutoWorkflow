@@ -21,62 +21,71 @@ import kotlinx.coroutines.withContext
 
 fun normalRun() {
   runBlocking {
-    withContext(Dispatchers.Default) { massiveRun { CounterProvider.counter++ } }
+    withContext(Dispatchers.Default) {
+      massiveRun { CounterProvider.counter++ }
+    }
     println("Counter = ${CounterProvider.counter}")
   }
 }
 
 fun volatile() {
   runBlocking {
-    withContext(Dispatchers.Default) { massiveRun { CounterProvider.counterVolatile++ } }
+    withContext(Dispatchers.Default) {
+      massiveRun { CounterProvider.counterVolatile++ }
+    }
     println("Counter = ${CounterProvider.counterVolatile}")
   }
 }
 
-fun atomic() =
-    runBlocking {
-      withContext(Dispatchers.Default) {
-        massiveRun { CounterProvider.atomicCounter.incrementAndGet() }
-      }
-      println("Counter = ${CounterProvider.atomicCounter}")
-    }
+fun atomic() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { CounterProvider.atomicCounter.incrementAndGet() }
+  }
+  println("Counter = ${CounterProvider.atomicCounter}")
+}
 
-fun factoryNormal() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { FactoryNormal.getOrCreate() } }
-      println("NumberOfCounter = ${FactoryNormal.numberOfInstance}")
-    }
+fun factoryNormal() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { FactoryNormal.getOrCreate() }
+  }
+  println("NumberOfCounter = ${FactoryNormal.numberOfInstance}")
+}
 
-fun factoryAtomic() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { FactoryAtomic.getOrCreate() } }
-      println("NumberOfCounter = ${FactoryAtomic.numberOfInstance}")
-      val categoryLog = listOf<String>()
-    }
+fun factoryAtomic() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { FactoryAtomic.getOrCreate() }
+  }
+  println("NumberOfCounter = ${FactoryAtomic.numberOfInstance}")
+  val categoryLog = listOf<String>()
+}
 
-fun factorySynchronized() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { FactorySynchronized.getOrCreate() } }
-      println("NumberOfCounter = ${FactorySynchronized.numberOfInstance}")
-    }
+fun factorySynchronized() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { FactorySynchronized.getOrCreate() }
+  }
+  println("NumberOfCounter = ${FactorySynchronized.numberOfInstance}")
+}
 
-fun factoryGuardVolatile() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { FactoryGuardVolatile.getOrCreate() } }
-      println("NumberOfCounter = ${FactoryGuardVolatile.numberOfInstance}")
-    }
+fun factoryGuardVolatile() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { FactoryGuardVolatile.getOrCreate() }
+  }
+  println("NumberOfCounter = ${FactoryGuardVolatile.numberOfInstance}")
+}
 
-fun factoryGeneric() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { FactoryGeneric.getOrCreate() } }
-      println("NumberOfCounter = ${FactoryGeneric.numberOfInstance}")
-    }
+fun factoryGeneric() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { FactoryGeneric.getOrCreate() }
+  }
+  println("NumberOfCounter = ${FactoryGeneric.numberOfInstance}")
+}
 
-fun daggerFactory() =
-    runBlocking {
-      withContext(Dispatchers.Default) { massiveRun { ConcurrentComponent.getOrCreate() } }
-      println("NumberOfCounter = $daggerCounterInstanceCount")
-    }
+fun daggerFactory() = runBlocking {
+  withContext(Dispatchers.Default) {
+    massiveRun { ConcurrentComponent.getOrCreate() }
+  }
+  println("NumberOfCounter = $daggerCounterInstanceCount")
+}
 
 fun main() {
   runSection("Normal Run", ::normalRun)

@@ -25,7 +25,13 @@ class QueryViewModel<QueryInput : Any, Output : Any>(
     state =
       snapshotFlow { query.value }
         .debounce { if (it == initialQuery) 0 else 400 }
-        .flatMapLatest { queryInput -> pagerFactory(queryInput).flow.cachedIn(scope) }
-        .shareIn(scope = scope, started = SharingStarted.WhileSubscribed(3000), replay = 1)
+        .flatMapLatest { queryInput ->
+          pagerFactory(queryInput).flow.cachedIn(scope)
+        }
+        .shareIn(
+          scope = scope,
+          started = SharingStarted.WhileSubscribed(3000),
+          replay = 1
+        )
   }
 }

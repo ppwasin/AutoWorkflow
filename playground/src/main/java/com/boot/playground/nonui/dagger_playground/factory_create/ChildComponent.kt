@@ -21,8 +21,9 @@ import dagger.Module
 import dagger.Provides
 
 @Component(
-    dependencies = [ParentComponent::class, ParentComponentBindInstance::class],
-    modules = [ChildModule::class])
+  dependencies = [ParentComponent::class, ParentComponentBindInstance::class],
+  modules = [ChildModule::class],
+)
 interface ChildComponent {
   fun inject(injectable: FactoryCreateInjectable)
 
@@ -34,10 +35,10 @@ interface ChildComponent {
   interface Factory {
 
     fun create(
-        parentComponent: ParentComponent,
-        // Error: @BindsInstance parentComponentBindInstance: ParentComponentBindInstance,
-        parentComponentBindInstance: ParentComponentBindInstance,
-        @BindsInstance bindsInstance: BindInstance,
+      parentComponent: ParentComponent,
+      // Error: @BindsInstance parentComponentBindInstance: ParentComponentBindInstance,
+      parentComponentBindInstance: ParentComponentBindInstance,
+      @BindsInstance bindsInstance: BindInstance,
     ): ChildComponent
   }
 }

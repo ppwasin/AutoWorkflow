@@ -25,26 +25,28 @@ fun SearchInputRow(text: String, setText: (String) -> Unit) {
       Icon(
         Icons.Default.Search,
         contentDescription = "",
-        modifier = Modifier.padding(15.dp).size(24.dp)
+        modifier = Modifier.padding(15.dp).size(24.dp),
       )
     },
     trailingIcon = {
       if (text.isNotEmpty()) {
         IconButton(
           onClick = {
-            setText("") // Remove text from TextField when you press the 'X' icon
-          }
+            setText(
+              ""
+            ) // Remove text from TextField when you press the 'X' icon
+          },
         ) {
           Icon(
             Icons.Default.Close,
             contentDescription = "",
-            modifier = Modifier.padding(15.dp).size(24.dp)
+            modifier = Modifier.padding(15.dp).size(24.dp),
           )
         }
       }
     },
     singleLine = true,
-    shape = RectangleShape
+    shape = RectangleShape,
   )
 }
 

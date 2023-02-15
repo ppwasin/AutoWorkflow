@@ -6,7 +6,7 @@ value class NonEmptyString private constructor(val value: String) {
     fun createOrThrow(string: String?): NonEmptyString {
       if (string.isNullOrEmpty())
         throw IllegalArgumentException(
-          "NonEmptyString cannot have null or empty value"
+          "NonEmptyString cannot have null or empty value",
         )
       return NonEmptyString(string)
     }

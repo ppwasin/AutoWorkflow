@@ -9,6 +9,7 @@ import com.boot.fake.model.FakeItem
 
 object RecipeInjector {
   private val pagerFactory = FakeInjector.createPagerFactory()
+
   @Composable
   fun rememberQueryViewModel(): QueryViewModel<String, FakeItem> {
     val coroutineScope = rememberCoroutineScope()
@@ -16,7 +17,7 @@ object RecipeInjector {
       QueryViewModel(
         pagerFactory = pagerFactory::buildPager,
         scope = coroutineScope,
-        initialQuery = ""
+        initialQuery = "",
       )
     }
   }

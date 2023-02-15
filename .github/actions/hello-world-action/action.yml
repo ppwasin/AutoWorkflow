@@ -1,7 +1,7 @@
 name: Ref Action
 description: 'Greet someone'
 inputs:
-  who-to-greet:  # id of input
+  who-to-greet: # id of input
     description: 'Who to greet'
     required: true
     default: 'World'

@@ -23,8 +23,14 @@ import com.boot.playground.nonui.dagger_playground.abstract_vs_object.module.Obj
 import dagger.Component
 
 @Component(
-    modules =
-        [ClassModule::class, ObjectModule::class, AbstractModule::class, InterfaceModule::class])
+  modules =
+    [
+      ClassModule::class,
+      ObjectModule::class,
+      AbstractModule::class,
+      InterfaceModule::class
+    ],
+)
 interface AppComponent {
   fun dummy(): DummyCall
 

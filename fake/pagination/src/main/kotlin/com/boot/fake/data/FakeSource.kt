@@ -8,8 +8,10 @@ import com.boot.components.fake.FakePagingConstant
 import com.boot.components.fake.FakePlaceHolderConfig
 import com.boot.fake.model.FakeItem
 
-class FakeSource(private val searchInput: String, private val fakeBackend: FakeBackend<FakeItem>) :
-  PagingSource<Int, FakeItem>() {
+class FakeSource(
+  private val searchInput: String,
+  private val fakeBackend: FakeBackend<FakeItem>
+) : PagingSource<Int, FakeItem>() {
 
   override fun getRefreshKey(state: PagingState<Int, FakeItem>): Int? {
     println("getRefreshKey: $state")
@@ -20,19 +22,23 @@ class FakeSource(private val searchInput: String, private val fakeBackend: FakeB
     //		}
   }
 
-  override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FakeItem> {
+  override suspend fun load(
+    params: LoadParams<Int>
+  ): LoadResult<Int, FakeItem> {
     return try {
       val page = params.key ?: FakePagingConstant.START_PAGE_INDEX
       println("load with query: $searchInput at page $page")
       val response = fakeBackend.getFakeItems(page, FakePagingConstant.PER_PAGE)
       val isLastPage = response.page == response.totalPages
       Page(
-        data = response.items.map { it.copy(text = "$searchInput: ${it.text}") },
+        data =
+          response.items.map { it.copy(text = "$searchInput: ${it.text}") },
         prevKey = if (page == 1) null else page - 1,
         nextKey = if (isLastPage) null else response.page.plus(1),
         // before, after is provide for enable place holder
         itemsBefore = FakePlaceHolderConfig.getBefore(response),
-        itemsAfter = FakePlaceHolderConfig.getAfter(FakePagingConstant.PER_PAGE, response)
+        itemsAfter =
+          FakePlaceHolderConfig.getAfter(FakePagingConstant.PER_PAGE, response),
       )
     } catch (e: Exception) {
       Error(e)

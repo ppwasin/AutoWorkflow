@@ -13,14 +13,18 @@ import com.boot.playground.animation.control.utils.generateOnClickAnimation
 fun TargetBasedAnimationPlayground() {
   val targetBasedAnimation = remember {
     TargetBasedAnimation(
-        animationSpec = tween(2000),
-        typeConverter = Float.VectorConverter,
-        initialValue = 0f,
-        targetValue = 1000f)
+      animationSpec = tween(2000),
+      typeConverter = Float.VectorConverter,
+      initialValue = 0f,
+      targetValue = 1000f,
+    )
   }
   val animationCtrl = generateOnClickAnimation(targetBasedAnimation)
 
-  ControlCanvas(onClick = animationCtrl.onClick, centerOffset = animationCtrl.offset)
+  ControlCanvas(
+    onClick = animationCtrl.onClick,
+    centerOffset = animationCtrl.offset
+  )
 }
 
 @Preview

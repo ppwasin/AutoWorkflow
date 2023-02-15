@@ -24,14 +24,21 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 class DataItem(val key: String, val value: String)
 
-class UiState(val title: String, val subtitle: String, val items: List<DataItem>)
+class UiState(
+  val title: String,
+  val subtitle: String,
+  val items: List<DataItem>
+)
 
 @Composable
 fun ListTest(viewModel: ExampleViewModel = remember { ExampleViewModel() }) {
   LaunchedEffect(Unit) { viewModel.fetchData() }
   val viewState = viewModel.uiState ?: return
 
-  Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+  Column(
+    Modifier.padding(16.dp),
+    verticalArrangement = Arrangement.spacedBy(8.dp)
+  ) {
     Text(viewState.title, fontSize = 24.sp)
     Text(viewState.subtitle)
 
@@ -39,7 +46,7 @@ fun ListTest(viewModel: ExampleViewModel = remember { ExampleViewModel() }) {
       items(viewState.items) { content ->
         Row(
           modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
-          horizontalArrangement = Arrangement.SpaceBetween
+          horizontalArrangement = Arrangement.SpaceBetween,
         ) {
           Text(content.key)
           Text(content.value)
@@ -68,8 +75,8 @@ class ExampleViewModel : ViewModel() {
             DataItem("key3", "value3"),
             DataItem("key4", "value4"),
             DataItem("key5", "value5"),
-            DataItem("key6", "value6")
-          )
+            DataItem("key6", "value6"),
+          ),
       )
   }
 }
@@ -77,7 +84,5 @@ class ExampleViewModel : ViewModel() {
 @Preview
 @Composable
 fun ListPreview() {
-  AppMaterialTheme {
-    ListTest()
-  }
+  AppMaterialTheme { ListTest() }
 }

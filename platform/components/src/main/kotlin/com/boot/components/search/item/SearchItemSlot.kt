@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarm
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -65,11 +65,14 @@ fun SearchItemSlot(
           constraintVertical()
           end.linkTo(parent.end)
         }
-      }
+      },
   ) {
     Box(Modifier.layoutId(StartLayoutId).size(iconSize)) { startIcon() }
     Box(modifier = Modifier.layoutId(MiddleLayoutId)) { text() }
-    if (endIcon != null) Box(modifier = Modifier.layoutId(EndLayoutId).size(iconSize)) { endIcon() }
+    if (endIcon != null)
+      Box(modifier = Modifier.layoutId(EndLayoutId).size(iconSize)) {
+        endIcon()
+      }
   }
 }
 
@@ -77,7 +80,8 @@ fun SearchItemSlot(
 @Preview(device = Devices.PIXEL_2_XL, showBackground = true)
 @Composable
 fun SearchItemSlotPreview(
-  @PreviewParameter(SearchItemPreviewProvider::class) data: SearchItemPreviewProvider.Data
+  @PreviewParameter(SearchItemPreviewProvider::class)
+  data: SearchItemPreviewProvider.Data
 ) {
   AppMaterialTheme {
     SearchItemSlot(
@@ -88,7 +92,7 @@ fun SearchItemSlotPreview(
         )
       },
       text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
-      endIcon = data.endIcon
+      endIcon = data.endIcon,
     )
   }
 }

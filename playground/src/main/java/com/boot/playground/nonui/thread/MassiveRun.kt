@@ -15,9 +15,9 @@
  */
 package com.boot.playground.nonui.thread
 
+import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
 
 suspend fun massiveRun(action: suspend () -> Unit) {
   val n = 100 // number of coroutines to launch

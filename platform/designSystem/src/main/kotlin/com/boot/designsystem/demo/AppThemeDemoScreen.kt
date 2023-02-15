@@ -18,7 +18,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.boot.designSystem.R
 import com.boot.designsystem.theme.app.AppTheme
 
@@ -26,7 +25,7 @@ import com.boot.designsystem.theme.app.AppTheme
 fun DemoScreen(items: List<PhotographItem>) {
   LazyColumn(
     horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.fillMaxSize().background(AppTheme.colors.background)
+    modifier = Modifier.fillMaxSize().background(AppTheme.colors.background),
   ) {
     item {
       TopAppBar(
@@ -34,11 +33,11 @@ fun DemoScreen(items: List<PhotographItem>) {
           Text(
             text = "The gallery",
             style = AppTheme.typography.h1,
-            color = AppTheme.colors.primary
+            color = AppTheme.colors.primary,
           )
         },
         backgroundColor = Color.Transparent,
-        elevation = 2.dp
+        elevation = 2.dp,
       )
     }
     items(items) { item -> GalleryItem(item) }
@@ -52,18 +51,22 @@ fun GalleryItem(item: PhotographItem) {
       text = item.description,
       style = AppTheme.typography.body,
       color = AppTheme.colors.textPrimary,
-      modifier = Modifier.padding(AppTheme.dimensions.paddingSmall)
+      modifier = Modifier.padding(AppTheme.dimensions.paddingSmall),
     )
     Image(
-      painter = rememberAsyncImagePainter(item.photoUrl, placeholder = painterResource(R.drawable.ic_placeholder_24)),
+      painter =
+        rememberAsyncImagePainter(
+          item.photoUrl,
+          placeholder = painterResource(R.drawable.ic_placeholder_24)
+        ),
       contentDescription = null,
-      modifier = Modifier.size(256.dp)
+      modifier = Modifier.size(256.dp),
     )
     Text(
       text = item.author,
       style = AppTheme.typography.caption,
       color = AppTheme.colors.textSecondary,
-      modifier = Modifier.padding(AppTheme.dimensions.paddingSmall)
+      modifier = Modifier.padding(AppTheme.dimensions.paddingSmall),
     )
   }
 }
@@ -77,20 +80,20 @@ fun AppThemeDemoScreen() {
         description = "Green water and a boat",
         photoUrl =
           "https://images.unsplash.com/photo-1596324121712-5bbc14482174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80",
-        author = "Photograph by Tracey Isles"
+        author = "Photograph by Tracey Isles",
       ),
       PhotographItem(
         description = "Rain drops on a flower",
         photoUrl =
           "https://images.unsplash.com/photo-1555662800-92f44b37a43d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=909&q=80",
-        author = "Photograph by Andriyko Podilnyk"
+        author = "Photograph by Andriyko Podilnyk",
       ),
       PhotographItem(
         description = "Green roof in front of the blue sky",
         photoUrl =
           "https://images.unsplash.com/photo-1512977851705-67ee4bf294f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=860&q=80",
-        author = "Photograph by Simone Hutsch"
-      )
+        author = "Photograph by Simone Hutsch",
+      ),
     )
   DemoScreen(photographItems)
 }

@@ -17,9 +17,14 @@ class SearchItemPreviewProvider(
       }
       .asSequence()
 ) : PreviewParameterProvider<Data> {
-  data class Data(val title: String, val subTitle: String?, val endIcon: @Composable (() -> Unit)?)
+  data class Data(
+    val title: String,
+    val subTitle: String?,
+    val endIcon: @Composable (() -> Unit)?
+  )
   companion object {
-    private val textParams: List<String> = listOf(getRandomString(100), getRandomString(10))
+    private val textParams: List<String> =
+      listOf(getRandomString(100), getRandomString(10))
     private val iconParam: List<@Composable (() -> Unit)?> =
       listOf(
         {
@@ -28,8 +33,9 @@ class SearchItemPreviewProvider(
             contentDescription = "SearchEndIcon",
           )
         },
-        null
+        null,
       )
-    private val subText: List<String?> = listOf(getRandomString(100), getRandomString(10), null)
+    private val subText: List<String?> =
+      listOf(getRandomString(100), getRandomString(10), null)
   }
 }

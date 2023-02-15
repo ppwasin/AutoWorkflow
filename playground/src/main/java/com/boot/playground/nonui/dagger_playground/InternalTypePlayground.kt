@@ -38,6 +38,7 @@ object InternalTypePlayground {
   internal class A
   internal class B
   internal class C
+
   /** --------------------------- */
   internal class Injectable {
     @Inject lateinit var a: InjectClass

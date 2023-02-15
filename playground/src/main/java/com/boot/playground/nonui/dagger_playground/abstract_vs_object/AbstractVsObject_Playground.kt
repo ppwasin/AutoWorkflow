@@ -23,6 +23,7 @@ import javax.inject.Inject
 
 class FirstInjectable {
   @Inject lateinit var dummy: DummyCall
+
   init {
     DaggerAppComponent.builder().build().inject(this)
   }

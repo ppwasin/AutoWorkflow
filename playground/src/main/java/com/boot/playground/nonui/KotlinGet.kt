@@ -27,6 +27,7 @@ fun main() {
     test.testIsGetCallFieldTwice
   }
 }
+
 /** ------------- */
 object KotlinGetPlayground {
   class AImpl {
@@ -37,6 +38,7 @@ object KotlinGetPlayground {
 
   class FactoringClass {
     val someField = AImpl()
+
     init {
       println("[FactoringClass] init")
     }

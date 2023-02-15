@@ -10,25 +10,25 @@ import org.gradle.api.tasks.TaskAction
 
 open class PatchRelease : DefaultTask() {
 
-  @TaskAction
-  fun setup() {
-    val currentBranch = shell("git branch --show-current")
-    check(currentBranch.startsWith("rc-")) { "Must run on release candidate branch (e.g., rc-1.0)" }
-    val version = currentBranch.removePrefix("rc-").split(".")
-    val majorVersion = version[0]
-    val minorVersion = version[1]
+	@TaskAction
+	fun setup() {
+		val currentBranch = shell("git branch --show-current")
+		check(currentBranch.startsWith("rc-")) { "Must run on release candidate branch (e.g., rc-1.0)" }
+		val version = currentBranch.removePrefix("rc-").split(".")
+		val majorVersion = version[0]
+		val minorVersion = version[1]
 
-    // Increase Patch version from property version
-    val newVersion =
-      getCurrentVersion(matchRegex = "$majorVersion.$minorVersion.*")
-        .let(ReleaseVersion::increasePatch)
+		// Increase Patch version from property version
+		val newVersion =
+			getCurrentVersion(matchRegex = "$majorVersion.$minorVersion.*")
+				.let(ReleaseVersion::increasePatch)
 
-    // Annotate Version with Tag
-    shell("git tag -a $newVersion -m 'Release version $newVersion'")
-    shell("git push origin $newVersion")
+		// Annotate Version with Tag
+		shell("git tag -a $newVersion -m 'Release version $newVersion'")
+		shell("git push origin $newVersion")
 
-    // Release
-    val distributor = ReleaseDistributor(versionName = newVersion.toString())
-    distributor.release(setOf(ReleaseChannel.AppDistribution, ReleaseChannel.Firebase))
-  }
+		// Release
+		val distributor = ReleaseDistributor(versionName = newVersion.toString())
+		distributor.release(setOf(ReleaseChannel.AppDistribution, ReleaseChannel.Firebase))
+	}
 }

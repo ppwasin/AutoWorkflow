@@ -1,27 +1,26 @@
-
 plugins {
-  kotlin("multiplatform")
-  kotlin("plugin.serialization")
-  id("app.cash.zipline")
+	kotlin("multiplatform")
+	kotlin("plugin.serialization")
+	id("app.cash.zipline")
 }
 
 kotlin {
-  js {
-    browser()
-    binaries.executable()
-  }
+	js {
+		browser()
+		binaries.executable()
+	}
 
-  sourceSets {
-    commonMain {
-      dependencies {
-        implementation("app.cash.zipline:zipline")
-        implementation(project(":trivia:trivia-shared"))
-      }
-    }
-  }
+	sourceSets {
+		commonMain {
+			dependencies {
+				implementation("app.cash.zipline:zipline")
+				implementation(project(":trivia:trivia-shared"))
+			}
+		}
+	}
 }
 
 
 zipline {
-  mainFunction.set("app.cash.zipline.samples.trivia.launchZipline")
+	mainFunction.set("app.cash.zipline.samples.trivia.launchZipline")
 }

@@ -27,7 +27,7 @@ fun minimumWaitingTime(queries: MutableList<Int>): Int {
       val currentWaitingTime = acc.nextWaiting
       acc.copy(
         nextWaiting = currentWaitingTime + item,
-        sum = acc.sum + currentWaitingTime
+        sum = acc.sum + currentWaitingTime,
       )
     }
     .last()

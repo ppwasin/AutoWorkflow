@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test
 
 
 class JvmTest {
-    @Test
-    fun test() = runTest {
-        val driver = DriverFactory().createDriver()
-        ShoppingDi(
-            httpClient = KtorClientFactory.createHttpClient(),
-            database = ShoppingDatabase(driver)
-        ).getShoppingItems()
-    }
+	@Test
+	fun test() = runTest {
+		val driver = DriverFactory().createDriver()
+		ShoppingDi(
+			httpClient = KtorClientFactory.createHttpClient(),
+			database = ShoppingDatabase(driver),
+		).getShoppingItems()
+	}
 }

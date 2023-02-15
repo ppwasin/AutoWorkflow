@@ -1,7 +1,5 @@
 package com.boot.playground.ds.graphsearch
 
-import kotlin.collections.ArrayDeque
-
 fun main() {
   val graph = getGraph()
   println(bfsSearch(graph = graph, "you"))

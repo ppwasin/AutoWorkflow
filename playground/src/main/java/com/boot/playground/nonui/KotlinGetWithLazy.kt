@@ -28,16 +28,19 @@ fun main() {
     test.aImpl.runA()
   }
 }
+
 /** ------------- */
 object KotlinGetWithLazy {
   class AImpl {
     init {
       println("[AImpl] init ${hashCode()}")
     }
+
     fun runA() {
       println("[AImpl] runA ${hashCode()}")
     }
   }
+
   object Factory {
     val aLazy by lazy { AImpl() }
   }

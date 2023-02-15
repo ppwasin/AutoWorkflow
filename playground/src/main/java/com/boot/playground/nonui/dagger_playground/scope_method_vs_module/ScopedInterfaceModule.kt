@@ -22,9 +22,13 @@ import javax.inject.Inject
 // @Scope1: Module cannot be scope (Compilation error)
 @Module
 interface ScopedInterfaceModule {
-  @Binds fun getScopeDep(impl: ScopedInterfaceDependencyImpl): ScopedInterfaceDependency
+  @Binds
+  fun getScopeDep(
+    impl: ScopedInterfaceDependencyImpl
+  ): ScopedInterfaceDependency
 }
 
 interface ScopedInterfaceDependency
 
-class ScopedInterfaceDependencyImpl @Inject constructor() : ScopedInterfaceDependency
+class ScopedInterfaceDependencyImpl @Inject constructor() :
+  ScopedInterfaceDependency

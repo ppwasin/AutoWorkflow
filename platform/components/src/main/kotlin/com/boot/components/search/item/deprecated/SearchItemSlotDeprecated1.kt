@@ -30,8 +30,12 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
   replaceWith =
     ReplaceWith(
       "SearchItemSlot(startIcon = startIcon, text = text, endIcon = endIcon)",
-      imports = ["com.boot.components.search.item.SearchItemSlot", "androidx.compose.material.Text"]
-    )
+      imports =
+        [
+          "com.boot.components.search.item.SearchItemSlot",
+          "androidx.compose.material.Text"
+        ],
+    ),
 )
 private fun SearchItemSlotDeprecated1(
   startIcon: @Composable () -> Unit,
@@ -42,7 +46,8 @@ private fun SearchItemSlotDeprecated1(
     val boxWithConstraintsScope = this
     val iconSize = ButtonDefaults.IconSize
     val iconSpace = ButtonDefaults.IconSpacing
-    val textWidth = boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
+    val textWidth =
+      boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
     ConstraintLayout(Modifier.fillMaxWidth().wrapContentHeight()) {
       val (startIconConst, textConst, endIconConst) = createRefs()
       Box(
@@ -57,7 +62,7 @@ private fun SearchItemSlotDeprecated1(
           Modifier.width(textWidth).constrainAs(textConst) {
             constraintVertical()
             start.linkTo(startIconConst.end, margin = iconSpace)
-          }
+          },
       ) { text() }
 
       if (endIcon != null)
@@ -87,7 +92,7 @@ fun SearchItemSlotDeprecated1Preview(
         )
       },
       text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
-      endIcon = data.endIcon
+      endIcon = data.endIcon,
     )
   }
 }

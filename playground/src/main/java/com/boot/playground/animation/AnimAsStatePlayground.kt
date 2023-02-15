@@ -15,7 +15,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 fun AnimAsStatePlayground(enabled: Boolean) {
   // Whenever the target value changes, new animation
   // will start to the new target value
-  val alpha: Float by animateFloatAsState(
-      targetValue = if (enabled) 1f else 0.2f, animationSpec = tween(durationMillis = 3000))
+  val alpha: Float by
+    animateFloatAsState(
+      targetValue = if (enabled) 1f else 0.2f,
+      animationSpec = tween(durationMillis = 3000),
+    )
   Box(Modifier.fillMaxSize().graphicsLayer(alpha = alpha).background(Color.Red))
 }

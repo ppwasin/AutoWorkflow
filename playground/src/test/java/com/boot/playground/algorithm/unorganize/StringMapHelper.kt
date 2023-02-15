@@ -2,6 +2,7 @@ package com.boot.playground.algorithm.unorganize
 
 class StringMapHelper(string: String) {
   private val map = mutableMapOf<Char, Int>()
+
   init {
     for (char in string) {
       val count = map[char] ?: 0

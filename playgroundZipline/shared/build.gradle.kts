@@ -1,23 +1,23 @@
 apply(plugin = "app.cash.zipline")
 plugins {
-  kotlin("multiplatform")
-  kotlin("plugin.serialization")
+	kotlin("multiplatform")
+	kotlin("plugin.serialization")
 }
 
 kotlin {
-  jvm {
-    withJava()
-  }
+	jvm {
+		withJava()
+	}
 
-  js {
-    browser()
-  }
+	js {
+		browser()
+	}
 
-  sourceSets {
-    commonMain {
-      dependencies {
-        implementation("app.cash.zipline:zipline")
-      }
-    }
-  }
+	sourceSets {
+		commonMain {
+			dependencies {
+				implementation("app.cash.zipline:zipline")
+			}
+		}
+	}
 }

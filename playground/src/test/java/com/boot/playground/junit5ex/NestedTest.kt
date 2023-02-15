@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 internal class NestedTestWithHierarchicalSetupMethods {
 
   var state = ""
+
   @BeforeEach
   fun outerSetup() {
     state += "outer"

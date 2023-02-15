@@ -34,7 +34,8 @@ class AppColors(
     error: Color = this.error,
     background: Color = this.background,
     isLight: Boolean = this.isLight
-  ): AppColors = AppColors(primary, textPrimary, textSecondary, error, background, isLight)
+  ): AppColors =
+    AppColors(primary, textPrimary, textSecondary, error, background, isLight)
 
   fun updateColorsFrom(other: AppColors) {
     primary = other.primary
@@ -70,7 +71,7 @@ fun lightColors(
     textSecondary = textSecondary,
     background = background,
     error = error,
-    isLight = true
+    isLight = true,
   )
 
 fun darkColors(
@@ -86,7 +87,7 @@ fun darkColors(
     textSecondary = textSecondary,
     background = background,
     error = error,
-    isLight = false
+    isLight = false,
   )
 
 val LocalColors = staticCompositionLocalOf { lightColors() }

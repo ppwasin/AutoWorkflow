@@ -12,28 +12,30 @@ import kotlinx.serialization.json.Json
 
 
 object KtorClientFactory {
-    fun createHttpClient(engine: HttpClientEngine = CIO.create()) = HttpClient(engine) {
-        install(HttpTimeout) {
-            requestTimeoutMillis = 20.seconds.millisecondsLong
-            socketTimeoutMillis = 20.seconds.millisecondsLong
-            connectTimeoutMillis = 20.seconds.millisecondsLong
-        }
+	fun createHttpClient(engine: HttpClientEngine = CIO.create()) = HttpClient(engine) {
+		install(HttpTimeout) {
+			requestTimeoutMillis = 20.seconds.millisecondsLong
+			socketTimeoutMillis = 20.seconds.millisecondsLong
+			connectTimeoutMillis = 20.seconds.millisecondsLong
+		}
 
 
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(Json {
-                prettyPrint = true
-                isLenient = true
-            })
-        }
+		install(JsonFeature) {
+			serializer = KotlinxSerializer(
+				Json {
+					prettyPrint = true
+					isLenient = true
+				},
+			)
+		}
 
-        install(DefaultRequest) {
-            headers.append("Content-Type", "application/json")
-        }
+		install(DefaultRequest) {
+			headers.append("Content-Type", "application/json")
+		}
 
-        install(Logging) {
-            logger = Logger.DEFAULT
-            level = LogLevel.ALL
-        }
-    }
+		install(Logging) {
+			logger = Logger.DEFAULT
+			level = LogLevel.ALL
+		}
+	}
 }
