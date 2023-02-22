@@ -1,14 +1,17 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-pluginManagement {
+dependencyResolutionManagement {
+	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 	repositories {
+		google()
 		gradlePluginPortal()
 		mavenCentral()
 	}
-	dependencyResolutionManagement {
-		versionCatalogs {
-			create("infra") {
-				from(files("../gradle/infra.versions.toml"))
-			}
+	versionCatalogs {
+		create("libs") {
+			from(files("../gradle/libs.versions.toml"))
+		}
+		create("infra") {
+			from(files("../gradle/infra.versions.toml"))
 		}
 	}
 }

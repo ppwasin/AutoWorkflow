@@ -21,7 +21,7 @@ group = "com.boot"
 kotlin {
 	/** ########## Target setup ############ */
 	jvm {
-		compilations.all { kotlinOptions.jvmTarget = ProjectBuild.java.toString() }
+		compilations.all { kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString() }
 		//        withJava()
 		testRuns["test"].executionTask.configure { useJUnitPlatform() }
 	}

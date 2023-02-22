@@ -1,7 +1,11 @@
 plugins {
-	id("com.convention.composeandroidlib")
+	id("com.convention.android")
+	id("com.convention.android-compose")
 	id("plugin.junit")
 	id("plugin.spotless")
+}
+android{
+	namespace = "com.boot.sync"
 }
 
 dependencies {

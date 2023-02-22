@@ -33,7 +33,8 @@ include(":features:entrypoint")
 include(":features:recipe")
 include(":features:payment")
 include(":external:appsflyerWrapper")
+include(":test:snapshot")
 
 // Backend
 //include(":backend")
-include(":dynamicfeature")
+//include(":dynamicfeature")

@@ -10,6 +10,7 @@ class SpotlessPlugin : Plugin<Project> {
 	override fun apply(project: Project): Unit = project.run {
 		plugins.apply("com.diffplug.spotless")
 		val buildDir = buildDir
+		println("spotless")
 		configure<SpotlessExtension> {
 			ratchetFrom = "origin/main"
 			kotlin {

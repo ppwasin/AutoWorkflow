@@ -1,8 +1,12 @@
 plugins {
-	id("com.convention.composeandroidlib")
+	id("com.convention.android")
+	id("com.convention.android-compose")
 	id("plugin.junit")
 	id("plugin.spotless")
 	id("kotlin-parcelize")
+}
+android {
+	namespace = "com.boot.entrypoint"
 }
 dependencies {
 	implementation(projects.platform.designSystem)

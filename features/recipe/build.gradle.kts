@@ -1,11 +1,14 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-	id("com.convention.composeandroidlib")
+	id("com.convention.android")
+	id("com.convention.android-compose")
 	alias(libs.plugins.ksp)
 	id("plugin.junit")
 	id("plugin.spotless")
 }
-
+android {
+	namespace = "com.boot.recipe"
+}
 dependencies {
 
 	compileOnly(libs.ksp.processing)

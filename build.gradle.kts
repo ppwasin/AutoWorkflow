@@ -1,4 +1,3 @@
-import com.convention.configs.ProjectBuild
 
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
@@ -24,7 +23,7 @@ buildscript {
 // @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 	id("com.boot.scripts.cd.CDPlugin")
-	id("com.convention.extension")
+//	id("com.convention.extension")
 
 	//    // this is necessary to avoid the plugins to be loaded multiple times
 	//    // in each subproject's classloader
@@ -48,7 +47,7 @@ allprojects {
 
 	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
 		kotlinOptions {
-			jvmTarget = ProjectBuild.java.toString()
+			jvmTarget = JavaVersion.VERSION_11.toString()
 		}
 		kotlinOptions.freeCompilerArgs +=
 			listOf(

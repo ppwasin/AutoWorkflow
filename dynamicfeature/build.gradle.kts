@@ -1,6 +1,3 @@
-import com.convention.extensions.kotlinOptions
-import com.convention.configs.ProjectBuild
-
 plugins {
 	id("com.android.dynamic-feature")
 	id("org.jetbrains.kotlin.android")
@@ -8,17 +5,17 @@ plugins {
 }
 android {
 	namespace = "com.boot.dynamicfeature"
-	compileSdk = ProjectBuild.compileSdk
+	compileSdk = 33
 	defaultConfig {
-		minSdk = ProjectBuild.minSdk
+		minSdk = 23
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 	}
 	compileOptions {
-		sourceCompatibility = ProjectBuild.java
-		targetCompatibility = ProjectBuild.java
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
 	}
 	kotlinOptions {
-		jvmTarget = ProjectBuild.java.toString()
+		jvmTarget = JavaVersion.VERSION_11.toString()
 	}
 }
 

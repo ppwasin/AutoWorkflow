@@ -5,8 +5,8 @@ import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Action
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-fun LibraryExtension.`kotlinOptions`(configure: Action<KotlinJvmOptions>): Unit =
+internal fun LibraryExtension.`kotlinOptions`(configure: Action<KotlinJvmOptions>): Unit =
 	(this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kotlinOptions", configure)
 
-fun AppExtension.`kotlinOptions`(configure: Action<KotlinJvmOptions>): Unit =
+internal fun AppExtension.`kotlinOptions`(configure: Action<KotlinJvmOptions>): Unit =
 	(this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kotlinOptions", configure)

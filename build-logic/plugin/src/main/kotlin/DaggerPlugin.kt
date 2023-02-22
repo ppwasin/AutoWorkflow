@@ -12,6 +12,7 @@ class DaggerPlugin : Plugin<Project> {
 		}
 
 		val version = VersionCatalogs(project).versions.dagger
+		println("dagger")
 		project.dependencies.run {
 			add("implementation", "com.google.dagger:dagger-android-support:${version}")
 			add("kapt", "com.google.dagger:dagger-compiler:${version}")
