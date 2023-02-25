@@ -4,36 +4,22 @@ plugins {
 //  alias(infra.plugins.buildconfig)
 }
 
-repositories {
-	google()
-	gradlePluginPortal()
-	mavenCentral()
-}
-
 gradlePlugin {
 	plugins {
 		create("android-lib-module") {
-			id = "com.convention.simpleandroidlib"
-			implementationClass = "com.convention.SimplAndroidLib"
+			id = "com.convention.android"
+			implementationClass = "com.convention.AndroidPlugin"
 		}
 		create("compose-lib-module") {
-			id = "com.convention.composeandroidlib"
-			implementationClass = "com.convention.ComposeAndroidLib"
-		}
-//    create("kotlin-lib-module") {
-//      id = "com.convention.kotlin"
-//      implementationClass = "com.convention.KotlinLib"
-//    }
-
-		// Plugins
-		create("extension-module") {
-			id = "com.convention.extension"
-			implementationClass = "com.convention.ExtensionPlugin"
+			id = "com.convention.android-compose"
+			implementationClass = "com.convention.AndroidComposePlugin"
 		}
 	}
 }
 
 dependencies {
+//	implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+//	implementation(files(infra.javaClass.superclass.protectionDomain.codeSource.location))
 	implementation(infra.kotlinGradle)
 	implementation(infra.androidGradle)
 }

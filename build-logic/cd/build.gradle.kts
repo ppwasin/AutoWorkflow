@@ -4,8 +4,6 @@ plugins {
 	id("java-gradle-plugin")
 }
 
-repositories { mavenCentral() }
-
 gradlePlugin {
 	plugins {
 		create("cd-plugin") {

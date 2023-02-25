@@ -1,9 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-	id("com.convention.composeandroidlib")
+	id("com.convention.android")
+	id("com.convention.android-compose")
 	id("plugin.junit")
 	id("plugin.spotless")
-	alias(libs.plugins.paparazzi)
 }
 
 configure<JunitPluginConfig> {
@@ -25,6 +25,10 @@ configure<JunitPluginConfig> {
 //        }
 //    }
 //}
+
+android{
+	namespace = "com.boot.components"
+}
 
 dependencies {
 	implementation(projects.platform.designSystem)

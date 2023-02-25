@@ -28,12 +28,7 @@ class MainActivity : NodeActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     installSplashScreen()
-    setContent {
-      MaterialTheme {
-        EntrypointScreen()
-        //        NodeHost(integrationPoint = appyxIntegrationPoint) { RootNode(it) }
-      }
-    }
+    setContent { MaterialTheme { EntrypointScreen() } }
   }
 }
 

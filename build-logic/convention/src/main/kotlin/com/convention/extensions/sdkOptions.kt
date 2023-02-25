@@ -4,7 +4,7 @@ import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.convention.configs.ProjectBuild
 
-fun LibraryExtension.setupSdk() {
+internal fun LibraryExtension.setupSdk() {
 	compileSdk = ProjectBuild.compileSdk
 	defaultConfig {
 		minSdk = ProjectBuild.minSdk
@@ -21,7 +21,7 @@ fun LibraryExtension.setupSdk() {
 	}
 }
 
-fun BaseAppModuleExtension.setupSdk(
+internal fun BaseAppModuleExtension.setupSdk(
 	versionName: String,
 	applicationId: String
 ) {

@@ -6,10 +6,16 @@ plugins {
 android {
 	namespace = "com.boot.dynamicfeature"
 	compileSdk = 33
-
 	defaultConfig {
-		minSdk = 24
+		minSdk = 23
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+	}
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+	kotlinOptions {
+		jvmTarget = JavaVersion.VERSION_11.toString()
 	}
 }
 

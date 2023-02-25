@@ -1,8 +1,6 @@
-import com.convention.extensions.setupCompose
-import com.convention.extensions.setupSdk
-
 plugins {
 	id("com.android.application")
+	id("com.convention.android-compose")
 	id("kotlin-android")
 	id("plugin.junit")
 	id("plugin.spotless")
@@ -10,7 +8,7 @@ plugins {
 }
 
 android {
-	setupCompose(libs.versions.compose.get())
+	namespace = "com.boot.playground"
 	setupSdk(versionName = "1.0", applicationId = "com.boot.playground")
 	buildTypes {
 		getByName("release") {
@@ -52,4 +50,26 @@ dependencies {
 	androidTestImplementation(libs.androidTest.junit)
 	androidTestImplementation(libs.androidTest.compose)
 	debugImplementation(libs.test.composeRule)
+}
+
+fun com.android.build.gradle.internal.dsl.BaseAppModuleExtension.setupSdk(
+	versionName: String,
+	applicationId: String
+) {
+	compileSdk = 33
+	defaultConfig {
+		this.applicationId = applicationId
+		this.minSdk = 23
+		this.targetSdk = 33
+		this.versionCode = 1
+		this.versionName = versionName
+		this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+	}
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+	kotlinOptions {
+		jvmTarget = JavaVersion.VERSION_11.toString()
+	}
 }

@@ -1,4 +1,3 @@
-import com.convention.configs.ProjectBuild
 
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
@@ -21,29 +20,10 @@ buildscript {
 	}
 }
 
-subprojects {
-	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
-		kotlinOptions {
-			jvmTarget = ProjectBuild.java.toString()
-		}
-		kotlinOptions.freeCompilerArgs +=
-			listOf(
-				"-opt-in=kotlin.RequiresOptIn",
-				"-opt-in=kotlinx.coroutines.FlowPreview",
-				"-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-				"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-				"-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
-				"-Xcontext-receivers",
-			)
-	}
-}
-
 // @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 	id("com.boot.scripts.cd.CDPlugin")
-	id("com.convention.extension")
-	id("com.android.dynamic-feature") version "7.2.1" apply false
-	id("org.jetbrains.kotlin.android") version "1.7.0" apply false // Apply on all sub-project. So they can use extensions from com.convention
+//	id("com.convention.extension")
 
 	//    // this is necessary to avoid the plugins to be loaded multiple times
 	//    // in each subproject's classloader
@@ -63,5 +43,21 @@ allprojects {
 		google()
 		mavenCentral()
 		maven("https://oss.sonatype.org/content/repositories/snapshots/") //paparazzi
+	}
+
+	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
+		kotlinOptions {
+			jvmTarget = JavaVersion.VERSION_11.toString()
+		}
+		kotlinOptions.freeCompilerArgs +=
+			listOf(
+				"-opt-in=kotlin.RequiresOptIn",
+				"-opt-in=kotlinx.coroutines.FlowPreview",
+				"-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+				"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+				"-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+				"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+				"-Xcontext-receivers",
+			)
 	}
 }

@@ -1,5 +1,3 @@
-import com.convention.extensions.setupCompose
-import com.convention.extensions.setupSdk
 import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
 import java.util.*
 
@@ -9,6 +7,7 @@ import java.util.*
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 	id("com.android.application")
+	id("com.convention.android-compose")
 	id("plugin.junit")
 	id("plugin.spotless")
 	id("kotlin-parcelize")
@@ -32,7 +31,7 @@ play {
 }
 
 android {
-	setupCompose(libs.versions.compose.get())
+	namespace = "com.boot.autoworkflow"
 	setupSdk(versionNameOverride, "com.boot.autoworkflow")
 
 	val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -67,7 +66,7 @@ android {
 				testers = "pp.wasin@gmail.com, ex@gmail.com"
 			}
 		}
-		dynamicFeatures += setOf(":dynamicfeature")
+//		dynamicFeatures += setOf(":dynamicfeature")
 	}
 }
 
@@ -83,4 +82,26 @@ dependencies {
 
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
+}
+
+fun com.android.build.gradle.internal.dsl.BaseAppModuleExtension.setupSdk(
+	versionName: String,
+	applicationId: String
+) {
+	compileSdk = 33
+	defaultConfig {
+		this.applicationId = applicationId
+		this.minSdk = 23
+		this.targetSdk = 33
+		this.versionCode = 1
+		this.versionName = versionName
+		this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+	}
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+	kotlinOptions {
+		jvmTarget = JavaVersion.VERSION_11.toString()
+	}
 }
