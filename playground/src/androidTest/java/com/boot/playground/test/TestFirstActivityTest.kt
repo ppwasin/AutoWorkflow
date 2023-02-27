@@ -13,13 +13,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 internal class TestFirstActivityTest {
-  //  val testDispatcher = StandardTestDispatcher()
-
   @get:Rule val composeTestRule = createEmptyComposeRule()
   @get:Rule val coroutineIdleRule = CoroutineIdleRule()
-
-  //  @get:Rule
-  //  val activityIdleRule = ActivityIdleRule(TestFirstActivity::class.java)
 
   @Test
   fun testArriveToActivity2() {
