@@ -32,10 +32,7 @@ class TestFirstActivity : ComponentActivity() {
     viewModel.start()
 
     TestLogger.log("lifecycleScope.launch outside")
-    lifecycleScope.launch(
-      TestActivityDependencies.dispatcherProvider.dispatcherMain,
-    ) {
-      //      whenStarted {
+    lifecycleScope.launch {
       TestLogger.log("lifecycleScope.launch inside start delay")
       viewModel.state.filter { it == 1 }.first()
 
@@ -48,7 +45,6 @@ class TestFirstActivity : ComponentActivity() {
       )
       finish()
       TestLogger.log("lifecycleScope.launch inside after startactivity")
-      //      }
     }
   }
 }

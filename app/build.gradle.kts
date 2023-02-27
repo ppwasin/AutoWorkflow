@@ -78,7 +78,6 @@ dependencies {
 	implementation(libs.splashscreen)
 	implementation(libs.bundles.compose)
 	implementation(libs.bundles.coroutine)
-	implementation(libs.zipline)
 
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
