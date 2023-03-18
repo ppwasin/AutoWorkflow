@@ -7,24 +7,24 @@ import org.junit.jupiter.api.Test
 
 internal class NestedTestWithHierarchicalSetupMethods {
 
-  var state = ""
+	var state = ""
 
-  @BeforeEach
-  fun outerSetup() {
-    state += "outer"
-  }
+	@BeforeEach
+	fun outerSetup() {
+		state += "outer"
+	}
 
-  @Nested
-  internal inner class InnerClass {
+	@Nested
+	internal inner class InnerClass {
 
-    @BeforeEach
-    fun innerSetup() {
-      state = "$state-inner"
-    }
+		@BeforeEach
+		fun innerSetup() {
+			state = "$state-inner"
+		}
 
-    @Test
-    fun checkSetup() {
-      assertEquals("outer-inner", state)
-    }
-  }
+		@Test
+		fun checkSetup() {
+			assertEquals("outer-inner", state)
+		}
+	}
 }

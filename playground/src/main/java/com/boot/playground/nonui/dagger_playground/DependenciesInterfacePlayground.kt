@@ -22,31 +22,37 @@ import javax.inject.Inject
 import javax.inject.Scope
 
 object DependenciesInterfacePlayground {
-  @Component(modules = [ThisModule::class])
-  @Scope1
-  interface ThisComponent : Dependencies
+	@Component(modules = [ThisModule::class])
+	@Scope1
+	interface ThisComponent : Dependencies
 
-  interface Dependencies {
-    fun getDepA(): DepA
-  }
+	interface Dependencies {
+		fun getDepA(): DepA
+	}
 
-  @Scope @Retention(AnnotationRetention.RUNTIME) annotation class Scope1
+	@Scope
+	@Retention(AnnotationRetention.RUNTIME)
+	annotation class Scope1
 
-  /** --------------------------- */
-  @Module
-  object ThisModule {
-    @Scope1 @Provides fun provideDepA(): DepA = DepA()
-    @Scope1 @Provides fun provideDepB(): DepB = DepB()
-  }
+	/** --------------------------- */
+	@Module
+	object ThisModule {
+		@Scope1
+		@Provides
+		fun provideDepA(): DepA = DepA()
+		@Scope1
+		@Provides
+		fun provideDepB(): DepB = DepB()
+	}
 
-  /** --------------------------- */
-  class DepA
-  class DepB
+	/** --------------------------- */
+	class DepA
+	class DepB
 
-  /** --------------------------- */
-  class Injectable(private val dependencies: Dependencies) {
-    val a: DepA by lazy { dependencies.getDepA() }
-  }
+	/** --------------------------- */
+	class Injectable(private val dependencies: Dependencies) {
+		val a: DepA by lazy { dependencies.getDepA() }
+	}
 
-  class AtInject @Inject constructor(private val a: Lazy<DepA>)
+	class AtInject @Inject constructor(private val a: Lazy<DepA>)
 }

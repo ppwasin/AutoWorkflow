@@ -22,56 +22,73 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SharedElementExplorationDemo() {
-  val A = remember {
-    movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
-      Box(
-        modifier =
-          Modifier.sharedElement()
-            .then(modifier)
-            .background(color = Color(0xfff3722c), RoundedCornerShape(10)),
-      )
-    }
-  }
-  val B = remember {
-    movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
-      Box(
-        modifier =
-          Modifier.sharedElement()
-            .then(modifier)
-            .background(color = Color(0xff90be6d), RoundedCornerShape(10)),
-      )
-    }
-  }
+	val A = remember {
+		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
+			Box(
+				modifier =
+				Modifier
+					.sharedElement()
+					.then(modifier)
+					.background(color = Color(0xfff3722c), RoundedCornerShape(10)),
+			)
+		}
+	}
+	val B = remember {
+		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
+			Box(
+				modifier =
+				Modifier
+					.sharedElement()
+					.then(modifier)
+					.background(color = Color(0xff90be6d), RoundedCornerShape(10)),
+			)
+		}
+	}
 
-  val C = remember {
-    movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { content
-      ->
-      Box(
-        Modifier.sharedElement().background(Color(0xfff9c74f)).padding(20.dp),
-      ) { content() }
-    }
-  }
+	val C = remember {
+		movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { content
+			->
+			Box(
+				Modifier
+					.sharedElement()
+					.background(Color(0xfff9c74f))
+					.padding(20.dp),
+			) { content() }
+		}
+	}
 
-  var isHorizontal by remember { mutableStateOf(true) }
+	var isHorizontal by remember { mutableStateOf(true) }
 
-  SceneHost(Modifier.fillMaxSize().clickable { isHorizontal = !isHorizontal }) {
-    Box(contentAlignment = Alignment.Center) {
-      if (isHorizontal) {
-        C {
-          Row(Modifier.background(Color.Gray).padding(10.dp)) {
-            A(Modifier.size(40.dp))
-            B(Modifier.size(40.dp))
-            Box(Modifier.size(40.dp).background(Color(0xff4d908e)))
-          }
-        }
-      } else {
-        C {
-          Column(Modifier.background(Color.DarkGray).padding(10.dp)) {
-            A(Modifier.size(width = 120.dp, height = 60.dp))
-            B(Modifier.size(width = 120.dp, height = 60.dp))
-          }
-        }
-      }
-    }
-  }
+	SceneHost(
+		Modifier
+			.fillMaxSize()
+			.clickable { isHorizontal = !isHorizontal }) {
+		Box(contentAlignment = Alignment.Center) {
+			if (isHorizontal) {
+				C {
+					Row(
+						Modifier
+							.background(Color.Gray)
+							.padding(10.dp)) {
+						A(Modifier.size(40.dp))
+						B(Modifier.size(40.dp))
+						Box(
+							Modifier
+								.size(40.dp)
+								.background(Color(0xff4d908e)))
+					}
+				}
+			} else {
+				C {
+					Column(
+						Modifier
+							.background(Color.DarkGray)
+							.padding(10.dp)) {
+						A(Modifier.size(width = 120.dp, height = 60.dp))
+						B(Modifier.size(width = 120.dp, height = 60.dp))
+					}
+				}
+			}
+		}
+	}
 }

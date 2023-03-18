@@ -22,5 +22,6 @@ import dagger.Module
 
 @Module
 interface InterfaceModule {
-  @Binds fun getInterfaceModel(bind: InterfaceModelImpl): InterfaceModel
+	@Binds
+	fun getInterfaceModel(bind: InterfaceModelImpl): InterfaceModel
 }

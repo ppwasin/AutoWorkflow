@@ -6,11 +6,11 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun RecipeDetails() {
-  Text("RecipeDetails")
+	Text("RecipeDetails")
 }
 
 @Preview
 @Composable
 fun RecipeDetailsPreview() {
-  RecipeDetails()
+	RecipeDetails()
 }

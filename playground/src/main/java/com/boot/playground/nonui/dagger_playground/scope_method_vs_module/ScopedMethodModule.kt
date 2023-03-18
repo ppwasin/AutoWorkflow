@@ -21,9 +21,12 @@ import javax.inject.Inject
 
 @Module
 interface ScopedMethodModule {
-  @Scope1 @Binds fun getScopeDep(impl: ScopedDependencyImpl): ScopedDependency
+	@Scope1
+	@Binds
+	fun getScopeDep(impl: ScopedDependencyImpl): ScopedDependency
 
-  @Binds fun getUnScopeDep(impl: UnScopedDependencyImpl): UnScopedDependency
+	@Binds
+	fun getUnScopeDep(impl: UnScopedDependencyImpl): UnScopedDependency
 }
 
 interface ScopedDependency

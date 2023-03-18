@@ -12,22 +12,22 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 
 fun Modifier.pressGesture(
-  scaleSize: Float = 1.2f,
-  onClick: () -> Unit
+	scaleSize: Float = 1.2f,
+	onClick: () -> Unit
 ): Modifier = composed {
-  var selected by remember { mutableStateOf(false) }
-  val scale by animateFloatAsState(if (!selected) scaleSize else 1f)
-  graphicsLayer {
-      scaleX = scale
-      scaleY = scale
-    }
-    .pointerInput(Unit) {
-      detectTapGestures(
-        onPress = {
-          selected = true
-          if (tryAwaitRelease()) onClick()
-          selected = false
-        },
-      )
-    }
+	var selected by remember { mutableStateOf(false) }
+	val scale by animateFloatAsState(if (!selected) scaleSize else 1f)
+	graphicsLayer {
+		scaleX = scale
+		scaleY = scale
+	}
+		.pointerInput(Unit) {
+			detectTapGestures(
+				onPress = {
+					selected = true
+					if (tryAwaitRelease()) onClick()
+					selected = false
+				},
+			)
+		}
 }

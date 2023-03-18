@@ -13,19 +13,21 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 internal class TestFirstActivityTest {
-  @get:Rule val composeTestRule = createEmptyComposeRule()
-  @get:Rule val coroutineIdleRule = CoroutineIdleRule()
+	@get:Rule
+	val composeTestRule = createEmptyComposeRule()
+	@get:Rule
+	val coroutineIdleRule = CoroutineIdleRule()
 
-  @Test
-  fun testArriveToActivity2() {
-    val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    val intent = Intent(appContext, TestFirstActivity::class.java)
-    intent.flags = FLAG_ACTIVITY_NEW_TASK
-    appContext.startActivity(intent)
-    composeTestRule.waitForIdle()
+	@Test
+	fun testArriveToActivity2() {
+		val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+		val intent = Intent(appContext, TestFirstActivity::class.java)
+		intent.flags = FLAG_ACTIVITY_NEW_TASK
+		appContext.startActivity(intent)
+		composeTestRule.waitForIdle()
 
-    composeTestRule
-      .onNode(hasTestTag(TestSecondActivity.TAG_SAMPLE_TEXT))
-      .assertExists()
-  }
+		composeTestRule
+			.onNode(hasTestTag(TestSecondActivity.TAG_SAMPLE_TEXT))
+			.assertExists()
+	}
 }

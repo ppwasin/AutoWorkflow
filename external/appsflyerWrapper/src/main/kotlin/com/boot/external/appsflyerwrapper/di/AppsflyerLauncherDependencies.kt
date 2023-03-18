@@ -5,8 +5,8 @@ import com.boot.external.appsflyerwrapper.sdk.AppsflyerEventReceiver
 import com.boot.external.appsflyerwrapper.utils.AppLifecycleObserver
 
 class AppsflyerLauncherDependencies(
-  val appsFlyerLib: AppsFlyerLib,
-  val appsflyerReceiver: AppsflyerEventReceiver,
-  val launcherActivity: Class<*>,
-  val appLifecycleObserver: AppLifecycleObserver
+	val appsFlyerLib: AppsFlyerLib,
+	val appsflyerReceiver: AppsflyerEventReceiver,
+	val launcherActivity: Class<*>,
+	val appLifecycleObserver: AppLifecycleObserver
 )

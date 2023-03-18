@@ -10,17 +10,17 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun Title(text: String) {
-  Text(
-    text = text,
-    maxLines = 1,
-    overflow = TextOverflow.Ellipsis,
-    style = MaterialTheme.typography.headlineMedium,
-    fontWeight = FontWeight.Bold,
-  )
+	Text(
+		text = text,
+		maxLines = 1,
+		overflow = TextOverflow.Ellipsis,
+		style = MaterialTheme.typography.headlineMedium,
+		fontWeight = FontWeight.Bold,
+	)
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun TitlePreview() {
-  AppMaterialTheme { Title("Title") }
+	AppMaterialTheme { Title("Title") }
 }

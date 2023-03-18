@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "recipe")
 data class Recipe(
-  @PrimaryKey val id: Long,
-  val name: String,
-  val type: String,
-  val logo: String?,
+	@PrimaryKey val id: Long,
+	val name: String,
+	val type: String,
+	val logo: String?,
 )

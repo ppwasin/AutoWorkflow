@@ -26,73 +26,82 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 @Deprecated(
-  "use SearchItemSlot instead",
-  replaceWith =
-    ReplaceWith(
-      "SearchItemSlot(startIcon = startIcon, text = text, endIcon = endIcon)",
-      imports =
-        [
-          "com.boot.components.search.item.SearchItemSlot",
-          "androidx.compose.material.Text",
-        ],
-    ),
+	"use SearchItemSlot instead",
+	replaceWith =
+	ReplaceWith(
+		"SearchItemSlot(startIcon = startIcon, text = text, endIcon = endIcon)",
+		imports =
+		[
+			"com.boot.components.search.item.SearchItemSlot",
+			"androidx.compose.material.Text",
+		],
+	),
 )
 private fun SearchItemSlotDeprecated1(
-  startIcon: @Composable () -> Unit,
-  text: @Composable () -> Unit,
-  endIcon: @Composable (() -> Unit)? = null
+	startIcon: @Composable () -> Unit,
+	text: @Composable () -> Unit,
+	endIcon: @Composable (() -> Unit)? = null
 ) {
-  BoxWithConstraints {
-    val boxWithConstraintsScope = this
-    val iconSize = ButtonDefaults.IconSize
-    val iconSpace = ButtonDefaults.IconSpacing
-    val textWidth =
-      boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
-    ConstraintLayout(Modifier.fillMaxWidth().wrapContentHeight()) {
-      val (startIconConst, textConst, endIconConst) = createRefs()
-      Box(
-        Modifier.size(ButtonDefaults.IconSize).constrainAs(startIconConst) {
-          constraintVertical()
-          start.linkTo(parent.start)
-        },
-      ) { startIcon() }
+	BoxWithConstraints {
+		val boxWithConstraintsScope = this
+		val iconSize = ButtonDefaults.IconSize
+		val iconSpace = ButtonDefaults.IconSpacing
+		val textWidth =
+			boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
+		ConstraintLayout(
+			Modifier
+				.fillMaxWidth()
+				.wrapContentHeight()) {
+			val (startIconConst, textConst, endIconConst) = createRefs()
+			Box(
+				Modifier
+					.size(ButtonDefaults.IconSize)
+					.constrainAs(startIconConst) {
+						constraintVertical()
+						start.linkTo(parent.start)
+					},
+			) { startIcon() }
 
-      Box(
-        modifier =
-          Modifier.width(textWidth).constrainAs(textConst) {
-            constraintVertical()
-            start.linkTo(startIconConst.end, margin = iconSpace)
-          },
-      ) { text() }
+			Box(
+				modifier =
+				Modifier
+					.width(textWidth)
+					.constrainAs(textConst) {
+						constraintVertical()
+						start.linkTo(startIconConst.end, margin = iconSpace)
+					},
+			) { text() }
 
-      if (endIcon != null)
-        Box(
-          modifier =
-            Modifier.size(ButtonDefaults.IconSize).constrainAs(endIconConst) {
-              constraintVertical()
-              end.linkTo(parent.end)
-            },
-        ) { endIcon() }
-    }
-  }
+			if (endIcon != null)
+				Box(
+					modifier =
+					Modifier
+						.size(ButtonDefaults.IconSize)
+						.constrainAs(endIconConst) {
+							constraintVertical()
+							end.linkTo(parent.end)
+						},
+				) { endIcon() }
+		}
+	}
 }
 
 @ExperimentalComposeUiApi
 @Preview(device = Devices.PIXEL_2_XL, showBackground = true)
 @Composable
 fun SearchItemSlotDeprecated1Preview(
-  @PreviewParameter(SearchItemPreviewProvider::class) data: Data
+	@PreviewParameter(SearchItemPreviewProvider::class) data: Data
 ) {
-  AppMaterialTheme {
-    SearchItemSlotDeprecated1(
-      startIcon = {
-        Icon(
-          Icons.Default.AccessAlarm,
-          contentDescription = "SearchStartIcon",
-        )
-      },
-      text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
-      endIcon = data.endIcon,
-    )
-  }
+	AppMaterialTheme {
+		SearchItemSlotDeprecated1(
+			startIcon = {
+				Icon(
+					Icons.Default.AccessAlarm,
+					contentDescription = "SearchStartIcon",
+				)
+			},
+			text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
+			endIcon = data.endIcon,
+		)
+	}
 }

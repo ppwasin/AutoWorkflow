@@ -9,7 +9,6 @@ plugins {
 	id("com.android.application")
 	id("com.convention.android-compose")
 	id("plugin.junit")
-	id("plugin.spotless")
 	id("kotlin-parcelize")
 //    id("kotlin-android")
 	kotlin("android")

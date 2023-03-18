@@ -16,19 +16,19 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun TryDeriveState() {
-  var a by remember { mutableStateOf(0) }
-  var b by remember { mutableStateOf(0) }
-  var isShowSum by remember {
-    mutableStateOf(false) //
-  }
-  val sum = derivedStateOf {
-    println("run sum")
-    a + b
-  }
+	var a by remember { mutableStateOf(0) }
+	var b by remember { mutableStateOf(0) }
+	var isShowSum by remember {
+		mutableStateOf(false) //
+	}
+	val sum = derivedStateOf {
+		println("run sum")
+		a + b
+	}
 
-  Column {
-    Button(onClick = { a += 1 }) { Text("Increase") }
-    Button(onClick = { isShowSum = !isShowSum }) { Text("toggle sum") }
-    if (isShowSum) Text("sum: ${sum.value}")
-  }
+	Column {
+		Button(onClick = { a += 1 }) { Text("Increase") }
+		Button(onClick = { isShowSum = !isShowSum }) { Text("toggle sum") }
+		if (isShowSum) Text("sum: ${sum.value}")
+	}
 }

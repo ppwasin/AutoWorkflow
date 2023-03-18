@@ -25,74 +25,81 @@ import com.boot.components.utils.constraintVertical
 import com.boot.designsystem.theme.material.AppMaterialTheme
 
 private enum class Tag {
-  StartLayoutId,
-  MiddleLayoutId,
-  EndLayoutId
+	StartLayoutId,
+	MiddleLayoutId,
+	EndLayoutId
 }
 
 @Composable
 fun SearchItemSlot(
-  startIcon: @Composable () -> Unit,
-  text: @Composable () -> Unit,
-  endIcon: @Composable (() -> Unit)? = null
+	startIcon: @Composable () -> Unit,
+	text: @Composable () -> Unit,
+	endIcon: @Composable (() -> Unit)? = null
 ) {
-  val iconSize = ButtonDefaults.IconSize
-  val iconSpace = ButtonDefaults.IconSpacing
+	val iconSize = ButtonDefaults.IconSize
+	val iconSpace = ButtonDefaults.IconSpacing
 
-  ConstraintLayout(
-    modifier = Modifier.fillMaxWidth().wrapContentHeight(),
-    constraintSet =
-      ConstraintSet {
-        val startConst = createRefFor(StartLayoutId)
-        val middleConst = createRefFor(MiddleLayoutId)
-        val endConst = createRefFor(EndLayoutId)
+	ConstraintLayout(
+		modifier = Modifier
+			.fillMaxWidth()
+			.wrapContentHeight(),
+		constraintSet =
+		ConstraintSet {
+			val startConst = createRefFor(StartLayoutId)
+			val middleConst = createRefFor(MiddleLayoutId)
+			val endConst = createRefFor(EndLayoutId)
 
-        constrain(startConst) {
-          constraintVertical()
-          start.linkTo(parent.start)
-        }
-        constrain(middleConst) {
-          constraintVertical()
-          start.linkTo(startConst.end, margin = iconSpace)
-          if (endIcon != null) {
-            end.linkTo(endConst.start, margin = iconSpace)
-          } else {
-            end.linkTo(parent.end, margin = iconSpace)
-          }
-          width = Dimension.fillToConstraints
-        }
-        constrain(endConst) {
-          constraintVertical()
-          end.linkTo(parent.end)
-        }
-      },
-  ) {
-    Box(Modifier.layoutId(StartLayoutId).size(iconSize)) { startIcon() }
-    Box(modifier = Modifier.layoutId(MiddleLayoutId)) { text() }
-    if (endIcon != null)
-      Box(modifier = Modifier.layoutId(EndLayoutId).size(iconSize)) {
-        endIcon()
-      }
-  }
+			constrain(startConst) {
+				constraintVertical()
+				start.linkTo(parent.start)
+			}
+			constrain(middleConst) {
+				constraintVertical()
+				start.linkTo(startConst.end, margin = iconSpace)
+				if (endIcon != null) {
+					end.linkTo(endConst.start, margin = iconSpace)
+				} else {
+					end.linkTo(parent.end, margin = iconSpace)
+				}
+				width = Dimension.fillToConstraints
+			}
+			constrain(endConst) {
+				constraintVertical()
+				end.linkTo(parent.end)
+			}
+		},
+	) {
+		Box(
+			Modifier
+				.layoutId(StartLayoutId)
+				.size(iconSize)) { startIcon() }
+		Box(modifier = Modifier.layoutId(MiddleLayoutId)) { text() }
+		if (endIcon != null)
+			Box(modifier = Modifier
+				.layoutId(EndLayoutId)
+				.size(iconSize)) {
+				endIcon()
+			}
+	}
 }
 
 @ExperimentalComposeUiApi
 @Preview(device = Devices.PIXEL_2_XL, showBackground = true)
 @Composable
 fun SearchItemSlotPreview(
-  @PreviewParameter(SearchItemPreviewProvider::class)
-  data: SearchItemPreviewProvider.Data
+	@PreviewParameter(SearchItemPreviewProvider::class)
+	data: SearchItemPreviewProvider.Data
 ) {
-  AppMaterialTheme {
-    SearchItemSlot(
-      startIcon = {
-        Icon(
-          Icons.Default.AccessAlarm,
-          contentDescription = "SearchStartIcon",
-        )
-      },
-      text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
-      endIcon = data.endIcon,
-    )
-  }
+	AppMaterialTheme {
+		SearchItemSlot(
+			startIcon = {
+				Icon(
+					Icons.Default.AccessAlarm,
+					contentDescription = "SearchStartIcon",
+				)
+			},
+			text = { SearchTextRow(title = data.title, subTitle = data.subTitle) },
+			endIcon = data.endIcon,
+		)
+	}
 }

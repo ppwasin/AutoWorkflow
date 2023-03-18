@@ -9,28 +9,28 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkerParameters
 
 class Syncworker(
-  private val appContext: Context,
-  workerParams: WorkerParameters,
+	private val appContext: Context,
+	workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams) {
-  override suspend fun doWork(): Result {
-    TODO("Not yet implemented")
-  }
+	override suspend fun doWork(): Result {
+		TODO("Not yet implemented")
+	}
 
-  companion object {
+	companion object {
 
-    private val SyncConstraints
-      get() =
-        Constraints.Builder()
-          .setRequiredNetworkType(NetworkType.CONNECTED)
-          .build()
+		private val SyncConstraints
+			get() =
+				Constraints.Builder()
+					.setRequiredNetworkType(NetworkType.CONNECTED)
+					.build()
 
-    /** Expedited one time work to sync data on app startup */
-    fun startUpSyncWork() =
-      OneTimeWorkRequestBuilder<Syncworker>()
-        .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
-        .setConstraints(SyncConstraints)
-        .build()
-  }
+		/** Expedited one time work to sync data on app startup */
+		fun startUpSyncWork() =
+			OneTimeWorkRequestBuilder<Syncworker>()
+				.setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+				.setConstraints(SyncConstraints)
+				.build()
+	}
 }
 
 /**

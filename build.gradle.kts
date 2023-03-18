@@ -1,4 +1,3 @@
-
 // val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 // val plugins = extensions.getByType<VersionCatalogsExtension>().named("libs") as
 

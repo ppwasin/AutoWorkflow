@@ -11,10 +11,10 @@ import androidx.compose.runtime.setValue
 
 @Composable
 fun RememberUpdatePlayground() {
-  var myInput by remember { mutableStateOf(0) }
+	var myInput by remember { mutableStateOf(0) }
 
-  Column {
-    OutlinedButton(onClick = { myInput++ }) { Text("Increase $myInput") }
-    Calculation(input = myInput)
-  }
+	Column {
+		OutlinedButton(onClick = { myInput++ }) { Text("Increase $myInput") }
+		Calculation(input = myInput)
+	}
 }

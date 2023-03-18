@@ -2,4 +2,6 @@ package com.boot.entrypoint.ui
 
 import androidx.compose.runtime.Composable
 
-@Composable fun Plan() {}
+@Composable
+fun Plan() {
+}

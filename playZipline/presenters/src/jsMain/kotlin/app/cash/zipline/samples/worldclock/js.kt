@@ -18,6 +18,7 @@ package app.cash.zipline.samples.worldclock
 import app.cash.zipline.Zipline
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 
 private val zipline by lazy { Zipline.get() }
@@ -29,6 +30,21 @@ fun main() {
 	zipline.bind<WorldClockPresenter>(
 		name = "WorldClockPresenter",
 		instance = RealWorldClockPresenter(worldClockHost),
+	)
+
+	val msgRelay = MutableStateFlow("Hello")
+	zipline.bind<CommandControl>(
+		name = "CommandControl",
+		instance = object : CommandControl {
+			override suspend fun sendCmd(cmd: String) {
+				msgRelay.emit(cmd)
+			}
+
+			override fun getCurrentCmd(): Flow<String> {
+				return msgRelay
+			}
+
+		},
 	)
 }
 

@@ -20,6 +20,6 @@ import dagger.Component
 @Scope1
 @Component(modules = [ScopedMethodModule::class, ScopedInterfaceModule::class])
 interface ScopePlaygroundComponent {
-  fun inject(point1: Point1)
-  fun inject(point1: Point2)
+	fun inject(point1: Point1)
+	fun inject(point1: Point2)
 }

@@ -6,41 +6,41 @@ import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
 
 class ActivityIdleResource<T : Activity>(
-  private val activityCls: Class<T>,
-  private val application: Application
+	private val activityCls: Class<T>,
+	private val application: Application
 ) : IdlingResource {
-  private val counter = CountingIdlingResource(this::class.simpleName)
-  private val callback =
-    ActivityIdleCallbacks(
-      onCreated = {
-        if (it.javaClass == activityCls) {
-          counter.increment()
-        }
-      },
-      onDestroyed = {
-        if (it.javaClass == activityCls) {
-          counter.decrement()
-        }
-      },
-    )
+	private val counter = CountingIdlingResource(this::class.simpleName)
+	private val callback =
+		ActivityIdleCallbacks(
+			onCreated = {
+				if (it.javaClass == activityCls) {
+					counter.increment()
+				}
+			},
+			onDestroyed = {
+				if (it.javaClass == activityCls) {
+					counter.decrement()
+				}
+			},
+		)
 
-  override fun getName(): String = "ActivityLifeIdlingResource"
+	override fun getName(): String = "ActivityLifeIdlingResource"
 
-  override fun isIdleNow(): Boolean {
-    return counter.isIdleNow
-  }
+	override fun isIdleNow(): Boolean {
+		return counter.isIdleNow
+	}
 
-  override fun registerIdleTransitionCallback(
-    callback: IdlingResource.ResourceCallback?
-  ) {
-    counter.registerIdleTransitionCallback(callback)
-  }
+	override fun registerIdleTransitionCallback(
+		callback: IdlingResource.ResourceCallback?
+	) {
+		counter.registerIdleTransitionCallback(callback)
+	}
 
-  fun start() {
-    application.registerActivityLifecycleCallbacks(callback)
-  }
+	fun start() {
+		application.registerActivityLifecycleCallbacks(callback)
+	}
 
-  fun cleanup() {
-    application.unregisterActivityLifecycleCallbacks(callback)
-  }
+	fun cleanup() {
+		application.unregisterActivityLifecycleCallbacks(callback)
+	}
 }

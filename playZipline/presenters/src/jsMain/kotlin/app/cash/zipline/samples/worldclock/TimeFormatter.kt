@@ -18,36 +18,36 @@ package app.cash.zipline.samples.worldclock
 import kotlin.js.Date
 
 class TimeFormatter {
-  fun formatLocalTime(
-    now: dynamic = Date(),
-    millis: Boolean = false,
-  ): String {
-    val originalHours = now.getHours()
-    now.setHours(originalHours - 4) // This sample doesn't implement DST.
-    val nyc = formatDate(now, millis)
+	fun formatLocalTime(
+		now: dynamic = Date(),
+		millis: Boolean = false,
+	): String {
+		val originalHours = now.getHours()
+		now.setHours(originalHours - 4) // This sample doesn't implement DST.
+		val nyc = formatDate(now, millis)
 
-    return """
+		return """
       |Time in NYC
       |$nyc
       """.trimMargin()
-  }
+	}
 
-  fun formatWorldTime(
-    now: dynamic = Date(),
-    millis: Boolean = false,
-  ): String {
-    val originalHours = now.getHours()
+	fun formatWorldTime(
+		now: dynamic = Date(),
+		millis: Boolean = false,
+	): String {
+		val originalHours = now.getHours()
 
-    now.setHours(originalHours + 2)
-    val barcelona = formatDate(now, millis)
+		now.setHours(originalHours + 2)
+		val barcelona = formatDate(now, millis)
 
-    now.setHours(originalHours - 4)
-    val nyc = formatDate(now, millis)
+		now.setHours(originalHours - 4)
+		val nyc = formatDate(now, millis)
 
-    now.setHours(originalHours - 7)
-    val sf = formatDate(now, millis)
+		now.setHours(originalHours - 7)
+		val sf = formatDate(now, millis)
 
-    return """
+		return """
       |Barcelona
       |$barcelona
       |
@@ -57,18 +57,18 @@ class TimeFormatter {
       |SF
       |$sf
       """.trimMargin()
-  }
+	}
 
-  private fun formatDate(
-    date: dynamic,
-    millis: Boolean = false,
-  ): String {
-    val limit = when {
-      millis -> 23
-      else -> 19
-    }
+	private fun formatDate(
+		date: dynamic,
+		millis: Boolean = false,
+	): String {
+		val limit = when {
+			millis -> 23
+			else -> 19
+		}
 
-    val string = date.toISOString() as String
-    return string.slice(11 until limit)
-  }
+		val string = date.toISOString() as String
+		return string.slice(11 until limit)
+	}
 }

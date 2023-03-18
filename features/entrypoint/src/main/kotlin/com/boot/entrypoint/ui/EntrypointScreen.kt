@@ -26,18 +26,18 @@ import com.boot.mealplan.recipes.RecipeEntrypoint
 
 @Composable
 fun EntrypointScreen() {
-  // hoist navctrl here to save/restore navigation state when swap between BTN
-  val recipeNavController = rememberNavController()
-  AppMaterialTheme {
-    BtmSlot(
-      screenItems = MainScreenItems.values().toSet(),
-      infoGetter = MainScreenItems.bottomNav(),
-      navigateTo = { item ->
-        when (item) {
-          MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
-          else -> Text(item.name)
-        }
-      },
-    )
-  }
+	// hoist navctrl here to save/restore navigation state when swap between BTN
+	val recipeNavController = rememberNavController()
+	AppMaterialTheme {
+		BtmSlot(
+			screenItems = MainScreenItems.values().toSet(),
+			infoGetter = MainScreenItems.bottomNav(),
+			navigateTo = { item ->
+				when (item) {
+					MainScreenItems.Recipes -> RecipeEntrypoint(recipeNavController)
+					else -> Text(item.name)
+				}
+			},
+		)
+	}
 }

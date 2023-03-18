@@ -14,34 +14,34 @@ import androidx.lifecycle.LifecycleOwner
 
 @Composable
 fun rememberLifecycleEvent(
-  lifecycle: Lifecycle,
-  onEvent: (Lifecycle.Event) -> Unit
+	lifecycle: Lifecycle,
+	onEvent: (Lifecycle.Event) -> Unit
 ) {
-  val onEventCurrent = rememberUpdatedState(newValue = onEvent)
-  DisposableEffect(lifecycle) {
-    val observer = LifecycleEventObserver { _, event ->
-      onEventCurrent.value(event)
-    }
-    lifecycle.addObserver(observer)
-    onDispose { lifecycle.removeObserver(observer) }
-  }
+	val onEventCurrent = rememberUpdatedState(newValue = onEvent)
+	DisposableEffect(lifecycle) {
+		val observer = LifecycleEventObserver { _, event ->
+			onEventCurrent.value(event)
+		}
+		lifecycle.addObserver(observer)
+		onDispose { lifecycle.removeObserver(observer) }
+	}
 }
 
 @Composable
 fun rememberLifecycleEvent(
-  lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-  doOnStart: () -> Unit = {},
+	lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+	doOnStart: () -> Unit = {},
 ): Lifecycle.Event {
-  var state by remember { mutableStateOf(Lifecycle.Event.ON_ANY) }
-  val currentDoOnStart = rememberUpdatedState(newValue = doOnStart)
-  DisposableEffect(lifecycleOwner) {
-    val observer = LifecycleEventObserver { _, event ->
-      println("Lifecycler: $event")
-      if (event == Lifecycle.Event.ON_START) currentDoOnStart.value()
-      state = event
-    }
-    lifecycleOwner.lifecycle.addObserver(observer)
-    onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
-  }
-  return state
+	var state by remember { mutableStateOf(Lifecycle.Event.ON_ANY) }
+	val currentDoOnStart = rememberUpdatedState(newValue = doOnStart)
+	DisposableEffect(lifecycleOwner) {
+		val observer = LifecycleEventObserver { _, event ->
+			println("Lifecycler: $event")
+			if (event == Lifecycle.Event.ON_START) currentDoOnStart.value()
+			state = event
+		}
+		lifecycleOwner.lifecycle.addObserver(observer)
+		onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+	}
+	return state
 }

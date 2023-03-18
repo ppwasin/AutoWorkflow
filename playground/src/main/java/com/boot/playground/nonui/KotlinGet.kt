@@ -19,37 +19,37 @@ import com.boot.playground.nonui.KotlinGetPlayground.Test
 
 /** ------------- */
 fun main() {
-  KotlinGetPlayground.run {
-    println("[main] Instantiate Test()")
-    val test = Test()
-    println("[main] Before Run testIsGetCallFieldTwice")
-    test.testIsGetCallFieldTwice
-    test.testIsGetCallFieldTwice
-  }
+	KotlinGetPlayground.run {
+		println("[main] Instantiate Test()")
+		val test = Test()
+		println("[main] Before Run testIsGetCallFieldTwice")
+		test.testIsGetCallFieldTwice
+		test.testIsGetCallFieldTwice
+	}
 }
 
 /** ------------- */
 object KotlinGetPlayground {
-  class AImpl {
-    init {
-      println("[AImpl] init ${hashCode()}")
-    }
-  }
+	class AImpl {
+		init {
+			println("[AImpl] init ${hashCode()}")
+		}
+	}
 
-  class FactoringClass {
-    val someField = AImpl()
+	class FactoringClass {
+		val someField = AImpl()
 
-    init {
-      println("[FactoringClass] init")
-    }
-  }
+		init {
+			println("[FactoringClass] init")
+		}
+	}
 
-  /** ------------- */
-  class Test {
-    private val factoringClass = FactoringClass()
-    val testIsGetCallFieldTwice: AImpl
-      get() {
-        return factoringClass.someField
-      }
-  }
+	/** ------------- */
+	class Test {
+		private val factoringClass = FactoringClass()
+		val testIsGetCallFieldTwice: AImpl
+			get() {
+				return factoringClass.someField
+			}
+	}
 }

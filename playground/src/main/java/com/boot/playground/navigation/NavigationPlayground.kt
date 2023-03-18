@@ -5,22 +5,24 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun NavigationPlaygroundScreen() {
-  ExpandableFabBasic()
+	ExpandableFabBasic()
 }
 
 class PrelaunchRoot() {
-  sealed interface NavTarget {
-    object China : NavTarget
-    object Skorea : NavTarget
-    object Login : NavTarget
-    object Cookie : NavTarget
-  }
+	sealed interface NavTarget {
+		object China : NavTarget
+		object Skorea : NavTarget
+		object Login : NavTarget
+		object Cookie : NavTarget
+	}
 
-  @Composable fun Render() {}
+	@Composable
+	fun Render() {
+	}
 }
 
 @Preview
 @Composable
 fun NavigationPlaygroundPreview() {
-  NavigationPlaygroundScreen()
+	NavigationPlaygroundScreen()
 }

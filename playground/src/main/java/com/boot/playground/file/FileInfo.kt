@@ -4,34 +4,34 @@ import java.io.File
 
 class FileInfo(val fullPath: String?, val fileName: String) {
 
-  fun writeFile(text: String): String {
-    return try {
-      val file =
-        if (fullPath != null) {
-          File(fullPath).mkdirs()
-          File(fullPath, fileName)
-        } else File(fileName)
+	fun writeFile(text: String): String {
+		return try {
+			val file =
+				if (fullPath != null) {
+					File(fullPath).mkdirs()
+					File(fullPath, fileName)
+				} else File(fileName)
 
-      file.writeText(text)
-      file.createNewFile()
-      "Write success: ${file.absolutePath}"
-    } catch (ex: Exception) {
-      "Write error: $ex"
-    }
-  }
+			file.writeText(text)
+			file.createNewFile()
+			"Write success: ${file.absolutePath}"
+		} catch (ex: Exception) {
+			"Write error: $ex"
+		}
+	}
 
-  fun readFile(): String? {
-    return try {
-      val file =
-        if (fullPath != null) {
-          File(fullPath).mkdirs()
-          File(fullPath, fileName)
-        } else File(fileName)
+	fun readFile(): String? {
+		return try {
+			val file =
+				if (fullPath != null) {
+					File(fullPath).mkdirs()
+					File(fullPath, fileName)
+				} else File(fileName)
 
-      val value = file.bufferedReader().use { it.readLine() }
-      value
-    } catch (ex: Exception) {
-      ex.toString()
-    }
-  }
+			val value = file.bufferedReader().use { it.readLine() }
+			value
+		} catch (ex: Exception) {
+			ex.toString()
+		}
+	}
 }

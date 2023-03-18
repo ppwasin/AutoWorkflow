@@ -16,46 +16,46 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 object TestActivityDependencies {
-  var dispatcherProvider: DispatcherProvider<CoroutineDispatcher> =
-    DispatcherProvider(
-      dispatcherIO = Dispatchers.IO,
-      dispatcherMain = Dispatchers.Main,
-      dispatcherDefault = Dispatchers.Default,
-    )
+	var dispatcherProvider: DispatcherProvider<CoroutineDispatcher> =
+		DispatcherProvider(
+			dispatcherIO = Dispatchers.IO,
+			dispatcherMain = Dispatchers.Main,
+			dispatcherDefault = Dispatchers.Default,
+		)
 }
 
 class TestFirstActivity : ComponentActivity() {
-  val viewModel by viewModels<TestFirstViewModel>()
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+	val viewModel by viewModels<TestFirstViewModel>()
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-    viewModel.start()
+		viewModel.start()
 
-    TestLogger.log("lifecycleScope.launch outside")
-    lifecycleScope.launch {
-      TestLogger.log("lifecycleScope.launch inside start delay")
-      viewModel.state.filter { it == 1 }.first()
+		TestLogger.log("lifecycleScope.launch outside")
+		lifecycleScope.launch {
+			TestLogger.log("lifecycleScope.launch inside start delay")
+			viewModel.state.filter { it == 1 }.first()
 
-      TestLogger.log("lifecycleScope.launch inside end delay")
-      startActivity(
-        Intent(
-          this@TestFirstActivity,
-          TestSecondActivity::class.java,
-        ),
-      )
-      finish()
-      TestLogger.log("lifecycleScope.launch inside after startactivity")
-    }
-  }
+			TestLogger.log("lifecycleScope.launch inside end delay")
+			startActivity(
+				Intent(
+					this@TestFirstActivity,
+					TestSecondActivity::class.java,
+				),
+			)
+			finish()
+			TestLogger.log("lifecycleScope.launch inside after startactivity")
+		}
+	}
 }
 
 class TestFirstViewModel : ViewModel() {
-  val state = MutableStateFlow(0)
-  fun start() =
-    viewModelScope.launch(
-      TestActivityDependencies.dispatcherProvider.dispatcherIO,
-    ) {
-      delay(5000)
-      state.value = 1
-    }
+	val state = MutableStateFlow(0)
+	fun start() =
+		viewModelScope.launch(
+			TestActivityDependencies.dispatcherProvider.dispatcherIO,
+		) {
+			delay(5000)
+			state.value = 1
+		}
 }

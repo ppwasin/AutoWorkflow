@@ -12,17 +12,17 @@ data class MySize(val width: Dp, val height: Dp)
 
 @Composable
 fun AnimationVectorPlayground(targetSize: MySize) {
-  val animSize: MySize by
-    animateValueAsState<MySize, AnimationVector2D>(
-      targetSize,
-      TwoWayConverter(
-        convertToVector = { size: MySize ->
-          // Extract a float value from each of the `Dp` fields.
-          AnimationVector2D(size.width.value, size.height.value)
-        },
-        convertFromVector = { vector: AnimationVector2D ->
-          MySize(vector.v1.dp, vector.v2.dp)
-        },
-      ),
-    )
+	val animSize: MySize by
+	animateValueAsState<MySize, AnimationVector2D>(
+		targetSize,
+		TwoWayConverter(
+			convertToVector = { size: MySize ->
+				// Extract a float value from each of the `Dp` fields.
+				AnimationVector2D(size.width.value, size.height.value)
+			},
+			convertFromVector = { vector: AnimationVector2D ->
+				MySize(vector.v1.dp, vector.v2.dp)
+			},
+		),
+	)
 }

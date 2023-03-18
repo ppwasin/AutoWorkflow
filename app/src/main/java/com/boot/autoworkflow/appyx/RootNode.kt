@@ -42,127 +42,129 @@ import com.bumble.appyx.navmodel.spotlight.operation.previous
 import kotlinx.coroutines.flow.map
 
 class RootNode(
-  buildContext: BuildContext,
-  private val spotlight: Spotlight<NavTarget> =
-    Spotlight(
-      items = listOf(NavTarget.Child1, NavTarget.Child2),
-      initialActiveIndex = 0,
-      savedStateMap = mapOf(),
-    ),
-  private val backStack: BackStack<NavTarget> =
-    BackStack(
-      initialElement = NavTarget.Child1,
-      savedStateMap = buildContext.savedStateMap,
-    )
+	buildContext: BuildContext,
+	private val spotlight: Spotlight<NavTarget> =
+		Spotlight(
+			items = listOf(NavTarget.Child1, NavTarget.Child2),
+			initialActiveIndex = 0,
+			savedStateMap = mapOf(),
+		),
+	private val backStack: BackStack<NavTarget> =
+		BackStack(
+			initialElement = NavTarget.Child1,
+			savedStateMap = buildContext.savedStateMap,
+		)
 ) :
-  ParentNode<RootNode.NavTarget>(
-    buildContext = buildContext,
-    navModel = backStack,
-  ) {
-  @Composable
-  private fun BottomTabs(currentTab: State<RootNode.NavTarget?>) {
-    NavigationBar {
-      listOf(
-          BottomNavItem(
-            name = "Home",
-            route = NavTarget.Child1,
-            icon = Icons.Rounded.Home,
-          ),
-          BottomNavItem(
-            name = "Create",
-            route = NavTarget.Child2,
-            icon = Icons.Rounded.AddCircle,
-          ),
-          BottomNavItem(
-            name = "Settings",
-            route = NavTarget.Child3,
-            icon = Icons.Rounded.Settings,
-          ),
-        )
-        .forEach { tab ->
-          NavigationBarItem(
-            icon = { tab.icon },
-            label = { Text(tab.toString()) },
-            selected = currentTab.value == tab.route,
-            onClick = { spotlight.activate(tab.route) },
-          )
-        }
-    }
-  }
+	ParentNode<RootNode.NavTarget>(
+		buildContext = buildContext,
+		navModel = backStack,
+	) {
+	@Composable
+	private fun BottomTabs(currentTab: State<RootNode.NavTarget?>) {
+		NavigationBar {
+			listOf(
+				BottomNavItem(
+					name = "Home",
+					route = NavTarget.Child1,
+					icon = Icons.Rounded.Home,
+				),
+				BottomNavItem(
+					name = "Create",
+					route = NavTarget.Child2,
+					icon = Icons.Rounded.AddCircle,
+				),
+				BottomNavItem(
+					name = "Settings",
+					route = NavTarget.Child3,
+					icon = Icons.Rounded.Settings,
+				),
+			)
+				.forEach { tab ->
+					NavigationBarItem(
+						icon = { tab.icon },
+						label = { Text(tab.toString()) },
+						selected = currentTab.value == tab.route,
+						onClick = { spotlight.activate(tab.route) },
+					)
+				}
+		}
+	}
 
-  enum class NavTarget {
-    Child1,
-    Child2,
-    Child3
-  }
+	enum class NavTarget {
+		Child1,
+		Child2,
+		Child3
+	}
 
-  override fun resolve(navTarget: NavTarget, buildContext: BuildContext): Node =
-    when (navTarget) {
-      NavTarget.Child1 ->
-        Child1Node(buildContext) {
-          //        backStack.push(NavTarget.Child2)
-          spotlight.activate(1)
-        }
-      NavTarget.Child2 ->
-        Child2Node(buildContext) {
-          //        backStack.pop()
-          spotlight.activate(0)
-        }
-      NavTarget.Child3 ->
-        Child2Node(buildContext) {
-          //        backStack.pop()
-          spotlight.activate(0)
-        }
-    }
+	override fun resolve(navTarget: NavTarget, buildContext: BuildContext): Node =
+		when (navTarget) {
+			NavTarget.Child1 ->
+				Child1Node(buildContext) {
+					//        backStack.push(NavTarget.Child2)
+					spotlight.activate(1)
+				}
+			NavTarget.Child2 ->
+				Child2Node(buildContext) {
+					//        backStack.pop()
+					spotlight.activate(0)
+				}
+			NavTarget.Child3 ->
+				Child2Node(buildContext) {
+					//        backStack.pop()
+					spotlight.activate(0)
+				}
+		}
 
-  @Composable
-  override fun View(modifier: Modifier) {
-    val hasPrevious = spotlight.hasPrevious().collectAsState(initial = false)
-    val hasNext = spotlight.hasNext().collectAsState(initial = false)
-    val currentTab = spotlight.current().collectAsState(initial = null)
+	@Composable
+	override fun View(modifier: Modifier) {
+		val hasPrevious = spotlight.hasPrevious().collectAsState(initial = false)
+		val hasNext = spotlight.hasNext().collectAsState(initial = false)
+		val currentTab = spotlight.current().collectAsState(initial = null)
 
-    Scaffold(
-      modifier = modifier.fillMaxSize(),
-      floatingActionButtonPosition = FabPosition.Center,
-      floatingActionButton = { PageButtons(hasPrevious.value, hasNext.value) },
-      bottomBar = { BottomTabs(currentTab) },
-    ) { Children(modifier = Modifier.padding(it), navModel = spotlight) }
-  }
+		Scaffold(
+			modifier = modifier.fillMaxSize(),
+			floatingActionButtonPosition = FabPosition.Center,
+			floatingActionButton = { PageButtons(hasPrevious.value, hasNext.value) },
+			bottomBar = { BottomTabs(currentTab) },
+		) { Children(modifier = Modifier.padding(it), navModel = spotlight) }
+	}
 
-  @Composable
-  private fun PageButtons(hasPrevious: Boolean, hasNext: Boolean) {
-    Row(
-      modifier = Modifier.fillMaxWidth().padding(24.dp),
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-      FilledIconButton(
-        onClick = { spotlight.previous() },
-        modifier =
-          if (hasPrevious) Modifier.shadow(4.dp, IconButtonDefaults.filledShape)
-          else Modifier,
-        enabled = hasPrevious,
-      ) { Icon(Icons.Filled.ArrowBack, contentDescription = "Previous") }
-      FilledIconButton(
-        onClick = { spotlight.next() },
-        modifier =
-          if (hasNext) Modifier.shadow(4.dp, IconButtonDefaults.filledShape)
-          else Modifier,
-        enabled = hasNext,
-      ) { Icon(Icons.Filled.ArrowForward, contentDescription = "Next") }
-    }
-  }
+	@Composable
+	private fun PageButtons(hasPrevious: Boolean, hasNext: Boolean) {
+		Row(
+			modifier = Modifier
+				.fillMaxWidth()
+				.padding(24.dp),
+			verticalAlignment = Alignment.CenterVertically,
+			horizontalArrangement = Arrangement.SpaceBetween,
+		) {
+			FilledIconButton(
+				onClick = { spotlight.previous() },
+				modifier =
+				if (hasPrevious) Modifier.shadow(4.dp, IconButtonDefaults.filledShape)
+				else Modifier,
+				enabled = hasPrevious,
+			) { Icon(Icons.Filled.ArrowBack, contentDescription = "Previous") }
+			FilledIconButton(
+				onClick = { spotlight.next() },
+				modifier =
+				if (hasNext) Modifier.shadow(4.dp, IconButtonDefaults.filledShape)
+				else Modifier,
+				enabled = hasNext,
+			) { Icon(Icons.Filled.ArrowForward, contentDescription = "Next") }
+		}
+	}
 }
 
 data class BottomNavItem(
-  val name: String,
-  val route: RootNode.NavTarget,
-  val icon: ImageVector,
+	val name: String,
+	val route: RootNode.NavTarget,
+	val icon: ImageVector,
 )
 
 fun <T : Any> Spotlight<T>.current() =
-  elements.map { value -> value.current?.key?.navTarget }
+	elements.map { value -> value.current?.key?.navTarget }
 
 private fun Spotlight<*>.activate(item: RootNode.NavTarget) {
-  activate(item.ordinal)
+	activate(item.ordinal)
 }

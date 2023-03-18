@@ -14,18 +14,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AnimationContainer(animRunner: @Composable (Boolean) -> Unit) {
-  val (enabled, setIsEnabled) = remember { mutableStateOf(true) }
-  Column {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-      Button(
-        modifier = Modifier.padding(12.dp),
-        onClick = { setIsEnabled(!enabled) },
-      ) { Text("Click To Animate") }
-      Text(
-        modifier = Modifier.padding(start = 4.dp),
-        text = "isEnable: $enabled",
-      )
-    }
-    animRunner(enabled)
-  }
+	val (enabled, setIsEnabled) = remember { mutableStateOf(true) }
+	Column {
+		Row(verticalAlignment = Alignment.CenterVertically) {
+			Button(
+				modifier = Modifier.padding(12.dp),
+				onClick = { setIsEnabled(!enabled) },
+			) { Text("Click To Animate") }
+			Text(
+				modifier = Modifier.padding(start = 4.dp),
+				text = "isEnable: $enabled",
+			)
+		}
+		animRunner(enabled)
+	}
 }

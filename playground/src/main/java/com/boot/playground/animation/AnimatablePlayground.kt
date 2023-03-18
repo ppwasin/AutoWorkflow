@@ -12,10 +12,13 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AnimatablePlayground(ok: Boolean) {
-  // Start out gray and animate to green/red based on `ok`
-  val color = remember { Animatable(Color.Gray) }
-  LaunchedEffect(ok) { color.animateTo(if (ok) Color.Green else Color.Red) }
-  Box(Modifier.fillMaxSize().background(color.value))
+	// Start out gray and animate to green/red based on `ok`
+	val color = remember { Animatable(Color.Gray) }
+	LaunchedEffect(ok) { color.animateTo(if (ok) Color.Green else Color.Red) }
+	Box(
+		Modifier
+			.fillMaxSize()
+			.background(color.value))
 }
 
 // sealed interface AnimatableType {

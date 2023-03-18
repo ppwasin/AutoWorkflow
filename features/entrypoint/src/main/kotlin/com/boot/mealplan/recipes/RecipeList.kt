@@ -23,60 +23,61 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.boot.components.SubTitle
 import com.boot.components.Title
-import kotlin.time.Duration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration
 
 class RecipeViewModel : ViewModel() {
-  var count by mutableStateOf(0)
+	var count by mutableStateOf(0)
 
-  init {
-    viewModelScope.launch {
-      while (true) {
-        ++count
-        delay(Duration.run { 1.seconds })
-      }
-    }
-  }
+	init {
+		viewModelScope.launch {
+			while (true) {
+				++count
+				delay(Duration.run { 1.seconds })
+			}
+		}
+	}
 }
 
 @Composable
 fun RecipeList(
-  viewModel: RecipeViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
-  searchBar: @Composable () -> Unit
+	viewModel: RecipeViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+	searchBar: @Composable () -> Unit
 ) {
-  val dummyItems = remember { (0..5).toList() }
+	val dummyItems = remember { (0..5).toList() }
 
-  LazyColumn(
-    modifier = Modifier.fillMaxSize(),
-    verticalArrangement = Arrangement.spacedBy(8.dp),
-    horizontalAlignment = Alignment.Start,
-  ) {
-    item { Title("Plan Your Meal: ${viewModel.count}") }
-    item {
-      SubTitle(
-        text = "Take care of the planet and your wallet at the same time",
-      )
-    }
-    item { searchBar() }
+	LazyColumn(
+		modifier = Modifier.fillMaxSize(),
+		verticalArrangement = Arrangement.spacedBy(8.dp),
+		horizontalAlignment = Alignment.Start,
+	) {
+		item { Title("Plan Your Meal: ${viewModel.count}") }
+		item {
+			SubTitle(
+				text = "Take care of the planet and your wallet at the same time",
+			)
+		}
+		item { searchBar() }
 
-    items(dummyItems) { item ->
-      Surface(shadowElevation = 6.dp) {
-        Row(
-          Modifier.padding(60.dp)
-            .background(MaterialTheme.colorScheme.onPrimary),
-        ) {
-          Text(item.toString())
-          Text(item.toString())
-          Text(item.toString())
-        }
-      }
-    }
-  }
+		items(dummyItems) { item ->
+			Surface(shadowElevation = 6.dp) {
+				Row(
+					Modifier
+						.padding(60.dp)
+						.background(MaterialTheme.colorScheme.onPrimary),
+				) {
+					Text(item.toString())
+					Text(item.toString())
+					Text(item.toString())
+				}
+			}
+		}
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun RecipesPreview() {
-  RecipeList {}
+	RecipeList {}
 }

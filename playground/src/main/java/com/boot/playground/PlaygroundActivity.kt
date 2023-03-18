@@ -23,9 +23,9 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 class PlaygroundActivity : ComponentActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    installSplashScreen()
-    setContent { AppMaterialTheme { Playground() } }
-  }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		installSplashScreen()
+		setContent { AppMaterialTheme { Playground() } }
+	}
 }

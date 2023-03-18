@@ -16,7 +16,7 @@ interface Persistent {
 
 suspend fun <R> R.getShoppingItems(): Either<DataError, List<ShoppingItemResponse>>
 	where R : Api,
-		  R : Persistent = either<DataError, List<ShoppingItemResponse>> {
+			R : Persistent = either<DataError, List<ShoppingItemResponse>> {
 	val isEmptyCache = isEmpty().bind()
 	println("is database empty: $isEmptyCache")
 	if (isEmpty().bind()) {

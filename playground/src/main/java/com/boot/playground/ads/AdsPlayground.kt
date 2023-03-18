@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun AdsPlayground(viewModel: AdsViewModel) {
-  val adsId = viewModel.adsId
+	val adsId = viewModel.adsId
 
-  Column {
-    Text("AdsId: $adsId")
-    Button(onClick = viewModel::fetchId) { Text("Refresh") }
-  }
+	Column {
+		Text("AdsId: $adsId")
+		Button(onClick = viewModel::fetchId) { Text("Refresh") }
+	}
 }

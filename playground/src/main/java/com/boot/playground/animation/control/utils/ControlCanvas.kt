@@ -12,17 +12,18 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun ControlCanvas(onClick: () -> Unit, centerOffset: Offset) {
-  Canvas(
-    modifier =
-      Modifier.fillMaxWidth()
-        .fillMaxHeight()
-        .background(Color.Black)
-        .clickable(onClick = onClick),
-  ) {
-    drawCircle(
-      color = Color.White,
-      radius = 10f,
-      center = centerOffset,
-    )
-  }
+	Canvas(
+		modifier =
+		Modifier
+			.fillMaxWidth()
+			.fillMaxHeight()
+			.background(Color.Black)
+			.clickable(onClick = onClick),
+	) {
+		drawCircle(
+			color = Color.White,
+			radius = 10f,
+			center = centerOffset,
+		)
+	}
 }

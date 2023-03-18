@@ -22,27 +22,30 @@ import dagger.Provides
 import javax.inject.Inject
 
 object InternalTypePlayground {
-  @Component(modules = [ThisModule::class])
-  internal interface ThisComponent {
-    fun inject(injectable: Injectable)
-  }
+	@Component(modules = [ThisModule::class])
+	internal interface ThisComponent {
+		fun inject(injectable: Injectable)
+	}
 
-  /** --------------------------- */
-  @Module
-  internal object ThisModule {
-    @Provides fun getA(): A = A()
-    @Provides fun getB(): B = B()
-  }
+	/** --------------------------- */
+	@Module
+	internal object ThisModule {
+		@Provides
+		fun getA(): A = A()
+		@Provides
+		fun getB(): B = B()
+	}
 
-  /** --------------------------- */
-  internal class A
-  internal class B
-  internal class C
+	/** --------------------------- */
+	internal class A
+	internal class B
+	internal class C
 
-  /** --------------------------- */
-  internal class Injectable {
-    @Inject lateinit var a: InjectClass
-  }
+	/** --------------------------- */
+	internal class Injectable {
+		@Inject
+		lateinit var a: InjectClass
+	}
 
-  internal class InjectClass @Inject constructor(a: Lazy<A>)
+	internal class InjectClass @Inject constructor(a: Lazy<A>)
 }

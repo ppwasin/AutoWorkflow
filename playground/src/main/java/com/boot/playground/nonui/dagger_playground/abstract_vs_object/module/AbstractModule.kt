@@ -26,15 +26,16 @@ import dagger.Provides
 
 @Module
 abstract class AbstractModule {
-  @Binds abstract fun getAbstractModel(model: AbstractModelImpl): AbstractModel
+	@Binds
+	abstract fun getAbstractModel(model: AbstractModelImpl): AbstractModel
 
-  @Binds
-  abstract fun getSecondAbstractModel(
-    model: SecondAbstractModelImpl
-  ): SecondAbstractModel
+	@Binds
+	abstract fun getSecondAbstractModel(
+		model: SecondAbstractModelImpl
+	): SecondAbstractModel
 
-  companion object {
-    @Provides
-    fun getAbstractObjectModel(): AbstractObjectModel = AbstractObjectModel()
-  }
+	companion object {
+		@Provides
+		fun getAbstractObjectModel(): AbstractObjectModel = AbstractObjectModel()
+	}
 }

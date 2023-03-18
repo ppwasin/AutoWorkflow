@@ -7,6 +7,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class DeeplinkViewModel : ViewModel() {
-  var intentData: Uri? by mutableStateOf(null)
-  var fromOnNewIntent: String by mutableStateOf("")
+	var intentData: Uri? by mutableStateOf(null)
+	var fromOnNewIntent: String by mutableStateOf("")
 }

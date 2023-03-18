@@ -28,73 +28,73 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 @Deprecated(
-  "use SearchItemSlot instead",
-  replaceWith =
-    ReplaceWith(
-      "SearchItemSlot(startIcon = { startIcon }, text = { Text(text) }, endIcon = { endIcon })",
-      imports =
-        [
-          "com.boot.components.search.item.SearchItemSlot",
-          "androidx.compose.material.Text",
-        ],
-    ),
+	"use SearchItemSlot instead",
+	replaceWith =
+	ReplaceWith(
+		"SearchItemSlot(startIcon = { startIcon }, text = { Text(text) }, endIcon = { endIcon })",
+		imports =
+		[
+			"com.boot.components.search.item.SearchItemSlot",
+			"androidx.compose.material.Text",
+		],
+	),
 )
 private fun SearchItemSlotRow(
-  startIcon: ImageVector,
-  text: String,
-  endIcon: ImageVector?
+	startIcon: ImageVector,
+	text: String,
+	endIcon: ImageVector?
 ) {
-  BoxWithConstraints {
-    val boxWithConstraintsScope = this
-    val iconSize = ButtonDefaults.IconSize
-    val iconSpace = ButtonDefaults.IconSpacing
-    val textWidth =
-      boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
-    val verticalAlignment = Alignment.CenterVertically
-    Row(
-      Modifier.fillMaxWidth(),
-      verticalAlignment = verticalAlignment,
-      horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-      Row(verticalAlignment = verticalAlignment) {
-        Icon(
-          startIcon,
-          contentDescription = "SearchStartIcon",
-          modifier = Modifier.size(iconSize),
-        )
+	BoxWithConstraints {
+		val boxWithConstraintsScope = this
+		val iconSize = ButtonDefaults.IconSize
+		val iconSpace = ButtonDefaults.IconSpacing
+		val textWidth =
+			boxWithConstraintsScope.maxWidth - (iconSize * 2 + iconSpace * 2)
+		val verticalAlignment = Alignment.CenterVertically
+		Row(
+			Modifier.fillMaxWidth(),
+			verticalAlignment = verticalAlignment,
+			horizontalArrangement = Arrangement.SpaceBetween,
+		) {
+			Row(verticalAlignment = verticalAlignment) {
+				Icon(
+					startIcon,
+					contentDescription = "SearchStartIcon",
+					modifier = Modifier.size(iconSize),
+				)
 
-        Spacer(Modifier.size(iconSpace))
-        Text(
-          text = "$textWidth: $text",
-          maxLines = 1,
-          overflow = TextOverflow.Ellipsis,
-          modifier = Modifier.width(textWidth),
-          textAlign = TextAlign.Start,
-        )
-      }
-      if (endIcon != null)
-        Row(verticalAlignment = verticalAlignment) {
-          Icon(
-            endIcon,
-            contentDescription = "SearchEndIcon",
-            modifier = Modifier.size(iconSize),
-          )
-        }
-    }
-  }
+				Spacer(Modifier.size(iconSpace))
+				Text(
+					text = "$textWidth: $text",
+					maxLines = 1,
+					overflow = TextOverflow.Ellipsis,
+					modifier = Modifier.width(textWidth),
+					textAlign = TextAlign.Start,
+				)
+			}
+			if (endIcon != null)
+				Row(verticalAlignment = verticalAlignment) {
+					Icon(
+						endIcon,
+						contentDescription = "SearchEndIcon",
+						modifier = Modifier.size(iconSize),
+					)
+				}
+		}
+	}
 }
 
 @ExperimentalComposeUiApi
 @Preview(device = Devices.PIXEL_2_XL, showBackground = true)
 @Composable
 internal fun SearchItemSlotPreview(
-  @PreviewParameter(SearchItemPreviewProvider::class) text: String
+	@PreviewParameter(SearchItemPreviewProvider::class) text: String
 ) {
-  AppMaterialTheme {
-    SearchItemSlotRow(
-      startIcon = Icons.Default.AccessAlarm,
-      text = text,
-      endIcon = Icons.Default.ZoomIn,
-    )
-  }
+	AppMaterialTheme {
+		SearchItemSlotRow(
+			startIcon = Icons.Default.AccessAlarm,
+			text = text,
+			endIcon = Icons.Default.ZoomIn,
+		)
+	}
 }

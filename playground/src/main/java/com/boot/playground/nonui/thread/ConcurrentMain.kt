@@ -20,100 +20,100 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 fun normalRun() {
-  runBlocking {
-    withContext(Dispatchers.Default) {
-      massiveRun { CounterProvider.counter++ }
-    }
-    println("Counter = ${CounterProvider.counter}")
-  }
+	runBlocking {
+		withContext(Dispatchers.Default) {
+			massiveRun { CounterProvider.counter++ }
+		}
+		println("Counter = ${CounterProvider.counter}")
+	}
 }
 
 fun volatile() {
-  runBlocking {
-    withContext(Dispatchers.Default) {
-      massiveRun { CounterProvider.counterVolatile++ }
-    }
-    println("Counter = ${CounterProvider.counterVolatile}")
-  }
+	runBlocking {
+		withContext(Dispatchers.Default) {
+			massiveRun { CounterProvider.counterVolatile++ }
+		}
+		println("Counter = ${CounterProvider.counterVolatile}")
+	}
 }
 
 fun atomic() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { CounterProvider.atomicCounter.incrementAndGet() }
-  }
-  println("Counter = ${CounterProvider.atomicCounter}")
+	withContext(Dispatchers.Default) {
+		massiveRun { CounterProvider.atomicCounter.incrementAndGet() }
+	}
+	println("Counter = ${CounterProvider.atomicCounter}")
 }
 
 fun factoryNormal() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { FactoryNormal.getOrCreate() }
-  }
-  println("NumberOfCounter = ${FactoryNormal.numberOfInstance}")
+	withContext(Dispatchers.Default) {
+		massiveRun { FactoryNormal.getOrCreate() }
+	}
+	println("NumberOfCounter = ${FactoryNormal.numberOfInstance}")
 }
 
 fun factoryAtomic() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { FactoryAtomic.getOrCreate() }
-  }
-  println("NumberOfCounter = ${FactoryAtomic.numberOfInstance}")
-  val categoryLog = listOf<String>()
+	withContext(Dispatchers.Default) {
+		massiveRun { FactoryAtomic.getOrCreate() }
+	}
+	println("NumberOfCounter = ${FactoryAtomic.numberOfInstance}")
+	val categoryLog = listOf<String>()
 }
 
 fun factorySynchronized() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { FactorySynchronized.getOrCreate() }
-  }
-  println("NumberOfCounter = ${FactorySynchronized.numberOfInstance}")
+	withContext(Dispatchers.Default) {
+		massiveRun { FactorySynchronized.getOrCreate() }
+	}
+	println("NumberOfCounter = ${FactorySynchronized.numberOfInstance}")
 }
 
 fun factoryGuardVolatile() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { FactoryGuardVolatile.getOrCreate() }
-  }
-  println("NumberOfCounter = ${FactoryGuardVolatile.numberOfInstance}")
+	withContext(Dispatchers.Default) {
+		massiveRun { FactoryGuardVolatile.getOrCreate() }
+	}
+	println("NumberOfCounter = ${FactoryGuardVolatile.numberOfInstance}")
 }
 
 fun factoryGeneric() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { FactoryGeneric.getOrCreate() }
-  }
-  println("NumberOfCounter = ${FactoryGeneric.numberOfInstance}")
+	withContext(Dispatchers.Default) {
+		massiveRun { FactoryGeneric.getOrCreate() }
+	}
+	println("NumberOfCounter = ${FactoryGeneric.numberOfInstance}")
 }
 
 fun daggerFactory() = runBlocking {
-  withContext(Dispatchers.Default) {
-    massiveRun { ConcurrentComponent.getOrCreate() }
-  }
-  println("NumberOfCounter = $daggerCounterInstanceCount")
+	withContext(Dispatchers.Default) {
+		massiveRun { ConcurrentComponent.getOrCreate() }
+	}
+	println("NumberOfCounter = $daggerCounterInstanceCount")
 }
 
 fun main() {
-  runSection("Normal Run", ::normalRun)
-  runSection("Volatile Run", ::volatile)
-  runSection("Atomic Run", ::atomic)
-  runSection("FactoryNormal", ::factoryNormal)
-  runSection("FactoryAtomic", ::factoryAtomic)
-  runSection("FactorySynchronized", ::factorySynchronized)
-  runSection("FactoryGuardVolatile", ::factoryGuardVolatile)
-  runSection("FactoryGeneric", ::factoryGeneric)
-  runSection("DaggerFactory", ::daggerFactory)
+	runSection("Normal Run", ::normalRun)
+	runSection("Volatile Run", ::volatile)
+	runSection("Atomic Run", ::atomic)
+	runSection("FactoryNormal", ::factoryNormal)
+	runSection("FactoryAtomic", ::factoryAtomic)
+	runSection("FactorySynchronized", ::factorySynchronized)
+	runSection("FactoryGuardVolatile", ::factoryGuardVolatile)
+	runSection("FactoryGeneric", ::factoryGeneric)
+	runSection("DaggerFactory", ::daggerFactory)
 }
 
 fun find(categoryLog: List<String>): String {
-  var maxCategory = ""
-  var maxCategoryCount = 0
+	var maxCategory = ""
+	var maxCategoryCount = 0
 
-  val map: MutableMap<String, Int> = mutableMapOf()
-  for (category in categoryLog) {
-    var categoryCount = map[category] ?: 0
-    categoryCount += 1
-    map[category] = categoryCount
+	val map: MutableMap<String, Int> = mutableMapOf()
+	for (category in categoryLog) {
+		var categoryCount = map[category] ?: 0
+		categoryCount += 1
+		map[category] = categoryCount
 
-    if (categoryCount > maxCategoryCount) {
-      maxCategoryCount = categoryCount
-      maxCategory = category
-    }
-  }
+		if (categoryCount > maxCategoryCount) {
+			maxCategoryCount = categoryCount
+			maxCategory = category
+		}
+	}
 
-  return maxCategory
+	return maxCategory
 }

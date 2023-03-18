@@ -24,30 +24,31 @@ import com.boot.components.ComponentColors
 
 @Composable
 fun SearchButton(onClick: () -> Unit) {
-  Row(
-    modifier =
-      Modifier.fillMaxWidth()
-        .clickable { onClick() }
-        .background(
-          color = ComponentColors.searchInputBackground,
-          shape = RoundedCornerShape(10.dp),
-        )
-        .shadow(1.dp)
-        .padding(8.dp),
-    verticalAlignment = Alignment.CenterVertically,
-  ) {
-    Icon(
-      Icons.Filled.Search,
-      contentDescription = null,
-      modifier = Modifier.size(ButtonDefaults.IconSize),
-    )
-    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-    Text("Search ...")
-  }
+	Row(
+		modifier =
+		Modifier
+			.fillMaxWidth()
+			.clickable { onClick() }
+			.background(
+				color = ComponentColors.searchInputBackground,
+				shape = RoundedCornerShape(10.dp),
+			)
+			.shadow(1.dp)
+			.padding(8.dp),
+		verticalAlignment = Alignment.CenterVertically,
+	) {
+		Icon(
+			Icons.Filled.Search,
+			contentDescription = null,
+			modifier = Modifier.size(ButtonDefaults.IconSize),
+		)
+		Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+		Text("Search ...")
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SearchButtonPreview() {
-  Column { SearchButton {} }
+	Column { SearchButton {} }
 }

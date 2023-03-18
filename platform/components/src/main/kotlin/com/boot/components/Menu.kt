@@ -31,96 +31,97 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun MenuToClose(
-  isShow: Boolean,
-  onClick: () -> Unit,
-  lineColor: Color,
-  initialHeight: Dp,
-  canvasWidth: Dp,
-  strokeTickness: Dp
+	isShow: Boolean,
+	onClick: () -> Unit,
+	lineColor: Color,
+	initialHeight: Dp,
+	canvasWidth: Dp,
+	strokeTickness: Dp
 ) {
-  val density = LocalDensity.current
-  val endY = with(density) { initialHeight.roundToPx().toFloat() }
-  val strokeWidth = with(density) { (strokeTickness).roundToPx().toFloat() }
+	val density = LocalDensity.current
+	val endY = with(density) { initialHeight.roundToPx().toFloat() }
+	val strokeWidth = with(density) { (strokeTickness).roundToPx().toFloat() }
 
-  @Composable
-  fun springSpec(visibilityThreshold: Float? = null): SpringSpec<Float> =
-    spring(0.4f, 500f, visibilityThreshold)
+	@Composable
+	fun springSpec(visibilityThreshold: Float? = null): SpringSpec<Float> =
+		spring(0.4f, 500f, visibilityThreshold)
 
-  val lineOneEndY by
-    animateFloatAsState(
-      targetValue = if (isShow) 0f else endY,
-      animationSpec = springSpec(),
-    )
-  val lineTwoAlpha by
-    animateFloatAsState(
-      targetValue = if (isShow) 1f else 0f,
-      animationSpec = springSpec(0f),
-    )
-  val lineTwoScale by
-    animateFloatAsState(
-      targetValue = if (isShow) 1f else 0f,
-      animationSpec = springSpec(),
-    )
-  val lineThreeEndY by
-    animateFloatAsState(
-      targetValue = if (isShow) endY else 0f,
-      animationSpec = springSpec(),
-    )
+	val lineOneEndY by
+	animateFloatAsState(
+		targetValue = if (isShow) 0f else endY,
+		animationSpec = springSpec(),
+	)
+	val lineTwoAlpha by
+	animateFloatAsState(
+		targetValue = if (isShow) 1f else 0f,
+		animationSpec = springSpec(0f),
+	)
+	val lineTwoScale by
+	animateFloatAsState(
+		targetValue = if (isShow) 1f else 0f,
+		animationSpec = springSpec(),
+	)
+	val lineThreeEndY by
+	animateFloatAsState(
+		targetValue = if (isShow) endY else 0f,
+		animationSpec = springSpec(),
+	)
 
-  Canvas(
-    Modifier.size(height = initialHeight, width = canvasWidth)
-      .pressGesture(onClick = onClick),
-  ) {
-    val (width, height) = size
+	Canvas(
+		Modifier
+			.size(height = initialHeight, width = canvasWidth)
+			.pressGesture(onClick = onClick),
+	) {
+		val (width, height) = size
 
-    fun line(start: Offset, end: Offset, alpha: Float = 1f) {
-      drawLine(
-        color = lineColor,
-        strokeWidth = strokeWidth,
-        cap = StrokeCap.Round,
-        start = start,
-        end = end,
-        alpha = alpha,
-      )
-    }
-    line(
-      start = Offset(x = 0f, y = 0f),
-      end = Offset(x = width, y = lineOneEndY),
-    )
-    withTransform({ scale(lineTwoScale, Offset(x = 0f, y = height / 2)) }) {
-      line(
-        start = Offset(x = 0f, y = height / 2),
-        end = Offset(x = width, y = height / 2),
-        alpha = lineTwoAlpha,
-      )
-    }
-    line(
-      start = Offset(x = 0f, y = height),
-      end = Offset(x = width, y = lineThreeEndY),
-    )
-  }
+		fun line(start: Offset, end: Offset, alpha: Float = 1f) {
+			drawLine(
+				color = lineColor,
+				strokeWidth = strokeWidth,
+				cap = StrokeCap.Round,
+				start = start,
+				end = end,
+				alpha = alpha,
+			)
+		}
+		line(
+			start = Offset(x = 0f, y = 0f),
+			end = Offset(x = width, y = lineOneEndY),
+		)
+		withTransform({ scale(lineTwoScale, Offset(x = 0f, y = height / 2)) }) {
+			line(
+				start = Offset(x = 0f, y = height / 2),
+				end = Offset(x = width, y = height / 2),
+				alpha = lineTwoAlpha,
+			)
+		}
+		line(
+			start = Offset(x = 0f, y = height),
+			end = Offset(x = width, y = lineThreeEndY),
+		)
+	}
 }
 
 @Preview(name = "MenuToClose")
 @Composable
 fun MenuToClosePreview() {
-  var isShow by remember { mutableStateOf(true) }
-  AppMaterialTheme {
-    Column(
-      modifier = Modifier.fillMaxSize(),
-      verticalArrangement =
-        Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-      horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-      Text(text = "isShow: $isShow")
-      MenuToClose(
-        isShow = isShow,
-        onClick = { isShow = !isShow },
-        lineColor = MaterialTheme.colorScheme.onBackground,
-        initialHeight = 16.dp,
-        canvasWidth = 20.dp,
-        strokeTickness = 4.dp,
-      )
-    }
-  }
+	var isShow by remember { mutableStateOf(true) }
+	AppMaterialTheme {
+		Column(
+			modifier = Modifier.fillMaxSize(),
+			verticalArrangement =
+			Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+			horizontalAlignment = Alignment.CenterHorizontally,
+		) {
+			Text(text = "isShow: $isShow")
+			MenuToClose(
+				isShow = isShow,
+				onClick = { isShow = !isShow },
+				lineColor = MaterialTheme.colorScheme.onBackground,
+				initialHeight = 16.dp,
+				canvasWidth = 20.dp,
+				strokeTickness = 4.dp,
+			)
+		}
+	}
 }

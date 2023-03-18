@@ -21,29 +21,30 @@ import dagger.Module
 import dagger.Provides
 
 @Component(
-  dependencies = [ParentComponent::class, ParentComponentBindInstance::class],
-  modules = [ChildModule::class],
+	dependencies = [ParentComponent::class, ParentComponentBindInstance::class],
+	modules = [ChildModule::class],
 )
 interface ChildComponent {
-  fun inject(injectable: FactoryCreateInjectable)
+	fun inject(injectable: FactoryCreateInjectable)
 
-  fun getDepA(): BindInstance
-  fun getNormall(): ProvideNormally
-  fun getParent(): ParentDep
+	fun getDepA(): BindInstance
+	fun getNormall(): ProvideNormally
+	fun getParent(): ParentDep
 
-  @Component.Factory
-  interface Factory {
+	@Component.Factory
+	interface Factory {
 
-    fun create(
-      parentComponent: ParentComponent,
-      // Error: @BindsInstance parentComponentBindInstance: ParentComponentBindInstance,
-      parentComponentBindInstance: ParentComponentBindInstance,
-      @BindsInstance bindsInstance: BindInstance,
-    ): ChildComponent
-  }
+		fun create(
+			parentComponent: ParentComponent,
+			// Error: @BindsInstance parentComponentBindInstance: ParentComponentBindInstance,
+			parentComponentBindInstance: ParentComponentBindInstance,
+			@BindsInstance bindsInstance: BindInstance,
+		): ChildComponent
+	}
 }
 
 @Module
 object ChildModule {
-  @Provides fun provideNormall(): ProvideNormally = ProvideNormally()
+	@Provides
+	fun provideNormall(): ProvideNormally = ProvideNormally()
 }

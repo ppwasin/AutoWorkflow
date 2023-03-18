@@ -20,34 +20,34 @@ import com.boot.playground.nonui.KotlinLazyPlayground.Test
 
 /** ------------- */
 fun main() {
-  KotlinLazyPlayground.run {
-    val test = Test(Factory())
-    println("[main] Before Run A")
-    test.runA()
-  }
+	KotlinLazyPlayground.run {
+		val test = Test(Factory())
+		println("[main] Before Run A")
+		test.runA()
+	}
 }
 
 /** ------------- */
 object KotlinLazyPlayground {
-  class AImpl : A {
-    init {
-      println("[AImpl] init")
-    }
+	class AImpl : A {
+		init {
+			println("[AImpl] init")
+		}
 
-    override fun runA() {
-      println("[AImpl] runA")
-    }
-  }
+		override fun runA() {
+			println("[AImpl] runA")
+		}
+	}
 
-  interface A {
-    fun runA()
-  }
+	interface A {
+		fun runA()
+	}
 
-  class Factory {
-    //    val aLazy by lazy { AImpl() }
-    fun functionLazy() = AImpl()
-  }
+	class Factory {
+		//    val aLazy by lazy { AImpl() }
+		fun functionLazy() = AImpl()
+	}
 
-  /** ------------- */
-  class Test(factory: Factory) : A by factory.functionLazy()
+	/** ------------- */
+	class Test(factory: Factory) : A by factory.functionLazy()
 }

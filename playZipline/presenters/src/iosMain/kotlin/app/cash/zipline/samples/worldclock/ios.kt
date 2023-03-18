@@ -16,7 +16,6 @@
 package app.cash.zipline.samples.worldclock
 
 import app.cash.zipline.loader.ManifestVerifier.Companion.NO_SIGNATURE_CHECKS
-import app.cash.zipline.loader.ZiplineHttpClient
 import app.cash.zipline.loader.ZiplineLoader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,32 +25,32 @@ import kotlinx.coroutines.launch
 import platform.Foundation.NSURLSession
 
 class WorldClockIos(
-  private val scope: CoroutineScope,
+	private val scope: CoroutineScope,
 ) {
-  private val ziplineDispatcher = Dispatchers.Main
-  private val urlSession = NSURLSession.sharedSession
+	private val ziplineDispatcher = Dispatchers.Main
+	private val urlSession = NSURLSession.sharedSession
 
-  val events = flowOf<WorldClockEvent>()
-  val models = MutableStateFlow(WorldClockModel(label = "..."))
+	val events = flowOf<WorldClockEvent>()
+	val models = MutableStateFlow(WorldClockModel(label = "..."))
 
-  fun start(modelsCallback: (WorldClockModel) -> Unit) {
-    startWorldClockZipline(
-      scope = scope,
-      ziplineDispatcher = ziplineDispatcher,
-      ziplineLoader = ZiplineLoader(
-        dispatcher = ziplineDispatcher,
-        manifestVerifier = NO_SIGNATURE_CHECKS,
-        urlSession = urlSession,
-      ),
-      manifestUrl = "http://localhost:8080/manifest.zipline.json",
-      host = RealWorldClockHost(),
-      events = events,
-      models = models,
-    )
-    scope.launch(ziplineDispatcher) {
-      models.collect { model ->
-        modelsCallback(model)
-      }
-    }
-  }
+	fun start(modelsCallback: (WorldClockModel) -> Unit) {
+		startWorldClockZipline(
+			scope = scope,
+			ziplineDispatcher = ziplineDispatcher,
+			ziplineLoader = ZiplineLoader(
+				dispatcher = ziplineDispatcher,
+				manifestVerifier = NO_SIGNATURE_CHECKS,
+				urlSession = urlSession,
+			),
+			manifestUrl = "http://localhost:8080/manifest.zipline.json",
+			host = RealWorldClockHost(),
+			events = events,
+			models = models,
+		)
+		scope.launch(ziplineDispatcher) {
+			models.collect { model ->
+				modelsCallback(model)
+			}
+		}
+	}
 }

@@ -25,15 +25,19 @@ import com.boot.entrypoint.ui.EntrypointScreen
 import com.bumble.appyx.core.integrationpoint.NodeActivity
 
 class MainActivity : NodeActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    installSplashScreen()
-    setContent { MaterialTheme { EntrypointScreen() } }
-  }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		installSplashScreen()
+		setContent {
+			MaterialTheme {
+				EntrypointScreen()
+			}
+		}
+	}
 }
 
 @Preview(showBackground = true, widthDp = 380, heightDp = 1400)
 @Composable
 fun DefaultPreview() {
-  EntrypointScreen()
+	EntrypointScreen()
 }

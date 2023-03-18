@@ -10,28 +10,28 @@ import com.boot.playground.animation.control.utils.generateOnClickAnimation
 
 @Composable
 fun DecayAnimationPlayground() {
-  val decayAnimation = remember {
-    DecayAnimation(
-      animationSpec =
-        FloatExponentialDecaySpec(
-          // How quick the animation will stop
-          frictionMultiplier = 0.7f,
-        ),
-      initialValue = 0f,
-      initialVelocity = 2000f,
-    )
-  }
+	val decayAnimation = remember {
+		DecayAnimation(
+			animationSpec =
+			FloatExponentialDecaySpec(
+				// How quick the animation will stop
+				frictionMultiplier = 0.7f,
+			),
+			initialValue = 0f,
+			initialVelocity = 2000f,
+		)
+	}
 
-  val animationCtrl = generateOnClickAnimation(decayAnimation)
+	val animationCtrl = generateOnClickAnimation(decayAnimation)
 
-  ControlCanvas(
-    onClick = animationCtrl.onClick,
-    centerOffset = animationCtrl.offset,
-  )
+	ControlCanvas(
+		onClick = animationCtrl.onClick,
+		centerOffset = animationCtrl.offset,
+	)
 }
 
 @Preview
 @Composable
 fun DecayAnimationPreview() {
-  DecayAnimationPlayground()
+	DecayAnimationPlayground()
 }

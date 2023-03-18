@@ -23,45 +23,47 @@ import dagger.Provides
 import javax.inject.Inject
 
 fun main() {
-  DaggerWithKotlinGet.run {
-    val test = Injectable()
-    DaggerDaggerWithKotlinGet_ThisComponent.builder().build().inject(test)
+	DaggerWithKotlinGet.run {
+		val test = Injectable()
+		DaggerDaggerWithKotlinGet_ThisComponent.builder().build().inject(test)
 
-    println("[main] Before Call A")
-    test.a
+		println("[main] Before Call A")
+		test.a
 
-    println("[main] Before Run A")
-    test.a.run()
-  }
+		println("[main] Before Run A")
+		test.a.run()
+	}
 }
 
 object DaggerWithKotlinGet {
-  @Component(modules = [ThisModule::class])
-  interface ThisComponent {
-    fun inject(injectable: Injectable)
-  }
+	@Component(modules = [ThisModule::class])
+	interface ThisComponent {
+		fun inject(injectable: Injectable)
+	}
 
-  /** --------------------------- */
-  @Module
-  object ThisModule {
-    @Provides fun getA(): A = A()
-  }
+	/** --------------------------- */
+	@Module
+	object ThisModule {
+		@Provides
+		fun getA(): A = A()
+	}
 
-  /** --------------------------- */
-  class A {
-    init {
-      println("[A] init ${hashCode()}")
-    }
+	/** --------------------------- */
+	class A {
+		init {
+			println("[A] init ${hashCode()}")
+		}
 
-    fun run() {
-      println("[A] runA ${hashCode()}")
-    }
-  }
+		fun run() {
+			println("[A] runA ${hashCode()}")
+		}
+	}
 
-  /** --------------------------- */
-  class Injectable {
-    @Inject lateinit var aLazy: Lazy<A>
-    val a: A
-      get() = aLazy.get()
-  }
+	/** --------------------------- */
+	class Injectable {
+		@Inject
+		lateinit var aLazy: Lazy<A>
+		val a: A
+			get() = aLazy.get()
+	}
 }

@@ -21,5 +21,6 @@ import dagger.Provides
 
 @Module
 class ClassModule {
-  @Provides fun getClassModel(): ClassModel = ClassModel()
+	@Provides
+	fun getClassModel(): ClassModel = ClassModel()
 }

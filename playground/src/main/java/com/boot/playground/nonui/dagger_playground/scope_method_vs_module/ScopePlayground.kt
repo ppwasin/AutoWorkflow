@@ -18,24 +18,32 @@ package com.boot.playground.nonui.dagger_playground.scope_method_vs_module
 import javax.inject.Inject
 import javax.inject.Scope
 
-@Scope @Retention(AnnotationRetention.RUNTIME) annotation class Scope1
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Scope1
 
 class Point1 {
-  @Inject lateinit var scopedDependency: ScopedDependency
-  @Inject lateinit var unScopedDependency: UnScopedDependency
-  @Inject lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
+	@Inject
+	lateinit var scopedDependency: ScopedDependency
+	@Inject
+	lateinit var unScopedDependency: UnScopedDependency
+	@Inject
+	lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
 
-  init {
-    DaggerScopePlaygroundComponent.builder().build().inject(this)
-  }
+	init {
+		DaggerScopePlaygroundComponent.builder().build().inject(this)
+	}
 }
 
 class Point2 {
-  @Inject lateinit var scopedDependency: ScopedDependency
-  @Inject lateinit var unScopedDependency: UnScopedDependency
-  @Inject lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
+	@Inject
+	lateinit var scopedDependency: ScopedDependency
+	@Inject
+	lateinit var unScopedDependency: UnScopedDependency
+	@Inject
+	lateinit var scopedInterfaceDependency: ScopedInterfaceDependency
 
-  init {
-    DaggerScopePlaygroundComponent.builder().build().inject(this)
-  }
+	init {
+		DaggerScopePlaygroundComponent.builder().build().inject(this)
+	}
 }

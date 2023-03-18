@@ -35,36 +35,36 @@ import kotlinx.coroutines.cancel
 
 @NoLiveLiterals
 class WorldClockActivity : ComponentActivity() {
-  private val scope = MainScope()
-  private lateinit var worldClockAndroid: WorldClockAndroid
+	private val scope = MainScope()
+	private lateinit var worldClockAndroid: WorldClockAndroid
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-    setContent {
-      val model = worldClockAndroid.models.collectAsState()
-      Column(
-        modifier = Modifier
-          .padding(horizontal = 12.dp)
-          .fillMaxWidth()
-          .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-      ) {
-        Text(
-          text = model.value.label,
-          fontSize = 38.sp,
-          textAlign = TextAlign.Left,
-        )
-      }
-    }
+		setContent {
+			val model = worldClockAndroid.models.collectAsState()
+			Column(
+				modifier = Modifier
+					.padding(horizontal = 12.dp)
+					.fillMaxWidth()
+					.fillMaxHeight(),
+				verticalArrangement = Arrangement.Center,
+			) {
+				Text(
+					text = model.value.label,
+					fontSize = 38.sp,
+					textAlign = TextAlign.Left,
+				)
+			}
+		}
 
-    worldClockAndroid = WorldClockAndroid(scope)
-    worldClockAndroid.start()
-  }
+		worldClockAndroid = WorldClockAndroid(scope)
+		worldClockAndroid.start()
+	}
 
-  override fun onDestroy() {
-    worldClockAndroid.close()
-    scope.cancel()
-    super.onDestroy()
-  }
+	override fun onDestroy() {
+		worldClockAndroid.close()
+		scope.cancel()
+		super.onDestroy()
+	}
 }

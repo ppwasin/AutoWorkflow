@@ -31,64 +31,75 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CraneDemo() {
-  val avatar = remember {
-    movableContentWithReceiverOf<SceneScope> {
-      Box(
-        Modifier.sharedElement()
-          .background(Color(0xffff6f69), RoundedCornerShape(20))
-          .fillMaxSize(),
-      )
-    }
-  }
+	val avatar = remember {
+		movableContentWithReceiverOf<SceneScope> {
+			Box(
+				Modifier
+					.sharedElement()
+					.background(Color(0xffff6f69), RoundedCornerShape(20))
+					.fillMaxSize(),
+			)
+		}
+	}
 
-  val parent = remember {
-    movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { child ->
-      Surface(
-        modifier = Modifier.sharedElement().background(Color(0xfffdedac)),
-        color = Color(0xfffdedac),
-        shape = RoundedCornerShape(10.dp),
-      ) { child() }
-    }
-  }
+	val parent = remember {
+		movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { child ->
+			Surface(
+				modifier = Modifier
+					.sharedElement()
+					.background(Color(0xfffdedac)),
+				color = Color(0xfffdedac),
+				shape = RoundedCornerShape(10.dp),
+			) { child() }
+		}
+	}
 
-  var fullScreen by remember { mutableStateOf(false) }
-  Box(
-    Modifier.fillMaxSize().padding(10.dp).clickable {
-      fullScreen = !fullScreen
-    },
-    contentAlignment = Alignment.Center,
-  ) {
-    SceneHost(Modifier.fillMaxSize()) {
-      if (fullScreen) {
-        Box(Modifier.offset(100.dp, 150.dp)) {
-          parent {
-            Box(
-              Modifier.padding(10.dp)
-                .wrapContentSize(Alignment.Center)
-                .size(50.dp),
-            ) { avatar() }
-          }
-        }
-      } else {
-        parent {
-          Column(Modifier.fillMaxSize()) {
-            val alpha =
-              produceState(0f) {
-                animate(0f, 1f, animationSpec = tween(200)) { value, _ ->
-                  this.value = value
-                }
-              }
-            Box(
-              Modifier.fillMaxWidth()
-                .height(300.dp)
-                .graphicsLayer { this.alpha = alpha.value }
-                .background(Color.DarkGray)
-                .animateContentSize(),
-            )
-            Box(Modifier.padding(10.dp).size(60.dp)) { avatar() }
-          }
-        }
-      }
-    }
-  }
+	var fullScreen by remember { mutableStateOf(false) }
+	Box(
+		Modifier
+			.fillMaxSize()
+			.padding(10.dp)
+			.clickable {
+				fullScreen = !fullScreen
+			},
+		contentAlignment = Alignment.Center,
+	) {
+		SceneHost(Modifier.fillMaxSize()) {
+			if (fullScreen) {
+				Box(Modifier.offset(100.dp, 150.dp)) {
+					parent {
+						Box(
+							Modifier
+								.padding(10.dp)
+								.wrapContentSize(Alignment.Center)
+								.size(50.dp),
+						) { avatar() }
+					}
+				}
+			} else {
+				parent {
+					Column(Modifier.fillMaxSize()) {
+						val alpha =
+							produceState(0f) {
+								animate(0f, 1f, animationSpec = tween(200)) { value, _ ->
+									this.value = value
+								}
+							}
+						Box(
+							Modifier
+								.fillMaxWidth()
+								.height(300.dp)
+								.graphicsLayer { this.alpha = alpha.value }
+								.background(Color.DarkGray)
+								.animateContentSize(),
+						)
+						Box(
+							Modifier
+								.padding(10.dp)
+								.size(60.dp)) { avatar() }
+					}
+				}
+			}
+		}
+	}
 }

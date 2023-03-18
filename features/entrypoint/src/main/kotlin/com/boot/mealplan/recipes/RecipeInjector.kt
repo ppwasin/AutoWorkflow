@@ -8,17 +8,17 @@ import com.boot.fake.FakeInjector
 import com.boot.fake.model.FakeItem
 
 object RecipeInjector {
-  private val pagerFactory = FakeInjector.createPagerFactory()
+	private val pagerFactory = FakeInjector.createPagerFactory()
 
-  @Composable
-  fun rememberQueryViewModel(): QueryViewModel<String, FakeItem> {
-    val coroutineScope = rememberCoroutineScope()
-    return remember {
-      QueryViewModel(
-        pagerFactory = pagerFactory::buildPager,
-        scope = coroutineScope,
-        initialQuery = "",
-      )
-    }
-  }
+	@Composable
+	fun rememberQueryViewModel(): QueryViewModel<String, FakeItem> {
+		val coroutineScope = rememberCoroutineScope()
+		return remember {
+			QueryViewModel(
+				pagerFactory = pagerFactory::buildPager,
+				scope = coroutineScope,
+				initialQuery = "",
+			)
+		}
+	}
 }

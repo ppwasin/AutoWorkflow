@@ -6,10 +6,11 @@ import org.junit.Rule
 import org.junit.Test
 
 class OnboardingUiTest {
-  @get:Rule val composeTestRule = createComposeRule()
+	@get:Rule
+	val composeTestRule = createComposeRule()
 
-  @Test
-  fun test() {
-    composeTestRule.setContent { EntrypointScreen() }
-  }
+	@Test
+	fun test() {
+		composeTestRule.setContent { EntrypointScreen() }
+	}
 }

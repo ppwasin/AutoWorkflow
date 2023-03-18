@@ -10,16 +10,16 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun SubTitle(text: String) {
-  Text(
-    text = text,
-    overflow = TextOverflow.Ellipsis,
-    style = MaterialTheme.typography.titleSmall,
-    maxLines = 2,
-  )
+	Text(
+		text = text,
+		overflow = TextOverflow.Ellipsis,
+		style = MaterialTheme.typography.titleSmall,
+		maxLines = 2,
+	)
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun SubTitlePreview() {
-  AppMaterialTheme { SubTitle(getRandomString(100)) }
+	AppMaterialTheme { SubTitle(getRandomString(100)) }
 }

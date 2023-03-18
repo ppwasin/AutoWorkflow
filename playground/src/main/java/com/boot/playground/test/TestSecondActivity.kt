@@ -11,19 +11,21 @@ import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.dp
 
 class TestSecondActivity : ComponentActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    ActivityObserver.currentActivityName = "TestSecondActivity"
-    setContent {
-      Text(
-        modifier =
-          Modifier.padding(36.dp).semantics { testTag = TAG_SAMPLE_TEXT },
-        text = "Sample text",
-      )
-    }
-  }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		ActivityObserver.currentActivityName = "TestSecondActivity"
+		setContent {
+			Text(
+				modifier =
+				Modifier
+					.padding(36.dp)
+					.semantics { testTag = TAG_SAMPLE_TEXT },
+				text = "Sample text",
+			)
+		}
+	}
 
-  companion object {
-    const val TAG_SAMPLE_TEXT = "TAG_SAMPLE_TEXT"
-  }
+	companion object {
+		const val TAG_SAMPLE_TEXT = "TAG_SAMPLE_TEXT"
+	}
 }

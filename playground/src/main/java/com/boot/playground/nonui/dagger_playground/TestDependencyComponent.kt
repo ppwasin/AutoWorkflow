@@ -20,10 +20,10 @@ import javax.inject.Provider
 
 @Component(dependencies = [Dependencies::class])
 interface DependenciesComponent {
-  val stringProviderFromDependencies: Provider<String>
-  fun getStringFromDependencies(): String
+	val stringProviderFromDependencies: Provider<String>
+	fun getStringFromDependencies(): String
 }
 
 interface Dependencies {
-  fun provideString(): String
+	fun provideString(): String
 }

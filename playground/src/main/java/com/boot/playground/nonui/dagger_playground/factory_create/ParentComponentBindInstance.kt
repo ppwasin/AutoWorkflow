@@ -21,10 +21,11 @@ import dagger.Provides
 
 @Component(modules = [ParentBindInstanceModule::class])
 interface ParentComponentBindInstance {
-  fun parentDep(): BindInstanceParentDep
+	fun parentDep(): BindInstanceParentDep
 }
 
 @Module
 object ParentBindInstanceModule {
-  @Provides fun getParentDep(): BindInstanceParentDep = BindInstanceParentDep()
+	@Provides
+	fun getParentDep(): BindInstanceParentDep = BindInstanceParentDep()
 }

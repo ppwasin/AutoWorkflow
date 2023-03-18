@@ -10,29 +10,29 @@ import org.junit.runner.Description
 
 class CoroutineIdleRule : TestWatcher() {
 
-  private val dispatcherProvider =
-    DispatcherProvider(
-      dispatcherMain = IdlingResourceDispatcher(Dispatchers.Main),
-      dispatcherIO = IdlingResourceDispatcher(Dispatchers.IO),
-      dispatcherDefault = IdlingResourceDispatcher(Dispatchers.Default),
-    )
+	private val dispatcherProvider =
+		DispatcherProvider(
+			dispatcherMain = IdlingResourceDispatcher(Dispatchers.Main),
+			dispatcherIO = IdlingResourceDispatcher(Dispatchers.IO),
+			dispatcherDefault = IdlingResourceDispatcher(Dispatchers.Default),
+		)
 
-  init {
-    TestActivityDependencies.dispatcherProvider = dispatcherProvider
-  }
+	init {
+		TestActivityDependencies.dispatcherProvider = dispatcherProvider
+	}
 
-  override fun starting(description: Description) {
-    Log.d("TestLog", "register")
-    with(dispatcherProvider) {
-      IdlingRegistry.getInstance()
-        .register(dispatcherIO, dispatcherDefault, dispatcherMain)
-    }
-  }
+	override fun starting(description: Description) {
+		Log.d("TestLog", "register")
+		with(dispatcherProvider) {
+			IdlingRegistry.getInstance()
+				.register(dispatcherIO, dispatcherDefault, dispatcherMain)
+		}
+	}
 
-  override fun finished(description: Description) {
-    with(dispatcherProvider) {
-      IdlingRegistry.getInstance()
-        .unregister(dispatcherIO, dispatcherDefault, dispatcherMain)
-    }
-  }
+	override fun finished(description: Description) {
+		with(dispatcherProvider) {
+			IdlingRegistry.getInstance()
+				.unregister(dispatcherIO, dispatcherDefault, dispatcherMain)
+		}
+	}
 }

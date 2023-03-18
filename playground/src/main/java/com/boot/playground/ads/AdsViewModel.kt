@@ -11,15 +11,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AdsViewModel(private val application: Application) : ViewModel() {
-  var adsId by mutableStateOf("")
+	var adsId by mutableStateOf("")
 
-  init {
-    fetchId()
-  }
+	init {
+		fetchId()
+	}
 
-  fun fetchId() {
-    viewModelScope.launch(Dispatchers.IO) {
-      adsId = AdvertisingIdClient.getAdvertisingIdInfo(application).id ?: ""
-    }
-  }
+	fun fetchId() {
+		viewModelScope.launch(Dispatchers.IO) {
+			adsId = AdvertisingIdClient.getAdvertisingIdInfo(application).id ?: ""
+		}
+	}
 }

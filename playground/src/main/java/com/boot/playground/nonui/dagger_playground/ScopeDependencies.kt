@@ -24,60 +24,64 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [ParentScopeModule::class])
 interface ParentSCopeComponent : ParentScopeDependencies {
-  fun inject(injectable: InjectableParent)
+	fun inject(injectable: InjectableParent)
 }
 
 @Module
 object ParentScopeModule {
 
-  @Provides @Singleton fun provideA(): A = A()
+	@Provides
+	@Singleton
+	fun provideA(): A = A()
 }
 
 interface ParentScopeDependencies {
-  fun test(): A
+	fun test(): A
 }
 
 @Singleton
 @Component(dependencies = [ParentScopeDependencies::class])
 interface ChildScopeComponent {
-  fun inject(injectable: InjectableChild)
+	fun inject(injectable: InjectableChild)
 }
 
 class A {
-  private var count = 0
+	private var count = 0
 
-  init {
-    println("[A] init")
-  }
+	init {
+		println("[A] init")
+	}
 
-  fun run() {
-    println("[A] run $count")
-    count += 1
-  }
+	fun run() {
+		println("[A] run $count")
+		count += 1
+	}
 }
 
 class InjectableParent {
-  @Inject lateinit var a: A
+	@Inject
+	lateinit var a: A
 }
 
 class InjectableChild {
-  @Inject lateinit var a: A
+	@Inject
+	lateinit var a: A
 }
 
 fun main() {
-  val injectableChild = InjectableChild()
-  val injectableParent = InjectableParent()
-  val parent = DaggerParentSCopeComponent.builder().build()
-  val child =
-    DaggerChildScopeComponent.builder().parentScopeDependencies(parent).build()
+	val injectableChild = InjectableChild()
+	val injectableParent = InjectableParent()
+	val parent = DaggerParentSCopeComponent.builder().build()
+	val child =
+		DaggerChildScopeComponent.builder().parentScopeDependencies(parent).build()
 
-  println("Before inject parent")
-  parent.inject(injectableParent)
+	println("Before inject parent")
+	parent.inject(injectableParent)
 
-  println("Before inject child")
-  child.inject(injectableChild)
+	println("Before inject child")
+	child.inject(injectableChild)
 
-  println("Before run")
-  injectableChild.a.run()
-  injectableParent.a.run()
+	println("Before run")
+	injectableChild.a.run()
+	injectableParent.a.run()
 }

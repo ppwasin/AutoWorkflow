@@ -15,11 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SearchHistory() {
-  Row {}
+	Row {}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SearchHistoryPreview() {
-  SearchHistory()
+	SearchHistory()
 }

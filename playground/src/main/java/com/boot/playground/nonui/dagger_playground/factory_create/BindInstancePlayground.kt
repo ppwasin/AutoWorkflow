@@ -18,9 +18,13 @@ package com.boot.playground.nonui.dagger_playground.factory_create
 import javax.inject.Inject
 
 class FactoryCreateInjectable {
-  @Inject lateinit var bindInstance: BindInstance
-  @Inject lateinit var provideNormally: ProvideNormally
+	@Inject
+	lateinit var bindInstance: BindInstance
+	@Inject
+	lateinit var provideNormally: ProvideNormally
 
-  @Inject lateinit var parentDep: ParentDep
-  @Inject lateinit var bindInstanceParentDep: BindInstanceParentDep
+	@Inject
+	lateinit var parentDep: ParentDep
+	@Inject
+	lateinit var bindInstanceParentDep: BindInstanceParentDep
 }

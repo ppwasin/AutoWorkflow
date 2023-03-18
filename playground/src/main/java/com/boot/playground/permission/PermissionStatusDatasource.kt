@@ -27,57 +27,57 @@ private const val DATASTORE_NAME = "permission"
 private var permissionDataStore: DataStore<Preferences>? = null
 
 fun providePopupDatastore(context: Context): DataStore<Preferences> =
-  permissionDataStore
-    ?: PreferenceDataStoreFactory.create(
-        corruptionHandler =
-          ReplaceFileCorruptionHandler(
-            produceNewData = { emptyPreferences() },
-          ),
-        produceFile = { context.preferencesDataStoreFile(DATASTORE_NAME) },
-      )
-      .also { permissionDataStore = it }
+	permissionDataStore
+		?: PreferenceDataStoreFactory.create(
+			corruptionHandler =
+			ReplaceFileCorruptionHandler(
+				produceNewData = { emptyPreferences() },
+			),
+			produceFile = { context.preferencesDataStoreFile(DATASTORE_NAME) },
+		)
+			.also { permissionDataStore = it }
 
 class PermissionStatusDatastore(private val dataStore: DataStore<Preferences>) {
-  private val isPermissionPromptShown =
-    booleanPreferencesKey("isPermissionPromptShown")
+	private val isPermissionPromptShown =
+		booleanPreferencesKey("isPermissionPromptShown")
 
-  fun isUserAllow(): Flow<Boolean?> {
-    return dataStore.data.map { it[isPermissionPromptShown] }
-  }
+	fun isUserAllow(): Flow<Boolean?> {
+		return dataStore.data.map { it[isPermissionPromptShown] }
+	}
 
-  suspend fun setIsUserAllow(isAllow: Boolean) {
-    dataStore.edit { it[isPermissionPromptShown] = isAllow }
-  }
+	suspend fun setIsUserAllow(isAllow: Boolean) {
+		dataStore.edit { it[isPermissionPromptShown] = isAllow }
+	}
 }
 
 @Stable
 interface PermissionStatus {
-  val userActionWithSoftprompt: Boolean?
-  fun update(isAllow: Boolean)
+	val userActionWithSoftprompt: Boolean?
+	fun update(isAllow: Boolean)
 }
 
 @Composable
 fun rememberPermissionDatastore(context: Context): PermissionStatus {
-  val datastore = remember {
-    PermissionStatusDatastore(providePopupDatastore(context))
-  }
-  val coroutine = rememberCoroutineScope()
+	val datastore = remember {
+		PermissionStatusDatastore(providePopupDatastore(context))
+	}
+	val coroutine = rememberCoroutineScope()
 
-  val status = remember {
-    object : PermissionStatus {
-      override var userActionWithSoftprompt: Boolean? by mutableStateOf(null)
-      override fun update(isAllow: Boolean) {
-        coroutine.launch { datastore.setIsUserAllow(isAllow) }
-      }
-    }
-  }
+	val status = remember {
+		object : PermissionStatus {
+			override var userActionWithSoftprompt: Boolean? by mutableStateOf(null)
+			override fun update(isAllow: Boolean) {
+				coroutine.launch { datastore.setIsUserAllow(isAllow) }
+			}
+		}
+	}
 
-  LaunchedEffect(Unit) {
-    datastore
-      .isUserAllow()
-      .onEach { status.userActionWithSoftprompt = it }
-      .launchIn(this)
-  }
+	LaunchedEffect(Unit) {
+		datastore
+			.isUserAllow()
+			.onEach { status.userActionWithSoftprompt = it }
+			.launchIn(this)
+	}
 
-  return status
+	return status
 }

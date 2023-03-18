@@ -39,81 +39,83 @@ import com.boot.playground.uri.UriPlayground
 
 @Composable
 fun Playground() {
-  val navController = rememberNavController()
-  val routes = remember { PlaygroundRoute.values() }
+	val navController = rememberNavController()
+	val routes = remember { PlaygroundRoute.values() }
 
-  Surface {
-    NavHost(navController = navController, startDestination = "initial") {
-      composable("initial") {
-        LazyColumn(
-          horizontalAlignment = Alignment.Start,
-          modifier = Modifier.fillMaxSize().padding(16.dp),
-        ) {
-          routes.forEach { route ->
-            item {
-              Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { navController.navigate(route.name) },
-                shape = RoundedCornerShape(8.dp),
-              ) { Text(route.name) }
-            }
-          }
-        }
-      }
-      routes.map { route -> composable(route.name) { route.Screen() } }
-    }
-  }
+	Surface {
+		NavHost(navController = navController, startDestination = "initial") {
+			composable("initial") {
+				LazyColumn(
+					horizontalAlignment = Alignment.Start,
+					modifier = Modifier
+						.fillMaxSize()
+						.padding(16.dp),
+				) {
+					routes.forEach { route ->
+						item {
+							Button(
+								modifier = Modifier.fillMaxWidth(),
+								onClick = { navController.navigate(route.name) },
+								shape = RoundedCornerShape(8.dp),
+							) { Text(route.name) }
+						}
+					}
+				}
+			}
+			routes.map { route -> composable(route.name) { route.Screen() } }
+		}
+	}
 }
 
 enum class PlaygroundRoute {
-  Async,
-  AnimAsState,
-  Animatable,
-  Transition,
-  TragetAnimation,
-  InfiniteTransition,
-  DecayAnimation,
-  LookAhead,
-  AdsId,
-  Appsflyer,
-  Permission,
-  FlowTest,
-  Navigation,
-  Uri;
+	Async,
+	AnimAsState,
+	Animatable,
+	Transition,
+	TragetAnimation,
+	InfiniteTransition,
+	DecayAnimation,
+	LookAhead,
+	AdsId,
+	Appsflyer,
+	Permission,
+	FlowTest,
+	Navigation,
+	Uri;
 
-  @Composable
-  fun Screen() {
-    val context = LocalContext.current
-    return when (this) {
-      Async -> AsyncPlayground()
-      AnimAsState ->
-        AnimationContainer(animRunner = { AnimAsStatePlayground(it) })
-      Animatable ->
-        AnimationContainer(animRunner = { AnimatablePlayground(it) })
-      Transition ->
-        AnimationContainer(animRunner = { AnimatablePlayground(it) })
-      TragetAnimation -> TargetBasedAnimationPlayground()
-      InfiniteTransition -> InfiniteTransitionPlayground()
-      DecayAnimation -> DecayAnimationPlayground()
-      LookAhead -> LookaheadLayoutWithAlignmentLinesDemo()
-      AdsId ->
-        AdsPlayground(
-          viewModel =
-            viewModel {
-              AdsViewModel(context.applicationContext as Application)
-            },
-        )
-      Appsflyer -> AppsflyerScreen()
-      Permission ->
-        PermissionScreen {
-          Column {
-            Divider(modifier = Modifier.padding(vertical = 16.dp))
-            Text("User allow permission")
-          }
-        }
-      FlowTest -> FlowTestScreen()
-      Navigation -> NavigationPlaygroundScreen()
-      Uri -> UriPlayground()
-    }
-  }
+	@Composable
+	fun Screen() {
+		val context = LocalContext.current
+		return when (this) {
+			Async -> AsyncPlayground()
+			AnimAsState ->
+				AnimationContainer(animRunner = { AnimAsStatePlayground(it) })
+			Animatable ->
+				AnimationContainer(animRunner = { AnimatablePlayground(it) })
+			Transition ->
+				AnimationContainer(animRunner = { AnimatablePlayground(it) })
+			TragetAnimation -> TargetBasedAnimationPlayground()
+			InfiniteTransition -> InfiniteTransitionPlayground()
+			DecayAnimation -> DecayAnimationPlayground()
+			LookAhead -> LookaheadLayoutWithAlignmentLinesDemo()
+			AdsId ->
+				AdsPlayground(
+					viewModel =
+					viewModel {
+						AdsViewModel(context.applicationContext as Application)
+					},
+				)
+			Appsflyer -> AppsflyerScreen()
+			Permission ->
+				PermissionScreen {
+					Column {
+						Divider(modifier = Modifier.padding(vertical = 16.dp))
+						Text("User allow permission")
+					}
+				}
+			FlowTest -> FlowTestScreen()
+			Navigation -> NavigationPlaygroundScreen()
+			Uri -> UriPlayground()
+		}
+	}
 }

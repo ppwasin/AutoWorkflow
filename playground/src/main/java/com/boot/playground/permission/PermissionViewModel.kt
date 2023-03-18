@@ -6,17 +6,17 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 
 class PermissionViewModel : ViewModel() {
-  val launchPremissionRequest = MutableSharedFlow<PermissionAction>()
+	val launchPremissionRequest = MutableSharedFlow<PermissionAction>()
 
-  fun tapRequestPermission() {
-    viewModelScope.launch {
-      launchPremissionRequest.emit(PermissionAction.RequestPermission)
-    }
-  }
+	fun tapRequestPermission() {
+		viewModelScope.launch {
+			launchPremissionRequest.emit(PermissionAction.RequestPermission)
+		}
+	}
 
-  fun tapGotoSettings() {
-    viewModelScope.launch {
-      launchPremissionRequest.emit(PermissionAction.GoToSettings)
-    }
-  }
+	fun tapGotoSettings() {
+		viewModelScope.launch {
+			launchPremissionRequest.emit(PermissionAction.GoToSettings)
+		}
+	}
 }

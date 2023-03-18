@@ -25,61 +25,65 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ExpandableFabBasic(modifier: Modifier = Modifier) {
-  var isExpanded by remember { mutableStateOf(false) }
-  val screenMaxWidth = LocalConfiguration.current.screenWidthDp
+	var isExpanded by remember { mutableStateOf(false) }
+	val screenMaxWidth = LocalConfiguration.current.screenWidthDp
 
-  LookaheadLayout(
-    modifier = modifier.fillMaxSize().navigationBarsPadding().padding(16.dp),
-    content = {
-      Fab(
-        modifier =
-          Modifier.size(
-              size =
-                FabDefaults.size(
-                  isExpanded = isExpanded,
-                  maxWidthDp = screenMaxWidth.dp,
-                ),
-            )
-            .movement(lookaheadScope = this)
-            .transformation(lookaheadScope = this)
-            .noRippleClickable { isExpanded = !isExpanded },
-        isExpanded = isExpanded,
-      )
-    },
-    measurePolicy = DefaultMeasurePolicy,
-  )
+	LookaheadLayout(
+		modifier = modifier
+			.fillMaxSize()
+			.navigationBarsPadding()
+			.padding(16.dp),
+		content = {
+			Fab(
+				modifier =
+				Modifier
+					.size(
+						size =
+						FabDefaults.size(
+							isExpanded = isExpanded,
+							maxWidthDp = screenMaxWidth.dp,
+						),
+					)
+					.movement(lookaheadScope = this)
+					.transformation(lookaheadScope = this)
+					.noRippleClickable { isExpanded = !isExpanded },
+				isExpanded = isExpanded,
+			)
+		},
+		measurePolicy = DefaultMeasurePolicy,
+	)
 }
 
 @Composable
 private fun Fab(modifier: Modifier = Modifier, isExpanded: Boolean = false) {
-  Box(
-    modifier = Modifier.fillMaxSize(),
-    contentAlignment = Alignment.BottomEnd,
-  ) {
-    Surface(
-      modifier = modifier,
-      shadowElevation = FabDefaults.elevation,
-      color = FabDefaults.color,
-      shape = FabDefaults.shape(isExpanded = isExpanded),
-      content = {},
-    )
-  }
+	Box(
+		modifier = Modifier.fillMaxSize(),
+		contentAlignment = Alignment.BottomEnd,
+	) {
+		Surface(
+			modifier = modifier,
+			shadowElevation = FabDefaults.elevation,
+			color = FabDefaults.color,
+			shape = FabDefaults.shape(isExpanded = isExpanded),
+			content = {},
+		)
+	}
 }
 
 private object FabDefaults {
-  val elevation = 10.dp
-  val color = Color.Blue
+	val elevation = 10.dp
+	val color = Color.Blue
 
-  fun shape(isExpanded: Boolean) =
-    when (isExpanded) {
-      true -> RoundedCornerShape(percent = 10)
-      else -> CircleShape
-    }
+	fun shape(isExpanded: Boolean) =
+		when (isExpanded) {
+			true -> RoundedCornerShape(percent = 10)
+			else -> CircleShape
+		}
 
-  @Stable
-  fun size(isExpanded: Boolean, maxWidthDp: Dp) =
-    when (isExpanded) {
-      true -> DpSize(width = maxWidthDp, height = 300.dp)
-      else -> DpSize(width = 75.dp, height = 75.dp)
-    }
+	@Stable
+	fun size(isExpanded: Boolean, maxWidthDp: Dp) =
+		when (isExpanded) {
+			true -> DpSize(width = maxWidthDp, height = 300.dp)
+			else -> DpSize(width = 75.dp, height = 75.dp)
+		}
 }

@@ -14,24 +14,24 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.shareIn
 
 class QueryViewModel<QueryInput : Any, Output : Any>(
-  private val pagerFactory: (QueryInput) -> Pager<Int, Output>,
-  scope: CoroutineScope,
-  initialQuery: QueryInput
+	private val pagerFactory: (QueryInput) -> Pager<Int, Output>,
+	scope: CoroutineScope,
+	initialQuery: QueryInput
 ) {
-  val state: Flow<PagingData<Output>>
-  val query: MutableState<QueryInput> = mutableStateOf(initialQuery)
+	val state: Flow<PagingData<Output>>
+	val query: MutableState<QueryInput> = mutableStateOf(initialQuery)
 
-  init {
-    state =
-      snapshotFlow { query.value }
-        .debounce { if (it == initialQuery) 0 else 400 }
-        .flatMapLatest { queryInput ->
-          pagerFactory(queryInput).flow.cachedIn(scope)
-        }
-        .shareIn(
-          scope = scope,
-          started = SharingStarted.WhileSubscribed(3000),
-          replay = 1,
-        )
-  }
+	init {
+		state =
+			snapshotFlow { query.value }
+				.debounce { if (it == initialQuery) 0 else 400 }
+				.flatMapLatest { queryInput ->
+					pagerFactory(queryInput).flow.cachedIn(scope)
+				}
+				.shareIn(
+					scope = scope,
+					started = SharingStarted.WhileSubscribed(3000),
+					replay = 1,
+				)
+	}
 }

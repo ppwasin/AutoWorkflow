@@ -5,7 +5,7 @@ plugins {
 	alias(libs.plugins.paparazzi)
 }
 
-android{
+android {
 	namespace = "com.boot.components.snapshot"
 }
 

@@ -16,44 +16,47 @@ import com.boot.components.search.SearchScreenSlot
 import com.boot.fake.model.FakeItem
 
 enum class RecipeRoute {
-  Home,
-  SearchResult,
-  Details;
+	Home,
+	SearchResult,
+	Details;
 
-  fun route() = this.name
+	fun route() = this.name
 }
 
 @Composable
 fun RecipeEntrypoint(
-  navController: NavHostController = rememberNavController()
+	navController: NavHostController = rememberNavController()
 ) {
-  NavHost(
-    navController = navController,
-    startDestination = RecipeRoute.Home.route(),
-  ) {
-    composable(RecipeRoute.Home.route()) {
-      RecipeList(
-        searchBar = {
-          SearchButton {
-            navController.navigate(RecipeRoute.SearchResult.route())
-          }
-        },
-      )
-    }
-    composable(RecipeRoute.SearchResult.route()) {
-      SearchScreenSlot(
-        viewModel = RecipeInjector.rememberQueryViewModel(),
-        itemKey = FakeItem::id,
-        itemsContent = { item ->
-          Box(Modifier.height(128.dp).fillMaxWidth()) {
-            when {
-              item != null -> Text(item.toString())
-              else -> Text("Show Place holder")
-            }
-          }
-        },
-      )
-    }
-    composable(RecipeRoute.Details.route()) { RecipeDetails() }
-  }
+	NavHost(
+		navController = navController,
+		startDestination = RecipeRoute.Home.route(),
+	) {
+		composable(RecipeRoute.Home.route()) {
+			RecipeList(
+				searchBar = {
+					SearchButton {
+						navController.navigate(RecipeRoute.SearchResult.route())
+					}
+				},
+			)
+		}
+		composable(RecipeRoute.SearchResult.route()) {
+			SearchScreenSlot(
+				viewModel = RecipeInjector.rememberQueryViewModel(),
+				itemKey = FakeItem::id,
+				itemsContent = { item ->
+					Box(
+						Modifier
+							.height(128.dp)
+							.fillMaxWidth()) {
+						when {
+							item != null -> Text(item.toString())
+							else -> Text("Show Place holder")
+						}
+					}
+				},
+			)
+		}
+		composable(RecipeRoute.Details.route()) { RecipeDetails() }
+	}
 }

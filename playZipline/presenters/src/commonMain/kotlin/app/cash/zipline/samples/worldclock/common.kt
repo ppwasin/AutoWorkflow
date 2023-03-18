@@ -21,18 +21,23 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class WorldClockEvent(
-  val event: String,
+	val event: String,
 )
 
 @Serializable
 data class WorldClockModel(
-  val label: String,
+	val label: String,
 )
 
 interface WorldClockPresenter : ZiplineService {
-  fun models(events: Flow<WorldClockEvent>): Flow<WorldClockModel>
+	fun models(events: Flow<WorldClockEvent>): Flow<WorldClockModel>
+}
+
+interface CommandControl : ZiplineService {
+	suspend fun sendCmd(message: String)
+	fun getCurrentCmd(): Flow<String>
 }
 
 interface WorldClockHost : ZiplineService {
-  fun timeZones(): List<String>
+	fun timeZones(): List<String>
 }

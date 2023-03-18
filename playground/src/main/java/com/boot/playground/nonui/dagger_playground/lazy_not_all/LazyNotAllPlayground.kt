@@ -22,29 +22,33 @@ import dagger.Provides
 import javax.inject.Inject
 
 object LazyNotAllPlayground {
-  @Component(modules = [ThisModule::class])
-  interface ThisComponent {
-    fun inject(injectable: Injectable)
-  }
+	@Component(modules = [ThisModule::class])
+	interface ThisComponent {
+		fun inject(injectable: Injectable)
+	}
 
-  /** --------------------------- */
-  @Module
-  object ThisModule {
-    @Provides fun getA(): A = A()
-    @Provides fun getB(): B = B()
-  }
+	/** --------------------------- */
+	@Module
+	object ThisModule {
+		@Provides
+		fun getA(): A = A()
+		@Provides
+		fun getB(): B = B()
+	}
 
-  /** --------------------------- */
-  class A
-  class B
-  class C
+	/** --------------------------- */
+	class A
+	class B
+	class C
 
-  /** --------------------------- */
-  class Injectable {
-    @Inject lateinit var a: A
+	/** --------------------------- */
+	class Injectable {
+		@Inject
+		lateinit var a: A
 
-    @Inject lateinit var b: Lazy<B>
+		@Inject
+		lateinit var b: Lazy<B>
 
-    // @Inject lateinit var c: Lazy<C> //Error
-  }
+		// @Inject lateinit var c: Lazy<C> //Error
+	}
 }

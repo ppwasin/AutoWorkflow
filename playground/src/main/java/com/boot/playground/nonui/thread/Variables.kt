@@ -24,137 +24,139 @@ import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicReference
 
 object CounterProvider {
-  var counter = 0
+	var counter = 0
 
-  @Volatile // in Kotlin `volatile` is an annotation
-  var counterVolatile = 0
-  val atomicCounter = AtomicInteger()
+	@Volatile // in Kotlin `volatile` is an annotation
+	var counterVolatile = 0
+	val atomicCounter = AtomicInteger()
 }
 
 object FactoryNormal {
-  val numberOfInstance = AtomicInteger()
+	val numberOfInstance = AtomicInteger()
 
-  class Counter {
-    init {
-      numberOfInstance.incrementAndGet()
-    }
-  }
+	class Counter {
+		init {
+			numberOfInstance.incrementAndGet()
+		}
+	}
 
-  private var counter: Counter? = null
-  fun getOrCreate(): Counter = counter ?: Counter().also { counter = it }
+	private var counter: Counter? = null
+	fun getOrCreate(): Counter = counter ?: Counter().also { counter = it }
 }
 
 object FactoryAtomic {
-  val numberOfInstance = AtomicInteger()
+	val numberOfInstance = AtomicInteger()
 
-  class Counter {
-    init {
-      numberOfInstance.incrementAndGet()
-    }
-  }
+	class Counter {
+		init {
+			numberOfInstance.incrementAndGet()
+		}
+	}
 
-  private var counter: AtomicReference<Counter> = AtomicReference()
+	private var counter: AtomicReference<Counter> = AtomicReference()
 
-  @SuppressLint("NewApi")
-  fun getOrCreate(): Counter = counter.updateAndGet { Counter() }
+	@SuppressLint("NewApi")
+	fun getOrCreate(): Counter = counter.updateAndGet { Counter() }
 }
 
 object FactorySynchronized {
-  val numberOfInstance = AtomicInteger()
+	val numberOfInstance = AtomicInteger()
 
-  class Counter {
-    init {
-      numberOfInstance.incrementAndGet()
-    }
-  }
+	class Counter {
+		init {
+			numberOfInstance.incrementAndGet()
+		}
+	}
 
-  private var counter: Counter? = null
-  private val lock = Any()
-  fun getOrCreate(): Counter =
-    counter ?: synchronized(lock) { counter ?: Counter().also { counter = it } }
+	private var counter: Counter? = null
+	private val lock = Any()
+	fun getOrCreate(): Counter =
+		counter ?: synchronized(lock) { counter ?: Counter().also { counter = it } }
 }
 
 object FactoryGuardVolatile {
-  val numberOfInstance = AtomicInteger()
+	val numberOfInstance = AtomicInteger()
 
-  class Counter {
-    init {
-      numberOfInstance.incrementAndGet()
-    }
-  }
+	class Counter {
+		init {
+			numberOfInstance.incrementAndGet()
+		}
+	}
 
-  @Volatile @GuardedBy("lock") private var counter: Counter? = null
-  private val lock = Any()
-  fun getOrCreate(): Counter {
-    if (counter == null) {
-      synchronized(lock) {
-        if (counter == null) {
-          counter = Counter()
-        }
-      }
-    }
-    return counter!!
-  }
+	@Volatile
+	@GuardedBy("lock")
+	private var counter: Counter? = null
+	private val lock = Any()
+	fun getOrCreate(): Counter {
+		if (counter == null) {
+			synchronized(lock) {
+				if (counter == null) {
+					counter = Counter()
+				}
+			}
+		}
+		return counter!!
+	}
 }
 
 object FactoryGeneric :
-  GetOrCreateFactory<Counter> by GetOrCreateFactory(create = { Counter() }) {
-  val numberOfInstance = AtomicInteger()
+	GetOrCreateFactory<Counter> by GetOrCreateFactory(create = { Counter() }) {
+	val numberOfInstance = AtomicInteger()
 
-  class Counter {
-    init {
-      numberOfInstance.incrementAndGet()
-    }
-  }
+	class Counter {
+		init {
+			numberOfInstance.incrementAndGet()
+		}
+	}
 }
 
 abstract class InstanceProviderBase<T> {
-  private var instance: T? = null
-  private val lock = Any()
-  abstract fun create(): T
-  fun getOrCreate(): T =
-    instance
-      ?: synchronized(lock) { instance ?: create().also { instance = it } }
+	private var instance: T? = null
+	private val lock = Any()
+	abstract fun create(): T
+	fun getOrCreate(): T =
+		instance
+			?: synchronized(lock) { instance ?: create().also { instance = it } }
 }
 
 interface GetOrCreateFactory<T> {
-  fun getOrCreate(): T
+	fun getOrCreate(): T
 
-  companion object {
-    operator fun <T> invoke(create: () -> T): GetOrCreateFactory<T> {
-      return object : GetOrCreateFactory<T> {
-        val lock = Any()
-        private var instance: T? = null
-        override fun getOrCreate(): T {
-          return instance
-            ?: synchronized(lock) {
-              instance ?: create().also { instance = it }
-            }
-        }
-      }
-    }
-  }
+	companion object {
+		operator fun <T> invoke(create: () -> T): GetOrCreateFactory<T> {
+			return object : GetOrCreateFactory<T> {
+				val lock = Any()
+				private var instance: T? = null
+				override fun getOrCreate(): T {
+					return instance
+						?: synchronized(lock) {
+							instance ?: create().also { instance = it }
+						}
+				}
+			}
+		}
+	}
 }
 
 // V2=========================================
 
 interface InstanceProvider<T> {
-  fun getOrCreate(create: () -> T): T
+	fun getOrCreate(create: () -> T): T
 
-  companion object {
-    operator fun <T> invoke(): InstanceProvider<T> {
-      return object : InstanceProvider<T> {
-        val lock = Any()
-        private var instance: T? = null
-        override fun getOrCreate(create: () -> T): T {
-          return instance
-            ?: synchronized(lock) {
-              instance ?: create().also { instance = it }
-            }
-        }
-      }
-    }
-  }
+	companion object {
+		operator fun <T> invoke(): InstanceProvider<T> {
+			return object : InstanceProvider<T> {
+				val lock = Any()
+				private var instance: T? = null
+				override fun getOrCreate(create: () -> T): T {
+					return instance
+						?: synchronized(lock) {
+							instance ?: create().also { instance = it }
+						}
+				}
+			}
+		}
+	}
 }
 
 // Dagger=========================================
@@ -163,17 +165,17 @@ val daggerCounterInstanceCount = AtomicInteger()
 
 @Component
 interface ConcurrentComponent {
-  fun someString(): String
+	fun someString(): String
 
-  @Component.Factory
-  interface Factory {
-    fun create(@BindsInstance str: String): ConcurrentComponent
-  }
+	@Component.Factory
+	interface Factory {
+		fun create(@BindsInstance str: String): ConcurrentComponent
+	}
 
-  companion object : InstanceProviderBase<ConcurrentComponent>() {
-    override fun create(): ConcurrentComponent {
-      daggerCounterInstanceCount.incrementAndGet()
-      return DaggerConcurrentComponent.factory().create("Test")
-    }
-  }
+	companion object : InstanceProviderBase<ConcurrentComponent>() {
+		override fun create(): ConcurrentComponent {
+			daggerCounterInstanceCount.incrementAndGet()
+			return DaggerConcurrentComponent.factory().create("Test")
+		}
+	}
 }

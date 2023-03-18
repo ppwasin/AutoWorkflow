@@ -11,27 +11,27 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun SearchTextRow(title: String, subTitle: String? = null) {
-  Column {
-    Text(
-      title,
-      maxLines = 1,
-      overflow = TextOverflow.Ellipsis,
-      textAlign = TextAlign.Start,
-    )
-    if (!subTitle.isNullOrEmpty()) {
-      Text(
-        subTitle,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        textAlign = TextAlign.Start,
-        style = MaterialTheme.typography.subtitle1,
-      )
-    }
-  }
+	Column {
+		Text(
+			title,
+			maxLines = 1,
+			overflow = TextOverflow.Ellipsis,
+			textAlign = TextAlign.Start,
+		)
+		if (!subTitle.isNullOrEmpty()) {
+			Text(
+				subTitle,
+				maxLines = 1,
+				overflow = TextOverflow.Ellipsis,
+				textAlign = TextAlign.Start,
+				style = MaterialTheme.typography.subtitle1,
+			)
+		}
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SearchTextRowPreview() {
-  AppMaterialTheme { SearchTextRow(title = "title", subTitle = "subtitle") }
+	AppMaterialTheme { SearchTextRow(title = "title", subTitle = "subtitle") }
 }

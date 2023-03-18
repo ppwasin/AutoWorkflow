@@ -18,39 +18,39 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.core.modality.BuildContext
 import com.bumble.appyx.core.node.Node
-import kotlin.time.Duration
 import kotlinx.coroutines.delay
+import kotlin.time.Duration
 
 class Child2Node(buildContext: BuildContext, private val onClick: () -> Unit) :
-  Node(buildContext) {
+	Node(buildContext) {
 
-  @Composable
-  override fun View(modifier: Modifier) {
-    var count by remember { mutableStateOf(0) }
-    LaunchedEffect(Unit) {
-      while (true) {
-        ++count
-        delay(Duration.run { 1.seconds })
-      }
-    }
-    Column(
-      verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.CenterHorizontally,
-      modifier = Modifier.fillMaxSize(),
-    ) {
-      Text(
-        text = "Child 2 -> $count",
-        fontSize = 36.sp,
-        modifier = Modifier.padding(bottom = 16.dp),
-      )
-      Text(
-        text = "(now hit the back button)",
-        fontSize = 12.sp,
-      )
+	@Composable
+	override fun View(modifier: Modifier) {
+		var count by remember { mutableStateOf(0) }
+		LaunchedEffect(Unit) {
+			while (true) {
+				++count
+				delay(Duration.run { 1.seconds })
+			}
+		}
+		Column(
+			verticalArrangement = Arrangement.Center,
+			horizontalAlignment = Alignment.CenterHorizontally,
+			modifier = Modifier.fillMaxSize(),
+		) {
+			Text(
+				text = "Child 2 -> $count",
+				fontSize = 36.sp,
+				modifier = Modifier.padding(bottom = 16.dp),
+			)
+			Text(
+				text = "(now hit the back button)",
+				fontSize = 12.sp,
+			)
 
-      Button(
-        onClick = { onClick() }, // <- Don't forget to use the callback
-      ) { Text(text = "Press here to navigate") }
-    }
-  }
+			Button(
+				onClick = { onClick() }, // <- Don't forget to use the callback
+			) { Text(text = "Press here to navigate") }
+		}
+	}
 }

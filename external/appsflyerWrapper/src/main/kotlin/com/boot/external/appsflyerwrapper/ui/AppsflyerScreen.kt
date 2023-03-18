@@ -19,20 +19,21 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun AppsflyerScreen() {
-  val context = LocalContext.current
-  val deeplinkValue = remember { (context as Activity).intent.data }
-  AppMaterialTheme {
-    Surface {
-      Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier =
-          Modifier.fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
-      ) {
-        Text("DeeplinkValue", fontWeight = FontWeight.Bold)
-        Text(deeplinkValue?.toString() ?: "Empty")
-      }
-    }
-  }
+	val context = LocalContext.current
+	val deeplinkValue = remember { (context as Activity).intent.data }
+	AppMaterialTheme {
+		Surface {
+			Column(
+				verticalArrangement = Arrangement.spacedBy(8.dp),
+				modifier =
+				Modifier
+					.fillMaxSize()
+					.padding(16.dp)
+					.verticalScroll(rememberScrollState()),
+			) {
+				Text("DeeplinkValue", fontWeight = FontWeight.Bold)
+				Text(deeplinkValue?.toString() ?: "Empty")
+			}
+		}
+	}
 }

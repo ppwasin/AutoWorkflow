@@ -10,7 +10,10 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun CanvasWrapper(radius: Float, alpha: Float) {
-  Canvas(
-    modifier = Modifier.fillMaxWidth().fillMaxHeight().background(Color.Black),
-  ) { drawCircle(color = Color.White, radius = radius, alpha = alpha) }
+	Canvas(
+		modifier = Modifier
+			.fillMaxWidth()
+			.fillMaxHeight()
+			.background(Color.Black),
+	) { drawCircle(color = Color.White, radius = radius, alpha = alpha) }
 }

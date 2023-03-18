@@ -3,7 +3,6 @@ plugins {
 	id("com.convention.android")
 	id("com.convention.android-compose")
 	id("plugin.junit")
-	id("plugin.spotless")
 }
 
 configure<JunitPluginConfig> {
@@ -26,7 +25,7 @@ configure<JunitPluginConfig> {
 //    }
 //}
 
-android{
+android {
 	namespace = "com.boot.components"
 }
 

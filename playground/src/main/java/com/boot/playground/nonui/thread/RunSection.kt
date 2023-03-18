@@ -16,7 +16,7 @@
 package com.boot.playground.nonui.thread
 
 fun runSection(name: String, block: () -> Unit) {
-  println(name)
-  block()
-  println("==============")
+	println(name)
+	block()
+	println("==============")
 }

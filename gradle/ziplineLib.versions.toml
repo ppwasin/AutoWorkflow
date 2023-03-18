@@ -17,4 +17,4 @@ okHttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okHttp" }
 okHttp-mockWebServer = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okHttp" }
 
 [plugins]
-zipline-plugin = { id = "app.cash.zipline" , version.ref = "zipline"}
+zipline-plugin = { id = "app.cash.zipline", version.ref = "zipline" }

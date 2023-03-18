@@ -49,102 +49,112 @@ import kotlin.math.min
 
 @Composable
 fun ParallaxToolbar(
-  scrollState: LazyListState,
-  AppBarExpendedHeight: Dp = AppTheme.dimensions.AppBarExpendedHeight,
-  AppBarCollapsedHeight: Dp = AppTheme.dimensions.AppBarCollapsedHeight
+	scrollState: LazyListState,
+	AppBarExpendedHeight: Dp = AppTheme.dimensions.AppBarExpendedHeight,
+	AppBarCollapsedHeight: Dp = AppTheme.dimensions.AppBarCollapsedHeight
 ) {
-  val imageHeight = AppBarExpendedHeight - AppBarCollapsedHeight
+	val imageHeight = AppBarExpendedHeight - AppBarCollapsedHeight
 
-  val maxOffset =
-    with(LocalDensity.current) { imageHeight.roundToPx() } -
-      LocalWindowInsets.current.systemBars.layoutInsets.top
-  val offset = min(scrollState.firstVisibleItemScrollOffset, maxOffset)
-  val offsetProgress = max(0f, offset * 3f - 2f * maxOffset) / maxOffset
+	val maxOffset =
+		with(LocalDensity.current) { imageHeight.roundToPx() } -
+			LocalWindowInsets.current.systemBars.layoutInsets.top
+	val offset = min(scrollState.firstVisibleItemScrollOffset, maxOffset)
+	val offsetProgress = max(0f, offset * 3f - 2f * maxOffset) / maxOffset
 
-  Box {
-    TopAppBar(
-      contentPadding = PaddingValues(),
-      backgroundColor = White,
-      modifier =
-        Modifier.height(AppBarExpendedHeight).offset {
-          IntOffset(x = 0, y = -offset)
-        },
-      elevation = if (offset == maxOffset) 4.dp else 0.dp,
-    ) {
-      Column {
-        // Title Background with transparent effect
-        Box(
-          Modifier.height(imageHeight).graphicsLayer {
-            alpha = 1f - offsetProgress
-          },
-        ) {
-          Image(
-            painter = painterResource(id = R.drawable.strawberry_pie_1),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-          )
-          Box(
-            modifier =
-              Modifier.fillMaxSize()
-                .background(
-                  Brush.verticalGradient(
-                    colorStops =
-                      arrayOf(Pair(0.4f, Transparent), Pair(1f, White)),
-                  ),
-                ),
-          )
+	Box {
+		TopAppBar(
+			contentPadding = PaddingValues(),
+			backgroundColor = White,
+			modifier =
+			Modifier
+				.height(AppBarExpendedHeight)
+				.offset {
+					IntOffset(x = 0, y = -offset)
+				},
+			elevation = if (offset == maxOffset) 4.dp else 0.dp,
+		) {
+			Column {
+				// Title Background with transparent effect
+				Box(
+					Modifier
+						.height(imageHeight)
+						.graphicsLayer {
+							alpha = 1f - offsetProgress
+						},
+				) {
+					Image(
+						painter = painterResource(id = R.drawable.strawberry_pie_1),
+						contentDescription = null,
+						contentScale = ContentScale.Crop,
+						modifier = Modifier.fillMaxSize(),
+					)
+					Box(
+						modifier =
+						Modifier
+							.fillMaxSize()
+							.background(
+								Brush.verticalGradient(
+									colorStops =
+									arrayOf(Pair(0.4f, Transparent), Pair(1f, White)),
+								),
+							),
+					)
 
-          Row(
-            modifier =
-              Modifier.fillMaxHeight()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.Bottom,
-          ) {
-            Text(
-              "Category",
-              fontWeight = FontWeight.Medium,
-              modifier =
-                Modifier.clip(Shapes.small)
-                  .background(LightGray)
-                  .padding(vertical = 6.dp, horizontal = 16.dp),
-            )
-          }
-        }
-        Column(
-          Modifier.fillMaxWidth().height(AppBarCollapsedHeight),
-          verticalArrangement = Arrangement.Center,
-        ) {
-          Text(
-            text = "Recipe Title",
-            style = AppTheme.typography.title,
-            modifier = Modifier.padding(AppTheme.dimensions.paddingLarge),
-          )
-        }
-      }
-    }
-    Row(
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceBetween,
-      modifier =
-        Modifier.fillMaxWidth()
-          .statusBarsPadding()
-          .height(AppBarCollapsedHeight)
-          .padding(horizontal = 16.dp),
-    ) {
-      CircularButton(R.drawable.ic_arrow_back)
-      CircularButton(R.drawable.ic_favorite)
-    }
-  }
+					Row(
+						modifier =
+						Modifier
+							.fillMaxHeight()
+							.padding(horizontal = 16.dp, vertical = 8.dp),
+						verticalAlignment = Alignment.Bottom,
+					) {
+						Text(
+							"Category",
+							fontWeight = FontWeight.Medium,
+							modifier =
+							Modifier
+								.clip(Shapes.small)
+								.background(LightGray)
+								.padding(vertical = 6.dp, horizontal = 16.dp),
+						)
+					}
+				}
+				Column(
+					Modifier
+						.fillMaxWidth()
+						.height(AppBarCollapsedHeight),
+					verticalArrangement = Arrangement.Center,
+				) {
+					Text(
+						text = "Recipe Title",
+						style = AppTheme.typography.title,
+						modifier = Modifier.padding(AppTheme.dimensions.paddingLarge),
+					)
+				}
+			}
+		}
+		Row(
+			verticalAlignment = Alignment.CenterVertically,
+			horizontalArrangement = Arrangement.SpaceBetween,
+			modifier =
+			Modifier
+				.fillMaxWidth()
+				.statusBarsPadding()
+				.height(AppBarCollapsedHeight)
+				.padding(horizontal = 16.dp),
+		) {
+			CircularButton(R.drawable.ic_arrow_back)
+			CircularButton(R.drawable.ic_favorite)
+		}
+	}
 }
 
 @Preview(showBackground = true, widthDp = 380, heightDp = 1400)
 @Composable
 fun ParallaxToolbarPreview() {
-  val scrollState = rememberLazyListState()
-  //  Box {
-  ParallaxToolbar(scrollState)
-  //  }
+	val scrollState = rememberLazyListState()
+	//  Box {
+	ParallaxToolbar(scrollState)
+	//  }
 }
 
 val LightGray = Color(0xFFF7F7F7)
@@ -153,21 +163,23 @@ val White = Color(0xFFFFFFFF)
 
 @Composable
 fun CircularButton(
-  @DrawableRes iconResouce: Int,
-  color: Color = Gray,
-  elevation: ButtonElevation? = ButtonDefaults.elevation(),
-  onClick: () -> Unit = {}
+	@DrawableRes iconResouce: Int,
+	color: Color = Gray,
+	elevation: ButtonElevation? = ButtonDefaults.elevation(),
+	onClick: () -> Unit = {}
 ) {
-  Button(
-    onClick = onClick,
-    contentPadding = PaddingValues(),
-    shape = Shapes.small,
-    colors =
-      ButtonDefaults.buttonColors(
-        backgroundColor = White,
-        contentColor = color,
-      ),
-    elevation = elevation,
-    modifier = Modifier.width(38.dp).height(38.dp),
-  ) { Icon(painterResource(id = iconResouce), null) }
+	Button(
+		onClick = onClick,
+		contentPadding = PaddingValues(),
+		shape = Shapes.small,
+		colors =
+		ButtonDefaults.buttonColors(
+			backgroundColor = White,
+			contentColor = color,
+		),
+		elevation = elevation,
+		modifier = Modifier
+			.width(38.dp)
+			.height(38.dp),
+	) { Icon(painterResource(id = iconResouce), null) }
 }

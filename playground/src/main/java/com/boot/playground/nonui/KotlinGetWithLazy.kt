@@ -19,38 +19,38 @@ import com.boot.playground.nonui.KotlinGetWithLazy.Test
 
 /** ------------- */
 fun main() {
-  KotlinGetWithLazy.run {
-    val test = Test()
-    println("[main] Before Call A")
-    test.aImpl
+	KotlinGetWithLazy.run {
+		val test = Test()
+		println("[main] Before Call A")
+		test.aImpl
 
-    println("[main] Before Run A")
-    test.aImpl.runA()
-  }
+		println("[main] Before Run A")
+		test.aImpl.runA()
+	}
 }
 
 /** ------------- */
 object KotlinGetWithLazy {
-  class AImpl {
-    init {
-      println("[AImpl] init ${hashCode()}")
-    }
+	class AImpl {
+		init {
+			println("[AImpl] init ${hashCode()}")
+		}
 
-    fun runA() {
-      println("[AImpl] runA ${hashCode()}")
-    }
-  }
+		fun runA() {
+			println("[AImpl] runA ${hashCode()}")
+		}
+	}
 
-  object Factory {
-    val aLazy by lazy { AImpl() }
-  }
+	object Factory {
+		val aLazy by lazy { AImpl() }
+	}
 
-  /** ------------- */
-  class Test {
-    val aImpl: AImpl
-      get() {
-        println("[Internal get()]")
-        return Factory.aLazy
-      }
-  }
+	/** ------------- */
+	class Test {
+		val aImpl: AImpl
+			get() {
+				println("[Internal get()]")
+				return Factory.aLazy
+			}
+	}
 }

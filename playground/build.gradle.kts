@@ -3,7 +3,6 @@ plugins {
 	id("com.convention.android-compose")
 	id("kotlin-android")
 	id("plugin.junit")
-	id("plugin.spotless")
 	id("plugin.dagger")
 }
 

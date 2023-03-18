@@ -22,16 +22,21 @@ import com.boot.playground.nonui.dagger_playground.abstract_vs_object.dep.Second
 import javax.inject.Inject
 
 class FirstInjectable {
-  @Inject lateinit var dummy: DummyCall
+	@Inject
+	lateinit var dummy: DummyCall
 
-  init {
-    DaggerAppComponent.builder().build().inject(this)
-  }
+	init {
+		DaggerAppComponent.builder().build().inject(this)
+	}
 }
 
 class SecondInjectable {
-  @Inject lateinit var dummyCall: DummyCall
-  @Inject lateinit var secondObjectModel: SecondObjectModel
-  @Inject lateinit var abstractObjectModel: AbstractObjectModel
-  @Inject lateinit var secondAbstractModel: SecondAbstractModel
+	@Inject
+	lateinit var dummyCall: DummyCall
+	@Inject
+	lateinit var secondObjectModel: SecondObjectModel
+	@Inject
+	lateinit var abstractObjectModel: AbstractObjectModel
+	@Inject
+	lateinit var secondAbstractModel: SecondAbstractModel
 }

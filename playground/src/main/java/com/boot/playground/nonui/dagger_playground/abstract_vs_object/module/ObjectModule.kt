@@ -22,13 +22,13 @@ import dagger.Provides
 
 @Module
 object ObjectModule {
-  @Provides
-  fun getObjectModel(): ObjectModel {
-    return ObjectModel()
-  }
+	@Provides
+	fun getObjectModel(): ObjectModel {
+		return ObjectModel()
+	}
 
-  @Provides
-  fun getSecondObjectModel(): SecondObjectModel {
-    return SecondObjectModel()
-  }
+	@Provides
+	fun getSecondObjectModel(): SecondObjectModel {
+		return SecondObjectModel()
+	}
 }
