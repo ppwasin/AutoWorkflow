@@ -1,5 +1,5 @@
 [versions]
-ksp = "1.8.10-1.0.9" # https://github.com/google/ksp
+ksp = "1.8.20-1.0.11" # https://github.com/google/ksp
 rxJava = "2.2.21"
 rxAndroid = "2.1.1"
 coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
@@ -7,27 +7,27 @@ coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
 # Compose
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-compose = "1.4.3"
+compose = "1.4.6"
 composeConstraintLayout = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
-composeActivity = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/activity
-composePaging = "1.0.0-alpha17" # https://developer.android.com/jetpack/androidx/releases/paging
+composeActivity = "1.7.1" # https://developer.android.com/jetpack/androidx/releases/activity
+composePaging = "1.0.0-alpha18" # https://developer.android.com/jetpack/androidx/releases/paging
 accompanist = "0.28.0" # https://github.com/google/accompanist
 composeNav = "2.5.3" # https://developer.android.com/jetpack/androidx/releases/navigation
-composeCoil = "2.2.2" # https://coil-kt.github.io/coil/compose/
+composeCoil = "2.3.0" # https://coil-kt.github.io/coil/compose/
 composeMaterial3 = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/compose-material3
-composeUi = "1.3.3" # https://developer.android.com/jetpack/androidx/releases/compose-ui
-composeMaterial = "1.3.1" # https://developer.android.com/jetpack/androidx/releases/compose-material
-composeFoundation = "1.3.1" # https://developer.android.com/jetpack/androidx/releases/compose-foundation
-composeAnimation = "1.3.3" # https://developer.android.com/jetpack/androidx/releases/compose-ui
-composeViewModel = "2.6.0-alpha04" # https://developer.android.com/jetpack/androidx/releases/lifecycle
+composeUi = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeMaterial = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-material
+composeFoundation = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-foundation
+composeAnimation = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeViewModel = "2.6.1" # https://developer.android.com/jetpack/androidx/releases/lifecycle
 
 # Android Platform
-appCompat = "1.5.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
-material = "1.6.0" # https://github.com/material-components/material-components-android/releases
+appCompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
+material = "1.9.0-rc01" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
-splashscreen = "1.0.0" # https://developer.android.com/jetpack/androidx/releases/core
-lifecycle = "2.5.1"
-activity = "1.6.0"
+splashscreen = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/core
+lifecycle = "2.6.1" # https://developer.android.com/jetpack/androidx/releases/lifecycle
+activity = "1.7.1" # https://developer.android.com/jetpack/androidx/releases/activity
 
 # Test
 junit5 = "5.7.0"
@@ -69,7 +69,7 @@ workManager = "2.7.1"
 
 billing = "5.1.0"
 appsflyer = "6.9.1"
-appyx = "1.0.4"
+appyx = "1.2.0"
 
 [libraries]
 activity = { module = "androidx.activity:activity", version.ref = "activity" }
