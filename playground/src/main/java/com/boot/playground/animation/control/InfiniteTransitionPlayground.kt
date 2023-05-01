@@ -1,4 +1,4 @@
-package com.boot.playground.animation.transition
+package com.boot.playground.animation.control
 
 import androidx.compose.animation.core.RepeatMode.Reverse
 import androidx.compose.animation.core.animateFloat

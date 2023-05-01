@@ -28,12 +28,10 @@ import com.boot.playground.animation.AnimAsStatePlayground
 import com.boot.playground.animation.AnimatablePlayground
 import com.boot.playground.animation.base.AnimationContainer
 import com.boot.playground.animation.control.DecayAnimationPlayground
+import com.boot.playground.animation.control.InfiniteTransitionPlayground
 import com.boot.playground.animation.control.TargetBasedAnimationPlayground
-import com.boot.playground.animation.lookahead.LookaheadLayoutWithAlignmentLinesDemo
-import com.boot.playground.animation.transition.InfiniteTransitionPlayground
 import com.boot.playground.async.AsyncPlayground
 import com.boot.playground.flow.FlowTestScreen
-import com.boot.playground.navigation.NavigationPlaygroundScreen
 import com.boot.playground.permission.PermissionScreen
 import com.boot.playground.uri.UriPlayground
 
@@ -75,12 +73,10 @@ enum class PlaygroundRoute {
 	TragetAnimation,
 	InfiniteTransition,
 	DecayAnimation,
-	LookAhead,
 	AdsId,
 	Appsflyer,
 	Permission,
 	FlowTest,
-	Navigation,
 	Uri;
 
 	@Composable
@@ -97,7 +93,6 @@ enum class PlaygroundRoute {
 			TragetAnimation -> TargetBasedAnimationPlayground()
 			InfiniteTransition -> InfiniteTransitionPlayground()
 			DecayAnimation -> DecayAnimationPlayground()
-			LookAhead -> LookaheadLayoutWithAlignmentLinesDemo()
 			AdsId ->
 				AdsPlayground(
 					viewModel =
@@ -114,7 +109,6 @@ enum class PlaygroundRoute {
 					}
 				}
 			FlowTest -> FlowTestScreen()
-			Navigation -> NavigationPlaygroundScreen()
 			Uri -> UriPlayground()
 		}
 	}

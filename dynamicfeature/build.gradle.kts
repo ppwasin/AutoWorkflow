@@ -24,10 +24,12 @@ dependencies {
 	implementation(libs.appcompat)
 	implementation(projects.platform.designSystem)
 	implementation(projects.platform.components)
+	implementation(platform(libs.compose.bom))
 	implementation(libs.bundles.compose)
 	implementation(libs.bundles.coroutine)
 	implementation(libs.paging.compose)
 
+	androidTestImplementation(platform(libs.compose.bom))
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
 	androidTestImplementation(libs.androidTest.compose)

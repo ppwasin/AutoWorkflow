@@ -1,4 +1,4 @@
-package com.boot.playground.animation.lookahead
+package com.boot.playground.animation.transition
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -25,35 +26,33 @@ fun SharedElementExplorationDemo() {
 	val A = remember {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
 			Box(
-				modifier =
-				Modifier
+				modifier = Modifier
 					.sharedElement()
 					.then(modifier)
-					.background(color = Color(0xfff3722c), RoundedCornerShape(10)),
+					.background(color = Color(0xfff3722c), RoundedCornerShape(10))
 			)
 		}
 	}
 	val B = remember {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
 			Box(
-				modifier =
-				Modifier
+				modifier = Modifier
 					.sharedElement()
 					.then(modifier)
-					.background(color = Color(0xff90be6d), RoundedCornerShape(10)),
+					.background(color = Color(0xff90be6d), RoundedCornerShape(10))
 			)
 		}
 	}
 
 	val C = remember {
-		movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { content
-			->
+		movableContentWithReceiverOf<SceneScope, @Composable () -> Unit> { content ->
 			Box(
 				Modifier
 					.sharedElement()
 					.background(Color(0xfff9c74f))
-					.padding(20.dp),
-			) { content() }
+					.padding(20.dp)) {
+				content()
+			}
 		}
 	}
 
@@ -91,4 +90,10 @@ fun SharedElementExplorationDemo() {
 			}
 		}
 	}
+}
+
+@Preview
+@Composable
+fun SharedElementExplorationDemoPreview() {
+	SharedElementExplorationDemo()
 }

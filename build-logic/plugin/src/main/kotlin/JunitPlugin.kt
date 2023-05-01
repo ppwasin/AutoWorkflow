@@ -27,8 +27,6 @@ class JunitPlugin : Plugin<Project> {
 				add("testImplementation", "org.junit.jupiter:junit-jupiter")
 			}
 
-			println("test")
-
 			afterEvaluate {
 				if (extension.includeJunit4.orNull == true) {
 					dependencies.run {

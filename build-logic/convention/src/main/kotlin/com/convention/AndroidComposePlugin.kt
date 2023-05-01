@@ -23,7 +23,6 @@ class AndroidComposePlugin : Plugin<Project> {
 					add("META-INF/LGPL2.1")
 				}
 			}
-			println("xxxx")
 		}
 	}
 

@@ -8,18 +8,8 @@ coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
 # https://developer.android.com/jetpack/androidx/releases/compose
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 compose = "1.4.6"
-composeConstraintLayout = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/constraintlayout
-composeActivity = "1.7.1" # https://developer.android.com/jetpack/androidx/releases/activity
-composePaging = "1.0.0-alpha18" # https://developer.android.com/jetpack/androidx/releases/paging
+composeBom = "2023.05.00" # https://developer.android.com/jetpack/compose/bom/bom-mapping
 accompanist = "0.28.0" # https://github.com/google/accompanist
-composeNav = "2.5.3" # https://developer.android.com/jetpack/androidx/releases/navigation
-composeCoil = "2.3.0" # https://coil-kt.github.io/coil/compose/
-composeMaterial3 = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/compose-material3
-composeUi = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
-composeMaterial = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-material
-composeFoundation = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-foundation
-composeAnimation = "1.4.2" # https://developer.android.com/jetpack/androidx/releases/compose-ui
-composeViewModel = "2.6.1" # https://developer.android.com/jetpack/androidx/releases/lifecycle
 
 # Android Platform
 appCompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
@@ -80,28 +70,27 @@ coroutine-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ver
 coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
 coroutine-rx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "coroutine" }
 
-# Compose
-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
-## Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "composeFoundation" }
-## Material Design
-compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial" }
-compose-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "composeMaterial" }
-compose-material-icons-ext = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMaterial" }
-compose-material-3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
-## Tooling support (Previews, etc.)
-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUi" }
-## Animation
-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "composeAnimation" }
-compose-animationCore = { module = "androidx.compose.animation:animation-core", version.ref = "composeAnimation" }
-## Components
-compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
+# Compose plugin
+compose-activity = { module = "androidx.activity:activity-compose", version = "1.7.1" }  # https://developer.android.com/jetpack/androidx/releases/activity
+compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.1" } # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 compose-swipeToRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
 compose-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanist" }
-compose-coil = { module = "io.coil-kt:coil-compose", version.ref = "composeCoil" }
-## ViewModel
-compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeViewModel" }
+compose-coil = { module = "io.coil-kt:coil-compose", version = "2.3.0" } # https://coil-kt.github.io/coil/compose/
+compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.6.1" } # https://developer.android.com/jetpack/androidx/releases/lifecycle"
+compose-nav = { module = "androidx.navigation:navigation-compose", version = "2.5.3" } # https://developer.android.com/jetpack/androidx/releases/navigation
+paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-alpha18" } # https://developer.android.com/jetpack/androidx/releases/paging
+
+# Compose
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+compose-ui = { module = "androidx.compose.ui:ui", version = "1.5.0-alpha03" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
+compose-animation = { module = "androidx.compose.animation:animation" } # https://developer.android.com/jetpack/androidx/releases/compose-animation
+compose-animationCore = { module = "androidx.compose.animation:animation-core" }
+compose-uiTooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-foundation = { module = "androidx.compose.foundation:foundation" } # https://developer.android.com/jetpack/androidx/releases/compose-foundation
+compose-material = { module = "androidx.compose.material:material" } # https://developer.android.com/jetpack/androidx/releases/compose-material
+compose-material-icons-core = { module = "androidx.compose.material:material-icons-core" }
+compose-material-icons-ext = { module = "androidx.compose.material:material-icons-extended" }
+compose-material-3 = { module = "androidx.compose.material3:material3" } # https://developer.android.com/jetpack/androidx/releases/compose-material3
 
 # Android Core
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
@@ -111,7 +100,6 @@ lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.r
 
 # Paging
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "composePaging" }
 paging-room = { module = "androidx.room:room-paging", version.ref = "room" }
 
 # Ksp
@@ -151,11 +139,12 @@ rx-java = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxJava" }
 ## AndroidTest
 androidTest-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidTest-junit = { module = "androidx.test.ext:junit", version.ref = "junitInstrumental" }
-androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUi" }
+androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4" } # Version define by composeBom
 ## Test
 test-room = { module = "androidx.room:room-testing", version.ref = "room" }
 test-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
-test-composeRule = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUi" } # Needed for createComposeRule, but not createAndroidComposeRule:
+test-composeRule = { module = "androidx.compose.ui:ui-test-manifest" } # Version define by composeBom
+
 ## Kotest
 test-kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 test-kotest-assert = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -204,7 +193,6 @@ datastoreAndroid = { module = "androidx.datastore:datastore-preferences", versio
 datastoreCore = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" } # No Android
 
 # Navigation
-compose-nav = { module = "androidx.navigation:navigation-compose", version.ref = "composeNav" }
 appyx = { module = "com.bumble.appyx:core", version.ref = "appyx" }
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.9.0" }
@@ -227,6 +215,7 @@ compose = [
     "compose-insets",
     "compose-coil",
     "compose-animation",
+    "compose-animationCore",
     "compose-viewModel",
     "appyx"
 ]

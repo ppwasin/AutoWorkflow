@@ -25,6 +25,7 @@ dependencies {
 	implementation(projects.platform.designSystem)
 	implementation(projects.external.appsflyerWrapper)
 
+	implementation(platform(libs.compose.bom))
 	implementation(libs.bundles.compose)
 	implementation(libs.bundles.coroutine)
 
@@ -45,6 +46,7 @@ dependencies {
 	implementation("com.google.android.gms:play-services-ads:21.1.0")
 //  implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
+	androidTestImplementation(platform(libs.compose.bom))
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
 	androidTestImplementation(libs.androidTest.compose)

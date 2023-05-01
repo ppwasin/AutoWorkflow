@@ -1,10 +1,13 @@
-package com.boot.playground.animation.transition
+package com.boot.playground.animation.control
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.boot.designsystem.theme.material.AppMaterialTheme
 import com.boot.playground.animation.base.AnimationContainer
 import com.boot.playground.animation.base.CanvasWrapper
 
@@ -34,5 +37,12 @@ fun TransitionPlayground(isVisible: Boolean) {
 @Composable
 @Preview
 fun TransitionPlaygroundPreview() {
-	AnimationContainer { TransitionPlayground(it) }
+	AppMaterialTheme {
+		Surface {
+			Text(text = "xxxx")
+			AnimationContainer {
+				TransitionPlayground(it)
+			}
+		}
+	}
 }
