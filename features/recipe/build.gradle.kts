@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-	id("com.convention.android")
-	id("com.convention.android-compose")
+	id("com.convention.android.lib")
+	id("com.convention.android.compose")
 	alias(libs.plugins.ksp)
 	id("plugin.junit")
 }

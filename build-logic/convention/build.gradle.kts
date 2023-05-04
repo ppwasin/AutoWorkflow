@@ -6,20 +6,28 @@ plugins {
 
 gradlePlugin {
 	plugins {
-		create("android-lib-module") {
-			id = "com.convention.android"
-			implementationClass = "com.convention.AndroidPlugin"
+		create("android-app") {
+			id = "com.convention.android.app"
+			implementationClass = "com.convention.AndroidAppPlugin"
 		}
-		create("compose-lib-module") {
-			id = "com.convention.android-compose"
+		create("android-lib") {
+			id = "com.convention.android.lib"
+			implementationClass = "com.convention.AndroidLibPlugin"
+		}
+		create("android-compose") {
+			id = "com.convention.android.compose"
 			implementationClass = "com.convention.AndroidComposePlugin"
 		}
+//		create("dynamic-feature-lib") {
+//			id = "com.convention.android.dfm"
+//			implementationClass = "com.convention.AndroidComposePlugin"
+//		}
 	}
 }
 
 dependencies {
-//	implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
-//	implementation(files(infra.javaClass.superclass.protectionDomain.codeSource.location))
+	implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+	implementation(files(infra.javaClass.superclass.protectionDomain.codeSource.location))
 	implementation(infra.kotlinGradle)
 	implementation(infra.androidGradle)
 }

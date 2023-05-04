@@ -46,7 +46,7 @@ allprojects {
 
 	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
 		kotlinOptions {
-			jvmTarget = JavaVersion.VERSION_11.toString()
+			jvmTarget = infra.versions.java.get()
 		}
 		kotlinOptions.freeCompilerArgs +=
 			listOf(

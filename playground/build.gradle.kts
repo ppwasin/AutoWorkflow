@@ -1,6 +1,9 @@
+import com.convention.addComposeDependencies
+import com.convention.setupAndroidApplication
+
 plugins {
-	id("com.android.application")
-	id("com.convention.android-compose")
+	id("com.convention.android.app")
+	id("com.convention.android.compose")
 	id("kotlin-android")
 	id("plugin.junit")
 	id("plugin.dagger")
@@ -8,7 +11,12 @@ plugins {
 
 android {
 	namespace = "com.boot.playground"
-	setupSdk(versionName = "1.0", applicationId = "com.boot.playground")
+	val projectBuildConfig = com.convention.configs.ProjectBuild.create(infra)
+	setupAndroidApplication(
+		config = projectBuildConfig,
+		versionName = "1.0",
+		applicationId = "com.boot.playground",
+	)
 	buildTypes {
 		getByName("release") {
 			isMinifyEnabled = true
@@ -24,11 +32,9 @@ dependencies {
 	implementation(libs.splashscreen)
 	implementation(projects.platform.designSystem)
 	implementation(projects.external.appsflyerWrapper)
+	addComposeDependencies(project)
 
-	implementation(platform(libs.compose.bom))
-	implementation(libs.bundles.compose)
 	implementation(libs.bundles.coroutine)
-
 	implementation(libs.rx.android)
 	implementation(libs.rx.java)
 
@@ -46,31 +52,6 @@ dependencies {
 	implementation("com.google.android.gms:play-services-ads:21.1.0")
 //  implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
-	androidTestImplementation(platform(libs.compose.bom))
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
-	androidTestImplementation(libs.androidTest.compose)
-	debugImplementation(libs.test.composeRule)
-}
-
-fun com.android.build.gradle.internal.dsl.BaseAppModuleExtension.setupSdk(
-	versionName: String,
-	applicationId: String
-) {
-	compileSdk = 33
-	defaultConfig {
-		this.applicationId = applicationId
-		this.minSdk = 23
-		this.targetSdk = 33
-		this.versionCode = 1
-		this.versionName = versionName
-		this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-	}
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
-	}
-	kotlinOptions {
-		jvmTarget = JavaVersion.VERSION_11.toString()
-	}
 }

@@ -1,19 +1,18 @@
 package com.convention
 
 import com.android.build.gradle.BaseExtension
-import com.convention.configs.VersionCatalogs
+import com.convention.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.configure
 
 class AndroidComposePlugin : Plugin<Project> {
 	override fun apply(project: Project) {
-		val versionCatalogs = VersionCatalogs(project)
 		project.configure<BaseExtension> {
 			buildFeatures.compose = true
 			composeOptions {
-				kotlinCompilerExtensionVersion = versionCatalogs.versions.compose
-//				kotlinCompilerExtensionVersion = project.libs.versions.compose.get()
+				kotlinCompilerExtensionVersion = project.libs.versions.compose.get()
 			}
 			packagingOptions {
 				// Multiple dependency bring these files in. Exclude them to enable
@@ -25,5 +24,12 @@ class AndroidComposePlugin : Plugin<Project> {
 			}
 		}
 	}
+}
 
+fun DependencyHandler.addComposeDependencies(project: Project) {
+	add("implementation", platform(project.libs.compose.bom))
+	add("implementation", project.libs.bundles.compose)
+	add("debugImplementation", project.libs.test.composeRule)
+	add("androidTestImplementation", platform(project.libs.compose.bom))
+	add("androidTestImplementation", project.libs.androidTest.compose)
 }

@@ -51,7 +51,7 @@ sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite
 datastore = "1.0.0" #https://developer.android.com/topic/libraries/architecture/datastore
 
 # Architecture
-arrowkt = "1.1.5" # https://github.com/arrow-kt/arrow
+arrowkt = "1.2.0-RC" # https://github.com/arrow-kt/arrow
 
 # Sync
 startup = "1.1.1"

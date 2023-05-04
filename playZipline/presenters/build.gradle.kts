@@ -51,11 +51,12 @@ kotlin {
 }
 
 android {
+	val versions = infra.versions
 	compileSdk = infra.versions.compileSdk.get().toInt()
 	namespace = "com.boot.play.zipline.presenters"
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.toVersion(versions.java.get())
+		targetCompatibility = JavaVersion.toVersion(versions.java.get())
 	}
 }
 

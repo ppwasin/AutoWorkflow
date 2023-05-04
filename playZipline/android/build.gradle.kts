@@ -4,22 +4,23 @@ plugins {
 }
 
 android {
+	val versions = infra.versions
 	namespace = "app.cash.zipline.samples.worldclock"
-	compileSdk = infra.versions.compileSdk.get().toInt()
+	compileSdk = versions.compileSdk.get().toInt()
 
 	defaultConfig {
 		applicationId = "com.example.zipline.worldclock"
-		minSdk = infra.versions.minSdk.get().toInt()
-		targetSdk = infra.versions.targetSdk.get().toInt()
+		minSdk = versions.minSdk.get().toInt()
+		targetSdk = versions.targetSdk.get().toInt()
 	}
 
 	compileOptions {
 //		isCoreLibraryDesugaringEnabled = true
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.toVersion(versions.java.get())
+		targetCompatibility = JavaVersion.toVersion(versions.java.get())
 	}
 	kotlinOptions {
-		jvmTarget = JavaVersion.VERSION_11.toString()
+		jvmTarget = versions.java.get()
 	}
 
 	buildFeatures {
@@ -60,7 +61,8 @@ dependencies {
 	implementation(ziplineLib.zipline.profiler)
 	implementation(projects.playZipline.presenters)
 	implementation(platform(libs.compose.bom))
-implementation(libs.bundles.compose)
+	implementation(libs.bundles.compose)
+
 	implementation(libs.appcompat)
 	implementation(libs.material)
 	implementation(libs.bundles.coroutine)

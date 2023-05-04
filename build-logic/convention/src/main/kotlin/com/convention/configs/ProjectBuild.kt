@@ -1,10 +1,23 @@
 package com.convention.configs
 
+import org.gradle.accessors.dm.LibrariesForInfra
 import org.gradle.api.JavaVersion
 
-internal object ProjectBuild {
-	val java = JavaVersion.VERSION_11
-	const val compileSdk = 33
-	const val minSdk = 23
-	const val targetSdk = 33
+class ProjectBuild(
+	val java: JavaVersion,
+	val compileSdk: Int,
+	val minSdk: Int,
+	val targetSdk: Int
+) {
+	companion object {
+		fun create(infra: LibrariesForInfra): ProjectBuild {
+			val versions = infra.versions
+			return ProjectBuild(
+				java = JavaVersion.toVersion(versions.java.get()),
+				compileSdk = versions.compileSdk.get().toInt(),
+				minSdk = versions.minSdk.get().toInt(),
+				targetSdk = versions.targetSdk.get().toInt(),
+			)
+		}
+	}
 }

@@ -4,6 +4,9 @@ package com.boot.payment
 
 import android.app.Activity
 import android.app.Application
+import arrow.core.Either
+import arrow.core.continuations.either
+import arrow.core.right
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClient.BillingResponseCode.BILLING_UNAVAILABLE
 import com.android.billingclient.api.BillingClient.BillingResponseCode.DEVELOPER_ERROR
@@ -44,6 +47,8 @@ class BillingSdk(private val application: Application) {
 			.setListener(purchasesUpdatedListener)
 			.enablePendingPurchases()
 			.build()
+
+	val test: Either<String, String> = "1".right()
 
 	// Connect to GooglePlay
 	fun connect() {
