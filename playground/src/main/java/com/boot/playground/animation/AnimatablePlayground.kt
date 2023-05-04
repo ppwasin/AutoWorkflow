@@ -1,44 +1,42 @@
 package com.boot.playground.animation
 
 import androidx.compose.animation.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.boot.designsystem.theme.material.AppMaterialTheme
+import com.boot.playground.animation.base.AnimationContainer
 
 @Composable
-fun AnimatablePlayground(ok: Boolean) {
-	// Start out gray and animate to green/red based on `ok`
-	val color = remember { Animatable(Color.Gray) }
-	LaunchedEffect(ok) { color.animateTo(if (ok) Color.Green else Color.Red) }
-	Box(
-		Modifier
-			.fillMaxSize()
-			.background(color.value))
+@Preview
+fun AnimatablePlayground() {
+	AppMaterialTheme {
+		AnimationContainer {
+			// Start out gray and animate to green/red based on `ok`
+			val color = remember { Animatable(Color.Gray) }
+			LaunchedEffect(it) {
+				color.animateTo(
+					targetValue = if (it) Color.Green else Color.Red,
+					animationSpec = tween(delayMillis = 300, durationMillis = 2000),
+				)
+			}
+			Box(
+				modifier = Modifier
+					.fillMaxSize()
+					.background(color.value),
+			)
+		}
+	}
 }
-
-// sealed interface AnimatableType {
-//    sealed interface Boolean: AnimatableType {
-//        object AnimateTo: Boolean
-//        object SnapTo: Boolean
-//    }
-//    object animateDecay: AnimatableType
-// }
-
-// @Composable
-// fun AnimatablePlayground(ok: Boolean, type: AnimatableType.Boolean) {
-//    // Start out gray and animate to green/red based on `ok`
-//    val color = remember { Animatable(Color.Gray) }
-//    LaunchedEffect(ok) {
-//        val changeToColor = if (ok) Color.Green else Color.Red
-//        when(type){
-//            AnimateTo -> color.animateTo(changeToColor)
-//            SnapTo -> color.snapTo(changeToColor)
-//        }
-//    }
-//    Box(Modifier.fillMaxSize().background(color.value))
-// }

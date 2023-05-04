@@ -30,6 +30,7 @@ import com.boot.playground.animation.base.AnimationContainer
 import com.boot.playground.animation.control.DecayAnimationPlayground
 import com.boot.playground.animation.control.InfiniteTransitionPlayground
 import com.boot.playground.animation.control.TargetBasedAnimationPlayground
+import com.boot.playground.animation.transition.ContainerTransform
 import com.boot.playground.async.AsyncPlayground
 import com.boot.playground.flow.FlowTestScreen
 import com.boot.playground.permission.PermissionScreen
@@ -69,7 +70,6 @@ enum class PlaygroundRoute {
 	Async,
 	AnimAsState,
 	Animatable,
-	Transition,
 	TragetAnimation,
 	InfiniteTransition,
 	DecayAnimation,
@@ -77,19 +77,16 @@ enum class PlaygroundRoute {
 	Appsflyer,
 	Permission,
 	FlowTest,
-	Uri;
+	Uri,
+	ContainerTransform;
 
 	@Composable
 	fun Screen() {
 		val context = LocalContext.current
 		return when (this) {
 			Async -> AsyncPlayground()
-			AnimAsState ->
-				AnimationContainer(animRunner = { AnimAsStatePlayground(it) })
-			Animatable ->
-				AnimationContainer(animRunner = { AnimatablePlayground(it) })
-			Transition ->
-				AnimationContainer(animRunner = { AnimatablePlayground(it) })
+			AnimAsState -> AnimAsStatePlayground()
+			Animatable -> AnimatablePlayground()
 			TragetAnimation -> TargetBasedAnimationPlayground()
 			InfiniteTransition -> InfiniteTransitionPlayground()
 			DecayAnimation -> DecayAnimationPlayground()
@@ -110,6 +107,7 @@ enum class PlaygroundRoute {
 				}
 			FlowTest -> FlowTestScreen()
 			Uri -> UriPlayground()
+			ContainerTransform -> ContainerTransform()
 		}
 	}
 }

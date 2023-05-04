@@ -40,7 +40,7 @@ fun SceneHost(modifier: Modifier = Modifier, content: @Composable SceneScope.() 
 		}
 	}
 }
-private const val debugSharedElement = true
+private const val debugSharedElement = false
 class SceneScope internal constructor(
 	lookaheadScope: LookaheadScope
 ) : LookaheadScope by lookaheadScope {

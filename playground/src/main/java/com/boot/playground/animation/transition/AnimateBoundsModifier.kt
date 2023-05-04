@@ -135,10 +135,13 @@ internal class DeferredAnimation<T, V : AnimationVector>(
 		target = targetValue
 		if (target != null && target != animatable?.targetValue) {
 			val animatable = getOrCreateAnimatable(targetValue)
-			launch {
-				animatable.animateTo(targetValue, animationSpec)
+			try {
+				launch {
+					animatable.animateTo(targetValue, animationSpec)
+				}
+			}catch (ex: Exception) {
+				println(ex)
 			}
-
 		}
 		return animatable?.value ?: targetValue
 	}
