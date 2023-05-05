@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.boot.components.gesture.bounceClick
 import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
@@ -48,8 +49,8 @@ fun ContainerTransform() {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
 			Box(
 				modifier = Modifier
-					.clickable { isCollpase = !isCollpase }
 					.sharedElement()
+					.bounceClick { isCollpase = !isCollpase }
 					.then(modifier)
 					.background(color = Color(0xff90be6d)),
 			)
