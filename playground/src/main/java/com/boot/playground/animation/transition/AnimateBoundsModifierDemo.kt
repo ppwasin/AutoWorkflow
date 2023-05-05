@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.LookaheadScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.boot.designsystem.transition.animateBounds
 import kotlin.random.Random
 
 @OptIn(ExperimentalComposeUiApi::class)

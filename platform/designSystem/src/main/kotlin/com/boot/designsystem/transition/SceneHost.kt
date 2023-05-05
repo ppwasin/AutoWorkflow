@@ -1,12 +1,11 @@
 @file:OptIn(ExperimentalComposeUiApi::class, InternalAnimationApi::class)
 
-package com.boot.playground.animation.transition
+package com.boot.designsystem.transition
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector2D
 import androidx.compose.animation.core.InternalAnimationApi
 import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.Transition
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Box

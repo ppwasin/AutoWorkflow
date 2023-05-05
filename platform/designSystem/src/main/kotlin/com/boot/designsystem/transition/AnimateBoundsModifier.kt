@@ -1,4 +1,4 @@
-package com.boot.playground.animation.transition
+package com.boot.designsystem.transition
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector

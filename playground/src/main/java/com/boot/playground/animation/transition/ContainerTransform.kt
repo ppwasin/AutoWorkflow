@@ -8,7 +8,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.boot.components.gesture.bounceClick
 import com.boot.designsystem.theme.material.AppMaterialTheme
+import com.boot.designsystem.transition.SceneHost
+import com.boot.designsystem.transition.SceneScope
 
 @Composable
 fun ContainerTransform() {
