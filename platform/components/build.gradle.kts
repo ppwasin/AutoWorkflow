@@ -1,6 +1,5 @@
 import com.convention.addComposeDependencies
 
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 	id("com.convention.android.lib")
 	id("com.convention.android.compose")

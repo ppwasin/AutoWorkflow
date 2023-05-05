@@ -6,7 +6,7 @@ import java.util.*
 //apply<Junit5Plugin>()
 //apply<SpotlessPlugin>()
 
-@Suppress("DSL_SCOPE_VIOLATION")
+
 plugins {
 	id("com.convention.android.app")
 	id("com.convention.android.compose")

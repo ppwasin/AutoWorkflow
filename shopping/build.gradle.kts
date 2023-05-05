@@ -1,6 +1,6 @@
 import com.convention.extensions.setupSdk
 
-@Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
+@Suppress("UnstableApiUsage")
 plugins {
 	id("com.android.library")
 	//    id(infra.plugins.kotlin.multiplatform.get().pluginId)
