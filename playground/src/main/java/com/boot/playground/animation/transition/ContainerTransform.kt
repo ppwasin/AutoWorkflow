@@ -33,6 +33,7 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 
 @Composable
 fun ContainerTransform() {
+	var isCollpase by remember { mutableStateOf(true) }
 	val A = remember {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
 			Box(
@@ -47,6 +48,7 @@ fun ContainerTransform() {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
 			Box(
 				modifier = Modifier
+					.clickable { isCollpase = !isCollpase }
 					.sharedElement()
 					.then(modifier)
 					.background(color = Color(0xff90be6d)),
@@ -54,11 +56,9 @@ fun ContainerTransform() {
 		}
 	}
 
-	var isCollpase by remember { mutableStateOf(true) }
 	SceneHost(
 		Modifier
 			.fillMaxSize()
-			.clickable { isCollpase = !isCollpase },
 	) {
 		if (isCollpase) {
 			Column(
