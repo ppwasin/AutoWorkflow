@@ -36,8 +36,6 @@ dependencies {
 	addComposeDependencies(project)
 
 	implementation(libs.bundles.coroutine)
-	implementation(libs.rx.android)
-	implementation(libs.rx.java)
 
 	testImplementation(libs.test.coroutine)
 	androidTestImplementation(libs.androidTest.espresso)

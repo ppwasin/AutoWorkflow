@@ -1,6 +1,7 @@
 package com.convention
 
 import com.android.build.gradle.BaseExtension
+import com.convention.extensions.infra
 import com.convention.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -12,7 +13,7 @@ class AndroidComposePlugin : Plugin<Project> {
 		project.configure<BaseExtension> {
 			buildFeatures.compose = true
 			composeOptions {
-				kotlinCompilerExtensionVersion = project.libs.versions.compose.get()
+				kotlinCompilerExtensionVersion = project.infra.versions.composeCompiler.get()
 			}
 			packagingOptions {
 				// Multiple dependency bring these files in. Exclude them to enable

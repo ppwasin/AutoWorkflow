@@ -21,6 +21,7 @@ buildscript {
 
 plugins {
 	id("com.boot.scripts.cd.CDPlugin")
+	alias(infra.plugins.ksp) apply false
 
 	//    // this is necessary to avoid the plugins to be loaded multiple times
 	//    // in each subproject's classloader

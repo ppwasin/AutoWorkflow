@@ -1,9 +1,9 @@
+import extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.create
-import utils.VersionCatalogs
 
 interface JunitPluginConfig {
 	val includeJunit4: Property<Boolean>
@@ -21,7 +21,7 @@ class JunitPlugin : Plugin<Project> {
 				testLogging { events("passed", "skipped", "failed") }
 			}
 
-			val junit5Version = VersionCatalogs(project).versions.junit5
+			val junit5Version = project.libs.versions.junit5.get()
 			dependencies.run {
 				add("testImplementation", platform("org.junit:junit-bom:$junit5Version"))
 				add("testImplementation", "org.junit.jupiter:junit-jupiter")

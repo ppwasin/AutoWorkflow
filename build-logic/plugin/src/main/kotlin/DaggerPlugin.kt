@@ -1,25 +1,27 @@
+import extensions.infra
+import extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import utils.VersionCatalogs
 
 @Suppress("unused")
 class DaggerPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
-		if (project.plugins.findPlugin("kotin-kapt") == null) {
-			println("[DaggerPlugin] cannot find kapt => apply kotlin-kapt")
-			project.apply(plugin = "kotlin-kapt")
+		val kspPluginId = project.infra.plugins.ksp.get().pluginId
+		if (project.plugins.findPlugin(kspPluginId) == null) {
+			println("[DaggerPlugin] cannot find ksp => apply $kspPluginId")
+			project.apply(plugin = kspPluginId)
 		}
 
-		val version = VersionCatalogs(project).versions.dagger
+		val version = project.libs.versions.dagger.get()
 		project.dependencies.run {
 			add("implementation", "com.google.dagger:dagger-android-support:${version}")
-			add("kapt", "com.google.dagger:dagger-compiler:${version}")
-			add("kapt", "com.google.dagger:dagger-android-processor:${version}")
+			add("ksp", "com.google.dagger:dagger-compiler:${version}")
+			add("ksp", "com.google.dagger:dagger-android-processor:${version}")
 
 			add("androidTestImplementation", "com.google.dagger:dagger-android-support:${version}")
-			add("kaptAndroidTest", "com.google.dagger:dagger-compiler:${version}")
-			add("kaptAndroidTest", "com.google.dagger:dagger-android-processor:${version}")
+			add("kspAndroidTest", "com.google.dagger:dagger-compiler:${version}")
+			add("kspAndroidTest", "com.google.dagger:dagger-android-processor:${version}")
 		}
 	}
 }

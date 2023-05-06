@@ -145,7 +145,7 @@ android {
 }
 
 dependencies {
-	//    add("kspJvm", libs.ksp.koin)
+	//    add("kspJvm", infra.ksp.koin)
 	// //https://kotlinlang.org/docs/ksp-multiplatform.html?section=posts#compilation-and-processing
 	//    implementation(project(":backend:contract"))
 }

@@ -1,15 +1,19 @@
 plugins {
 	id("com.convention.android.lib")
 	id("com.convention.android.compose")
-	alias(libs.plugins.ksp)
+	alias(infra.plugins.ksp)
 	id("plugin.junit")
 }
 android {
 	namespace = "com.boot.recipe"
+	defaultConfig {
+		ksp {
+			arg("room.schemaLocation", "$projectDir/schemas")
+		}
+	}
 }
 dependencies {
-
-	compileOnly(libs.ksp.processing)
+	compileOnly(infra.ksp.processing)
 	implementation(libs.paging.compose)
 	implementation(libs.paging.runtime)
 	implementation(libs.paging.room)
