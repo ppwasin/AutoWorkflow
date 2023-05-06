@@ -8,18 +8,17 @@ import org.gradle.kotlin.dsl.apply
 @Suppress("unused")
 class DaggerPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
-		val kspPluginId = project.infra.plugins.ksp.get().pluginId
-		project.applyPluginIfNotExists(kspPluginId)
+		project.applyPluginIfNotExists("kotlin-kapt")
 
 		val version = project.libs.versions.dagger.get()
 		project.dependencies.run {
 			add("implementation", "com.google.dagger:dagger-android-support:${version}")
-			add("ksp", "com.google.dagger:dagger-compiler:${version}")
-			add("ksp", "com.google.dagger:dagger-android-processor:${version}")
+			add("kapt", "com.google.dagger:dagger-compiler:${version}")
+			add("kapt", "com.google.dagger:dagger-android-processor:${version}")
 
 			add("androidTestImplementation", "com.google.dagger:dagger-android-support:${version}")
-			add("kspAndroidTest", "com.google.dagger:dagger-compiler:${version}")
-			add("kspAndroidTest", "com.google.dagger:dagger-android-processor:${version}")
+			add("kaptAndroidTest", "com.google.dagger:dagger-compiler:${version}")
+			add("kaptAndroidTest", "com.google.dagger:dagger-android-processor:${version}")
 		}
 	}
 }

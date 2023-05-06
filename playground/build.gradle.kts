@@ -4,7 +4,6 @@ import com.convention.setupAndroidApplication
 plugins {
 	id("convention.android.app")
 	id("convention.android.compose")
-	id("kotlin-android")
 	id("plugin.junit")
 	id("plugin.dagger")
 }
@@ -29,17 +28,15 @@ android {
 }
 
 dependencies {
-	implementation(libs.splashscreen)
 	implementation(projects.platform.designSystem)
 	implementation(projects.platform.components)
 	implementation(projects.external.appsflyerWrapper)
 	addComposeDependencies(project)
 
+	implementation(libs.splashscreen)
 	implementation(libs.bundles.coroutine)
 
-	testImplementation(libs.test.coroutine)
-	androidTestImplementation(libs.androidTest.espresso)
-	androidTestImplementation(libs.androidTest.junit)
+
 	implementation(libs.appcompanist.permission)
 	implementation(libs.datastoreCore)
 	implementation(libs.datastoreAndroid)
@@ -51,6 +48,7 @@ dependencies {
 	implementation("com.google.android.gms:play-services-ads:21.1.0")
 //  implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
+	testImplementation(libs.test.coroutine)
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
 }

@@ -5,7 +5,7 @@ import org.gradle.kotlin.dsl.apply
 
 fun Project.applyPluginIfNotExists(pluginId: String){
 	if (plugins.findPlugin(pluginId) == null) {
-		println("Cannot find ksp => apply $pluginId")
+		println("Apply $pluginId")
 		apply(plugin = pluginId)
 	}
 }

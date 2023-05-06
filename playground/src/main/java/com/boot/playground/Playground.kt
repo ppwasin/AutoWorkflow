@@ -26,12 +26,10 @@ import com.boot.playground.ads.AdsPlayground
 import com.boot.playground.ads.AdsViewModel
 import com.boot.playground.animation.AnimAsStatePlayground
 import com.boot.playground.animation.AnimatablePlayground
-import com.boot.playground.animation.base.AnimationContainer
 import com.boot.playground.animation.control.DecayAnimationPlayground
 import com.boot.playground.animation.control.InfiniteTransitionPlayground
 import com.boot.playground.animation.control.TargetBasedAnimationPlayground
 import com.boot.playground.animation.transition.ContainerTransform
-import com.boot.playground.async.AsyncPlayground
 import com.boot.playground.flow.FlowTestScreen
 import com.boot.playground.permission.PermissionScreen
 import com.boot.playground.uri.UriPlayground
@@ -67,7 +65,6 @@ fun Playground() {
 }
 
 enum class PlaygroundRoute {
-	Async,
 	AnimAsState,
 	Animatable,
 	TragetAnimation,
@@ -84,7 +81,6 @@ enum class PlaygroundRoute {
 	fun Screen() {
 		val context = LocalContext.current
 		return when (this) {
-			Async -> AsyncPlayground()
 			AnimAsState -> AnimAsStatePlayground()
 			Animatable -> AnimatablePlayground()
 			TragetAnimation -> TargetBasedAnimationPlayground()

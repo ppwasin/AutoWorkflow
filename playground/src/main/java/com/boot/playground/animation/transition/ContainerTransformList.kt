@@ -40,13 +40,6 @@ data class ItemSummary(
 	val description: String
 )
 
-data class Item(
-	val id: Int,
-	val title: String,
-	val subtitle: String,
-	val description: String
-)
-
 
 @Composable
 fun ContainerTransformList() {
