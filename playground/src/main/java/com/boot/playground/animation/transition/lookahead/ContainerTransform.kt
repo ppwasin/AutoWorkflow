@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalAnimationApi::class)
 
-package com.boot.playground.animation.transition
+package com.boot.playground.animation.transition.lookahead
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -33,16 +33,8 @@ import com.boot.designsystem.theme.material.AppMaterialTheme
 import com.boot.designsystem.transition.SceneHost
 import com.boot.designsystem.transition.SceneScope
 
-data class ItemSummary(
-	val id: Int,
-	val title: String,
-	val subtitle: String,
-	val description: String
-)
-
-
 @Composable
-fun ContainerTransformList() {
+fun ContainerTransform() {
 	var isCollpase by remember { mutableStateOf(true) }
 	val A = remember {
 		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
@@ -120,8 +112,8 @@ fun ContainerTransformList() {
 
 @Preview
 @Composable
-fun ContainerTransformListPlayground() {
+fun ContainerTransformPlayground() {
 	AppMaterialTheme {
-		ContainerTransformList()
+		ContainerTransform()
 	}
 }

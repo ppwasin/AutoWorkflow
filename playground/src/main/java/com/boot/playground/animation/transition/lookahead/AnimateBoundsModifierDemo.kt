@@ -1,4 +1,4 @@
-package com.boot.playground.animation.transition
+package com.boot.playground.animation.transition.lookahead
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

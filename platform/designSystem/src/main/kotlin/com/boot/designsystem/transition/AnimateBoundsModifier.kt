@@ -115,7 +115,7 @@ context(LookaheadScope, Placeable.PlacementScope, CoroutineScope)
 // Experimenting with a way to initialize animation during measurement && only take the last target
 // change in a frame (if the target was changed multiple times in the same frame) as the
 // animation target.
-internal class DeferredAnimation<T, V : AnimationVector>(
+class DeferredAnimation<T, V : AnimationVector>(
 	private val vectorConverter: TwoWayConverter<T, V>
 ) {
 	val value: T?

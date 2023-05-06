@@ -29,7 +29,7 @@ import com.boot.playground.animation.AnimatablePlayground
 import com.boot.playground.animation.control.DecayAnimationPlayground
 import com.boot.playground.animation.control.InfiniteTransitionPlayground
 import com.boot.playground.animation.control.TargetBasedAnimationPlayground
-import com.boot.playground.animation.transition.ContainerTransform
+import com.boot.playground.animation.transition.lookahead.ContainerTransform
 import com.boot.playground.flow.FlowTestScreen
 import com.boot.playground.permission.PermissionScreen
 import com.boot.playground.uri.UriPlayground
