@@ -1,6 +1,6 @@
 plugins {
-	id("com.convention.android.lib")
-	id("com.convention.android.compose")
+	id("convention.android.lib")
+	id("convention.android.compose")
 	alias(infra.plugins.ksp)
 	id("plugin.junit")
 	id("plugin.room")

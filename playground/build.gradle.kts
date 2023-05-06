@@ -2,8 +2,8 @@ import com.convention.addComposeDependencies
 import com.convention.setupAndroidApplication
 
 plugins {
-	id("com.convention.android.app")
-	id("com.convention.android.compose")
+	id("convention.android.app")
+	id("convention.android.compose")
 	id("kotlin-android")
 	id("plugin.junit")
 	id("plugin.dagger")

@@ -1,8 +1,8 @@
 import com.convention.addComposeDependencies
 
 plugins {
-	id("com.convention.android.lib")
-	id("com.convention.android.compose")
+	id("convention.android.lib")
+	id("convention.android.compose")
 	id("plugin.junit")
 }
 android {

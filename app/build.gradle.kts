@@ -4,8 +4,8 @@ import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
 import java.util.*
 
 plugins {
-	id("com.convention.android.app")
-	id("com.convention.android.compose")
+	id("convention.android.app")
+	id("convention.android.compose")
 	id("plugin.junit")
 	id("kotlin-parcelize")
 	id(infra.plugins.googleServices.get().pluginId)

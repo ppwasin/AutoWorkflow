@@ -7,20 +7,20 @@ plugins {
 gradlePlugin {
 	plugins {
 		create("android-app") {
-			id = "com.convention.android.app"
+			id = "convention.android.app"
 			implementationClass = "com.convention.AndroidAppPlugin"
 		}
 		create("android-lib") {
-			id = "com.convention.android.lib"
+			id = "convention.android.lib"
 			implementationClass = "com.convention.AndroidLibPlugin"
 		}
 		create("android-compose") {
-			id = "com.convention.android.compose"
+			id = "convention.android.compose"
 			implementationClass = "com.convention.AndroidComposePlugin"
 		}
 //		create("dynamic-feature-lib") {
-//			id = "com.convention.android.dfm"
-//			implementationClass = "com.convention.AndroidComposePlugin"
+//			id = "convention.android.dfm"
+//			implementationClass = "convention.AndroidComposePlugin"
 //		}
 	}
 }
