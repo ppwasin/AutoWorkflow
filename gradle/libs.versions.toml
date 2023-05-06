@@ -34,12 +34,12 @@ koin = "3.3" # https://insert-koin.io/docs/setup/koin
 koin-ksp = "1.1.0" # https://insert-koin.io/docs/setup/annotations
 
 # Database
-room = "2.5.0" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.5.1" # https://developer.android.com/jetpack/androidx/releases/room
 sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite/
 datastore = "1.0.0" #https://developer.android.com/topic/libraries/architecture/datastore
 
 # Architecture
-coroutine = "1.6.4" # https://github.com/Kotlin/kotlinx.coroutines
+coroutine = "1.7.0" # https://github.com/Kotlin/kotlinx.coroutines
 arrowkt = "1.2.0-RC" # https://github.com/arrow-kt/arrow
 
 # Sync

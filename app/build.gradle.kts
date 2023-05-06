@@ -3,17 +3,12 @@ import com.convention.setupAndroidApplication
 import com.github.triplet.gradle.androidpublisher.ResolutionStrategy.AUTO
 import java.util.*
 
-//apply<Junit5Plugin>()
-//apply<SpotlessPlugin>()
-
-
 plugins {
 	id("com.convention.android.app")
 	id("com.convention.android.compose")
 	id("plugin.junit")
 	id("kotlin-parcelize")
 	id(infra.plugins.googleServices.get().pluginId)
-//    alias(infra.plugins.googleServices)
 	id(infra.plugins.firebaseAppdistribution.get().pluginId)
 	id(infra.plugins.playPublisher.get().pluginId)
 }
@@ -77,6 +72,7 @@ android {
 dependencies {
 	implementation(projects.features.entrypoint)
 	implementation(projects.features.payment)
+	implementation(projects.features.recipe)
 	addComposeDependencies(project)
 
 	implementation(libs.appcompat)

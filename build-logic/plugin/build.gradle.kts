@@ -17,11 +17,16 @@ gradlePlugin {
 			id = "plugin.dagger"
 			implementationClass = "DaggerPlugin"
 		}
+		create("room-plugin") {
+			id = "plugin.room"
+			implementationClass = "RoomPlugin"
+		}
 	}
 }
 dependencies {
 	implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 	implementation(files(infra.javaClass.superclass.protectionDomain.codeSource.location))
+	implementation(infra.kspGradle)
 	implementation(infra.kotlinGradle)
 	implementation(infra.androidGradle)
 	implementation(infra.spotless)

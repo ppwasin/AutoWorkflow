@@ -1,3 +1,4 @@
+import extensions.applyPluginIfNotExists
 import extensions.infra
 import extensions.libs
 import org.gradle.api.Plugin
@@ -8,10 +9,7 @@ import org.gradle.kotlin.dsl.apply
 class DaggerPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
 		val kspPluginId = project.infra.plugins.ksp.get().pluginId
-		if (project.plugins.findPlugin(kspPluginId) == null) {
-			println("[DaggerPlugin] cannot find ksp => apply $kspPluginId")
-			project.apply(plugin = kspPluginId)
-		}
+		project.applyPluginIfNotExists(kspPluginId)
 
 		val version = project.libs.versions.dagger.get()
 		project.dependencies.run {
