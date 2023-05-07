@@ -124,8 +124,15 @@ class DeferredAnimation<T, V : AnimationVector>(
 		private set
 	private var animatable: Animatable<T, V>? = null
 
-	internal val isActive: Boolean
+	val isActive: Boolean
 		get() = target != animatable?.targetValue || animatable?.isRunning == true
+
+	context (CoroutineScope)
+	fun stop(){
+		launch {
+			animatable?.stop()
+		}
+	}
 
 	context (CoroutineScope)
 	fun updateTarget(

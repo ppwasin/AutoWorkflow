@@ -39,7 +39,7 @@ fun SceneHost(modifier: Modifier = Modifier, content: @Composable SceneScope.() 
 		}
 	}
 }
-private const val debugSharedElement = false
+private const val debugSharedElement = true
 class SceneScope internal constructor(
 	lookaheadScope: LookaheadScope
 ) : LookaheadScope by lookaheadScope {
@@ -60,12 +60,14 @@ class SceneScope internal constructor(
 					)
 				}
 			}
-			.intermediateLayout { measurable, _ ->
+			.intermediateLayout { measurable, const ->
+				println("intermediateLayout: $const")
 				val (width, height) = sizeAnimation.updateTarget(
 					lookaheadSize, spring(stiffness = Spring.StiffnessMediumLow)
 				)
 				val animatedConstraints = Constraints.fixed(width, height)
 				val placeable = measurable.measure(animatedConstraints)
+				println("animatedConstraints: $width")
 				layout(placeable.width, placeable.height) {
 					val (x, y) = offsetAnimation.updateTargetBasedOnCoordinates(
 						spring(stiffness = Spring.StiffnessMediumLow),

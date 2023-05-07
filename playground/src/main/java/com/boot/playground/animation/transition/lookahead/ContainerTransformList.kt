@@ -2,123 +2,226 @@
 
 package com.boot.playground.animation.transition.lookahead
 
-import androidx.compose.animation.AnimatedVisibility
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.movableContentWithReceiverOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.LookaheadScope
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberAsyncImagePainter
 import com.boot.components.gesture.bounceClick
+import com.boot.designSystem.R
 import com.boot.designsystem.theme.material.AppMaterialTheme
-import com.boot.designsystem.transition.SceneHost
-import com.boot.designsystem.transition.SceneScope
 import com.boot.playground.animation.transition.Notification
 
-data class ItemSummary(
-	val id: Int,
-	val title: String,
-	val subtitle: String,
-	val description: String
-)
+class ContainerViewModel : ViewModel() {
+	var selectedItem by mutableStateOf<Int?>(null)
+		private set
 
+	fun navigate(itemId: Int) {
+		selectedItem = itemId
+	}
+
+	fun pop() {
+		selectedItem = null
+	}
+}
 
 @Composable
-fun ContainerTransformList() {
-	var isCollpase by remember { mutableStateOf(true) }
-	val A = remember {
-		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
-			Box(
-				modifier = Modifier
-					.sharedElement()
-					.then(modifier)
-					.background(color = Color(0xfff3722c)),
-			)
-		}
-	}
-	val B = remember {
-		movableContentWithReceiverOf<SceneScope, Modifier> { modifier ->
-			Box(
-				modifier = Modifier
-					.sharedElement()
-					.bounceClick { isCollpase = !isCollpase }
-					.then(modifier)
-					.background(color = Color(0xff90be6d)),
+fun ContainerTransformList(viewModel: ContainerViewModel = viewModel()) {
+//	val scrollState = rememberLazyListState()
+	val scrollState = rememberScrollState()
+	val notifications = remember {
+		Notification.fakeList().map { value ->
+			SharedElement(
+				id = value.id,
+				content = movableContentWithReceiverOf { isCollapse ->
+					Card(
+						Modifier
+							.fillMaxWidth()
+							.wrapContentHeight()
+							.conditionallyAnimateBounds(!scrollState.isScrollInProgress)
+							.bounceClick { viewModel.navigate(value.id) }
+					) {
+						Column(Modifier.padding(8.dp)) {
+							NotificationHeader(
+								modifier = Modifier,
+								notification = value,
+							)
+							Spacer(modifier = Modifier.size(8.dp))
+							Text("isCollapse: $isCollapse")
+							Column {
+								if (isCollapse) {
+									Text(
+										modifier = Modifier,
+										text = value.description,
+										maxLines = 2,
+										overflow = TextOverflow.Ellipsis,
+									)
+								} else {
+									Text(
+										modifier = Modifier,
+										text = value.description,
+									)
+								}
+							}
+						}
+					}
+
+				},
 			)
 		}
 	}
 
-	val notifications = Notification.fakeList()
+	BackHandler(
+		enabled = true,
+		onBack = {
+			viewModel.pop()
+		},
+	)
 
-	SceneHost(
-		Modifier
-			.fillMaxSize()
-	) {
-		if (isCollpase) {
-			Column(
-				Modifier
-					.fillMaxSize()
-					.background(Color.Gray)
-					.padding(16.dp),
-			) {
-				A(
-					Modifier
-						.fillMaxWidth()
-						.height(64.dp)
-				)
-				B(
-					Modifier
-						.fillMaxWidth()
-						.height(64.dp),
-				)
+	Scaffold(
+		modifier = Modifier.padding(8.dp),
+		floatingActionButton = {
+			if (viewModel.selectedItem != null) {
+				Button(onClick = { viewModel.pop() }) {
+					Text("Go Back")
+				}
 			}
-		} else {
-			Column(
-				Modifier
-					.fillMaxSize()
-					.background(Color.White)
-			) {
-				B(
-					Modifier
-						.fillMaxWidth()
-						.height(96.dp),
-				)
-				Spacer(modifier = Modifier.size(16.dp))
-				var contentVisible by remember { mutableStateOf(false) }
-				LaunchedEffect(Unit){
-					contentVisible = true
-				}
-				AnimatedVisibility(
-					visible  = contentVisible,
-					enter = fadeIn(animationSpec = tween(delayMillis = 250)),
-					exit = fadeOut(),
+
+		},
+	) { paddingValue ->
+		LookaheadScope {
+			if (viewModel.selectedItem == null) {
+//				LazyColumn(
+//					modifier = Modifier.padding(paddingValue),
+//					verticalArrangement = Arrangement.spacedBy(16.dp),
+//					state = scrollState
+//				) {
+//					items(notifications) {
+//						it.content(this@LookaheadScope, true)
+//					}
+//				}
+
+				Column(
+					modifier = Modifier
+						.padding(paddingValue)
+						.verticalScroll(scrollState),
+					verticalArrangement = Arrangement.spacedBy(16.dp),
 				) {
-					Text(text = "Hello")
+					notifications.forEach {
+						it.content(this@LookaheadScope, true)
+					}
 				}
+			} else {
+				Column(Modifier.fillMaxSize()) {
+					notifications.find { it.id == viewModel.selectedItem }?.let {
+						it.content(this@LookaheadScope, false)
+					}
+				}
+
 			}
 
 		}
 	}
 }
+
+context(LookaheadScope)
+	@Composable
+	private fun NotificationHeader(modifier: Modifier = Modifier, notification: Notification) {
+	Row(modifier) {
+		Image(
+			modifier = Modifier
+				.size(32.dp)
+				.clip(CircleShape),
+			painter = rememberAsyncImagePainter(
+				notification.img,
+				placeholder = painterResource(R.drawable.ic_placeholder_24),
+			),
+			contentDescription = null,
+			contentScale = ContentScale.Crop,
+		)
+
+		Spacer(modifier = Modifier.size(8.dp))
+		Column {
+			Text(modifier = Modifier, text = notification.sender)
+			Spacer(modifier = Modifier.size(4.dp))
+			Text(modifier = Modifier, text = notification.sendDate)
+			Spacer(modifier = Modifier.size(4.dp))
+			Row(modifier = Modifier) {
+				Text(text = notification.type.name)
+				Spacer(modifier = Modifier.size(4.dp))
+				Text(text = notification.priority.name)
+			}
+		}
+	}
+}
+
+@Composable
+private fun TextExpandable(modifier: Modifier, text: String, isCollapse: Boolean){
+	if (isCollapse) {
+		Text(
+			modifier = Modifier,
+			text = text,
+			maxLines = 2,
+			overflow = TextOverflow.Ellipsis,
+		)
+	} else {
+		Text(
+			modifier = Modifier,
+			text = text,
+		)
+	}
+}
+
+@Composable
+private fun ItemPartialDescription(modifier: Modifier, descriptionText: String) {
+	Text(modifier = modifier, text = descriptionText, maxLines = 2, overflow = TextOverflow.Ellipsis)
+}
+
+@Composable
+private fun ItemFullDescription(modifier: Modifier, descriptionText: String) {
+	Text(modifier = modifier, text = descriptionText)
+}
+
+private class SharedElement(
+	val id: Int,
+	val content: @Composable LookaheadScope.(Boolean) -> Unit
+)
 
 
 @Preview

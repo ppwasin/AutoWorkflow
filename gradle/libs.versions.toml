@@ -74,6 +74,7 @@ paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-a
 # Compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 compose-ui = { module = "androidx.compose.ui:ui", version = "1.5.0-alpha03" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
+compose-runtime = { module = "androidx.compose.runtime:runtime", version = "1.5.0-alpha03" } # https://developer.android.com/jetpack/androidx/releases/compose-runtime
 compose-animation = { module = "androidx.compose.animation:animation" } # https://developer.android.com/jetpack/androidx/releases/compose-animation
 compose-animationCore = { module = "androidx.compose.animation:animation-core" }
 compose-uiTooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -188,6 +189,7 @@ android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", versio
 compose = [
     "compose-activity",
     "compose-ui",
+    "compose-runtime",
     "compose-uiTooling-preview",
     "compose-foundation",
     "compose-material",
