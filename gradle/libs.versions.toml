@@ -2,7 +2,8 @@
 
 # Android Platform
 accompanist = "0.28.0" # https://github.com/google/accompanist
-composeBom = "2023.05.00" # https://developer.android.com/jetpack/compose/bom/bom-mapping
+composeBom = "2023.05.01" # https://developer.android.com/jetpack/compose/bom/bom-mapping
+composeUINonStable = "1.5.0-beta01" # https://developer.android.com/jetpack/androidx/releases/compose-ui
 appCompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
 material = "1.9.0-rc01" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
@@ -16,6 +17,7 @@ junitInstrumental = "1.1.3"
 espresso = "3.4.0"
 kotest = "5.1.0"
 paparazzi = "1.2.0" # https://github.com/cashapp/paparazzi
+showkase = "1.0.0-beta18"
 
 # Build
 googleService = "4.3.8"
@@ -39,7 +41,7 @@ sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite
 datastore = "1.0.0" #https://developer.android.com/topic/libraries/architecture/datastore
 
 # Architecture
-coroutine = "1.7.0" # https://github.com/Kotlin/kotlinx.coroutines
+coroutine = "1.7.1" # https://github.com/Kotlin/kotlinx.coroutines
 arrowkt = "1.2.0-RC" # https://github.com/arrow-kt/arrow
 
 # Sync
@@ -69,12 +71,12 @@ compose-insets = { module = "com.google.accompanist:accompanist-insets", version
 compose-coil = { module = "io.coil-kt:coil-compose", version = "2.3.0" } # https://coil-kt.github.io/coil/compose/
 compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.6.1" } # https://developer.android.com/jetpack/androidx/releases/lifecycle"
 compose-nav = { module = "androidx.navigation:navigation-compose", version = "2.5.3" } # https://developer.android.com/jetpack/androidx/releases/navigation
-paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-alpha18" } # https://developer.android.com/jetpack/androidx/releases/paging
+paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-alpha19" } # https://developer.android.com/jetpack/androidx/releases/paging
 
 # Compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-compose-ui = { module = "androidx.compose.ui:ui", version = "1.5.0-alpha03" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
-compose-runtime = { module = "androidx.compose.runtime:runtime", version = "1.5.0-alpha03" } # https://developer.android.com/jetpack/androidx/releases/compose-runtime
+compose-ui = { module = "androidx.compose.ui:ui", version = "composeUINonStable" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
+compose-runtime = { module = "androidx.compose.runtime:runtime" } # https://developer.android.com/jetpack/androidx/releases/compose-runtime
 compose-animation = { module = "androidx.compose.animation:animation" } # https://developer.android.com/jetpack/androidx/releases/compose-animation
 compose-animationCore = { module = "androidx.compose.animation:animation-core" }
 compose-uiTooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -125,11 +127,11 @@ arrowkt-optics = { module = "io.arrow-kt:arrow-optics", version.ref = "arrowkt" 
 ## AndroidTest
 androidTest-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidTest-junit = { module = "androidx.test.ext:junit", version.ref = "junitInstrumental" }
-androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4" } # Version define by composeBom
+androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUINonStable" } # Version define by composeBom
 ## Test
 test-room = { module = "androidx.room:room-testing", version.ref = "room" }
 test-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
-test-composeRule = { module = "androidx.compose.ui:ui-test-manifest" } # Version define by composeBom
+test-composeRule = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUINonStable" } # Version define by composeBom
 
 ## Kotest
 test-kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
@@ -184,6 +186,9 @@ appyx = { module = "com.bumble.appyx:core", version.ref = "appyx" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.9.0" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "lifecycle" }
 android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.2" }
+
+showkase = { module = "com.airbnb.android:showkase", version = "showkase" }
+showkaseProcessor = { module = "com.airbnb.android:showkase-processor", version = "showkase" }
 
 [bundles]
 compose = [

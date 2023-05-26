@@ -49,6 +49,7 @@ dependencies {
 //  implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
 	testImplementation(libs.test.coroutine)
+	androidTestImplementation(libs.test.coroutine)
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)
 }

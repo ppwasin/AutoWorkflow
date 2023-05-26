@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 rootProject.name = "AutoWorkflow"
 // Infra
 includeBuild("build-logic")
-includeBuild("playZipline")
+//includeBuild("playZipline")
 //include(":shopping")
 
 // Mobile

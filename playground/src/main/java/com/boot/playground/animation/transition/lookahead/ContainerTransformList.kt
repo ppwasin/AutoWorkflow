@@ -5,7 +5,6 @@ package com.boot.playground.animation.transition.lookahead
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,10 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -40,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
@@ -69,7 +65,7 @@ fun ContainerTransformList(viewModel: ContainerViewModel = viewModel()) {
 		Notification.fakeList().map { value ->
 			SharedElement(
 				id = value.id,
-				content = movableContentWithReceiverOf { isCollapse ->
+				content = movableContentWithReceiverOf { modifier, isCollapse ->
 					Card(
 						Modifier
 							.fillMaxWidth()
@@ -144,13 +140,34 @@ fun ContainerTransformList(viewModel: ContainerViewModel = viewModel()) {
 					verticalArrangement = Arrangement.spacedBy(16.dp),
 				) {
 					notifications.forEach {
-						it.content(this@LookaheadScope, true)
+						it.content(this@LookaheadScope, Modifier, true)
 					}
 				}
 			} else {
 				Column(Modifier.fillMaxSize()) {
 					notifications.find { it.id == viewModel.selectedItem }?.let {
-						it.content(this@LookaheadScope, false)
+						it.content(this@LookaheadScope, Modifier, false)
+					}
+				}
+
+				ConstraintLayout(Modifier.fillMaxSize()) {
+					val (content, menuBar) = createRefs()
+					notifications.find { it.id == viewModel.selectedItem }?.let {
+						it.content(
+							this@LookaheadScope,
+							Modifier.constrainAs(content) {
+								top.linkTo(parent.top)
+								start.linkTo(parent.start)
+								end.linkTo(parent.end)
+							},
+							false,
+						)
+						Text(
+							modifier = Modifier.constrainAs(menuBar) {
+								bottom.linkTo(parent.bottom)
+							},
+							text = "Test",
+						)
 					}
 				}
 
@@ -220,7 +237,7 @@ private fun ItemFullDescription(modifier: Modifier, descriptionText: String) {
 
 private class SharedElement(
 	val id: Int,
-	val content: @Composable LookaheadScope.(Boolean) -> Unit
+	val content: @Composable LookaheadScope.(Modifier, Boolean) -> Unit
 )
 
 

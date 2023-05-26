@@ -1,5 +1,5 @@
 [versions]
-zipline = "0.9.16"
+zipline = "0.9.17"
 okio = "3.3.0"
 okHttp = "4.10.0"
 
