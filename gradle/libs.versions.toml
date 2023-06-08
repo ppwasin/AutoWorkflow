@@ -22,6 +22,9 @@ showkase = "1.0.0-beta18" # https://github.com/airbnb/Showkase
 # Build
 googleService = "4.3.8"
 playPublisher = "3.6.0"
+playCore = "1.10.2"
+playCoreKtx = "1.8.1"
+autoService = "1.1.0"
 
 # Network
 retrofit = "1.6.3"
@@ -189,6 +192,11 @@ android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", versio
 
 showkase = { module = "com.airbnb.android:showkase", version.ref = "showkase" }
 showkaseProcessor = { module = "com.airbnb.android:showkase-processor", version.ref = "showkase" }
+
+playCore = { group = "com.google.android.play", name = "core", version.ref = "playCore" }
+playCoreKtx = { group = "com.google.android.play", name = "core-ktx", version.ref = "playCoreKtx" }
+googleServiceAutoAnnotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoService" }
+googleServiceAuto = { module = "com.google.auto.service:auto-service", version.ref = "autoService" }
 
 [bundles]
 compose = [
