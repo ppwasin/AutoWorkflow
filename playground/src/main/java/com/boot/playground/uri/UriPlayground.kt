@@ -32,5 +32,7 @@ fun UriPlayground() {
 		Text("Test URL1: $uri1")
 		Text("Test URL2: $uri2")
 		Text("Test URL3: $uri3")
+		Text("Host: ${uri3.host}")
+		Text("Path: ${uri3.pathSegments}")
 	}
 }

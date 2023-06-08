@@ -7,5 +7,6 @@ class App : Application() {
 	override fun onCreate() {
 		super.onCreate()
 		val test = BillingSdk(this)
+		ShowkaseInit.addShortcut(this)
 	}
 }

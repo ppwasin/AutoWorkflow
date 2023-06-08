@@ -21,6 +21,10 @@ gradlePlugin {
 			id = "plugin.room"
 			implementationClass = "RoomPlugin"
 		}
+		create("showkase-plugin") {
+			id = "plugin.showkase"
+			implementationClass = "ShowkasePlugin"
+		}
 	}
 }
 dependencies {

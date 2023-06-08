@@ -8,6 +8,7 @@ plugins {
 	id("convention.android.compose")
 	id("plugin.junit")
 	id("kotlin-parcelize")
+	id("plugin.showkase")
 	id(infra.plugins.googleServices.get().pluginId)
 	id(infra.plugins.firebaseAppdistribution.get().pluginId)
 	id(infra.plugins.playPublisher.get().pluginId)

@@ -4,6 +4,7 @@ plugins {
 	id("convention.android.lib")
 	id("convention.android.compose")
 	id("plugin.junit")
+	id("plugin.showkase")
 }
 android {
 	namespace = "com.boot.designSystem"

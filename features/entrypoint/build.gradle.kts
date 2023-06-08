@@ -5,6 +5,7 @@ plugins {
 	id("convention.android.compose")
 	id("plugin.junit")
 	id("kotlin-parcelize")
+	id("plugin.showkase")
 }
 android {
 	namespace = "com.boot.entrypoint"
