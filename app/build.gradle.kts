@@ -66,8 +66,14 @@ android {
 				testers = "pp.wasin@gmail.com, ex@gmail.com"
 			}
 		}
-//		dynamicFeatures += setOf(":dynamicfeature")
 	}
+
+	val dynamicFeatureModules = setOf(
+		projects.dynamicFeatureSample.onDemend.dependencyProject.path,
+		projects.dynamicFeatureSample.onInstall.dependencyProject.path,
+	)
+	println("Application build with dynamic-features: $dynamicFeatureModules")
+	dynamicFeatures += dynamicFeatureModules
 }
 
 dependencies {
@@ -81,6 +87,10 @@ dependencies {
 	implementation(libs.splashscreen)
 	implementation(libs.bundles.compose)
 	implementation(libs.bundles.coroutine)
+
+	implementation(projects.dynamicFeatureSample.consumer)
+	implementation(libs.playCore)
+	implementation(libs.playCoreKtx)
 
 	androidTestImplementation(libs.androidTest.espresso)
 	androidTestImplementation(libs.androidTest.junit)

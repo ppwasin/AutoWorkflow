@@ -18,10 +18,10 @@ gradlePlugin {
 			id = "convention.android.compose"
 			implementationClass = "com.convention.AndroidComposePlugin"
 		}
-//		create("dynamic-feature-lib") {
-//			id = "convention.android.dfm"
-//			implementationClass = "convention.AndroidComposePlugin"
-//		}
+		create("dynamic-feature-lib") {
+			id = "convention.android.dynamicfeature"
+			implementationClass = "com.convention.DynamicFeaturePlugin"
+		}
 	}
 }
 

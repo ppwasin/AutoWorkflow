@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="title_ondemand_sample" translatable="false">Sample DynamicFeature OnDemand</string>
+	<string name="title_oninstall_sample" translatable="false">Sample DynamicFeature OnInstall</string>
+</resources>

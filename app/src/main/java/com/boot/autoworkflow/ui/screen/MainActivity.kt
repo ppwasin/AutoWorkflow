@@ -15,14 +15,17 @@
  */
 package com.boot.autoworkflow.ui.screen
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.boot.dynamicfeature.sample.consumer.DFMConsumerScreen
 import com.boot.entrypoint.ui.EntrypointScreen
 import com.bumble.appyx.core.integrationpoint.NodeActivity
+import com.google.android.play.core.splitcompat.SplitCompat
 
 class MainActivity : NodeActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,10 +33,16 @@ class MainActivity : NodeActivity() {
 		installSplashScreen()
 		setContent {
 			MaterialTheme {
-				EntrypointScreen()
+//				EntrypointScreen()
+				DFMConsumerScreen()
 			}
 		}
 	}
+//
+//	override fun attachBaseContext(newBase: Context) {
+//		super.attachBaseContext(newBase)
+//		SplitCompat.installActivity(this)
+//	}
 }
 
 @Preview(showBackground = true, widthDp = 380, heightDp = 1400)

@@ -1,7 +1,8 @@
 package com.boot.dynamicfeature.adapter
 
 import android.app.Application
-import com.boot.dynamicfeature.SplitInstallState
+import com.boot.dynamicfeature.logger.DynamicFeatureLogger
+import com.boot.dynamicfeature.provider.SplitInstallState
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
@@ -20,13 +21,10 @@ class SplitInstallWrapper(private val application: Application) {
 	private val installManager by lazy { SplitInstallManagerFactory.create(application) }
 
 	fun isFeatureInstall(moduleName: String): Boolean {
+		DynamicFeatureLogger.log(installManager.installedModules.toString())
 		return installManager.installedModules.contains(moduleName)
 	}
 
-	/** moduleName example
-	 * dynamicFeatures += setOf(":devConfig", ":featureChat")
-	 * moduleName = "devConfig"
-	 */
 	fun installFeature(moduleName: String): Flow<SplitInstallState> {
 		return callbackFlow {
 			val listener = observeStateCallback {
@@ -39,7 +37,8 @@ class SplitInstallWrapper(private val application: Application) {
 			var sessionId: Int? = null
 			installManager.startInstall(request)
 				.addOnSuccessListener { sessionId = it }
-				.addOnFailureListener { throw it }
+				.addOnFailureListener { launch { send(SplitInstallState.Error(it)) } }
+				.addOnCompleteListener { DynamicFeatureLogger.log("Install Module $moduleName complete") }
 
 			installManager.registerListener(listener)
 			awaitClose {

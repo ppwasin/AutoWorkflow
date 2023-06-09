@@ -25,6 +25,10 @@ gradlePlugin {
 			id = "plugin.showkase"
 			implementationClass = "ShowkasePlugin"
 		}
+		create("autoservice-plugin") {
+			id = "plugin.autoservice"
+			implementationClass = "AutoServicePlugin"
+		}
 	}
 }
 dependencies {
