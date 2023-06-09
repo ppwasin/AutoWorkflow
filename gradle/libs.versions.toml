@@ -3,7 +3,7 @@
 # Android Platform
 accompanist = "0.28.0" # https://github.com/google/accompanist
 composeBom = "2023.05.01" # https://developer.android.com/jetpack/compose/bom/bom-mapping
-composeUINonStable = "1.5.0-beta01" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+composeUINonStable = "1.5.0-beta02" # https://developer.android.com/jetpack/androidx/releases/compose-ui
 appCompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
 material = "1.9.0-rc01" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
