@@ -1,9 +1,9 @@
 package com.boot.dynamicfeature.contract
 
-data class OnInstallFeature(
-	override val moduleName: String = "onInstall",
-): DynamicFeatures<OnInstallFeature.Entrypoint> {
-	interface Entrypoint {
-		fun getSomething(): String
-	}
+interface OnInstallEntryPoint {
+	fun getSomething(): String
 }
+val onInstallFeature = DynamicFeatureEntry(
+	feature = DynamicFeature("onInstall"),
+	entryPoint = OnInstallEntryPoint::class.java
+)

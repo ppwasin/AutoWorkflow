@@ -1,10 +1,10 @@
 package com.boot.dynamicfeature.sample
 
-import com.boot.dynamicfeature.contract.OnDemandFeature
+import com.boot.dynamicfeature.contract.OnDemandEntryPoint
 import com.google.auto.service.AutoService
 
-@AutoService(OnDemandFeature.EntryPoint::class)
-class OnDemandFeatureImpl: OnDemandFeature.EntryPoint {
+@AutoService(OnDemandEntryPoint::class)
+class OnDemandFeatureImpl: OnDemandEntryPoint {
 	override fun getSomething(): String {
 		return "Hello from OnDemandFeature"
 	}
