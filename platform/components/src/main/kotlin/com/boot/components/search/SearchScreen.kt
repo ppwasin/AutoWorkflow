@@ -14,29 +14,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.items
+import androidx.paging.compose.itemKey
 import com.boot.components.search.viewmodel.QueryViewModel
 
 @Composable
 fun <T : Any> SearchScreenSlot(
 	viewModel: QueryViewModel<String, T>,
-	itemKey: (T) -> Int,
 	itemsContent: @Composable (T?) -> Unit
 ) {
 	val (query, setQuery) = remember { viewModel.query }
-	val paging = viewModel.state.collectAsLazyPagingItems()
+	val lazyPagingItems = viewModel.state.collectAsLazyPagingItems()
 	Column {
 		SearchInputRow(query, setQuery)
 		LazyColumn {
-			if (paging.loadState.refresh is LoadState.NotLoading) {
-				if (paging.itemCount == 0) {
+			if (lazyPagingItems.loadState.refresh is LoadState.NotLoading) {
+				if (lazyPagingItems.itemCount == 0) {
 					item { Text("Empty content") }
 				} else {
-					items(items = paging, key = itemKey) { item -> itemsContent(item) }
+					items(count = lazyPagingItems.itemCount, key = lazyPagingItems.itemKey()) { index ->
+						itemsContent(lazyPagingItems[index])
+					}
 				}
 			}
 			when {
-				paging.loadState.refresh == LoadState.Loading ->
+				lazyPagingItems.loadState.refresh == LoadState.Loading ->
 					item {
 						Text(
 							text = "Waiting for items to load from the backend",
@@ -46,15 +47,17 @@ fun <T : Any> SearchScreenSlot(
 								.wrapContentSize(align = Alignment.Center),
 						)
 					}
-				paging.loadState.refresh is LoadState.Error ->
+
+				lazyPagingItems.loadState.refresh is LoadState.Error ->
 					item {
-						val e = paging.loadState.refresh as LoadState.Error
+						val e = lazyPagingItems.loadState.refresh as LoadState.Error
 						Text(
 							text = "Error FirstPage: ${e.error.localizedMessage}",
-							modifier = Modifier.clickable { paging.retry() },
+							modifier = Modifier.clickable { lazyPagingItems.retry() },
 						)
 					}
-				paging.loadState.append == LoadState.Loading ->
+
+				lazyPagingItems.loadState.append == LoadState.Loading ->
 					item {
 						CircularProgressIndicator(
 							modifier =
@@ -63,15 +66,17 @@ fun <T : Any> SearchScreenSlot(
 								.wrapContentWidth(Alignment.CenterHorizontally),
 						)
 					}
-				paging.loadState.append is LoadState.Error ->
+
+				lazyPagingItems.loadState.append is LoadState.Error ->
 					item {
-						val e = paging.loadState.append as LoadState.Error
+						val e = lazyPagingItems.loadState.append as LoadState.Error
 						Text(
 							text = "Error FirstPage: ${e.error.localizedMessage}",
-							modifier = Modifier.clickable { paging.retry() },
+							modifier = Modifier.clickable { lazyPagingItems.retry() },
 						)
 					}
-				paging.loadState.append.endOfPaginationReached ->
+
+				lazyPagingItems.loadState.append.endOfPaginationReached ->
 					item { Text("end of pagination") }
 			}
 		}

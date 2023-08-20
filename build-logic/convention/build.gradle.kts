@@ -14,6 +14,10 @@ gradlePlugin {
 			id = "convention.android.lib"
 			implementationClass = "com.convention.AndroidLibPlugin"
 		}
+		create("kotlin-lib") {
+			id = "convention.kotlin.lib"
+			implementationClass = "com.convention.KotlinLibPlugin"
+		}
 		create("android-compose") {
 			id = "convention.android.compose"
 			implementationClass = "com.convention.AndroidComposePlugin"

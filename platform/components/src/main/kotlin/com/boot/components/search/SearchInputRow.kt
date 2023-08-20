@@ -54,7 +54,7 @@ fun SearchInputRow(text: String, setText: (String) -> Unit) {
 	)
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = false)
 @Composable
 fun SearchInputRowPreview() {
 	SearchInputRow("sdfsdf") {}

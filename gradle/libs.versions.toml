@@ -1,35 +1,34 @@
 [versions]
 
 # Android Platform
-accompanist = "0.28.0" # https://github.com/google/accompanist
-composeBom = "2023.05.01" # https://developer.android.com/jetpack/compose/bom/bom-mapping
-composeUINonStable = "1.5.0-beta02" # https://developer.android.com/jetpack/androidx/releases/compose-ui
+accompanist = "0.30.1" # https://github.com/google/accompanist
+composeBom = "2023.08.00" # https://developer.android.com/jetpack/compose/bom/bom-mapping
 appCompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
-material = "1.9.0-rc01" # https://github.com/material-components/material-components-android/releases
+material = "1.9.0" # https://github.com/material-components/material-components-android/releases
 paging = "3.1.1" # https://developer.android.com/jetpack/androidx/releases/paging
 splashscreen = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/core
 lifecycle = "2.6.1" # https://developer.android.com/jetpack/androidx/releases/lifecycle
-activity = "1.7.1" # https://developer.android.com/jetpack/androidx/releases/activity
+activity = "1.7.2" # https://developer.android.com/jetpack/androidx/releases/activity
 
 # Test
 junit5 = "5.7.0"
-junitInstrumental = "1.1.3"
-espresso = "3.4.0"
-kotest = "5.1.0"
+junitInstrumental = "1.1.5"
+espresso = "3.5.1"
+kotest = "5.6.2"
 paparazzi = "1.2.0" # https://github.com/cashapp/paparazzi
 showkase = "1.0.0-beta18" # https://github.com/airbnb/Showkase
 
 # Build
 googleService = "4.3.8"
 playPublisher = "3.6.0"
-playCore = "1.10.2"
+playCore = "1.10.3"
 playCoreKtx = "1.8.1"
 autoService = "1.1.0"
 
 # Network
-retrofit = "1.6.3"
-okhttp = "4.9.1"
-ktor = "1.6.7"
+retrofit = "4.9.0"
+okhttp = "4.11.0"
+ktor = "2.2.2"
 logback = "1.2.10"
 kmongo = "4.5.0"
 
@@ -39,21 +38,21 @@ koin = "3.3" # https://insert-koin.io/docs/setup/koin
 koin-ksp = "1.1.0" # https://insert-koin.io/docs/setup/annotations
 
 # Database
-room = "2.5.1" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.5.2" # https://developer.android.com/jetpack/androidx/releases/room
 sqldelight = "1.5.3" # https://cashapp.github.io/sqldelight/multiplatform_sqlite/
 datastore = "1.0.0" #https://developer.android.com/topic/libraries/architecture/datastore
 
 # Architecture
-coroutine = "1.7.1" # https://github.com/Kotlin/kotlinx.coroutines
+coroutine = "1.7.2" # https://github.com/Kotlin/kotlinx.coroutines
 arrowkt = "1.2.0-RC" # https://github.com/arrow-kt/arrow
 
 # Sync
 startup = "1.1.1"
-workManager = "2.7.1"
+workManager = "2.8.1"
 
 # Utils
 billing = "5.1.0"
-appsflyer = "6.9.1"
+appsflyer = "6.12.2"
 appyx = "1.2.0"
 klock = "2.4.13" # Time (Multiplaform)
 
@@ -67,18 +66,18 @@ coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android
 coroutine-rx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "coroutine" }
 
 # Compose plugin
-compose-activity = { module = "androidx.activity:activity-compose", version = "1.7.1" }  # https://developer.android.com/jetpack/androidx/releases/activity
+compose-activity = { module = "androidx.activity:activity-compose", version = "1.7.2" }  # https://developer.android.com/jetpack/androidx/releases/activity
 compose-constraintLayout = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.1" } # https://developer.android.com/jetpack/androidx/releases/constraintlayout
 compose-swipeToRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
 compose-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanist" }
-compose-coil = { module = "io.coil-kt:coil-compose", version = "2.3.0" } # https://coil-kt.github.io/coil/compose/
+compose-coil = { module = "io.coil-kt:coil-compose", version = "2.4.0" } # https://coil-kt.github.io/coil/compose/
 compose-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.6.1" } # https://developer.android.com/jetpack/androidx/releases/lifecycle"
-compose-nav = { module = "androidx.navigation:navigation-compose", version = "2.5.3" } # https://developer.android.com/jetpack/androidx/releases/navigation
-paging-compose = { module = "androidx.paging:paging-compose", version = "1.0.0-alpha19" } # https://developer.android.com/jetpack/androidx/releases/paging
+compose-nav = { module = "androidx.navigation:navigation-compose", version = "2.7.0" } # https://developer.android.com/jetpack/androidx/releases/navigation
+paging-compose = { module = "androidx.paging:paging-compose", version = "3.2.0" } # https://developer.android.com/jetpack/androidx/releases/paging
 
 # Compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-compose-ui = { module = "androidx.compose.ui:ui", version = "composeUINonStable" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
+compose-ui = { module = "androidx.compose.ui:ui" } # https://developer.android.com/jetpack/androidx/releases/compose-ui
 compose-runtime = { module = "androidx.compose.runtime:runtime" } # https://developer.android.com/jetpack/androidx/releases/compose-runtime
 compose-animation = { module = "androidx.compose.animation:animation" } # https://developer.android.com/jetpack/androidx/releases/compose-animation
 compose-animationCore = { module = "androidx.compose.animation:animation-core" }
@@ -130,11 +129,11 @@ arrowkt-optics = { module = "io.arrow-kt:arrow-optics", version.ref = "arrowkt" 
 ## AndroidTest
 androidTest-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidTest-junit = { module = "androidx.test.ext:junit", version.ref = "junitInstrumental" }
-androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUINonStable" } # Version define by composeBom
+androidTest-compose = { module = "androidx.compose.ui:ui-test-junit4" } # Version define by composeBom
 ## Test
 test-room = { module = "androidx.room:room-testing", version.ref = "room" }
 test-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
-test-composeRule = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUINonStable" } # Version define by composeBom
+test-composeRule = { module = "androidx.compose.ui:ui-test-manifest" } # Version define by composeBom
 
 ## Kotest
 test-kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
@@ -186,9 +185,9 @@ datastoreCore = { module = "androidx.datastore:datastore-preferences-core", vers
 # Navigation
 appyx = { module = "com.bumble.appyx:core", version.ref = "appyx" }
 
-androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.9.0" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.10.1" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "lifecycle" }
-android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.2" }
+android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.3" }
 
 showkase = { module = "com.airbnb.android:showkase", version.ref = "showkase" }
 showkaseProcessor = { module = "com.airbnb.android:showkase-processor", version.ref = "showkase" }

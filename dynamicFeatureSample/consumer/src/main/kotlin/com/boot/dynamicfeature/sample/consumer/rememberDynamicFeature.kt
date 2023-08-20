@@ -28,7 +28,7 @@ fun rememberDFMUsecase(): DynamicFeatureProvider {
 	return remember {
 		DynamicFeatureProvider(
 			dynamicFeatureRepository = DynamicFeatureRepository(
-				splitInstallWrapper = SplitInstallWrapper(context.applicationContext as Application),
+				splitInstallWrapper = TODO(),
 				splitInstallEventMapper = SplitInstallEventMapper(),
 			),
 			dynamicServiceRepository = DynamicServiceRepository(ServiceLoaderWrapper()),

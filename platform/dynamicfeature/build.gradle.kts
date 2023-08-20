@@ -11,6 +11,8 @@ dependencies {
 	implementation(libs.appcompat)
 	implementation(libs.playCore)
 	implementation(libs.playCoreKtx)
-
 	implementation(libs.bundles.coroutine)
+
+	androidTestImplementation(libs.androidTest.espresso)
+	androidTestImplementation(libs.androidTest.junit)
 }

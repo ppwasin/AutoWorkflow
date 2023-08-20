@@ -3,6 +3,7 @@ package com.boot.dynamicfeature.repository
 import android.app.Application
 import com.boot.dynamicfeature.contract.DynamicFeature
 import com.boot.dynamicfeature.logger.DynamicFeatureLogger
+import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallSessionState
@@ -12,8 +13,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 
-class SplitInstallWrapper(private val application: Application) {
-	private val installManager by lazy { SplitInstallManagerFactory.create(application) }
+class SplitInstallWrapper(
+	private val installManager: SplitInstallManager
+) {
 
 	fun isFeatureInstall(feature: DynamicFeature): Boolean {
 		return installManager.installedModules.contains(feature.moduleName)

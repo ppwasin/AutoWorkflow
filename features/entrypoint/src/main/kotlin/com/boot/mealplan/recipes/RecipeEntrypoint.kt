@@ -43,7 +43,6 @@ fun RecipeEntrypoint(
 		composable(RecipeRoute.SearchResult.route()) {
 			SearchScreenSlot(
 				viewModel = RecipeInjector.rememberQueryViewModel(),
-				itemKey = FakeItem::id,
 				itemsContent = { item ->
 					Box(
 						Modifier
