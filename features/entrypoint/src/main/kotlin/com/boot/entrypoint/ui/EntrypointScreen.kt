@@ -17,12 +17,16 @@ package com.boot.entrypoint.ui
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.rememberNavController
 import com.boot.designsystem.theme.material.AppMaterialTheme
 import com.boot.entrypoint.platform.BtmSlot
 import com.boot.entrypoint.ui.bottomNav.MainScreenItems
 import com.boot.entrypoint.ui.bottomNav.bottomNav
 import com.boot.mealplan.recipes.RecipeEntrypoint
+import kotlinx.coroutines.coroutineScope
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 @Composable
 fun EntrypointScreen() {

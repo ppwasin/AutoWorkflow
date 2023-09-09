@@ -10,9 +10,7 @@ plugins {
 
 android {
 	namespace = "com.boot.playground"
-	val projectBuildConfig = com.convention.configs.ProjectBuild.create(infra)
 	setupAndroidApplication(
-		config = projectBuildConfig,
 		versionName = "1.0",
 		applicationId = "com.boot.playground",
 	)

@@ -27,9 +27,7 @@ play {
 
 android {
 	namespace = "com.boot.autoworkflow"
-	val projectBuildConfig = com.convention.configs.ProjectBuild.create(infra)
 	setupAndroidApplication(
-		config = projectBuildConfig,
 		versionName = versionNameOverride,
 		applicationId = "com.boot.autoworkflow",
 	)
